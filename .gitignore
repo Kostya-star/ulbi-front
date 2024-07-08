@@ -1,2 +1,4 @@
 node_modules
-build
+
+# ignore only the root build folder
+/build/

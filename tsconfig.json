@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    // for absolute import
+    "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "./dist/",
