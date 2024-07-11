@@ -2,6 +2,7 @@
   "compilerOptions": {
     // for absolute import
     // "baseUrl": ".",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "./dist/",
