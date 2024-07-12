@@ -15,5 +15,5 @@ export function Counter() {
         DECREMENT
       </button>
     </div>
-  );
+  ); 
 }
