@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     // for absolute import
-    // "baseUrl": ".",
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -12,6 +11,10 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {
