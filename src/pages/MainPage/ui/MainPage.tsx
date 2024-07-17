@@ -7,5 +7,5 @@ export default function MainPage() {
     <div>
       {t('main_page')}
     </div>
-  )
+  );
 }
