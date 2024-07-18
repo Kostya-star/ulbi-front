@@ -2,8 +2,9 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -29,7 +30,10 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
-    'jsx-quotes': [1, 'prefer-single'],
+    'jsx-quotes': [0, 'prefer-single'],
+    quotes: [0, 'single', { avoidEscape: true }],
+    'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'linebreak-style': 0,
   },
   globals: {
     __IS_DEV__: true,

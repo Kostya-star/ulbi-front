@@ -1,0 +1,10 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "selector-class-pattern": null,
+    "no-missing-end-of-source-newline": null,
+    "string-quotes": "single",
+    "scss/at-import-partial-extension": "always",
+    "scss/at-import-partial-extension-blacklist": [""]
+  }
+}

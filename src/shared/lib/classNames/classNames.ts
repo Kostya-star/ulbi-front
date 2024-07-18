@@ -5,9 +5,11 @@ export function classNames(
 ): string {
   return [
     cls,
+
     ...Object.entries(mods)
       .filter(([_, value]) => !!value)
       .map(([key, _]) => key),
+
     ...additional.filter(Boolean),
   ].join(' ');
 }
