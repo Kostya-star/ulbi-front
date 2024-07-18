@@ -34,6 +34,7 @@ module.exports = {
     quotes: [0, 'single', { avoidEscape: true }],
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'linebreak-style': 0,
+    'max-len': ['error', { code: 100, ignoreComments: true }],
   },
   globals: {
     __IS_DEV__: true,

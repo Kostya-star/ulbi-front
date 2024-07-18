@@ -1,0 +1,28 @@
+.Loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 var(--inverted-bg-color), -20px 0 var(--inverted-primary-color);
+    background: var(--inverted-bg-color);
+  }
+
+  33% {
+    box-shadow: 20px 0 var(--inverted-bg-color), -20px 0 var(--inverted-primary-color);
+    background: var(--inverted-primary-color);
+  }
+
+  66% {
+    box-shadow: 20px 0 var(--inverted-primary-color), -20px 0 var(--inverted-bg-color);
+    background: var(--inverted-primary-color);
+  }
+
+  100% {
+    box-shadow: 20px 0 var(--inverted-primary-color), -20px 0 var(--inverted-bg-color);
+    background: var(--inverted-bg-color);
+  }
+}
