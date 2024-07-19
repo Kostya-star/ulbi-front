@@ -1,4 +1,6 @@
 {
   "language": "English",
-  "not_found_page": "Page is not found"
+  "not_found_page": "Page is not found",
+  "unexpected_error": "Some unexpected error occured",
+  "refresh_page": "Refresh the page"
 }
