@@ -1,5 +1,5 @@
 import path from 'path';
-import { Configuration } from 'webpack';
+import { Configuration, RuleSetRule } from 'webpack';
 import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
 import { BuildPaths } from '../build/types/config';
 
@@ -17,5 +17,19 @@ export default ({ config }: { config: Configuration }) => {
   config.resolve?.extensions?.push('.ts', '.tsx');
   config.module?.rules?.push(buildCssLoaders(true));
 
+  handleSvg(config);
+
   return config;
 };
+
+function handleSvg(config: Configuration) {
+  const imageRule = config.module?.rules?.find((rule) =>
+    (rule as { test: RegExp }).test?.test('.svg')) as { [key: string]: any };
+
+  imageRule.exclude = /\.svg$/;
+
+  config.module?.rules?.push({
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  });
+}

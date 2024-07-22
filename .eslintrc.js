@@ -38,6 +38,9 @@ module.exports = {
     ],
     'linebreak-style': 0,
     'max-len': ['error', { code: 100, ignoreComments: true }],
+    'implicit-arrow-linebreak': 'warn',
+    // disable the warning for functions declarations
+    'no-use-before-define': ['error', { functions: false }],
   },
   globals: {
     __IS_DEV__: true,

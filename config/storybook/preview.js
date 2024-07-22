@@ -1,6 +1,8 @@
 import { addDecorator } from '@storybook/react';
-import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
-import "app/styles/index.scss";
+import 'app/styles/index.scss';
+import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { RouterDecorator } from 'shared/config/storybook/RouterDecorator/RouterDecorator';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,24 +14,8 @@ export const parameters = {
   },
 };
 
-// addDecorator(StyleDecorator);
+// global decorator for all stories. by default, all stories would have the light theme
+addDecorator((StoryComp) => ThemeDecorator(StoryComp, Theme.LIGHT));
 
-// import { addDecorator } from '@storybook/react';
-// import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
-// import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-// import { Theme } from '../../src/app/providers/ThemeProvider';
-// import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
-
-// export const parameters = {
-//     actions: { argTypesRegex: '^on[A-Z].*' },
-//     controls: {
-//         matchers: {
-//             color: /(background|color)$/i,
-//             date: /Date$/,
-//         },
-//     },
-// };
-
-// addDecorator(StyleDecorator);
-// addDecorator(ThemeDecorator(Theme.LIGHT));
-// addDecorator(RouterDecorator);
+// use react router dom
+addDecorator(RouterDecorator);
