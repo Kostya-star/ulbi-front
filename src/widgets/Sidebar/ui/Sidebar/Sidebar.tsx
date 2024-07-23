@@ -25,6 +25,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         data-testid='toggle-sidebar-width-btn'
         type='button'
         onClick={toggleSidebar}
+      // eslint-disable-next-line i18next/no-literal-string
       >
         toggle Sidebar width
       </Button>

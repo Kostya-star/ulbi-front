@@ -1,4 +1,5 @@
 import { MakeErrorTestBtn } from 'app/providers/ErrorBoundary';
+import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import cls from './Navbar.module.scss';
@@ -8,12 +9,13 @@ interface NavbarProps {
 }
 
 export function Navbar({ className }: NavbarProps) {
+  const { t } = useTranslation();
   return (
     <div className={classNames(cls.Navbar, {}, [className])}>
       <MakeErrorTestBtn />
       <div className={cls.links}>
-        <AppLink to='/' theme={AppLinkTheme.SECONDARY}>Main</AppLink>
-        <AppLink to='/about' theme={AppLinkTheme.SECONDARY}>About</AppLink>
+        <AppLink to='/' theme={AppLinkTheme.SECONDARY}>{t('main')}</AppLink>
+        <AppLink to='/about' theme={AppLinkTheme.SECONDARY}>{t('about')}</AppLink>
       </div>
     </div>
   );
