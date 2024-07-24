@@ -1,8 +1,9 @@
 {
   "language": "English",
+  "language_short": "En",
   "not_found_page": "Page is not found",
   "unexpected_error": "Some unexpected error occured",
   "refresh_page": "Refresh the page",
   "main": "Main",
-  "about": "About"
+  "about_us": "About us"
 }
