@@ -53,7 +53,7 @@
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
-    "loki": "^0.35.0",
+    "loki": "^0.32.0",
     "mini-css-extract-plugin": "^2.5.3",
     "reg-cli": "^0.17.6",
     "sass": "^1.49.9",
@@ -74,8 +74,6 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
-    "concurrently": "^7.0.0",
-    "deelay": "^2.0.0",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-i18next": "^5.1.2",
@@ -93,8 +91,6 @@
     "regenerator-runtime": "^0.13.9"
   },
   "loki": {
-    "chromeFlags": "--headless --hide-scrollbars --no-sandbox",
-    "reactUri": "file:./storybook-static",
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.app",
