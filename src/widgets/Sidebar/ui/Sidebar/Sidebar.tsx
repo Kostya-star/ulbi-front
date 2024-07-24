@@ -11,7 +11,7 @@ import AboutSvg from 'shared/assets/icons/about.svg';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
-  className?: string;
+  className?: string
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
