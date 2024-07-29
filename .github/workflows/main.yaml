@@ -43,6 +43,5 @@ jobs:
         if: always()
 
       - name: running screenshot testing
-        # run: npm run test:ui:ci
-        run: concurrently --kill-others --raw --success first 'npm run storybook' 'npm run test:ui'
+        run: npm run test:ui:ci
         if: always()
