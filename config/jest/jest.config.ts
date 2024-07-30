@@ -7,6 +7,9 @@ import type { Config } from '@jest/types';
 import path from 'path';
 
 const jestConfig: Config.InitialOptions = {
+  globals: {
+    __IS_DEV__: true,
+  },
   clearMocks: true,
   testEnvironment: 'jsdom',
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -76,7 +79,6 @@ const jestConfig: Config.InitialOptions = {
   // globalTeardown: undefined,
 
   // A set of global variables that need to be available in all test environments
-  // globals: {},
 
   // The maximum amount of workers used to run your tests.
   // Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount
