@@ -10,16 +10,6 @@
   visibility: hidden;
   transition: all 0.5s ease;
   color: var(--primary-color);
-
-  &.dark {
-    --bg-color: #090949;
-    --primary-color: #049604;
-  }
-
-  &.light {
-    --bg-color: #e8e8ea;
-    --primary-color: #417dff;
-  }
 }
 
 .overlay {

@@ -3,14 +3,17 @@
 @import './themes/dark.scss';
 @import './vars/global.scss';
 
+// body {
+// font: var(--font-m);
+// color: var(--primary-color);
+// }
+
 body {
   font: var(--font-m);
   color: var(--primary-color);
 }
 
 .app {
-  font: var(--font-m);
-  color: var(--primary-color);
   background: var(--bg-color);
   min-height: 100vh;
 }
