@@ -1,0 +1,47 @@
+.InputWrapper {
+  display: flex;
+}
+
+.placeholder {
+  margin-right: 5px;
+}
+
+.inputBlock {
+  position: relative;
+  flex-grow: 1;
+}
+
+.inputEl {
+  outline: none;
+  border: none;
+  background: transparent;
+  caret-color: transparent;
+  color: var(--primary-color);
+
+  // color: transparent;
+  // text-shadow: 0 0 0 var(--primary-color);
+}
+
+.underscoreEl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 9px;
+  background-color: var(--primary-color);
+  animation: blink 0.6s forwards infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

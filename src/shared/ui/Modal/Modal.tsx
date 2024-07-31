@@ -10,13 +10,16 @@ interface ModalProps {
   children?: ReactNode;
   className?: string;
   isOpen?: boolean;
+  lazy?: boolean;
   onClose?: () => void;
 }
 
 export const Modal: FC<ModalProps> = ({
-  children, className, isOpen, onClose,
+  children, className, isOpen, lazy, onClose,
 }) => {
   const { theme } = useTheme();
+  // const [isMounted, setMounted] = useState(false)
+
   const handleClose = useCallback(() => onClose?.(), [onClose]);
   const onContentClick = (e: MouseEvent) => e.stopPropagation();
 
@@ -33,6 +36,8 @@ export const Modal: FC<ModalProps> = ({
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);
+
+  if (lazy && !isOpen) return null;
 
   return (
     <Portal>

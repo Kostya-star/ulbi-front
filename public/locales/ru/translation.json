@@ -6,5 +6,7 @@
   "refresh_page": "Перезагрузить страницу",
   "main": "Главная",
   "about_us": "О нас",
-  "sign_in": "Войти"
+  "sign_in": "Войти",
+  "insert_name": "Введите имя",
+  "insert_password": "Введите пароль"
 }

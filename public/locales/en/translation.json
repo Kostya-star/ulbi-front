@@ -6,5 +6,7 @@
   "refresh_page": "Refresh the page",
   "main": "Main",
   "about_us": "About us",
-  "sign_in": "Sign In"
+  "sign_in": "Sign In",
+  "insert_name": "Insert name",
+  "insert_password": "Insert password"
 }

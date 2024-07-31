@@ -65,7 +65,6 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         square
         size={ButtonSize.L}
         onClick={toggleSidebar}
-      // eslint-disable-next-line i18next/no-literal-string
       >
         {isCollapsed ? '>' : '<'}
       </Button>
