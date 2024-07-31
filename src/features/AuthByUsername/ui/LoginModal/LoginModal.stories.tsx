@@ -15,7 +15,6 @@ export default {
 const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />;
 
 const inputProps = {
-  // lazy: true,
   isOpen: true,
 };
 
