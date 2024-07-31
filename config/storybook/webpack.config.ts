@@ -1,5 +1,5 @@
 import path from 'path';
-import { Configuration, RuleSetRule } from 'webpack';
+import { Configuration, DefinePlugin, RuleSetRule } from 'webpack';
 import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
 import { BuildPaths } from '../build/types/config';
 
@@ -16,6 +16,9 @@ export default ({ config }: { config: Configuration }) => {
   config.resolve?.modules?.push(srcPath);
   config.resolve?.extensions?.push('.ts', '.tsx');
   config.module?.rules?.push(buildCssLoaders(true));
+  config.plugins?.push(new DefinePlugin({
+    __IS_DEV__: JSON.stringify(true),
+  }));
 
   handleSvg(config);
 
