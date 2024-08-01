@@ -8,5 +8,6 @@
   "about_us": "О нас",
   "sign_in": "Войти",
   "insert_name": "Введите имя",
-  "insert_password": "Введите пароль"
+  "insert_password": "Введите пароль",
+  "auth": "Авторизация"
 }

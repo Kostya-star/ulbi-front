@@ -42,7 +42,7 @@ module.exports = {
       { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
     ],
     'linebreak-style': 0,
-    'max-len': ['error', { code: 100, ignoreComments: true }],
+    'max-len': ['error', { code: 120, ignoreComments: true }],
     'implicit-arrow-linebreak': 'warn',
     // disable the warning for functions declarations
     'no-use-before-define': ['error', { functions: false }],

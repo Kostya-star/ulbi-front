@@ -108,3 +108,9 @@ SquareSizeXL.args = {
   square: true,
   size: ButtonSize.XL,
 };
+
+export const PrimaryDisabled = Template.bind({});
+PrimaryDisabled.args = {
+  children: 'Text',
+  disabled: true,
+};

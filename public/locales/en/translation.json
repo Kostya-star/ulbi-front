@@ -8,5 +8,6 @@
   "about_us": "About us",
   "sign_in": "Sign In",
   "insert_name": "Insert name",
-  "insert_password": "Insert password"
+  "insert_password": "Insert password",
+  "auth": "Authentication"
 }
