@@ -7,7 +7,9 @@
   "main": "Main",
   "about_us": "About us",
   "sign_in": "Sign In",
+  "sign_out": "Sign Out",
   "insert_name": "Insert name",
   "insert_password": "Insert password",
-  "auth": "Authentication"
+  "auth": "Authentication",
+  "wrong_auth_data": "Wrong name or password"
 }

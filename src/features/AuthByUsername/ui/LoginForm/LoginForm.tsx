@@ -13,9 +13,10 @@ import cls from './LoginForm.module.scss';
 
 interface LoginFormProps {
   className?: string;
+  onCloseModal?: () => void;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
+export const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
   const { t } = useTranslation();
 
   const { isLoading, error } = useSelector(getLoginState);
@@ -24,9 +25,11 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitUserData = useCallback(() => {
-    dispatch(loginByUserName({ username, password }));
-  }, [dispatch, password, username]);
+  const submitUserData = useCallback(async () => {
+    // @ts-ignore FOR NOW!!!
+    await dispatch(loginByUserName({ username, password })).unwrap();
+    onCloseModal();
+  }, [password, username, onCloseModal, dispatch]);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
