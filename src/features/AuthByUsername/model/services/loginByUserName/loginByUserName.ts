@@ -22,7 +22,7 @@ export const loginByUserName = createAsyncThunk<User, loginByUserNamePayload, { 
       return dbUser.data;
     } catch (err) {
       console.log(err);
-      return thunkAPI.rejectWithValue(i18n.t('wrong_auth_data'));
+      return thunkAPI.rejectWithValue('error');
     }
   },
 );

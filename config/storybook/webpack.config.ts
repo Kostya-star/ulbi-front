@@ -16,8 +16,9 @@ export default ({ config }: { config: Configuration }) => {
   config.resolve?.modules?.push(srcPath);
   config.resolve?.extensions?.push('.ts', '.tsx');
   config.module?.rules?.push(buildCssLoaders(true));
+
   config.plugins?.push(new DefinePlugin({
-    __IS_DEV__: JSON.stringify(true),
+    __IS_DEV__: true,
   }));
 
   handleSvg(config);

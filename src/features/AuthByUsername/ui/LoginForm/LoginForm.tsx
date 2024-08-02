@@ -1,6 +1,6 @@
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState';
 import {
-  memo, useCallback, useEffect, useState,
+  memo, useCallback, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,7 +34,7 @@ export const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
       <Text title={t('auth')} />
-      {error && <Text text={error} theme={TextTheme.ERROR} />}
+      {error && <Text text={t('wrong_auth_data')} theme={TextTheme.ERROR} />}
 
       <Input
         value={username}
