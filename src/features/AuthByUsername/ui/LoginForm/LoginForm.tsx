@@ -8,19 +8,28 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
+import { loginReducer } from '../../model/slice/loginSlice';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
 import cls from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
   onCloseModal?: () => void;
 }
 
-export const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
+const asyncReducers = { login: loginReducer };
+
+const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
+  useReduxReducerManager(asyncReducers, true);
+  const dispatch = useDispatch();
+
   const { t } = useTranslation();
 
-  const { isLoading, error } = useSelector(getLoginState);
-  const dispatch = useDispatch();
+  const {
+    isLoading = false,
+    error = null,
+  } = useSelector(getLoginState);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -61,3 +70,5 @@ export const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
     </div>
   );
 });
+
+export default LoginForm;
