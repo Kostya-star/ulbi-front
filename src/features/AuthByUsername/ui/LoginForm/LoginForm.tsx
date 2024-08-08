@@ -2,12 +2,13 @@ import {
   memo, useCallback, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginReducer } from '../../model/slice/loginSlice';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
@@ -15,14 +16,14 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
   className?: string;
-  onCloseModal?: () => void;
+  onSuccess?: () => void;
 }
 
 const asyncReducers = { login: loginReducer };
 
-const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   useReduxReducerManager(asyncReducers, true);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { t } = useTranslation();
 
@@ -35,10 +36,10 @@ const LoginForm = memo(({ className, onCloseModal }: LoginFormProps) => {
   const [password, setPassword] = useState('');
 
   const submitUserData = useCallback(async () => {
-    // @ts-ignore FOR NOW!!!
-    await dispatch(loginByUserName({ username, password })).unwrap();
-    onCloseModal();
-  }, [password, username, onCloseModal, dispatch]);
+    const resp = await dispatch(loginByUserName({ username, password }));
+
+    if (resp.meta.requestStatus === 'fulfilled') onSuccess();
+  }, [password, username, onSuccess, dispatch]);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>

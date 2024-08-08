@@ -11,5 +11,6 @@
   "insert_name": "Insert name",
   "insert_password": "Insert password",
   "auth": "Authentication",
-  "wrong_auth_data": "Wrong name or password"
+  "wrong_auth_data": "Wrong name or password",
+  "profile": "Profile"
 }

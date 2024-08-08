@@ -1,7 +1,9 @@
 import { MakeErrorTestBtn } from 'app/providers/ErrorBoundary';
 import { getAuthUserData, initAuthUserData, logout } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
-import { useCallback, useEffect, useState } from 'react';
+import {
+  memo, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -12,7 +14,7 @@ interface NavbarProps {
   className?: string
 }
 
-export function Navbar({ className }: NavbarProps) {
+export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
   const [isAuthModal, setAuthModal] = useState(false);
 
@@ -46,4 +48,4 @@ export function Navbar({ className }: NavbarProps) {
       <LoginModal isOpen={isAuthModal} onClose={onCloseAuthModal} />
     </div>
   );
-}
+});

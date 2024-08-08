@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
@@ -14,9 +14,9 @@ interface TextProps {
   theme?: TextTheme
 }
 
-export const Text: FC<TextProps> = ({
+export const Text = memo(({
   title, text, theme = TextTheme.PRIMARY, className,
-}) => {
+}: TextProps) => {
   return (
     // @ts-ignore for now!!!!!!!!!!!!!!!!!!
     <div className={classNames('', {}, [className, cls[theme]])}>
@@ -24,4 +24,4 @@ export const Text: FC<TextProps> = ({
       {text && <p className={cls.text}>{text}</p>}
     </div>
   );
-};
+});

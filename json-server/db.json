@@ -23,14 +23,21 @@
       "postId": "1"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  },
   "users": [
     {
       "id": "1",
       "username": "admin",
       "password": "123"
     }
-  ]
+  ],
+  "profile": {
+    "first": "Constantin",
+    "lastname": "Danilov",
+    "age": 24,
+    "currency": "EUR",
+    "country": "Moldova",
+    "city": "Bender",
+    "username": "admin",
+    "avatar": "https://c8.alamy.com/comp/H9EFF2/avatar-man-icon-healthy-lifestyle-fitness-and-sport-theme-isolated-H9EFF2.jpg"
+  }
 }

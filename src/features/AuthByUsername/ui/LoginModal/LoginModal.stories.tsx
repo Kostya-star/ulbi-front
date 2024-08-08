@@ -16,31 +16,35 @@ export default {
 
 const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />;
 
-const inputProps = {
+export const light = Template.bind({});
+light.args = {
   isOpen: true,
 };
-
-export const light = Template.bind({});
-light.args = inputProps;
 light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
 
 export const dark = Template.bind({});
-dark.args = inputProps;
+dark.args = {
+  isOpen: true,
+};
 dark.decorators = [
   (StoryComp: Story) => StoreDecorator(StoryComp),
   (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
 ];
 
 export const lightWithError = Template.bind({});
-lightWithError.args = inputProps;
+lightWithError.args = {
+  isOpen: true,
+};
 lightWithError.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
   login: {
-    error: 'Error',
+    error: 'error',
   },
 })];
 
 export const lightWithLoading = Template.bind({});
-lightWithLoading.args = inputProps;
+lightWithLoading.args = {
+  isOpen: true,
+};
 lightWithLoading.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
   login: {
     isLoading: true,
