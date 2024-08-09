@@ -9,6 +9,7 @@ import path from 'path';
 const jestConfig: Config.InitialOptions = {
   globals: {
     __IS_DEV__: true,
+    __API_URL__: '',
   },
   clearMocks: true,
   testEnvironment: 'jsdom',

@@ -1,7 +1,7 @@
 import path from 'path';
-import { Configuration, DefinePlugin, RuleSetRule } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
-import { BuildPaths } from '../build/types/config';
+// import { BuildPaths } from '../build/types/config';
 
 export default ({ config }: { config: Configuration }) => {
   // const paths: BuildPaths = {
@@ -19,6 +19,7 @@ export default ({ config }: { config: Configuration }) => {
 
   config.plugins?.push(new DefinePlugin({
     __IS_DEV__: true,
+    __API_URL__: JSON.stringify(''),
   }));
 
   handleSvg(config);

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     // for absolute import
+    "strict": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

@@ -1,3 +1,7 @@
 {
-  "profile_page": "Страница профиля"
+  "profile_page": "Страница профиля",
+  "profile": "Профиль",
+  "edit_profile": "Редактировать профиль",
+  "profile_name": "Ваше имя",
+  "profile_last_name": "Ваша фамилия"
 }
