@@ -19,7 +19,7 @@ describe('classNames', () => {
 
   test('with mods classes undefined and null', () => {
     const expected = 'class1 hovered';
-    const mods = { hovered: true, selectable: undefined as undefined, focused: null as null };
+    const mods = { hovered: true, selectable: undefined, focused: null };
 
     expect(classNames('class1', mods, [])).toBe(expected);
   });

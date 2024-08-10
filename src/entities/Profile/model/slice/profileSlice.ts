@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
-import { Profile, ProfileSchema } from '../types/profile';
+import { ProfileSchema } from '../types/profile';
 
 const initialState: ProfileSchema = {
   data: null,
@@ -25,7 +25,7 @@ export const profileSlice = createSlice({
     });
     builder.addCase(fetchProfileData.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = action.payload as string;
     });
   },
 
