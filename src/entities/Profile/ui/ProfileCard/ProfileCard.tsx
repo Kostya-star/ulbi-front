@@ -1,32 +1,52 @@
-import { getProfileData } from 'entities/Profile/model/selectors/getProfileData/getProfileData';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { Text } from 'shared/ui/Text/Text';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
   className?: string;
+  data?: Profile | null;
+  isLoading?: boolean;
+  error?: string | null;
 }
 
-export const ProfileCard: FC<ProfileCardProps> = ({ className }) => {
+export const ProfileCard: FC<ProfileCardProps> = ({
+  data,
+  isLoading,
+  error,
+  className,
+}) => {
   const { t } = useTranslation('profile');
-  const profile = useSelector(getProfileData);
+
+  if (isLoading) {
+    return (
+      <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+        <Text
+          title={t('profile_loading_error')}
+          text={t('profile_refresh_page')}
+          theme={TextTheme.ERROR}
+          align={TextAlign.CENTER}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={classNames(cls.ProfileCard, {}, [className])}>
-      <div className={cls.top}>
-        <Text title={t('profile')} />
-        <Button theme={ButtonTheme.OUTLINE} className={cls.editBtn}>{t('edit_profile')}</Button>
-      </div>
-
-      {/* <div className={cls.body}> */}
-      <Input value={profile?.first} placeholder={t('profile_name')} />
-      <Input value={profile?.lastname} placeholder={t('profile_last_name')} />
-      {/* </div> */}
+      <Input value={data?.first} placeholder={t('profile_name')} />
+      <Input value={data?.lastname} placeholder={t('profile_last_name')} />
     </div>
   );
 };

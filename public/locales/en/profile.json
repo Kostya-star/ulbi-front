@@ -3,5 +3,7 @@
   "profile": "Profile",
   "edit_profile": "Edit profile",
   "profile_name": "Your name",
-  "profile_last_name": "Your last name"
+  "profile_last_name": "Your last name",
+  "profile_loading_error": "Error occured when loading profile",
+  "profile_refresh_page": "Try refresh the page"
 }

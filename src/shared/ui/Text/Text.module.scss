@@ -1,16 +1,20 @@
 .title {
   font: var(--font-l);
-  color: var(--primary-color);
 }
 
 .text {
   font: var(--font-m);
-  color: var(--secondary-color);
 }
 
-// .primary {
-//   background-color: #fff;
-// }
+.primary {
+  .title {
+    color: var(--primary-color);
+  }
+
+  .text {
+    color: var(--secondary-color);
+  }
+}
 
 .error {
   .title {
@@ -20,4 +24,16 @@
   .text {
     color: var(--red-dark);
   }
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
 }

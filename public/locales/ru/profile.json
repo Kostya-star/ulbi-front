@@ -3,5 +3,7 @@
   "profile": "Профиль",
   "edit_profile": "Редактировать профиль",
   "profile_name": "Ваше имя",
-  "profile_last_name": "Ваша фамилия"
+  "profile_last_name": "Ваша фамилия",
+  "profile_loading_error": "Произошла ошибка при загрузке профиля",
+  "profile_refresh_page": "Попробуйте перезагрузить страницу"
 }

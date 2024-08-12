@@ -3,11 +3,9 @@
   padding: 20px;
 }
 
-.top {
+.loading,
+.error {
   display: flex;
-  margin-bottom: 20px;
-}
-
-.editBtn {
-  margin-left: auto;
+  justify-content: center;
+  align-items: center;
 }
