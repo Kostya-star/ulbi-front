@@ -19,5 +19,6 @@ export const sidebarLinksList: SidebarLinkItem[] = [
     path: RoutePath.profile,
     text: 'profile',
     Icon: ProfileSvg,
+    authOnly: true,
   },
 ];

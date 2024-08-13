@@ -1,3 +1,5 @@
+import { Country } from 'entities/CountrySelect';
+import { Currency } from 'entities/CurrencySelect';
 import {
   fetchProfileData,
   getProfileData,
@@ -89,6 +91,14 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     setProfileEdits((edits) => ({ ...edits, avatar }));
   }, []);
 
+  const onChangeCurrency = useCallback((currency: Currency) => {
+    setProfileEdits((edits) => ({ ...edits, currency }));
+  }, []);
+
+  const onChangeCountry = useCallback((country: Country) => {
+    setProfileEdits((edits) => ({ ...edits, country }));
+  }, []);
+
   return (
     <div className={classNames('', {}, [className])}>
       <ProfilePageHeader
@@ -108,6 +118,8 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
         onChangeCity={onChangeCity}
         onChangeUsername={onChangeUsername}
         onChangeAvatarUrl={onChangeAvatarUrl}
+        onChangeCurrency={onChangeCurrency}
+        onChangeCountry={onChangeCountry}
       />
     </div>
   );

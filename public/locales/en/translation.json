@@ -12,5 +12,7 @@
   "insert_password": "Insert password",
   "auth": "Authentication",
   "wrong_auth_data": "Wrong name or password",
-  "profile": "Profile"
+  "profile": "Profile",
+  "your_currency": "Your currency",
+  "your_country": "Your country"
 }

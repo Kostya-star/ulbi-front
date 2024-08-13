@@ -11,7 +11,6 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    to: '/',
   },
 } as ComponentMeta<typeof Select>;
 
@@ -24,6 +23,16 @@ light.args = {
     { value: '2', text: '2' },
     { value: '3', text: '3' },
   ],
+};
+
+export const lightReadonly = Template.bind({});
+lightReadonly.args = {
+  options: [
+    { value: '1', text: '1' },
+    { value: '2', text: '2' },
+    { value: '3', text: '3' },
+  ],
+  readonly: true,
 };
 
 export const lightWithLabel = Template.bind({});

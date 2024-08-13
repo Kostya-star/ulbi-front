@@ -12,5 +12,7 @@
   "insert_password": "Введите пароль",
   "auth": "Авторизация",
   "wrong_auth_data": "Неправильные логин или пароль",
-  "profile": "Профиль"
+  "profile": "Профиль",
+  "your_currency": "Ваша валюта",
+  "your_country": "Ваша страна"
 }

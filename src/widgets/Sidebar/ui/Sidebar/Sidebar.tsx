@@ -3,6 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
+import { useSelector } from 'react-redux';
+import { getAuthUserData } from 'entities/User';
 import { sidebarLinksList } from '../../model/sidebarLinksList';
 import cls from './Sidebar.module.scss';
 import { SidebarLink } from '../SidebarLink/SidebarLink';
@@ -12,15 +14,27 @@ interface SidebarProps {
 }
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
+  const isAuth = useSelector(getAuthUserData);
+
   const [isCollapsed, setCollapsed] = useState(false);
 
   const toggleSidebar = () => {
     setCollapsed((prev) => !prev);
   };
 
-  const linksList = useMemo(() => sidebarLinksList.map((item) => (
-    <SidebarLink key={item.path} item={item} isCollapsed={isCollapsed} />
-  )), [isCollapsed]);
+  const linksList = useMemo(() => {
+    return sidebarLinksList
+      .filter((link) => {
+        if (link.authOnly && !isAuth) return false;
+        return true;
+      }).map((item) => (
+        <SidebarLink
+          key={item.path}
+          item={item}
+          isCollapsed={isCollapsed}
+        />
+      ));
+  }, [isCollapsed, isAuth]);
 
   return (
     <div
