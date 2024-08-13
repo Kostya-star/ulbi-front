@@ -2,8 +2,14 @@
   "profile_page": "Profile Page",
   "profile": "Profile",
   "edit_profile": "Edit profile",
+  "cancel_edit_profile": "Cancel",
+  "save_edits_profile": "Save",
   "profile_name": "Your name",
   "profile_last_name": "Your last name",
   "profile_loading_error": "Error occured when loading profile",
-  "profile_refresh_page": "Try refresh the page"
+  "profile_refresh_page": "Try refresh the page",
+  "profile_age": "Your age",
+  "profile_city": "Your city",
+  "profile_username": "Your username",
+  "profile_avatar": "Your avatar"
 }

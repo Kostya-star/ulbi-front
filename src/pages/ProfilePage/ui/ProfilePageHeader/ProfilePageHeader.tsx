@@ -7,15 +7,52 @@ import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
   className?: string;
+  isReadonly?: boolean;
+  onEdit?: () => void
+  onCancel?: () => void
+  onSave?: () => void
 }
 
-export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => {
+export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
+  isReadonly,
+  className,
+  onEdit,
+  onCancel,
+  onSave,
+}) => {
   const { t } = useTranslation('profile');
 
   return (
     <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
       <Text title={t('profile')} />
-      <Button theme={ButtonTheme.OUTLINE} className={cls.editBtn}>{t('edit_profile')}</Button>
+      {
+        isReadonly
+          ? (
+            <Button
+              theme={ButtonTheme.OUTLINE}
+              className={cls.editBtn}
+              onClick={onEdit}
+            >
+              {t('edit_profile')}
+            </Button>
+          )
+          : (
+            <div className={cls.actions}>
+              <Button
+                theme={ButtonTheme.OUTLINE_RED}
+                onClick={onCancel}
+              >
+                {t('cancel_edit_profile')}
+              </Button>
+              <Button
+                theme={ButtonTheme.OUTLINE}
+                onClick={onSave}
+              >
+                {t('save_edits_profile')}
+              </Button>
+            </div>
+          )
+      }
     </div>
   );
 };

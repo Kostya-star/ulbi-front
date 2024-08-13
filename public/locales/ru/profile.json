@@ -2,8 +2,14 @@
   "profile_page": "Страница профиля",
   "profile": "Профиль",
   "edit_profile": "Редактировать профиль",
+  "cancel_edit_profile": "Отменить",
+  "save_edits_profile": "Сохранить",
   "profile_name": "Ваше имя",
   "profile_last_name": "Ваша фамилия",
   "profile_loading_error": "Произошла ошибка при загрузке профиля",
-  "profile_refresh_page": "Попробуйте перезагрузить страницу"
+  "profile_refresh_page": "Попробуйте перезагрузить страницу",
+  "profile_age": "Ваш возраст",
+  "profile_city": "Ваш город",
+  "profile_username": "Ваш ник",
+  "profile_avatar": "Ваш аватар"
 }

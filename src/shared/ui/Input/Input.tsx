@@ -7,18 +7,26 @@ import cls from './Input.module.scss';
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
 interface InputProps extends HTMLInputProps {
-  value?: string;
+  value?: string | number;
   onChange?: (value: string) => void;
   className?: string;
   type?: string;
   placeholder?: string;
   autofocus?: boolean;
+  readonly?: boolean
 }
 
 const SYMBOL_WIDTH = 9; // the width of the CONSOLAS font in px
 
 export const Input: FC<InputProps> = memo(({
-  value, type = 'text', className, placeholder, autofocus, onChange, ...restProps
+  value,
+  type = 'text',
+  className,
+  placeholder,
+  autofocus,
+  onChange,
+  readonly,
+  ...restProps
 }: InputProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isInputFocused, setInputFocused] = useState(false);
@@ -60,6 +68,8 @@ export const Input: FC<InputProps> = memo(({
     onSetUnderscorePositionHandle(newUnderscoreElPosition);
   };
 
+  const isUnderscoreVisible = isInputFocused && !readonly;
+
   return (
     <div className={classNames(cls.InputWrapper, {}, [className])}>
       {placeholder?.trim() && (
@@ -71,6 +81,7 @@ export const Input: FC<InputProps> = memo(({
           value={value}
           type={type}
           className={cls.inputEl}
+          readOnly={readonly}
           onChange={onInputChange}
           onBlur={onInputBlur}
           onFocus={onInputFocus}
@@ -78,7 +89,7 @@ export const Input: FC<InputProps> = memo(({
           {...restProps}
         />
         {
-          isInputFocused && (
+          isUnderscoreVisible && (
             <span style={{ left: `${underscoreElPosition}px` }} className={cls.underscoreEl} />
           )
         }
