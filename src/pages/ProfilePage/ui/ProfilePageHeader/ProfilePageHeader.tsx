@@ -8,6 +8,7 @@ import cls from './ProfilePageHeader.module.scss';
 interface ProfilePageHeaderProps {
   className?: string;
   isReadonly?: boolean;
+  isSaveAllowed: boolean;
   onEdit?: () => void
   onCancel?: () => void
   onSave?: () => void
@@ -16,6 +17,7 @@ interface ProfilePageHeaderProps {
 export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   isReadonly,
   className,
+  isSaveAllowed,
   onEdit,
   onCancel,
   onSave,
@@ -46,6 +48,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
               </Button>
               <Button
                 theme={ButtonTheme.OUTLINE}
+                disabled={!isSaveAllowed}
                 onClick={onSave}
               >
                 {t('save_edits_profile')}

@@ -11,5 +11,12 @@
   "profile_age": "Ваш возраст",
   "profile_city": "Ваш город",
   "profile_username": "Ваш ник",
-  "profile_avatar": "Ваш аватар"
+  "profile_avatar": "Ваш аватар",
+
+  "first_name_err": "Неправильное имя",
+  "last_name_err": "Неправильная фамилия",
+  "username_err": "Неправильный ник",
+  "age_err": "Неправильный возраст",
+  "city_err": "Неправильный город",
+  "no_data": "Еще нет данных..."
 }

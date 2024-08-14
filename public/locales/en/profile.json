@@ -11,5 +11,12 @@
   "profile_age": "Your age",
   "profile_city": "Your city",
   "profile_username": "Your username",
-  "profile_avatar": "Your avatar"
+  "profile_avatar": "Your avatar",
+
+  "first_name_err": "Incorrect first name",
+  "last_name_err": "Incorrect last name",
+  "username_err": "Incorrect username",
+  "age_err": "Incorrect age",
+  "city_err": "Incorrect city",
+  "no_data": "No data yet..."
 }

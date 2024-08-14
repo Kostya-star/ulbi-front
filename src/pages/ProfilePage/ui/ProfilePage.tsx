@@ -9,14 +9,18 @@ import {
   Profile,
   ProfileCard,
   profileReducer,
+  validateProfileErrors,
 } from 'entities/Profile';
 import {
-  FC, useCallback, useEffect, useState,
+  FC, memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { isNumber } from 'shared/util/isNumber/isNumber';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -28,13 +32,15 @@ interface ProfilePageProps {
 }
 
 const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
+  const { t } = useTranslation('profile');
+
   useReduxReducerManager(reducers, true);
 
   const profileData = useSelector(getProfileData);
   const isProfileLoading = useSelector(getProfileIsLoading);
   const profileError = useSelector(getProfileError);
 
-  const [profileEdits, setProfileEdits] = useState<Profile>({});
+  const [profileEdits, setProfileEdits] = useState<Profile | null>(null);
   const [isProfileReadonly, setProfileReadonly] = useState(true);
 
   const dispatch = useAppDispatch();
@@ -48,6 +54,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     fetchProfile();
   }, [dispatch]);
 
+  // validate form for errors
+  const formErrors = useMemo(() => validateProfileErrors(profileEdits), [profileEdits]);
+
   // profile actions
   const onEditProfile = useCallback(() => {
     setProfileReadonly(false);
@@ -59,9 +68,11 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   }, [profileData]);
 
   const onSaveEditsProfile = useCallback(() => {
+    if (formErrors.length) return;
+
     setProfileReadonly(true);
-    dispatch(updateProfileData(profileEdits));
-  }, [profileEdits, dispatch]);
+    dispatch(updateProfileData(profileEdits as Profile));
+  }, [profileEdits, formErrors.length, dispatch]);
 
   // profile edition
   const onChangeFirstname = useCallback((val: string) => {
@@ -73,10 +84,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   }, []);
 
   const onChangeAge = useCallback((age: string) => {
-    const ageIsNumber = /^[0-9]*$/.test(age);
-    if (!ageIsNumber) return;
-
-    setProfileEdits((edits) => ({ ...edits, age: Number(age) }));
+    if (isNumber(age)) {
+      setProfileEdits((edits) => ({ ...edits, age: Number(age) }));
+    }
   }, []);
 
   const onChangeCity = useCallback((city: string) => {
@@ -99,14 +109,34 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     setProfileEdits((edits) => ({ ...edits, country }));
   }, []);
 
+  const formErrorsList = useMemo(() => (
+    formErrors.map((err) => (
+      <Text
+        key={err}
+        text={t(err)}
+        theme={TextTheme.ERROR}
+      />
+    ))
+  ), [formErrors, t]);
+
   return (
     <div className={classNames('', {}, [className])}>
       <ProfilePageHeader
         isReadonly={isProfileReadonly}
+        isSaveAllowed={!formErrors.length}
         onEdit={onEditProfile}
         onCancel={onCancelEditProfile}
         onSave={onSaveEditsProfile}
       />
+      {
+        formErrors.length
+          ? (
+            <div>
+              {formErrorsList}
+            </div>
+          )
+          : null
+      }
       <ProfileCard
         data={profileEdits}
         isLoading={isProfileLoading}
@@ -125,4 +155,4 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   );
 };
 
-export default ProfilePage;
+export default memo(ProfilePage);
