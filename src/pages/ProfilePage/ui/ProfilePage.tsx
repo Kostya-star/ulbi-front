@@ -21,7 +21,19 @@ import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReduc
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { isNumber } from 'shared/util/isNumber/isNumber';
+import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+
+const defaultProfileData = {
+  first: 'Constantin',
+  lastname: "Danilov",
+  age: 24,
+  city: "Bender",
+  country: Country.Moldova,
+  currency: Currency.MD,
+  username: 'admin',
+  avatar: AvatarImg,
+};
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -33,6 +45,7 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const { t } = useTranslation('profile');
+  const isStorybookEnvironment = useMemo(() => __PROJECT__ === 'storybook', []);
 
   useReduxReducerManager(reducers, true);
 
@@ -46,13 +59,19 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      const profile = await dispatch(fetchProfileData()).unwrap();
-      if (profile) setProfileEdits({ ...profile });
-    };
+    if (!isStorybookEnvironment) {
+      const fetchProfile = async () => {
+        const profile = await dispatch(fetchProfileData()).unwrap();
+        if (profile) setProfileEdits({ ...profile });
+      };
 
-    fetchProfile();
-  }, [dispatch]);
+      fetchProfile();
+    }
+
+    if (isStorybookEnvironment) {
+      setProfileEdits(defaultProfileData);
+    }
+  }, [isStorybookEnvironment, dispatch]);
 
   // validate form for errors
   const formErrors = useMemo(() => validateProfileErrors(profileEdits), [profileEdits]);
@@ -71,8 +90,10 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     if (formErrors.length) return;
 
     setProfileReadonly(true);
+
+    if (isStorybookEnvironment) return;
     dispatch(updateProfileData(profileEdits as Profile));
-  }, [profileEdits, formErrors.length, dispatch]);
+  }, [profileEdits, formErrors.length, isStorybookEnvironment, dispatch]);
 
   // profile edition
   const onChangeFirstname = useCallback((val: string) => {

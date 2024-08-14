@@ -5,6 +5,7 @@ import { Country } from 'entities/CountrySelect';
 import { Currency } from 'entities/CurrencySelect';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
 import { ProfileCard } from './ProfileCard';
 
 export default {
@@ -18,23 +19,39 @@ export default {
 
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
 
+const profileData = {
+  first: 'Constantin',
+  lastname: "Danilov",
+  age: 24,
+  city: "Bender",
+  country: Country.Moldova,
+  currency: Currency.MD,
+  username: 'admin',
+  avatar: AvatarImg,
+};
+
 export const Light = Template.bind({});
 Light.args = {
-  data: {
-    first: 'Constantin',
-    lastname: "Danilov",
-    age: 24,
-    city: "Bender",
-    country: Country.Moldova,
-    currency: Currency.MD,
-    username: 'admin',
-    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6UAaJWm_4TBcA2qqrSHUpqE_ElwIkTbkx9Q&s',
-  },
+  data: profileData,
 };
 Light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
 
+export const LightWithError = Template.bind({});
+LightWithError.args = {
+  error: '...',
+};
+LightWithError.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+
+export const LightLoading = Template.bind({});
+LightLoading.args = {
+  isLoading: true,
+};
+LightLoading.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+
 export const Dark = Template.bind({});
-Dark.args = {};
+Dark.args = {
+  data: profileData,
+};
 Dark.decorators = [
   (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
   (StoryComp: Story) => StoreDecorator(StoryComp),

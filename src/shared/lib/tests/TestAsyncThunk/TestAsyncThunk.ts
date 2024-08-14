@@ -17,14 +17,18 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
   actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
 
-  constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+  constructor(
+    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
+    state?: DeepPartial<StateSchema>,
+  ) {
     this.dispatch = jest.fn();
     this.api = mockedAxios;
     this.actionCreator = actionCreator;
-    this.getState = jest.fn();
+    this.getState = jest.fn(() => state as StateSchema);
   }
 
-  async callThunk(arg: Arg) {
+  async callThunk(arg?: Arg) {
+    // @ts-ignore
     const action = this.actionCreator(arg);
     const result = await action(this.dispatch, this.getState, { api: this.api });
 
