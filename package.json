@@ -6,6 +6,7 @@
   "scripts": {
     "start:front": "webpack serve --env port=3000",
     "start:back": "node ./json-server/index.js",
+    "start:front:back": "concurrently \"npm run start:front\" \"npm run start:back\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
