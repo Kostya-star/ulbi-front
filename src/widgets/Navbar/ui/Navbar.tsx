@@ -1,11 +1,12 @@
 import { MakeErrorTestBtn } from 'app/providers/ErrorBoundary';
-import { getAuthUserData, initAuthUserData, logout } from 'entities/User';
+import { getAuthUserData, logout } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
 import {
-  memo, useCallback, useEffect, useState,
+  memo, useCallback, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './Navbar.module.scss';
@@ -19,11 +20,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const [isAuthModal, setAuthModal] = useState(false);
 
   const authData = useSelector(getAuthUserData);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(initAuthUserData());
-  }, [dispatch]);
+  const dispatch = useAppDispatch();
 
   const onCloseAuthModal = useCallback(() => setAuthModal(false), []);
   const onOpenAuthModal = useCallback(() => setAuthModal(true), []);
