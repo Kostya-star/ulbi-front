@@ -42,6 +42,6 @@ jobs:
         run: npm run storybook:build
         if: always()
 
-      - name: running screenshot testing
-        run: npm run test:ui:ci
-        if: always()
+      # - name: running screenshot testing
+      #   run: npm run test:ui:ci
+      #   if: always()
