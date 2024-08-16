@@ -14,5 +14,6 @@
   "wrong_auth_data": "Неправильные логин или пароль",
   "profile": "Профиль",
   "your_currency": "Ваша валюта",
-  "your_country": "Ваша страна"
+  "your_country": "Ваша страна",
+  "articles": "Статьи"
 }
