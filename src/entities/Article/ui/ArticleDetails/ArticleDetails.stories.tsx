@@ -1,21 +1,19 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-import { Theme } from 'app/providers/ThemeProvider';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import ArticleDetailsPage from './ArticleDetailsPage';
+import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/type/article';
+import { ArticleDetails } from './ArticleDetails';
 
 export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/ArticleDetails',
+  component: ArticleDetails,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   // decorators: [StoreDecorator],
-} as ComponentMeta<typeof ArticleDetailsPage>;
+} as ComponentMeta<typeof ArticleDetails>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />;
+const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
 
 const article: Article = {
   id: "1",
@@ -87,13 +85,23 @@ const article: Article = {
   ],
 };
 
-export const Light = Template.bind({});
-Light.args = {};
-Light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+export const withData = Template.bind({});
+withData.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
+  articleDetails: {
+    data: article,
+  },
+})];
 
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [
-  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
-  (StoryComp: Story) => StoreDecorator(StoryComp),
-];
+export const loading = Template.bind({});
+loading.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
+  articleDetails: {
+    isLoading: true,
+  },
+})];
+
+export const error = Template.bind({});
+error.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
+  articleDetails: {
+    error: 'articel error',
+  },
+})];

@@ -1,23 +1,8 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import { StateSchema } from 'app/providers/StoreProvider';
+import { Article, ArticleBlockType, ArticleType } from '../../type/article';
+import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsLoading } from './getArticleDetails';
 
-import { Theme } from 'app/providers/ThemeProvider';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import ArticleDetailsPage from './ArticleDetailsPage';
-
-export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-  // decorators: [StoreDecorator],
-} as ComponentMeta<typeof ArticleDetailsPage>;
-
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />;
-
-const article: Article = {
+const data: Article = {
   id: "1",
   title: "Javascript news",
   subtitle: "Что нового в JS за 2022 год?",
@@ -87,13 +72,32 @@ const article: Article = {
   ],
 };
 
-export const Light = Template.bind({});
-Light.args = {};
-Light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+describe('getArticleDetails', () => {
+  test('should return article', () => {
+    const state: DeepPartial<StateSchema> = {
+      articleDetails: { data },
+    };
 
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [
-  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
-  (StoryComp: Story) => StoreDecorator(StoryComp),
-];
+    expect(getArticleDetailsData(state as StateSchema)).toEqual(data);
+  });
+  test('should work with empty state data', () => {
+    const state: DeepPartial<StateSchema> = {};
+    expect(getArticleDetailsData(state as StateSchema)).toBe(undefined);
+  });
+  test('should return error', () => {
+    const state: DeepPartial<StateSchema> = {
+      articleDetails: {
+        error: 'error',
+      },
+    };
+    expect(getArticleDetailsError(state as StateSchema)).toBe('error');
+  });
+  test('should return isLoading', () => {
+    const state: DeepPartial<StateSchema> = {
+      articleDetails: {
+        isLoading: true,
+      },
+    };
+    expect(getArticleDetailsLoading(state as StateSchema)).toBe(true);
+  });
+});

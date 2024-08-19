@@ -1,23 +1,32 @@
-interface ArticleBlockBase {
-  id: string;
-  type: string;
+export enum ArticleBlockType {
+  CODE = 'CODE',
+  IMAGE = 'IMAGE',
+  TEXT = 'TEXT',
 }
 
-interface ArticleBlockImg extends ArticleBlockBase {
+interface ArticleBlockBase {
+  id: string;
+  type: ArticleBlockType;
+}
+
+export interface ArticleBlockImg extends ArticleBlockBase {
+  type: ArticleBlockType.IMAGE;
   src: string;
   title: string;
 }
 
-interface ArticleBlockCode extends ArticleBlockBase {
+export interface ArticleBlockCode extends ArticleBlockBase {
+  type: ArticleBlockType.CODE;
   code: string;
 }
 
-interface ArticleBlockText extends ArticleBlockBase {
-  title: string;
+export interface ArticleBlockText extends ArticleBlockBase {
+  type: ArticleBlockType.TEXT;
+  title?: string;
   paragraphs: string[];
 }
 
-type ArticleBlock = ArticleBlockImg | ArticleBlockCode | ArticleBlockText
+export type ArticleBlock = ArticleBlockImg | ArticleBlockCode | ArticleBlockText
 
 export enum ArticleType {
   IT = 'IT',
