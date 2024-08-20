@@ -1,4 +1,5 @@
 {
   "not_found_article": "Статья не была найдена",
-  "article_loading_err": "Произошла ошибка при загрузке статьи"
+  "article_loading_err": "Произошла ошибка при загрузке статьи",
+  "comments_title": "Комментарии"
 }

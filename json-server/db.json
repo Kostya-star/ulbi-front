@@ -15,20 +15,20 @@
     {
       "id": "1",
       "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
+      "subtitle": "What's new in JS for 2022?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
-      "createdAt": "26.02.2022",
+      "createdAt": "02/26/2022",
       "type": ["IT"],
       "blocks": [
         {
           "id": "1",
           "type": "TEXT",
-          "title": "Заголовок этого блока",
+          "title": "Title of this block",
           "paragraphs": [
-            "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
-            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
-            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+            "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar using some language.",
+            "JavaScript is a language in which programs can be executed in various environments. In our case, it's about browsers and the server-side platform Node.js. If you haven't written a single line of JS code yet and you're reading this text in a browser on a desktop computer, that means you're literally seconds away from your first JavaScript program.",
+            "There are other ways to run JS code in a browser. For instance, when it comes to the usual use of JavaScript programs, they are loaded into the browser to make web pages work. Typically, the code is organized in separate files with a .js extension, which are linked to web pages, but the program code can also be embedded directly into the page's code. All this is done using the <script> tag. When the browser detects such code, it executes it. You can find details about the script tag on the w3school.com website. Specifically, let's look at an example demonstrating working with a webpage using JavaScript, provided on that site. This example can be run using the resources of the site (look for the Try it Yourself button), but we will do it a little differently. Namely, we will create a new file in some text editor (e.g., in VS Code or Notepad++) called hello.html and add the following code to it:"
           ]
         },
         {
@@ -39,17 +39,17 @@
         {
           "id": "5",
           "type": "TEXT",
-          "title": "Заголовок этого блока",
+          "title": "Title of this block",
           "paragraphs": [
-            "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
-            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+            "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar using some language.",
+            "There are other ways to run JS code in a browser. For instance, when it comes to the usual use of JavaScript programs, they are loaded into the browser to make web pages work. Typically, the code is organized in separate files with a .js extension, which are linked to web pages, but the program code can also be embedded directly into the page's code. All this is done using the <script> tag. When the browser detects such code, it executes it. You can find details about the script tag on the w3school.com website. Specifically, let's look at an example demonstrating working with a webpage using JavaScript, provided on that site. This example can be run using the resources of the site (look for the Try it Yourself button), but we will do it a little differently. Namely, we will create a new file in some text editor (e.g., in VS Code or Notepad++) called hello.html and add the following code to it:"
           ]
         },
         {
           "id": "2",
           "type": "IMAGE",
           "src": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
-          "title": "Рисунок 1 - скриншот сайта"
+          "title": "Figure 1 - website screenshot"
         },
         {
           "id": "3",
@@ -59,24 +59,24 @@
         {
           "id": "7",
           "type": "TEXT",
-          "title": "Заголовок этого блока",
+          "title": "Title of this block",
           "paragraphs": [
-            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
-            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+            "JavaScript is a language in which programs can be executed in various environments. In our case, it's about browsers and the server-side platform Node.js. If you haven't written a single line of JS code yet and you're reading this text in a browser on a desktop computer, that means you're literally seconds away from your first JavaScript program.",
+            "There are other ways to run JS code in a browser. For instance, when it comes to the usual use of JavaScript programs, they are loaded into the browser to make web pages work. Typically, the code is organized in separate files with a .js extension, which are linked to web pages, but the program code can also be embedded directly into the page's code. All this is done using the <script> tag. When the browser detects such code, it executes it. You can find details about the script tag on the w3school.com website. Specifically, let's look at an example demonstrating working with a webpage using JavaScript, provided on that site. This example can be run using the resources of the site (look for the Try it Yourself button), but we will do it a little differently. Namely, we will create a new file in some text editor (e.g., in VS Code or Notepad++) called hello.html and add the following code to it:"
           ]
         },
         {
           "id": "8",
           "type": "IMAGE",
           "src": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
-          "title": "Рисунок 1 - скриншот сайта"
+          "title": "Figure 1 - website screenshot"
         },
         {
           "id": "9",
           "type": "TEXT",
-          "title": "Заголовок этого блока",
+          "title": "Title of this block",
           "paragraphs": [
-            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы."
+            "JavaScript is a language in which programs can be executed in various environments. In our case, it's about browsers and the server-side platform Node.js. If you haven't written a single line of JS code yet and you're reading this text in a browser on a desktop computer, that means you're literally seconds away from your first JavaScript program."
           ]
         }
       ]
