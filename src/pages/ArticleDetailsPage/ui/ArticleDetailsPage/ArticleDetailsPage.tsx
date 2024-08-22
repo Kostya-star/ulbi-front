@@ -9,6 +9,7 @@ import { useReduxReducerManager, ReducersList } from 'shared/hooks/useReduxReduc
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
+import { AddCommentForm } from 'features/addCommentForm';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
@@ -52,6 +53,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
       {/* <ArticleDetails id={articleId} /> */}
 
       <Text title={t('comments_title')} className={cls.commentsTitle} />
+      <AddCommentForm articleId={articleId} />
       <CommentList
         isLoading={isCommentsLoading}
         comments={comments}

@@ -97,6 +97,25 @@
       "postId": "1",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "id": "3",
+      "text": "comment 3 by arina muntianu",
+      "postId": "1",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "new comment Costya ADMIN",
+      "articleId": "1",
+      "userId": "1",
+      "id": "EQgr5xm"
+    },
+    {
+      "text": "new comment Arina ",
+      "articleId": "1",
+      "userId": "2",
+      "id": "nnaGHXV"
     }
   ],
   "users": [
@@ -109,20 +128,34 @@
     },
     {
       "id": "2",
-      "username": "user",
+      "username": "arina",
       "password": "123",
       "role": "USER",
-      "avatar": "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=2159"
+      "avatar": "https://cdn-prod.medicalnewstoday.com/content/images/articles/326/326898/a-female-wondering-about-her-anatomy.jpg"
     }
   ],
-  "profile": {
-    "first": "Constantin",
-    "lastname": "Danilov",
-    "age": 25,
-    "currency": "USD",
-    "country": "Moldova",
-    "city": "Bender",
-    "username": "admin",
-    "avatar": "https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Constantin",
+      "lastname": "Danilov",
+      "age": 25,
+      "currency": "USD",
+      "country": "Moldova",
+      "city": "Bender",
+      "username": "admin",
+      "avatar": "https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Arina",
+      "lastname": "Muntianu",
+      "age": 19,
+      "currency": "USD",
+      "country": "Moldova",
+      "city": "Bender",
+      "username": "admin",
+      "avatar": "https://cdn-prod.medicalnewstoday.com/content/images/articles/326/326898/a-female-wondering-about-her-anatomy.jpg"
+    }
+  ]
 }

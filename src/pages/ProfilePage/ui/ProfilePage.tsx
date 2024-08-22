@@ -12,7 +12,7 @@ import {
   validateProfileErrors,
 } from 'entities/Profile';
 import {
-  FC, memo, useCallback, useEffect, useMemo, useState,
+  FC, memo, useCallback, useMemo, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -21,19 +21,9 @@ import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReduc
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { isNumber } from 'shared/util/isNumber/isNumber';
-import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
+import { useParams } from 'react-router-dom';
+import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
-
-const defaultProfileData = {
-  first: 'Constantin',
-  lastname: "Danilov",
-  age: 24,
-  city: "Bender",
-  country: Country.Moldova,
-  currency: Currency.MD,
-  username: 'admin',
-  avatar: AvatarImg,
-};
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -45,9 +35,10 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const { t } = useTranslation('profile');
-  const isStorybookEnvironment = useMemo(() => __PROJECT__ === 'storybook', []);
 
   useReduxReducerManager(reducers, true);
+
+  const { id: profileId } = useParams<{ id: string }>();
 
   const profileData = useSelector(getProfileData);
   const isProfileLoading = useSelector(getProfileIsLoading);
@@ -58,20 +49,16 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (!isStorybookEnvironment) {
-      const fetchProfile = async () => {
-        const profile = await dispatch(fetchProfileData()).unwrap();
-        if (profile) setProfileEdits({ ...profile });
-      };
+  useConditionalEffect(() => {
+    if (!profileId) return;
 
-      fetchProfile();
-    }
+    const fetchProfile = async () => {
+      const profile = await dispatch(fetchProfileData(profileId)).unwrap();
+      if (profile) setProfileEdits({ ...profile });
+    };
 
-    if (isStorybookEnvironment) {
-      setProfileEdits(defaultProfileData);
-    }
-  }, [isStorybookEnvironment, dispatch]);
+    fetchProfile();
+  }, [profileId, dispatch]);
 
   // validate form for errors
   const formErrors = useMemo(() => validateProfileErrors(profileEdits), [profileEdits]);
@@ -90,10 +77,8 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     if (formErrors.length) return;
 
     setProfileReadonly(true);
-
-    if (isStorybookEnvironment) return;
     dispatch(updateProfileData(profileEdits as Profile));
-  }, [profileEdits, formErrors.length, isStorybookEnvironment, dispatch]);
+  }, [profileEdits, formErrors.length, dispatch]);
 
   // profile edition
   const onChangeFirstname = useCallback((val: string) => {
