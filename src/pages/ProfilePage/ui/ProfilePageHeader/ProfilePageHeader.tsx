@@ -9,6 +9,7 @@ interface ProfilePageHeaderProps {
   className?: string;
   isReadonly?: boolean;
   isSaveAllowed: boolean;
+  canEdit: boolean;
   onEdit?: () => void
   onCancel?: () => void
   onSave?: () => void
@@ -18,6 +19,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   isReadonly,
   className,
   isSaveAllowed,
+  canEdit,
   onEdit,
   onCancel,
   onSave,
@@ -28,33 +30,37 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
     <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
       <Text title={t('profile')} />
       {
-        isReadonly
+        // eslint-disable-next-line no-nested-ternary
+        canEdit
           ? (
-            <Button
-              theme={ButtonTheme.OUTLINE}
-              className={cls.editBtn}
-              onClick={onEdit}
-            >
-              {t('edit_profile')}
-            </Button>
-          )
-          : (
-            <div className={cls.actions}>
-              <Button
-                theme={ButtonTheme.OUTLINE_RED}
-                onClick={onCancel}
-              >
-                {t('cancel_edit_profile')}
-              </Button>
-              <Button
-                theme={ButtonTheme.OUTLINE}
-                disabled={!isSaveAllowed}
-                onClick={onSave}
-              >
-                {t('save_edits_profile')}
-              </Button>
-            </div>
-          )
+            isReadonly
+              ? (
+                <Button
+                  theme={ButtonTheme.OUTLINE}
+                  className={cls.editBtn}
+                  onClick={onEdit}
+                >
+                  {t('edit_profile')}
+                </Button>
+              )
+              : (
+                <div className={cls.actions}>
+                  <Button
+                    theme={ButtonTheme.OUTLINE_RED}
+                    onClick={onCancel}
+                  >
+                    {t('cancel_edit_profile')}
+                  </Button>
+                  <Button
+                    theme={ButtonTheme.OUTLINE}
+                    disabled={!isSaveAllowed}
+                    onClick={onSave}
+                  >
+                    {t('save_edits_profile')}
+                  </Button>
+                </div>
+              ))
+          : null
       }
     </div>
   );

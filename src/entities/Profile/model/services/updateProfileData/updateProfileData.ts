@@ -6,7 +6,7 @@ export const updateProfileData = createAsyncThunk<Profile, Profile, ThunkConfig<
   'profile/updateProfileData',
   async (profileEdits, { extra, rejectWithValue }) => {
     try {
-      const profile = await extra.api.patch<Profile>('/profile', profileEdits);
+      const profile = await extra.api.patch<Profile>(`/profile/${profileEdits.id}`, profileEdits);
 
       if (!profile.data) throw new Error();
 

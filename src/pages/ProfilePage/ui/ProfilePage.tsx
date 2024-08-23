@@ -23,6 +23,7 @@ import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { isNumber } from 'shared/util/isNumber/isNumber';
 import { useParams } from 'react-router-dom';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
+import { getAuthUserData } from 'entities/User';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -44,6 +45,8 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const isProfileLoading = useSelector(getProfileIsLoading);
   const profileError = useSelector(getProfileError);
 
+  const authData = useSelector(getAuthUserData);
+
   const [profileEdits, setProfileEdits] = useState<Profile | null>(null);
   const [isProfileReadonly, setProfileReadonly] = useState(true);
 
@@ -62,6 +65,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 
   // validate form for errors
   const formErrors = useMemo(() => validateProfileErrors(profileEdits), [profileEdits]);
+  const canEdit = useMemo(() => {
+    return authData?.id === profileData?.id;
+  }, [authData?.id, profileData?.id]);
 
   // profile actions
   const onEditProfile = useCallback(() => {
@@ -130,6 +136,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
       <ProfilePageHeader
         isReadonly={isProfileReadonly}
         isSaveAllowed={!formErrors.length}
+        canEdit={canEdit}
         onEdit={onEditProfile}
         onCancel={onCancelEditProfile}
         onSave={onSaveEditsProfile}

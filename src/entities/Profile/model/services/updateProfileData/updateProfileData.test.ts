@@ -4,6 +4,7 @@ import { Country } from 'entities/CountrySelect';
 import { Currency } from 'entities/CurrencySelect';
 
 const defaultProfileData = {
+  id: '1',
   first: 'Constantin!',
   lastname: "Danilov!",
   age: 25,

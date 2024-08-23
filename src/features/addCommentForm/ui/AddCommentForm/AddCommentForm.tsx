@@ -1,20 +1,17 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { sendComment } from '../../model/services/sendComment/sendComment';
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {
   className?: string;
-  articleId?: string;
+  sendComment: (newComm: string) => void;
 }
 
-const AddCommentForm = memo(({ className, articleId }: AddCommentFormProps) => {
+const AddCommentForm = memo(({ className, sendComment }: AddCommentFormProps) => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const [newComment, setNewComment] = useState('');
 
@@ -22,10 +19,10 @@ const AddCommentForm = memo(({ className, articleId }: AddCommentFormProps) => {
     setNewComment(comm);
   }, []);
 
-  const onSendComment = useCallback(async () => {
-    const resp = await dispatch(sendComment({ newComment, articleId }));
-    if (resp) setNewComment('');
-  }, [articleId, newComment, dispatch]);
+  const onSendComment = useCallback(() => {
+    sendComment(newComment);
+    setNewComment('');
+  }, [newComment, sendComment]);
 
   return (
     <div className={classNames(cls.AddCommentForm, {}, [className])}>

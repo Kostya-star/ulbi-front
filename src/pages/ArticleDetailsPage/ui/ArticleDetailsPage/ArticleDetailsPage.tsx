@@ -1,6 +1,6 @@
 import { ArticleDetails } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
-import { memo, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { AddCommentForm } from 'features/addCommentForm';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
@@ -39,6 +40,12 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     }
   }, [articleId, dispatch]);
 
+  const sendComment = useCallback(async (newComment: string) => {
+    if (articleId) {
+      dispatch(addCommentForArticle({ newComment, articleId }));
+    }
+  }, [articleId, dispatch]);
+
   if (!articleId) {
     return (
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -48,15 +55,15 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   }
 
   return (
-    // eslint-disable-next-line i18next/no-literal-string
     <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-      {/* <ArticleDetails id={articleId} /> */}
+      <ArticleDetails id={articleId} />
 
       <Text title={t('comments_title')} className={cls.commentsTitle} />
-      <AddCommentForm articleId={articleId} />
+      <AddCommentForm sendComment={sendComment} />
       <CommentList
         isLoading={isCommentsLoading}
         comments={comments}
+        className={cls.commentsList}
       />
     </div>
   );
