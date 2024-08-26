@@ -56,7 +56,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 
   return (
     <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-      <ArticleDetails id={articleId} />
+      {/* <ArticleDetails id={articleId} /> */}
 
       <Text title={t('comments_title')} className={cls.commentsTitle} />
       <AddCommentForm sendComment={sendComment} />

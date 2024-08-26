@@ -4,11 +4,13 @@ import { RootReducersType } from 'app/providers/StoreProvider/config/StateSchema
 import { profileReducer } from 'entities/Profile';
 import { loginReducer } from 'features/AuthByUsername';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
 
 const defaultAsyncReducers: DeepPartial<RootReducersType> = {
   login: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsCommentsReducer,
 };
 
 export const StoreDecorator = (
