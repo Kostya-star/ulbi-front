@@ -5,9 +5,9 @@ import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { useSelector } from 'react-redux';
 import { getAuthUserData } from 'entities/User';
-import { sidebarLinksList } from '../../model/sidebarLinksList';
 import cls from './Sidebar.module.scss';
 import { SidebarLink } from '../SidebarLink/SidebarLink';
+import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 
 interface SidebarProps {
   className?: string;
@@ -15,6 +15,7 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const isAuth = useSelector(getAuthUserData);
+  const sidebarLinksList = useSelector(getSidebarItems);
 
   const [isCollapsed, setCollapsed] = useState(false);
 
@@ -34,7 +35,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
           isCollapsed={isCollapsed}
         />
       ));
-  }, [isCollapsed, isAuth]);
+  }, [sidebarLinksList, isAuth, isCollapsed]);
 
   return (
     <div
