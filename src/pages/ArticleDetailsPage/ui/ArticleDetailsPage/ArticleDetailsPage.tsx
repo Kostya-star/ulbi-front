@@ -3,13 +3,15 @@ import { CommentList } from 'entities/Comment';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useReduxReducerManager, ReducersList } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { AddCommentForm } from 'features/addCommentForm';
+import { Button } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
@@ -30,6 +32,8 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   const { id: articleId } = useParams();
   const { t } = useTranslation('articles');
 
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
   const comments = useSelector(getArticleComments.selectAll);
   const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
@@ -46,6 +50,10 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     }
   }, [articleId, dispatch]);
 
+  const goBackToAllArticles = useCallback(() => {
+    navigate(RoutePath.articles);
+  }, [navigate]);
+
   if (!articleId) {
     return (
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -56,7 +64,8 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 
   return (
     <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-      {/* <ArticleDetails id={articleId} /> */}
+      <Button onClick={goBackToAllArticles}>{t('back_to_articles')}</Button>
+      <ArticleDetails id={articleId} />
 
       <Text title={t('comments_title')} className={cls.commentsTitle} />
       <AddCommentForm sendComment={sendComment} />

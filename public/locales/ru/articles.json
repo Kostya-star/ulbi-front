@@ -1,5 +1,7 @@
 {
   "not_found_article": "Статья не была найдена",
   "article_loading_err": "Произошла ошибка при загрузке статьи",
-  "comments_title": "Комментарии"
+  "comments_title": "Комментарии",
+  "read_more": "Читать далее...",
+  "back_to_articles": "Назад ко всем статьям"
 }

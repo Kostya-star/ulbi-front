@@ -1,8 +1,21 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticleBlockType, ArticleType } from '../../type/article';
-import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsLoading } from './getArticleDetails';
+import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-const data: Article = {
+import {
+  Article, ArticleBlockType, ArticlesView, ArticleType,
+} from 'entities/Article/model/type/article';
+import { ArticlesListItem } from './ArticlesListItem';
+
+export default {
+  title: 'entities/Article/ArticlesListItem',
+  component: ArticlesListItem,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+} as ComponentMeta<typeof ArticlesListItem>;
+
+const Template: ComponentStory<typeof ArticlesListItem> = (args) => <ArticlesListItem {...args} />;
+
+const article: Article = {
   id: "1",
   title: "Javascript news",
   subtitle: "Что нового в JS за 2022 год?",
@@ -13,7 +26,6 @@ const data: Article = {
   user: {
     id: '1',
     username: 'Costya Danilov',
-    avatar: 'https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg',
   },
   blocks: [
     {
@@ -77,32 +89,14 @@ const data: Article = {
   ],
 };
 
-describe('getArticleDetails', () => {
-  test('should return article', () => {
-    const state: DeepPartial<StateSchema> = {
-      articleDetails: { data },
-    };
+export const viewSmall = Template.bind({});
+viewSmall.args = {
+  view: ArticlesView.SMALL,
+  article,
+};
 
-    expect(getArticleDetailsData(state as StateSchema)).toEqual(data);
-  });
-  test('should work with empty state data', () => {
-    const state: DeepPartial<StateSchema> = {};
-    expect(getArticleDetailsData(state as StateSchema)).toBe(undefined);
-  });
-  test('should return error', () => {
-    const state: DeepPartial<StateSchema> = {
-      articleDetails: {
-        error: 'error',
-      },
-    };
-    expect(getArticleDetailsError(state as StateSchema)).toBe('error');
-  });
-  test('should return isLoading', () => {
-    const state: DeepPartial<StateSchema> = {
-      articleDetails: {
-        isLoading: true,
-      },
-    };
-    expect(getArticleDetailsLoading(state as StateSchema)).toBe(true);
-  });
-});
+export const viewBig = Template.bind({});
+viewBig.args = {
+  view: ArticlesView.BIG,
+  article,
+};
