@@ -1,6 +1,14 @@
-import { Article, ArticlesList, ArticlesView } from 'entities/Article';
-import { memo } from 'react';
+import { ArticlesList, ArticlesView, ArticlesViewSwitcher } from 'entities/Article';
+import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
+import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { getError, getIsLoading, getView } from '../../model/selectors/articlesPageSelectors';
+import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
+import { articlesPageReducer, getArticles, setView } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -87,14 +95,38 @@ interface ArticlesPageProps {
 //   ],
 // } as Article;
 
+const reducers: ReducersList = {
+  articlesPage: articlesPageReducer,
+};
+
 const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
+  useReduxReducerManager(reducers);
+
+  const dispatch = useAppDispatch();
+  const articles = useSelector(getArticles.selectAll);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+  const view = useSelector(getView);
+
+  useConditionalEffect(() => {
+    dispatch(fetchArticles());
+    const localStorageView = localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE) || ArticlesView.SMALL;
+    dispatch(setView(localStorageView as ArticlesView));
+  });
+
+  const onChangeView = useCallback((view: ArticlesView) => {
+    dispatch(setView(view));
+    localStorage.setItem(ARTICLES_VIEW_LOCAL_STORAGE, view);
+  }, [dispatch]);
+
   return (
     // eslint-disable-next-line i18next/no-literal-string
     <div className={classNames(cls.ArticlesPage, {}, [className])}>
+      <ArticlesViewSwitcher view={view} onViewClick={onChangeView} />
       <ArticlesList
-        articles={[]}
-        isLoading={false}
-        view={ArticlesView.SMALL}
+        articles={articles}
+        isLoading={isLoading}
+        view={view}
       />
     </div>
   );

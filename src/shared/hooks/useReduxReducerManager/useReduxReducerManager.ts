@@ -9,7 +9,7 @@ export type ReducersList = {
 
 export const useReduxReducerManager = (
   reducers: ReducersList,
-  removeAfterUnmount: boolean,
+  removeAfterUnmount: boolean = true,
 ) => {
   const store = useStore() as ReduxStoreWithManager;
   const dispatch = useDispatch();
