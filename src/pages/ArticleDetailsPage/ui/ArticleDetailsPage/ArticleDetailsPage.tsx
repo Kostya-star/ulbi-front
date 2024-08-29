@@ -12,6 +12,7 @@ import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useCondi
 import { AddCommentForm } from 'features/addCommentForm';
 import { Button } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
@@ -63,7 +64,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   }
 
   return (
-    <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+    <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
       <Button onClick={goBackToAllArticles}>{t('back_to_articles')}</Button>
       <ArticleDetails id={articleId} />
 
@@ -74,7 +75,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
         comments={comments}
         className={cls.commentsList}
       />
-    </div>
+    </Page>
   );
 });
 

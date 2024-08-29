@@ -6,9 +6,12 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Page } from 'shared/ui/Page/Page';
 import { getError, getIsLoading, getView } from '../../model/selectors/articlesPageSelectors';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
-import { articlesPageReducer, getArticles, setView } from '../../model/slices/articlesPageSlice';
+import {
+  articlesPageReducer, getArticles, setLimit, setView,
+} from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -109,9 +112,15 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
   const view = useSelector(getView);
 
   useConditionalEffect(() => {
-    dispatch(fetchArticles());
-    const localStorageView = localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE) || ArticlesView.SMALL;
-    dispatch(setView(localStorageView as ArticlesView));
+    const lsView = localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE) || ArticlesView.SMALL;
+    dispatch(setView(lsView as ArticlesView));
+
+    const limit = lsView === ArticlesView.SMALL ? 9 : 4;
+    dispatch(setLimit(limit));
+
+    dispatch(fetchArticles({
+      page: 1,
+    }));
   });
 
   const onChangeView = useCallback((view: ArticlesView) => {
@@ -119,16 +128,23 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     localStorage.setItem(ARTICLES_VIEW_LOCAL_STORAGE, view);
   }, [dispatch]);
 
+  const loadMoreArticles = useCallback(() => {
+
+  }, []);
+
   return (
     // eslint-disable-next-line i18next/no-literal-string
-    <div className={classNames(cls.ArticlesPage, {}, [className])}>
+    <Page
+      className={classNames(cls.ArticlesPage, {}, [className])}
+      onScrollEnd={loadMoreArticles}
+    >
       <ArticlesViewSwitcher view={view} onViewClick={onChangeView} />
       <ArticlesList
         articles={articles}
         isLoading={isLoading}
         view={view}
       />
-    </div>
+    </Page>
   );
 });
 

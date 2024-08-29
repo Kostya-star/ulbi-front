@@ -24,6 +24,7 @@ import { isNumber } from 'shared/util/isNumber/isNumber';
 import { useParams } from 'react-router-dom';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { getAuthUserData } from 'entities/User';
+import { Page } from 'shared/ui/Page/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -132,7 +133,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   ), [formErrors, t]);
 
   return (
-    <div className={classNames('', {}, [className])}>
+    <Page className={classNames('', {}, [className])}>
       <ProfilePageHeader
         isReadonly={isProfileReadonly}
         isSaveAllowed={!formErrors.length}
@@ -164,7 +165,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
         onChangeCurrency={onChangeCurrency}
         onChangeCountry={onChangeCountry}
       />
-    </div>
+    </Page>
   );
 };
 

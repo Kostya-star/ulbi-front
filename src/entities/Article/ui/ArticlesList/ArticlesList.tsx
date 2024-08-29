@@ -13,9 +13,9 @@ interface ArticlesListProps {
 }
 
 const getSkeletons = (view: ArticlesView) => {
-  return new Array(view === ArticlesView.SMALL ? 9 : 3).fill(
-    <ArticlesListItemSkeleton view={view} />,
-  );
+  return new Array(view === ArticlesView.SMALL ? 9 : 3).fill(0).map((_, ind) => (
+    <ArticlesListItemSkeleton view={view} key={ind} />
+  ));
 };
 
 export const ArticlesList = memo(({

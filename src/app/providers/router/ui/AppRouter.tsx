@@ -8,11 +8,9 @@ function AppRouter() {
   const routesList = useMemo(() => {
     return Object.values(routeConfig).map((route) => {
       const element = (
-        <div className='page-wrapper'>
-          <Suspense fallback={<PageLoader />}>
-            {route.element}
-          </Suspense>
-        </div>
+        <Suspense fallback={<PageLoader />}>
+          {route.element}
+        </Suspense>
       );
 
       return (
