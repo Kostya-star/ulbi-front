@@ -9,6 +9,7 @@ import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useCondi
 import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Page } from 'shared/ui/Page/Page';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { BIG_VIEW_LIMIT, SMALL_VIEW_LIMIT } from '../../model/const/articlesLimit/articlesLimit';
 import {
@@ -44,10 +45,8 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     dispatch(setView(lsView as ArticlesView));
     dispatch(setLimit(limit));
 
-    dispatch(fetchArticles({
-      page: 1,
-    }));
-  }, [dispatch]);
+    dispatch(fetchArticles());
+  }, [view, dispatch]);
 
   const onChangeView = useCallback((newView: ArticlesView) => {
     dispatch(setView(newView));
@@ -57,6 +56,14 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
   const onFetchNextArticlesPage = useCallback(() => {
     dispatch(fetchNextArticlesPage());
   }, [dispatch]);
+
+  if (error) {
+    return (
+      <Page className={classNames(cls.ArticlesPage, {}, [className])}>
+        <Text text={error} theme={TextTheme.ERROR} align={TextAlign.CENTER} />
+      </Page>
+    );
+  }
 
   return (
     <Page
