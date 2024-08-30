@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Article, ArticlesView } from '../../model/type/article';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
@@ -21,29 +21,20 @@ const getSkeletons = (view: ArticlesView) => {
 export const ArticlesList = memo(({
   className, articles, isLoading, view = ArticlesView.SMALL,
 }: ArticlesListProps) => {
-  const renderArticle = useCallback((article: Article) => (
-    <ArticlesListItem
-      key={article.id}
-      article={article}
-      view={view}
-    />
-  ), [view]);
-
-  if (isLoading) {
-    return (
-      <div className={classNames('', {}, [className, cls[view]])}>
-        {getSkeletons(view)}
-      </div>
-    );
-  }
+  const articlesList = useMemo(() => {
+    return articles!.map((article) => (
+      <ArticlesListItem
+        key={article.id}
+        article={article}
+        view={view}
+      />
+    ));
+  }, [articles, view]);
 
   return (
     <div className={classNames('', {}, [className, cls[view]])}>
-      {
-        articles?.length
-          ? articles.map(renderArticle)
-          : null
-      }
+      {articles?.length ? articlesList : null}
+      {isLoading && getSkeletons(view)}
     </div>
   );
 });

@@ -1,0 +1,46 @@
+import { ArticlesView } from 'entities/Article';
+import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles';
+
+jest.mock('pages/ArticlesPage/model/services/fetchArticles/fetchArticles');
+
+describe('fetchNextArticlesPage.test', () => {
+  test('success', async () => {
+    const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+      articlesPage: {
+        ids: [],
+        entities: {},
+        error: null,
+        hasMore: true,
+        isLoading: false,
+        limit: 9,
+        page: 1,
+        view: ArticlesView.SMALL,
+      },
+    });
+    await thunk.callThunk();
+
+    expect(thunk.dispatch).toHaveBeenCalledTimes(4);
+    expect(fetchArticles).toHaveBeenCalledWith({ page: 2 });
+  });
+
+  test('request not called', async () => {
+    const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
+      articlesPage: {
+        ids: [],
+        entities: {},
+        error: null,
+        hasMore: false,
+        isLoading: false,
+        limit: 9,
+        page: 1,
+        view: ArticlesView.SMALL,
+      },
+    });
+    await thunk.callThunk();
+
+    expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+    expect(fetchArticles).not.toHaveBeenCalled();
+  });
+});

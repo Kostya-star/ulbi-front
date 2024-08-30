@@ -3,7 +3,6 @@ import {
 } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { Article, ArticlesView } from 'entities/Article';
-import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 
@@ -44,9 +43,12 @@ const articlesPageSlice = createSlice({
       state.error = null;
     });
     builder.addCase(fetchArticles.fulfilled, (state, action) => {
+      const articles = action.payload;
+
       state.isLoading = false;
       state.error = null;
-      articlesAdapter.setAll(state, action.payload);
+      articlesAdapter.addMany(state, articles);
+      state.hasMore = !!articles.length;
     });
     builder.addCase(fetchArticles.rejected, (state, action) => {
       state.isLoading = false;
