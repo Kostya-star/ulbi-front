@@ -16,10 +16,15 @@ export const useReduxReducerManager = (
 
   useEffect(() => {
     const entries = Object.entries(reducers);
+    const mountedReducers = store.reducerManager.getReducerMap();
 
     entries.forEach(([reducerKey, reducer]) => {
-      store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
-      dispatch({ type: `@INIT ${reducerKey} async reducer` });
+      const isReducerMounted = !!mountedReducers[reducerKey as StateSchemaKey];
+
+      if (!isReducerMounted) {
+        store.reducerManager.add(reducerKey as StateSchemaKey, reducer);
+        dispatch({ type: `@INIT ${reducerKey} async reducer` });
+      }
     });
 
     return () => {

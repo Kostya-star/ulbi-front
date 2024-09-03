@@ -30,7 +30,7 @@ const reducers: ReducersList = {
 };
 
 const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
-  useReduxReducerManager(reducers);
+  useReduxReducerManager(reducers, false);
 
   const dispatch = useAppDispatch();
   const articles = useSelector(getArticles.selectAll);
