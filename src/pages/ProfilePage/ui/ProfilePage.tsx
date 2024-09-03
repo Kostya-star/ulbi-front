@@ -24,7 +24,7 @@ import { isNumber } from 'shared/util/isNumber/isNumber';
 import { useParams } from 'react-router-dom';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { getAuthUserData } from 'entities/User';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {

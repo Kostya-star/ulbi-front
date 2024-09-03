@@ -1,14 +1,12 @@
 import { ArticlesList, ArticlesView, ArticlesViewSwitcher } from 'entities/Article';
-import {
-  memo, useCallback, useEffect, useMemo,
-} from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { BIG_VIEW_LIMIT, SMALL_VIEW_LIMIT } from '../../model/const/articlesLimit/articlesLimit';
