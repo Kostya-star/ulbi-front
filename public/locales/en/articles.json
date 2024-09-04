@@ -3,5 +3,13 @@
   "article_loading_err": "Error occured when loading an article",
   "comments_title": "Comments",
   "read_more": "Read more...",
-  "back_to_articles": "Back to all articles"
+  "back_to_articles": "Back to all articles",
+  "sort_by": "Sort by",
+  "search_articles": "Search articles",
+  "order_by": "Order by",
+  "views": "Views",
+  "title": "Title",
+  "createdAt": "Date creation",
+  "asc": "Ascending",
+  "desc": "Descending"
 }

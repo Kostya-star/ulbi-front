@@ -52,3 +52,9 @@ export enum ArticlesView {
   BIG = 'BIG',
   SMALL = 'SMALL'
 }
+
+export enum ArticleSortByOptions {
+  VIEWS = 'views',
+  TITLE = 'title',
+  CREATED_AT = 'createdAt'
+}

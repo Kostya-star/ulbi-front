@@ -1,4 +1,6 @@
-import { ArticlesList, ArticlesView, ArticlesViewSwitcher } from 'entities/Article';
+import {
+  ArticlesList, ArticlesView,
+} from 'entities/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
@@ -8,16 +10,16 @@ import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReduc
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Page } from 'widgets/Page';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { BIG_VIEW_LIMIT, SMALL_VIEW_LIMIT } from '../../model/const/articlesLimit/articlesLimit';
 import {
   getError, getIsLoading, getView,
 } from '../../model/selectors/articlesPageSelectors';
-import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import {
-  articlesPageReducer, getArticles, setLimit, setView,
+  articlesPageReducer, getArticles, setView,
 } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticlesPageProps {
   className?: string;
@@ -37,13 +39,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
   const view = useSelector(getView);
 
   useConditionalEffect(() => {
-    const lsView = localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE) || ArticlesView.SMALL;
-    const limit = lsView === ArticlesView.SMALL ? SMALL_VIEW_LIMIT : BIG_VIEW_LIMIT;
-
-    dispatch(setView(lsView as ArticlesView));
-    dispatch(setLimit(limit));
-
-    dispatch(fetchArticles());
+    dispatch(initArticlesPage());
   }, [view, dispatch]);
 
   const onChangeView = useCallback((newView: ArticlesView) => {
@@ -68,7 +64,11 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
       className={classNames(cls.ArticlesPage, {}, [className])}
       onScrollEnd={onFetchNextArticlesPage}
     >
-      <ArticlesViewSwitcher view={view} onViewClick={onChangeView} />
+      <ArticlesPageFilters
+        view={view}
+        onChangeView={onChangeView}
+        className={cls.filters}
+      />
       <ArticlesList
         articles={articles}
         isLoading={isLoading}

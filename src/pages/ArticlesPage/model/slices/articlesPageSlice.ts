@@ -2,7 +2,9 @@ import {
   createEntityAdapter, createSlice, EntityAdapter, EntityState, PayloadAction,
 } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticlesView } from 'entities/Article';
+import { Article, ArticleSortByOptions, ArticlesView } from 'entities/Article';
+import { SortOrder } from 'shared/types/SortOrder';
+import { BIG_VIEW_LIMIT } from '../const/articlesLimit/articlesLimit';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 
@@ -17,10 +19,14 @@ const initialState: InitialState = articlesAdapter.getInitialState<ArticlesPageS
   isLoading: false,
   entities: {},
   ids: [],
-  view: ArticlesView.SMALL,
   page: 1,
   limit: null,
   hasMore: true,
+
+  view: ArticlesView.SMALL,
+  order: SortOrder.ASC,
+  sortBy: ArticleSortByOptions.VIEWS,
+  search: '',
 });
 
 const articlesPageSlice = createSlice({
@@ -36,6 +42,15 @@ const articlesPageSlice = createSlice({
     setLimit: (state, action: PayloadAction<number>) => {
       state.limit = action.payload;
     },
+    setOrder: (state, action: PayloadAction<SortOrder>) => {
+      state.order = action.payload;
+    },
+    setSortBy: (state, action: PayloadAction<ArticleSortByOptions>) => {
+      state.sortBy = action.payload;
+    },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchArticles.pending, (state) => {
@@ -47,8 +62,13 @@ const articlesPageSlice = createSlice({
 
       state.isLoading = false;
       state.error = null;
-      articlesAdapter.addMany(state, articles);
-      state.hasMore = !!articles.length;
+      state.hasMore = articles.length >= (state.limit || BIG_VIEW_LIMIT);
+
+      if (action.meta.arg?.replace) {
+        articlesAdapter.setAll(state, articles);
+      } else {
+        articlesAdapter.addMany(state, articles);
+      }
     });
     builder.addCase(fetchArticles.rejected, (state, action) => {
       state.isLoading = false;
@@ -58,7 +78,10 @@ const articlesPageSlice = createSlice({
 });
 
 export const articlesPageReducer = articlesPageSlice.reducer;
-export const { setView, setPage, setLimit } = articlesPageSlice.actions;
+
+export const {
+  setView, setPage, setLimit, setOrder, setSortBy, setSearch,
+} = articlesPageSlice.actions;
 
 // selectors
 export const getArticles = articlesAdapter.getSelectors<StateSchema>((state) => {

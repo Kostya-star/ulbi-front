@@ -6,7 +6,7 @@
   "scripts": {
     "start:front": "webpack serve --env port=3000",
     "start:back": "node ./json-server/index.js",
-    "start:front:back": "concurrently \"npm run start:front\" \"npm run start:back\"",
+    "start:front:back": "cross-env NODE_OPTIONS=--max-old-space-size=8192 concurrently \"npm run start:front\" \"npm run start:back\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
@@ -85,6 +85,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "axios": "^0.26.1",
     "concurrently": "^7.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-i18next": "^5.1.2",
