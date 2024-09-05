@@ -1,4 +1,4 @@
-import { ArticleDetails } from 'entities/Article';
+import { ArticleDetails, ArticlesList } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,13 +18,22 @@ import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByAr
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import {
+  articleDetailsRecommendationsReducer,
+  getArticleRecommendations,
+} from '../../model/slices/articleDetailsRecommendationsSlice';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
+import { articleDetailsPageReducer } from '../../model/slices';
 
 interface ArticleDetailsPageProps {
   className?: string;
 }
 
 const reducers: ReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
+  // articleDetailsComments: articleDetailsCommentsReducer,
+  // articleDetailsRecommendations: articleDetailsRecommendationsReducer,
 };
 
 const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
@@ -39,10 +48,14 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   const comments = useSelector(getArticleComments.selectAll);
   const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
 
+  const recommendations = useSelector(getArticleRecommendations.selectAll);
+  const isRecommendationsLoading = useSelector(getArticleRecommendationsIsLoading);
+
   useConditionalEffect(() => {
     if (articleId) {
       dispatch(fetchCommentsByArticleId(articleId));
     }
+    dispatch(fetchArticleRecommendations());
   }, [articleId, dispatch]);
 
   const sendComment = useCallback(async (newComment: string) => {
@@ -74,6 +87,16 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
         isLoading={isCommentsLoading}
         comments={comments}
         className={cls.commentsList}
+      />
+      <Text
+        title={t('recommendations')}
+        className={cls.recommendationsTitle}
+      />
+      <ArticlesList
+        target='_blank'
+        articles={recommendations}
+        isLoading={isRecommendationsLoading}
+        className={cls.recommendations}
       />
     </Page>
   );

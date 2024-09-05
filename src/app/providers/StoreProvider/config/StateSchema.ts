@@ -8,20 +8,22 @@ import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ScrollSaveSchema } from 'features/scrollSave';
-import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
-  scrollSave: ScrollSaveSchema
+  scrollSave: ScrollSaveSchema;
 
   // Async reducers
-  login?: LoginSchema
-  profile?: ProfileSchema
-  articleDetails?: ArticleDetailsSchema
-  articleDetailsComments?: ArticleDetailsCommentSchema
-  articlesPage?: ArticlesPageSchema
+  login?: LoginSchema;
+  profile?: ProfileSchema;
+  articleDetails?: ArticleDetailsSchema;
+  articlesPage?: ArticlesPageSchema;
+
+  // reducer that combines both comments and recommendations
+  articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type RootReducersType = ReducersMapObject<StateSchema>

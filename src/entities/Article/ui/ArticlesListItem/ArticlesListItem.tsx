@@ -1,4 +1,6 @@
-import { memo, useCallback, useMemo } from 'react';
+import {
+  HTMLAttributeAnchorTarget, memo, useMemo,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Text } from 'shared/ui/Text/Text';
@@ -7,8 +9,8 @@ import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import {
   Article, ArticleBlockText, ArticleBlockType, ArticlesView,
 } from '../../model/type/article';
@@ -19,21 +21,17 @@ interface ArticlesListItemProps {
   className?: string;
   article: Article;
   view: ArticlesView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticlesListItem = memo(({
-  className, article, view,
+  className, article, view, target,
 }: ArticlesListItemProps) => {
   const { t } = useTranslation('articles');
-  const navigate = useNavigate();
 
   const textBlock = useMemo(() => {
     return article.blocks.find((b) => b.type === ArticleBlockType.TEXT);
   }, [article.blocks]) as ArticleBlockText;
-
-  const onBrowseArticleDetails = useCallback(() => {
-    navigate(RoutePath.article_details + article.id);
-  }, [article.id, navigate]);
 
   const viewsSection = useMemo(() => {
     return (
@@ -68,7 +66,12 @@ export const ArticlesListItem = memo(({
           }
 
           <div className={cls.footer}>
-            <Button onClick={onBrowseArticleDetails}>{t('read_more')}</Button>
+            <AppLink
+              target={target}
+              to={RoutePath.article_details + article.id}
+            >
+              <Button>{t('read_more')}</Button>
+            </AppLink>
             {viewsSection}
           </div>
         </Card>
@@ -77,9 +80,10 @@ export const ArticlesListItem = memo(({
   }
 
   return (
-    <div
+    <AppLink
+      target={target}
+      to={RoutePath.article_details + article.id}
       className={classNames('', {}, [className, cls[view]])}
-      onClick={onBrowseArticleDetails}
     >
       <Card>
         <div className={cls.imgWrapper}>
@@ -95,6 +99,6 @@ export const ArticlesListItem = memo(({
           <Text text={article.title} className={cls.title} />
         </div>
       </Card>
-    </div>
+    </AppLink>
   );
 });

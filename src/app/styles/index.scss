@@ -19,3 +19,22 @@ body {
 .content-page {
   display: flex;
 }
+
+// SCROLLBAR STYLING
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); /* Color of the scrollbar handle */
+  border-radius: 10px; /* Round the scrollbar corners */
+}
+
+/* For Firefox */
+:root {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: gray; /* First color for the thumb, second for the track */
+}

@@ -4,14 +4,14 @@ import { RootReducersType } from 'app/providers/StoreProvider/config/StateSchema
 import { profileReducer } from 'entities/Profile';
 import { loginReducer } from 'features/AuthByUsername';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
-import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
 import { articlesPageReducer } from 'pages/ArticlesPage';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage';
 
 const defaultAsyncReducers: DeepPartial<RootReducersType> = {
   login: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
-  articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
   articlesPage: articlesPageReducer,
 };
 

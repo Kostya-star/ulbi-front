@@ -39,10 +39,10 @@ module.exports = {
     quotes: [0, 'single', { avoidEscape: true }],
     'i18next/no-literal-string': [
       'error',
-      { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
+      { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'target'] },
     ],
     'linebreak-style': 0,
-    'max-len': ['error', { code: 120, ignoreComments: true }],
+    'max-len': ['error', { code: 125, ignoreComments: true }],
     'implicit-arrow-linebreak': 'warn',
     // disable the warning for functions declarations
     'no-use-before-define': ['error', { functions: false }],

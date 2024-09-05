@@ -45,5 +45,5 @@ export const articleDetailsCommentsReducer = articleDetailsCommentsSlice.reducer
 
 // selectors
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>((state) => {
-  return state.articleDetailsComments || commentsAdapter.getInitialState();
+  return state.articleDetailsPage?.comments || commentsAdapter.getInitialState();
 });
