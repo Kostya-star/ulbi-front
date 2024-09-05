@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Article } from 'entities/Article';
+import { Article, ArticleType } from 'entities/Article';
 import { setQueryParams } from 'shared/lib/url/handleQueryParams/handleQueryParams';
 import {
-  getLimit, getOrder, getPage, getSearch, getSortBy,
+  getLimit, getOrder, getPage, getSearch, getSortBy, getType,
 } from '../../selectors/articlesPageSelectors';
 
 interface FetchArticlesArgs {
@@ -18,6 +18,7 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesArgs | und
     const order = getOrder(getState());
     const sort = getSortBy(getState());
     const search = getSearch(getState());
+    const type = getType(getState());
 
     try {
       setQueryParams({
@@ -25,6 +26,7 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesArgs | und
         order,
         sort,
         search,
+        type,
       });
       const articles = await extra.api.get<Article[]>('/articles', {
         params: {
@@ -34,6 +36,7 @@ export const fetchArticles = createAsyncThunk<Article[], FetchArticlesArgs | und
           _order: order,
           _sort: sort,
           q: search,
+          type: type === ArticleType.ALL ? undefined : type,
         },
       });
 

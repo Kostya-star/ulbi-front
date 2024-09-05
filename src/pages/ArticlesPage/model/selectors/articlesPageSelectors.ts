@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ArticleSortByOptions, ArticlesView } from 'entities/Article';
+import { ArticleSortByOptions, ArticlesView, ArticleType } from 'entities/Article';
 import { SortOrder } from 'shared/types/SortOrder';
 import { SMALL_VIEW_LIMIT } from '../const/articlesLimit/articlesLimit';
 
@@ -12,3 +12,4 @@ export const getView = (state: StateSchema) => state.articlesPage?.view || Artic
 export const getOrder = (state: StateSchema) => state.articlesPage?.order || SortOrder.ASC;
 export const getSortBy = (state: StateSchema) => state.articlesPage?.sortBy || ArticleSortByOptions.VIEWS;
 export const getSearch = (state: StateSchema) => state.articlesPage?.search || '';
+export const getType = (state: StateSchema) => state.articlesPage?.type || ArticleType.ALL;

@@ -2,11 +2,13 @@ import {
   createEntityAdapter, createSlice, EntityAdapter, EntityState, PayloadAction,
 } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticleSortByOptions, ArticlesView } from 'entities/Article';
+import {
+  Article, ArticleSortByOptions, ArticlesView, ArticleType,
+} from 'entities/Article';
 import { SortOrder } from 'shared/types/SortOrder';
 import { BIG_VIEW_LIMIT } from '../const/articlesLimit/articlesLimit';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
-import { ArticlesPageSchema } from '../types/articlesPageSchema';
+import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
 
 type InitialState = EntityState<Article> & ArticlesPageSchema
 
@@ -27,6 +29,7 @@ const initialState: InitialState = articlesAdapter.getInitialState<ArticlesPageS
   order: SortOrder.ASC,
   sortBy: ArticleSortByOptions.VIEWS,
   search: '',
+  type: ArticleType.ALL,
 });
 
 const articlesPageSlice = createSlice({
@@ -50,6 +53,9 @@ const articlesPageSlice = createSlice({
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload;
+    },
+    setType: (state, action: PayloadAction<ArticleType>) => {
+      state.type = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -80,7 +86,7 @@ const articlesPageSlice = createSlice({
 export const articlesPageReducer = articlesPageSlice.reducer;
 
 export const {
-  setView, setPage, setLimit, setOrder, setSortBy, setSearch,
+  setView, setPage, setLimit, setOrder, setSortBy, setSearch, setType,
 } = articlesPageSlice.actions;
 
 // selectors

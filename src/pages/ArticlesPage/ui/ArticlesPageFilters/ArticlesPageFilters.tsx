@@ -1,4 +1,6 @@
-import { ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher } from 'entities/Article';
+import {
+  ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher, ArticleType, ArticleTypeTabs,
+} from 'entities/Article';
 import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -9,28 +11,32 @@ import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
+import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
-import { getOrder, getSearch, getSortBy } from '../../model/selectors/articlesPageSelectors';
 import {
-  setOrder, setPage, setSearch, setSortBy,
+  getOrder, getSearch, getSortBy, getType, getView,
+} from '../../model/selectors/articlesPageSelectors';
+import {
+  setOrder, setPage, setSearch, setSortBy, setType, setView,
 } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
   className?: string;
-  view: ArticlesView;
-  onChangeView: (newView: ArticlesView) => void;
 }
 
 const DEBOUNCED_SEARCH_DELAY = 400;
 
-export const ArticlesPageFilters = memo(({ className, view, onChangeView }: ArticlesPageFiltersProps) => {
+export const ArticlesPageFilters = memo(({ className }: ArticlesPageFiltersProps) => {
   const { t } = useTranslation('articles');
   const dispatch = useAppDispatch();
 
   const sort = useSelector(getSortBy);
   const order = useSelector(getOrder);
   const search = useSelector(getSearch);
+  const type = useSelector(getType);
+
+  const view = useSelector(getView);
 
   const sortByOptions: SelectOption<ArticleSortByOptions>[] = useMemo(() => [
     {
@@ -82,6 +88,17 @@ export const ArticlesPageFilters = memo(({ className, view, onChangeView }: Arti
     debouncedFetchBySearchHandler();
   }, [debouncedFetchBySearchHandler, dispatch]);
 
+  const onChangeView = useCallback((newView: ArticlesView) => {
+    dispatch(setView(newView));
+    localStorage.setItem(ARTICLES_VIEW_LOCAL_STORAGE, newView);
+  }, [dispatch]);
+
+  const onChangeType = useCallback((newType: string) => {
+    dispatch(setType(newType as ArticleType));
+    dispatch(setPage(1));
+    fetchData();
+  }, [fetchData, dispatch]);
+
   return (
     <div className={classNames('', {}, [className])}>
       <div className={cls.header}>
@@ -111,6 +128,11 @@ export const ArticlesPageFilters = memo(({ className, view, onChangeView }: Arti
           onChange={onChangeSearch}
         />
       </Card>
+
+      <ArticleTypeTabs
+        tabClick={onChangeType}
+        value={type}
+      />
     </div>
   );
 });

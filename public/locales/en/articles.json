@@ -11,5 +11,10 @@
   "title": "Title",
   "createdAt": "Date creation",
   "asc": "Ascending",
-  "desc": "Descending"
+  "desc": "Descending",
+  "type_ALL": "All",
+  "type_IT": "IT",
+  "type_ECONOMICS": "Economics",
+  "type_SCIENCE": "Science",
+  "no_articles": "No articles yet..."
 }

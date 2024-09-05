@@ -1,9 +1,6 @@
-import {
-  ArticlesList, ArticlesView,
-} from 'entities/Article';
+import { ArticlesList } from 'entities/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { ReducersList, useReduxReducerManager } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
@@ -16,7 +13,7 @@ import {
   getError, getIsLoading, getView,
 } from '../../model/selectors/articlesPageSelectors';
 import {
-  articlesPageReducer, getArticles, setView,
+  articlesPageReducer, getArticles,
 } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
@@ -42,13 +39,10 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     dispatch(initArticlesPage());
   }, [view, dispatch]);
 
-  const onChangeView = useCallback((newView: ArticlesView) => {
-    dispatch(setView(newView));
-    localStorage.setItem(ARTICLES_VIEW_LOCAL_STORAGE, newView);
-  }, [dispatch]);
-
   const onFetchNextArticlesPage = useCallback(() => {
-    dispatch(fetchNextArticlesPage());
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchNextArticlesPage());
+    }
   }, [dispatch]);
 
   if (error) {
@@ -64,11 +58,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
       className={classNames(cls.ArticlesPage, {}, [className])}
       onScrollEnd={onFetchNextArticlesPage}
     >
-      <ArticlesPageFilters
-        view={view}
-        onChangeView={onChangeView}
-        className={cls.filters}
-      />
+      <ArticlesPageFilters className={cls.filters} />
       <ArticlesList
         articles={articles}
         isLoading={isLoading}

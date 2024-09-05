@@ -3,7 +3,9 @@
  * @param params
  */
 
-export function setQueryParams(params: Record<string, string | undefined>) {
+type Params = Record<string, string | undefined>
+
+export function setQueryParams(params: Params) {
   window.history.pushState(null, '', stringifyQueryParams(params));
 }
 
@@ -15,7 +17,7 @@ export function parseQueryParams() {
   return new URLSearchParams(window.location.search);
 }
 
-export function stringifyQueryParams(params: Record<string, string | undefined>) {
+export function stringifyQueryParams(params: Params) {
   const searchParams = new URLSearchParams(window.location.search);
 
   Object.entries(params).forEach(([param, value]) => {

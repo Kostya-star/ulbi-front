@@ -1,5 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { Article, ArticlesView } from '../../model/type/article';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
 import { ArticlesListItemSkeleton } from '../ArticlesListItem/ArticlesListItemSkeleton';
@@ -21,6 +23,8 @@ const getSkeletons = (view: ArticlesView) => {
 export const ArticlesList = memo(({
   className, articles, isLoading, view = ArticlesView.SMALL,
 }: ArticlesListProps) => {
+  const { t } = useTranslation('articles');
+
   const articlesList = useMemo(() => {
     return articles!.map((article) => (
       <ArticlesListItem
@@ -30,6 +34,17 @@ export const ArticlesList = memo(({
       />
     ));
   }, [articles, view]);
+
+  if (!isLoading && !articles?.length) {
+    return (
+      <div className={classNames('', {}, [className, cls[view]])}>
+        <Text
+          align={TextAlign.CENTER}
+          title={t('no_articles')}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={classNames('', {}, [className, cls[view]])}>
