@@ -3,28 +3,24 @@ import { CommentList } from 'entities/Comment';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useReduxReducerManager, ReducersList } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { AddCommentForm } from 'features/addCommentForm';
-import { Button } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import {
-  articleDetailsRecommendationsReducer,
-  getArticleRecommendations,
-} from '../../model/slices/articleDetailsRecommendationsSlice';
+import { getArticleRecommendations } from '../../model/slices/articleDetailsRecommendationsSlice';
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
 import { articleDetailsPageReducer } from '../../model/slices';
+import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -32,8 +28,6 @@ interface ArticleDetailsPageProps {
 
 const reducers: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer,
-  // articleDetailsComments: articleDetailsCommentsReducer,
-  // articleDetailsRecommendations: articleDetailsRecommendationsReducer,
 };
 
 const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
@@ -41,8 +35,6 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 
   const { id: articleId } = useParams();
   const { t } = useTranslation('articles');
-
-  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const comments = useSelector(getArticleComments.selectAll);
@@ -64,10 +56,6 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     }
   }, [articleId, dispatch]);
 
-  const goBackToAllArticles = useCallback(() => {
-    navigate(RoutePath.articles);
-  }, [navigate]);
-
   if (!articleId) {
     return (
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -78,7 +66,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 
   return (
     <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-      <Button onClick={goBackToAllArticles}>{t('back_to_articles')}</Button>
+      <ArticleDetailsHeader />
       <ArticleDetails id={articleId} />
 
       <Text title={t('comments_title')} className={cls.commentsTitle} />

@@ -7,3 +7,14 @@
   height: var(--navbar-height);
   background: var(--inverted-bg-color);
 }
+
+.logo {
+  width: var(--sidebar-width);
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

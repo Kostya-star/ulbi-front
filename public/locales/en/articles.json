@@ -17,5 +17,7 @@
   "type_ECONOMICS": "Economics",
   "type_SCIENCE": "Science",
   "no_articles": "No articles yet...",
-  "recommendations": "Recommendations"
+  "recommendations": "Recommendations",
+  "edit_article": "Edit article",
+  "create_article": "Create article"
 }

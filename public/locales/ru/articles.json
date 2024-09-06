@@ -17,5 +17,7 @@
   "type_ECONOMICS": "Экономика",
   "type_SCIENCE": "Наука",
   "no_articles": "Нет статей...",
-  "recommendations": "Рекомендации"
+  "recommendations": "Рекомендации",
+  "edit_article": "Редактировать статью",
+  "create_article": "Создать статью"
 }
