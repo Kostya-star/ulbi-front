@@ -7,7 +7,7 @@
     "start:front": "webpack serve --env port=3000",
     "start:back": "node ./json-server/index.js",
     "start:front:back": "cross-env NODE_OPTIONS=--max-old-space-size=8192 concurrently \"npm run start:front\" \"npm run start:back\"",
-    "build:prod": "webpack --env mode=production apiUrl=https://ulbi-backend-server-4ve1zw5m7-kostyastars-projects.vercel.app/",
+    "build:prod": "webpack --env mode=production apiUrl=https://ulbi-backend-server.vercel.app",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
