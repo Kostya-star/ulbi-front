@@ -1,7 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { LoginSchema } from '../types/LoginSchema';
+import { SchemaLogin } from '../types/SchemaLogin';
 
-const defaultLoginState: LoginSchema = {
+const defaultLoginState: SchemaLogin = {
   error: null,
   isLoading: false,
   password: '',

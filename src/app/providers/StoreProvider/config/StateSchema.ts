@@ -6,7 +6,7 @@ import { ArticleDetailsSchema } from 'entities/Article';
 import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
-import { LoginSchema } from 'features/AuthByUsername';
+import { SchemaLogin } from 'features/AuthByUsername';
 import { ScrollSaveSchema } from 'features/scrollSave';
 import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
@@ -17,7 +17,7 @@ export interface StateSchema {
   scrollSave: ScrollSaveSchema;
 
   // Async reducers
-  login?: LoginSchema;
+  login?: SchemaLogin;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   articlesPage?: ArticlesPageSchema;

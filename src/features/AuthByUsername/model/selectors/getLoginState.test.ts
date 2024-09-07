@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState';
-import { LoginSchema } from 'features/AuthByUsername/model/types/LoginSchema';
+import { SchemaLogin } from 'features/AuthByUsername/model/types/SchemaLogin';
 
 describe('getLoginState.test', () => {
   test('should return error', () => {
@@ -37,7 +37,7 @@ describe('getLoginState.test', () => {
   });
 
   test('should return default state', () => {
-    const defaultState: LoginSchema = {
+    const defaultState: SchemaLogin = {
       error: null,
       isLoading: false,
       password: '',
