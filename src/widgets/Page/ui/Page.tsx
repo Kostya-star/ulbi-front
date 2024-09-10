@@ -5,6 +5,7 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { PAGE_ID } from 'shared/const/pageId';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll/useInfiniteScroll';
@@ -18,7 +19,9 @@ interface PageProps {
   onScrollEnd?: () => void;
 }
 
-export const Page = memo(({ className, children, onScrollEnd }: PageProps) => {
+export const Page = memo(({
+  className, children, onScrollEnd,
+}: PageProps) => {
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
@@ -51,10 +54,11 @@ export const Page = memo(({ className, children, onScrollEnd }: PageProps) => {
       ref={wrapperRef}
       className={classNames(cls.Page, {}, [className])}
       onScroll={onScrollPage}
+      id={PAGE_ID}
     >
       {children}
 
-      {onScrollEnd && <div ref={triggerRef} className={cls.trigger} />}
+      {onScrollEnd ? <div ref={triggerRef} className={cls.trigger} /> : null}
     </div>
   );
 });
