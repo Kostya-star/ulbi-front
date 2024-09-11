@@ -1,9 +1,9 @@
 import {
-  HTMLAttributeAnchorTarget, memo, useCallback, useMemo,
+  HTMLAttributeAnchorTarget, memo, useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  AutoSizer, List, WindowScroller, ListRowProps, WindowScrollerChildProps,
+  List, WindowScroller, ListRowProps, WindowScrollerChildProps,
 } from 'react-virtualized';
 import { PAGE_ID } from 'shared/const/pageId';
 import { classNames } from 'shared/lib/classNames/classNames';

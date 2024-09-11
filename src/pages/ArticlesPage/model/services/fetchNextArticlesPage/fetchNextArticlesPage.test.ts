@@ -1,7 +1,7 @@
 import { ArticlesView } from 'entities/Article';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles';
+import { fetchArticles } from '../fetchArticles/fetchArticles';
+import { fetchNextArticlesPage } from '../fetchNextArticlesPage/fetchNextArticlesPage';
 
 jest.mock('pages/ArticlesPage/model/services/fetchArticles/fetchArticles');
 

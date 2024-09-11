@@ -1,4 +1,3 @@
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -13,6 +12,7 @@ import {
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import ScheduleIcon from 'shared/assets/icons/schedule.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock, ArticleBlockType } from '../../model/type/article';
 import {
   getArticleDetailsData,

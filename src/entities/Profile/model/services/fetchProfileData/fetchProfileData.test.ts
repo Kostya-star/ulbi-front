@@ -1,8 +1,8 @@
 import { setAuthUserData } from 'entities/User';
-import { fetchProfileData } from 'entities/Profile/model/services/fetchProfileData/fetchProfileData';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { Country } from 'entities/CountrySelect';
 import { Currency } from 'entities/CurrencySelect';
+import { fetchProfileData } from '../../services/fetchProfileData/fetchProfileData';
 
 const defaultProfileData = {
   first: 'Constantin',

@@ -1,7 +1,7 @@
-import { updateProfileData } from 'entities/Profile/model/services/updateProfileData/updateProfileData';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { Country } from 'entities/CountrySelect';
 import { Currency } from 'entities/CurrencySelect';
+import { updateProfileData } from '../../services/updateProfileData/updateProfileData';
 
 const defaultProfileData = {
   id: '1',

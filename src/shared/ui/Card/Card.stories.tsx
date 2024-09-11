@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Text } from 'shared/ui/Text/Text';
+import { Text } from '../Text/Text';
 import { Card } from './Card';
 
 export default {
