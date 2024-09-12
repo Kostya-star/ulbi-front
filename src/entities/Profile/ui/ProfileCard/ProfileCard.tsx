@@ -6,6 +6,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
@@ -20,7 +21,7 @@ interface ProfileCardProps {
   onChangeLastname: (val: string) => void;
   onChangeAge: (age: string) => void;
   onChangeCity: (city: string) => void;
-  onChangeUsername: (username: string) => void;
+  // onChangeUsername: (username: string) => void;
   onChangeAvatarUrl: (avatarUrl: string) => void;
   onChangeCurrency: (currency: Currency) => void;
   onChangeCountry: (country: Country) => void;
@@ -36,7 +37,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   onChangeLastname,
   onChangeAge,
   onChangeCity,
-  onChangeUsername,
+  // onChangeUsername,
   onChangeAvatarUrl,
   onChangeCurrency,
   onChangeCountry,
@@ -49,30 +50,41 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   if (isLoading) {
     return (
-      <div className={classNames(cls.ProfileCard, mods, [className, cls.loading])}>
+      <HStack
+        justifyContent='center'
+        alignItems='center'
+        className={classNames(cls.ProfileCard, mods, [className])}
+      >
         <Loader />
-      </div>
+      </HStack>
     );
   }
 
   if (error) {
     return (
-      <div className={classNames(cls.ProfileCard, mods, [className, cls.error])}>
+      <HStack
+        justifyContent='center'
+        alignItems='center'
+        className={classNames(cls.ProfileCard, mods, [className])}
+      >
         <Text
           title={t('profile_loading_error')}
           text={t('profile_refresh_page')}
           theme={TextTheme.ERROR}
           align={TextAlign.CENTER}
         />
-      </div>
+      </HStack>
     );
   }
 
   return (
-    <div className={classNames(cls.ProfileCard, mods, [className])}>
-      <div className={cls.avatarWrapper}>
+    <VStack
+      gap='8'
+      className={classNames(cls.ProfileCard, mods, [className])}
+    >
+      <HStack justifyContent='center' allWidth>
         <Avatar src={data?.avatar} />
-      </div>
+      </HStack>
 
       <Input
         value={data?.first || ''}
@@ -98,12 +110,12 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         readonly={isReadonly}
         onChange={onChangeCity}
       />
-      <Input
+      {/* <Input
         value={data?.username || ''}
         placeholder={t('profile_username')}
         readonly={isReadonly}
         onChange={onChangeUsername}
-      />
+      /> */}
       <Input
         value={data?.avatar || ''}
         placeholder={t('profile_avatar')}
@@ -122,6 +134,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         readonly={isReadonly}
         onChange={onChangeCountry}
       />
-    </div>
+    </VStack>
   );
 };

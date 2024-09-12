@@ -45,7 +45,18 @@ module.exports = {
     quotes: [0, 'single', { avoidEscape: true }],
     'i18next/no-literal-string': [
       'error',
-      { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'target'] },
+      {
+        markupOnly: true,
+        ignoreAttribute: [
+          'data-testid',
+          'to',
+          'target',
+          'justifyContent',
+          'alignItems',
+          'flexDirection',
+          'gap',
+        ],
+      },
     ],
     'linebreak-style': 0,
     'max-len': ['error', { code: 125, ignoreComments: true }],

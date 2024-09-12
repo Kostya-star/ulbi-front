@@ -11,6 +11,7 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import cls from './Navbar.module.scss';
 
@@ -31,23 +32,37 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   if (authData) {
     return (
-      <div className={classNames(cls.Navbar, {}, [className])}>
+      <HStack
+        justifyContent='between'
+        alignItems='center'
+        allWidth
+        className={classNames(cls.Navbar, {}, [className])}
+      >
         <Text title={t('blog')} className={cls.logo} />
 
-        <div className={cls.right}>
+        <HStack
+          justifyContent='between'
+          alignItems='center'
+          allWidth
+        >
           <AppLink to={RoutePath.article_create}>
             {t('create_article')}
           </AppLink>
           <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
             { t('sign_out') }
           </Button>
-        </div>
-      </div>
+        </HStack>
+      </HStack>
     );
   }
 
   return (
-    <div className={classNames(cls.Navbar, {}, [className])}>
+    <HStack
+      justifyContent='between'
+      alignItems='center'
+      allWidth
+      className={classNames(cls.Navbar, {}, [className])}
+    >
       {/* <MakeErrorTestBtn /> */}
       <Text title={t('blog')} className={cls.logo} />
 
@@ -56,6 +71,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
       </Button>
 
       <LoginModal isOpen={isAuthModal} onClose={onCloseAuthModal} />
-    </div>
+    </HStack>
   );
 });

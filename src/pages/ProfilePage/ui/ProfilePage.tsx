@@ -106,9 +106,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
     setProfileEdits((edits) => ({ ...edits, city }));
   }, []);
 
-  const onChangeUsername = useCallback((username: string) => {
-    setProfileEdits((edits) => ({ ...edits, username }));
-  }, []);
+  // const onChangeUsername = useCallback((username: string) => {
+  //   setProfileEdits((edits) => ({ ...edits, username }));
+  // }, []);
 
   const onChangeAvatarUrl = useCallback((avatar: string) => {
     setProfileEdits((edits) => ({ ...edits, avatar }));
@@ -160,7 +160,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
         onChangeLastname={onChangeLastname}
         onChangeAge={onChangeAge}
         onChangeCity={onChangeCity}
-        onChangeUsername={onChangeUsername}
+        // onChangeUsername={onChangeUsername}
         onChangeAvatarUrl={onChangeAvatarUrl}
         onChangeCurrency={onChangeCurrency}
         onChangeCountry={onChangeCountry}

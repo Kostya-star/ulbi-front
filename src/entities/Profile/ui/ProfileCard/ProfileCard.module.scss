@@ -3,18 +3,6 @@
   padding: 20px;
 }
 
-.loading,
-.error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.avatarWrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .editing {
   border: 2px solid var(--inverted-primary-color);
 }

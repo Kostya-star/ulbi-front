@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
+import { HStack } from 'shared/ui/Stack';
 import { getUserCanEditArticle } from '../../model/selectors/article';
-import cls from './ArticleDetailsHeader.module.scss';
 
 interface ArticleDetailsHeaderProps {
   className?: string;
@@ -29,9 +29,13 @@ export const ArticleDetailsHeader = memo(({ className }: ArticleDetailsHeaderPro
   }, [article?.id, navigate]);
 
   return (
-    <div className={classNames(cls.ArticleDetailsHeader, {}, [className])}>
+    <HStack
+      justifyContent='between'
+      alignItems='center'
+      className={classNames('', {}, [className])}
+    >
       <Button onClick={navigateToAllArticles}>{t('back_to_articles')}</Button>
       {canEdit && <Button onClick={navigateToEditArticle}>{t('edit_article')}</Button>}
-    </div>
+    </HStack>
   );
 });

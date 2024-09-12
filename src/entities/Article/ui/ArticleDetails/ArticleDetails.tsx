@@ -12,6 +12,7 @@ import {
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import ScheduleIcon from 'shared/assets/icons/schedule.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock, ArticleBlockType } from '../../model/type/article';
 import {
@@ -88,7 +89,9 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   if (isLoading) {
     content = (
       <>
-        <Skeleton className={cls.avatar} width={200} height={200} borderRadius="50%" />
+        <HStack justifyContent='center'>
+          <Skeleton width={200} height={200} borderRadius="50%" />
+        </HStack>
         <Skeleton className={cls.title} width={300} height={32} />
         <Skeleton className={cls.skeleton} width={600} height={24} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
@@ -106,20 +109,24 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   } else {
     content = (
       <>
-        <div className={cls.avatarWrapper}>
+        <HStack justifyContent='center'>
           <Avatar size={200} src={article?.img} />
-        </div>
-        <Text className={cls.title} title={article?.title} size={TextSize.L} />
-        <Text text={article?.subtitle} />
+        </HStack>
+        <VStack gap='8'>
+          <Text className={cls.title} title={article?.title} size={TextSize.L} />
+          <Text text={article?.subtitle} />
 
-        <div className={cls.articleInfo}>
-          <Icon Svg={EyeIcon} />
-          <Text text={String(article?.views)} />
-        </div>
-        <div className={cls.articleInfo}>
-          <Icon Svg={ScheduleIcon} />
-          <Text text={article?.createdAt} />
-        </div>
+          <VStack gap='8'>
+            <HStack alignItems='center' gap='8'>
+              <Icon Svg={EyeIcon} />
+              <Text text={String(article?.views)} />
+            </HStack>
+            <HStack alignItems='center' gap='8'>
+              <Icon Svg={ScheduleIcon} />
+              <Text text={article?.createdAt} />
+            </HStack>
+          </VStack>
+        </VStack>
 
         {
           article?.blocks.map(renderArticleBlocks)

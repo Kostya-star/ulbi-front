@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { HStack } from 'shared/ui/Stack';
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {
@@ -25,7 +26,11 @@ const AddCommentForm = memo(({ className, sendComment }: AddCommentFormProps) =>
   }, [newComment, sendComment]);
 
   return (
-    <div className={classNames(cls.AddCommentForm, {}, [className])}>
+    <HStack
+      justifyContent='between'
+      alignItems='center'
+      className={classNames(cls.AddCommentForm, {}, [className])}
+    >
       <Input
         placeholder={t('write_comment')}
         value={newComment}
@@ -37,7 +42,7 @@ const AddCommentForm = memo(({ className, sendComment }: AddCommentFormProps) =>
       >
         {t('add_comment')}
       </Button>
-    </div>
+    </HStack>
   );
 });
 

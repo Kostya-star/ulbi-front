@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import cls from './ProfilePageHeader.module.scss';
 
@@ -27,7 +28,11 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   const { t } = useTranslation('profile');
 
   return (
-    <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+    <HStack
+      justifyContent='between'
+      alignItems='center'
+      className={classNames(cls.ProfilePageHeader, {}, [className])}
+    >
       <Text title={t('profile')} />
       {
         // eslint-disable-next-line no-nested-ternary
@@ -37,14 +42,13 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
               ? (
                 <Button
                   theme={ButtonTheme.OUTLINE}
-                  className={cls.editBtn}
                   onClick={onEdit}
                 >
                   {t('edit_profile')}
                 </Button>
               )
               : (
-                <div className={cls.actions}>
+                <HStack gap='8'>
                   <Button
                     theme={ButtonTheme.OUTLINE_RED}
                     onClick={onCancel}
@@ -58,10 +62,10 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
                   >
                     {t('save_edits_profile')}
                   </Button>
-                </div>
+                </HStack>
               ))
           : null
       }
-    </div>
+    </HStack>
   );
 };

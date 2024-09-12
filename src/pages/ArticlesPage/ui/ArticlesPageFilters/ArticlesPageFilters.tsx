@@ -12,6 +12,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
 import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
+import { HStack } from 'shared/ui/Stack';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import {
   getOrder, getSearch, getSortBy, getType, getView,
@@ -101,8 +102,12 @@ export const ArticlesPageFilters = memo(({ className }: ArticlesPageFiltersProps
 
   return (
     <div className={classNames('', {}, [className])}>
-      <div className={cls.header}>
-        <div className={cls.sort}>
+      <HStack
+        justifyContent='between'
+        alignItems='center'
+        className={cls.header}
+      >
+        <HStack gap='16'>
           <Select<ArticleSortByOptions>
             label={t('sort_by')}
             options={sortByOptions}
@@ -115,12 +120,12 @@ export const ArticlesPageFilters = memo(({ className }: ArticlesPageFiltersProps
             value={order}
             onChange={onChangeOrder}
           />
-        </div>
+        </HStack>
         <ArticlesViewSwitcher
           view={view}
           onViewClick={onChangeView}
         />
-      </div>
+      </HStack>
       <Card>
         <Input
           value={search}
