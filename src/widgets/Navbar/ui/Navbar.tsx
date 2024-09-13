@@ -10,7 +10,9 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import cls from './Navbar.module.scss';
@@ -49,9 +51,23 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           <AppLink to={RoutePath.article_create}>
             {t('create_article')}
           </AppLink>
-          <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
+          <Dropdown
+            trigger={<Avatar size={30} src={authData.avatar} />}
+            direction='bottom left'
+            items={[
+              {
+                content: t('profile'),
+                href: RoutePath.profile + authData.id,
+              },
+              {
+                content: t('sign_out'),
+                onClick: onLogout,
+              },
+            ]}
+          />
+          {/* <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
             { t('sign_out') }
-          </Button>
+          </Button> */}
         </HStack>
       </HStack>
     );

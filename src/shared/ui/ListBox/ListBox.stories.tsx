@@ -13,6 +13,9 @@ export default {
   },
   args: {
   },
+  decorators: [
+    (Story) => <div style={{ padding: '200px' }}>{Story()}</div>,
+  ],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
@@ -29,14 +32,6 @@ export const bottom = Template.bind({});
 bottom.args = {
   items: options,
   value: options[1].content,
-  onChange: action('onChange'),
-};
-
-export const top = Template.bind({});
-top.args = {
-  items: options,
-  value: options[1].content,
-  direction: 'top',
   onChange: action('onChange'),
 };
 
@@ -62,4 +57,32 @@ withDefaultValue.args = {
   value: undefined,
   defaultValue: 'defaultVal',
   onChange: action('onChange'),
+};
+
+export const topLeft = Template.bind({});
+topLeft.args = {
+  items: options,
+  defaultValue: 'dflt',
+  direction: 'top left',
+};
+
+export const topRight = Template.bind({});
+topRight.args = {
+  items: options,
+  defaultValue: 'dflt',
+  direction: 'top right',
+};
+
+export const bottomLeft = Template.bind({});
+bottomLeft.args = {
+  items: options,
+  defaultValue: 'dflt',
+  direction: 'bottom left',
+};
+
+export const bottomRight = Template.bind({});
+bottomRight.args = {
+  items: options,
+  defaultValue: 'dflt',
+  direction: 'bottom right',
 };

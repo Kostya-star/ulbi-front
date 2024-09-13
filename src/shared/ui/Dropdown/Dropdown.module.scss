@@ -1,45 +1,39 @@
-.ListBox {
+.Dropdown {
   position: relative;
 }
 
 .trigger {
   background: none;
-  border: none;
   outline: none;
-  padding: 0;
   margin: 0;
-}
-
-.options {
-  background: var(--listbox-bg);
-  position: absolute;
-  z-index: 10000;
-  border-radius: 12px;
-}
-
-.item {
-  padding: 10px 20px;
+  padding: 0;
+  border: none;
   cursor: pointer;
 }
 
+.list {
+  background: var(--card-bg);
+  position: absolute;
+  z-index: 10000;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  flex-direction: column;
+  display: flex;
+}
+
+.list_item {
+  padding: 10px 25px;
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+
 .isHovered {
-  background: var(--inverted-secondary-color);
-}
-
-.selected {
   background: var(--inverted-primary-color);
-}
-
-.disabled {
-  opacity: 0.7;
-}
-
-.optionsTop {
-  bottom: 100%;
-}
-
-.optionsBottom {
-  top: 100%;
 }
 
 .optionsBottomLeft {
