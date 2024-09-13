@@ -56,6 +56,8 @@ module.exports = {
           'flexDirection',
           'gap',
           'tag',
+          'as',
+          'direction',
         ],
       },
     ],
