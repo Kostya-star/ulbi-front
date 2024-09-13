@@ -68,6 +68,13 @@ WithTitleAndTextErrorDark.args = {
 
 WithTitleAndTextErrorDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
 
+export const WithTitleAndTextSizeS = Template.bind({});
+WithTitleAndTextSizeS.args = {
+  title: 'Error Error Error Error Error',
+  text: 'Error Error Error Error Error',
+  size: TextSize.S,
+};
+
 export const WithTitleAndTextSizeM = Template.bind({});
 WithTitleAndTextSizeM.args = {
   title: 'Error Error Error Error Error',

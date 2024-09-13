@@ -55,6 +55,7 @@ module.exports = {
           'alignItems',
           'flexDirection',
           'gap',
+          'tag',
         ],
       },
     ],

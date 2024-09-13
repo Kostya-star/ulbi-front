@@ -33,6 +33,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   if (authData) {
     return (
       <HStack
+        tag='nav'
         justifyContent='between'
         alignItems='center'
         allWidth

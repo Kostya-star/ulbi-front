@@ -13,8 +13,9 @@ export interface FlexProps {
   justifyContent?: JustifyContent;
   alignItems?: AlignItems;
   flexDirection?: FlexDirection;
-  gap?: FlexGap
-  allWidth?: boolean
+  gap?: FlexGap;
+  allWidth?: boolean;
+  tag?: keyof HTMLElementTagNameMap;
 }
 
 const justifyContentConst: Record<JustifyContent, string> = {
@@ -52,6 +53,7 @@ export const Flex = memo(({
   flexDirection = 'row',
   gap,
   allWidth,
+  tag = 'div',
 }: FlexProps) => {
   const classNamesArr = useMemo(() => [
     className,
@@ -65,9 +67,11 @@ export const Flex = memo(({
     [cls.allWidth]: allWidth,
   }), [allWidth]);
 
+  const Tag = useMemo(() => tag, [tag]);
+
   return (
-    <div className={classNames(cls.Flex, mods, classNamesArr)}>
+    <Tag className={classNames(cls.Flex, mods, classNamesArr)}>
       {children}
-    </div>
+    </Tag>
   );
 });

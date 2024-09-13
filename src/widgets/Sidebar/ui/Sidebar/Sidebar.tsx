@@ -39,11 +39,14 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   }, [sidebarLinksList, isAuth, isCollapsed]);
 
   return (
-    <div
+    <section
       data-testid='sidebar'
       className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}
     >
-      <VStack gap='8' className={cls.links}>
+      <VStack
+        gap='8'
+        className={cls.links}
+      >
         { linksList }
       </VStack>
 
@@ -68,6 +71,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
       >
         {isCollapsed ? '>' : '<'}
       </Button>
-    </div>
+    </section>
   );
 });
