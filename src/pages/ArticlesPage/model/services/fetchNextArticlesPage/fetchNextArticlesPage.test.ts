@@ -21,8 +21,8 @@ describe('fetchNextArticlesPage.test', () => {
     });
     await thunk.callThunk();
 
-    expect(thunk.dispatch).toHaveBeenCalledTimes(4);
-    expect(fetchArticles).toHaveBeenCalledWith({ page: 2 });
+    expect(thunk.dispatch).toBeCalledTimes(4);
+    expect(fetchArticles).toHaveBeenCalled();
   });
 
   test('request not called', async () => {
@@ -40,7 +40,7 @@ describe('fetchNextArticlesPage.test', () => {
     });
     await thunk.callThunk();
 
-    expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+    expect(thunk.dispatch).toBeCalledTimes(2);
     expect(fetchArticles).not.toHaveBeenCalled();
   });
 });

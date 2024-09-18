@@ -1,4 +1,3 @@
-import { ArticlesList } from 'entities/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
@@ -9,14 +8,11 @@ import { Page } from 'widgets/Page';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import {
-  getError, getIsLoading, getView,
-} from '../../model/selectors/articlesPageSelectors';
-import {
-  articlesPageReducer, getArticles,
-} from '../../model/slices/articlesPageSlice';
+import { getError, getView } from '../../model/selectors/articlesPageSelectors';
+import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
 
 interface ArticlesPageProps {
   className?: string;
@@ -30,8 +26,6 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
   useReduxReducerManager(reducers, false);
 
   const dispatch = useAppDispatch();
-  const articles = useSelector(getArticles.selectAll);
-  const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
   const view = useSelector(getView);
 
@@ -59,11 +53,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
       onScrollEnd={onFetchNextArticlesPage}
     >
       <ArticlesPageFilters className={cls.filters} />
-      <ArticlesList
-        articles={articles}
-        isLoading={isLoading}
-        view={view}
-      />
+      <ArticlesInfiniteList />
     </Page>
   );
 });

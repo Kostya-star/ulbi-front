@@ -36,8 +36,8 @@ export function buildPlugins({
 
   if (isDev) {
     plugins.push(new HotModuleReplacementPlugin());
-    plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
     plugins.push(...[isDev && new ReactRefreshWebpackPlugin()].filter(Boolean));
+    plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, analyzerPort: 9999 }));
   }
 
   return plugins;

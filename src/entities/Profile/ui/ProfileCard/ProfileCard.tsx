@@ -48,6 +48,8 @@ export const ProfileCard: FC<ProfileCardProps> = ({
     [cls.editing]: !isReadonly,
   }), [isReadonly]);
 
+  console.log('INSIDE PROFILE CARD. Loading is:', isLoading);
+
   if (isLoading) {
     return (
       <HStack

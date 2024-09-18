@@ -1,5 +1,5 @@
+import { Profile } from 'entities/Profile';
 import { isNumber } from 'shared/util/isNumber/isNumber';
-import { Profile } from '../../types/profile';
 import { ProfileFormErrors } from '../../types/profileFormErrors';
 
 export function validateProfileErrors(profileEdits: Profile | null) {

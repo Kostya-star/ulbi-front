@@ -39,7 +39,7 @@ export const Dropdown = ({
       <Menu.Button className={cls.trigger}>{trigger}</Menu.Button>
       <Menu.Items className={classNames(cls.list, {}, optionsClasses)}>
         {
-          items?.map((item) => {
+          items?.map((item, index) => {
             const getContent = ({ active: isHovered }: { active: boolean }) => (
               <button
                 type='button'
@@ -52,13 +52,13 @@ export const Dropdown = ({
 
             if (item.href) {
               return (
-                <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
+                <Menu.Item key={index} as={AppLink} to={item.href} disabled={item.disabled}>
                   {getContent}
                 </Menu.Item>
               );
             }
             return (
-              <Menu.Item as={Fragment} disabled={item.disabled}>
+              <Menu.Item key={index} as={Fragment} disabled={item.disabled}>
                 {getContent}
               </Menu.Item>
             );

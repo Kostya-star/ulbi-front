@@ -5,7 +5,7 @@ import { ProfileSchema } from '../types/profile';
 
 const initialState: ProfileSchema = {
   data: null,
-  isLoading: false,
+  isLoading: true,
   error: null,
   readonly: true,
 };
@@ -20,6 +20,8 @@ export const profileSlice = createSlice({
       state.error = null;
     });
     builder.addCase(fetchProfileData.fulfilled, (state, action) => {
+      console.log('DATA FETCHED. Loading is false');
+
       state.isLoading = false;
       state.error = null;
       state.data = action.payload;

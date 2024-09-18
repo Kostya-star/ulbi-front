@@ -18,8 +18,8 @@ export const $api = axios.create({
 // Add a request interceptor
 $api.interceptors.request.use((config) => {
   if (config.headers) {
-    const token = localStorage.getItem(USER_DATA_LOCAL_STORAGE);
-    config.headers.Authorization = token || '';
+    const token = localStorage.getItem(USER_DATA_LOCAL_STORAGE) || '';
+    config.headers.Authorization = token;
   }
 
   return config;

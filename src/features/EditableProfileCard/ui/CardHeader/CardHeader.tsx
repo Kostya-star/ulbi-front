@@ -4,9 +4,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
-import cls from './ProfilePageHeader.module.scss';
+import cls from './CardHeader.module.scss';
 
-interface ProfilePageHeaderProps {
+interface CardHeaderProps {
   className?: string;
   isReadonly?: boolean;
   isSaveAllowed: boolean;
@@ -16,7 +16,7 @@ interface ProfilePageHeaderProps {
   onSave?: () => void
 }
 
-export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
+export const CardHeader: FC<CardHeaderProps> = ({
   isReadonly,
   className,
   isSaveAllowed,
