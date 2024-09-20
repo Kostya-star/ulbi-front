@@ -48,8 +48,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
     [cls.editing]: !isReadonly,
   }), [isReadonly]);
 
-  console.log('INSIDE PROFILE CARD. Loading is:', isLoading);
-
   if (isLoading) {
     return (
       <HStack
@@ -89,12 +87,14 @@ export const ProfileCard: FC<ProfileCardProps> = ({
       </HStack>
 
       <Input
+        data-testid='ProfileCard.firstname'
         value={data?.first || ''}
         placeholder={t('profile_name')}
         readonly={isReadonly}
         onChange={onChangeFirstname}
       />
       <Input
+        data-testid='ProfileCard.lastname'
         value={data?.lastname || ''}
         placeholder={t('profile_last_name')}
         readonly={isReadonly}

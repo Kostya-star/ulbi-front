@@ -18,7 +18,7 @@ import cls from './EditableProfileCard.module.scss';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
-import { CardHeader } from '../CardHeader/CardHeader';
+import { ProfileCardHeader } from '../ProfileCardHeader/ProfileCardHeader';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 
 interface EditableProfileCardProps {
@@ -49,6 +49,7 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
         key={err}
         text={t(err)}
         theme={TextTheme.ERROR}
+        data-testid='EditableProfileCard.Error'
       />
     ))
   ), [formErrors, t]);
@@ -83,7 +84,7 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
 
     setProfileReadonly(true);
     dispatch(updateProfileData(profileEdits as Profile));
-  }, [profileEdits, formErrors.length, dispatch]);
+  }, [formErrors.length, dispatch, profileEdits]);
 
   // profile edition
   const onChangeFirstname = useCallback((val: string) => {
@@ -124,7 +125,7 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
     <>
       {
         withHeader && (
-          <CardHeader
+          <ProfileCardHeader
             isReadonly={isProfileReadonly}
             isSaveAllowed={!formErrors.length}
             canEdit={canEdit}

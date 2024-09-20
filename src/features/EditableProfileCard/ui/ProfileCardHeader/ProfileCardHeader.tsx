@@ -4,9 +4,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
-import cls from './CardHeader.module.scss';
+import cls from './ProfileCardHeader.module.scss';
 
-interface CardHeaderProps {
+interface ProfileCardHeaderProps {
   className?: string;
   isReadonly?: boolean;
   isSaveAllowed: boolean;
@@ -16,7 +16,7 @@ interface CardHeaderProps {
   onSave?: () => void
 }
 
-export const CardHeader: FC<CardHeaderProps> = ({
+export const ProfileCardHeader: FC<ProfileCardHeaderProps> = ({
   isReadonly,
   className,
   isSaveAllowed,
@@ -41,6 +41,7 @@ export const CardHeader: FC<CardHeaderProps> = ({
             isReadonly
               ? (
                 <Button
+                  data-testid='ProfileCardHeader.EditButton'
                   theme={ButtonTheme.OUTLINE}
                   onClick={onEdit}
                 >
@@ -50,12 +51,14 @@ export const CardHeader: FC<CardHeaderProps> = ({
               : (
                 <HStack gap='8'>
                   <Button
+                    data-testid='ProfileCardHeader.CancelButton'
                     theme={ButtonTheme.OUTLINE_RED}
                     onClick={onCancel}
                   >
                     {t('cancel_edit_profile')}
                   </Button>
                   <Button
+                    data-testid='ProfileCardHeader.SaveButton'
                     theme={ButtonTheme.OUTLINE}
                     disabled={!isSaveAllowed}
                     onClick={onSave}
