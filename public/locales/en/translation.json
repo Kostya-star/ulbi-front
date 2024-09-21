@@ -20,5 +20,6 @@
   "write_comment": "Type comment",
   "add_comment": "Add comment",
   "create_article": "Create article",
-  "blog": "Blog"
+  "blog": "Blog",
+  "admin_panel": "Admin"
 }

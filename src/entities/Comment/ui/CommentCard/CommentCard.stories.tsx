@@ -4,6 +4,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import StorybookAvatar from 'shared/assets/tests/storybook/storybook-avatar.jpg';
+import { Comment } from '../../model/type/comment';
 import { CommentCard } from './CommentCard';
 
 export default {
@@ -17,10 +18,12 @@ export default {
 
 const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
 
-const commentItem = {
+const commentItem: Comment = {
   id: '1',
   text: 'some comment text 1',
-  user: { id: '1', username: 'Constantin', avatar: StorybookAvatar },
+  user: {
+    id: '1', username: 'Constantin', avatar: StorybookAvatar, role: ['ADMIN'],
+  },
 };
 
 export const light = Template.bind({});

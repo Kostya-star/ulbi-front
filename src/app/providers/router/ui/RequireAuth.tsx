@@ -6,13 +6,16 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 interface RequireAuthProps {
   children: JSX.Element;
+  authOnly?: boolean
 }
 
-export const RequireAuth = memo(({ children }: RequireAuthProps) => {
+export const RequireAuth = memo(({ children, authOnly }: RequireAuthProps) => {
   const isAuth = useSelector(getAuthUserData);
   const location = useLocation();
 
-  if (!isAuth) return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+  if (authOnly && !isAuth) {
+    return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
+  }
 
   return children;
 });

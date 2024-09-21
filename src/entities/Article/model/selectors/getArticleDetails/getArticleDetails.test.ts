@@ -14,6 +14,7 @@ const data: Article = {
     id: '1',
     username: 'Costya Danilov',
     avatar: 'https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg',
+    role: ['ADMIN'],
   },
   blocks: [
     {

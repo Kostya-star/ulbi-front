@@ -28,6 +28,7 @@ const article: Article = {
   user: {
     id: '1',
     username: 'Costya Danilov',
+    role: ['ADMIN'],
   },
   blocks: [
     {
