@@ -1,6 +1,7 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import AdminPanelPage from './AdminPanelPage';
 
 export default {
@@ -17,3 +18,4 @@ export const Normal = Template.bind({});
 Normal.args = {
 
 };
+Normal.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];

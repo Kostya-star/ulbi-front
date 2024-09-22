@@ -12,6 +12,7 @@ import { Currency } from 'entities/CurrencySelect';
 import { Country } from 'entities/CountrySelect';
 import { isNumber } from 'shared/util/isNumber/isNumber';
 import { getAuthUserData } from 'entities/User';
+import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { validateProfileErrors } from '../../model/lib/validateProfileErrors/validateProfileErrors';
 import cls from './EditableProfileCard.module.scss';
@@ -26,6 +27,18 @@ interface EditableProfileCardProps {
   profileId?: string;
   withHeader?: boolean;
 }
+
+const mockProfileData: Profile = {
+  id: '1',
+  first: 'Constantin',
+  lastname: "Danilov",
+  age: 24,
+  city: "Bender",
+  country: Country.Moldova,
+  currency: Currency.MD,
+  username: 'admin',
+  avatar: AvatarImg,
+};
 
 export const EditableProfileCard = memo(({ className, profileId, withHeader }: EditableProfileCardProps) => {
   const { t } = useTranslation('profile');
@@ -55,6 +68,9 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
   ), [formErrors, t]);
 
   useConditionalEffect(() => {
+    // if (__PROJECT__ === 'storybook') {
+    //   setProfileEdits(mockProfileData);
+    // } else {
     if (!profileId) return;
 
     const fetchProfile = async () => {
@@ -63,6 +79,7 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
     };
 
     fetchProfile();
+    // }
   }, [profileId, dispatch]);
 
   const canEdit = useMemo(() => {
@@ -145,7 +162,7 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
           : null
       }
       <ProfileCard
-        data={profileEdits}
+        data={__PROJECT__ === 'storybook' ? mockProfileData : profileEdits}
         isLoading={isProfileLoading}
         error={profileError}
         isReadonly={isProfileReadonly}

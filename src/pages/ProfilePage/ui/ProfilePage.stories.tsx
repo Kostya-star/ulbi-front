@@ -6,6 +6,7 @@ import { Currency } from 'entities/CurrencySelect';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
+import { Profile } from 'entities/Profile';
 import ProfilePage from './ProfilePage';
 
 export default {
@@ -19,7 +20,8 @@ export default {
 
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
 
-const profileData = {
+const profileData: Profile = {
+  id: '1',
   first: 'Constantin',
   lastname: "Danilov",
   age: 24,
