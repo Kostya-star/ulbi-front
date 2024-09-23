@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 import {
   ProgressPlugin, WebpackPluginInstance, DefinePlugin, HotModuleReplacementPlugin,
@@ -37,7 +38,14 @@ export function buildPlugins({
   if (isDev) {
     plugins.push(new HotModuleReplacementPlugin());
     plugins.push(...[isDev && new ReactRefreshWebpackPlugin()].filter(Boolean));
-    plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false, analyzerPort: 9999 }));
+    plugins.push(new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      analyzerPort: 9999,
+    }));
+    // plugins.push(new CircularDependencyPlugin({
+    //   exclude: /node_modules/,
+    //   failOnError: true,
+    // }));
   }
 
   return plugins;
