@@ -1,6 +1,9 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import { Theme } from 'app/providers/ThemeProvider';
 
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import withMock from 'storybook-addon-mock';
 import { Article, ArticleBlockType, ArticleType } from '../../model/type/article';
 import { ArticleDetails } from './ArticleDetails';
 
@@ -11,6 +14,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   // decorators: [StoreDecorator],
+  decorators: [withMock],
 } as ComponentMeta<typeof ArticleDetails>;
 
 const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
@@ -90,23 +94,36 @@ const article: Article = {
   ],
 };
 
-export const withData = Template.bind({});
-withData.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  articleDetails: {
-    data: article,
-  },
-})];
+const articleDetailsMockParams = {
+  mockData: [
+    {
+      url: `${__API_URL__}/articles/1?_expand=user`,
+      method: 'GET',
+      status: 200,
+      response: article,
+    },
+    {
+      url: `${__API_URL__}/articles?_limit=3`,
+      method: 'GET',
+      status: 200,
+      response: [
+        { ...article, id: '1' },
+        { ...article, id: '2' },
+        { ...article, id: '3' },
+      ],
+    },
+  ],
+};
 
-export const loading = Template.bind({});
-loading.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  articleDetails: {
-    isLoading: true,
-  },
-})];
+export const light = Template.bind({});
+light.args = {};
+light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+light.parameters = articleDetailsMockParams;
 
-export const error = Template.bind({});
-error.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  articleDetails: {
-    error: 'articel error',
-  },
-})];
+export const dark = Template.bind({});
+dark.args = {};
+dark.decorators = [
+  (StoryComp: Story) => StoreDecorator(StoryComp),
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
+dark.parameters = articleDetailsMockParams;

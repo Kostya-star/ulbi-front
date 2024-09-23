@@ -2,8 +2,11 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
 import { Theme } from 'app/providers/ThemeProvider';
 import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
+import { Comment } from 'entities/Comment';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import withMock from 'storybook-addon-mock';
+import StorybookAvatar from 'shared/assets/tests/storybook/storybook-avatar.jpg';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
@@ -12,7 +15,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  // decorators: [StoreDecorator],
+  decorators: [withMock],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
 const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />;
@@ -92,13 +95,54 @@ const article: Article = {
   ],
 };
 
-export const Light = Template.bind({});
-Light.args = {};
-Light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+const comment: Comment = {
+  text: 'some comment text',
+  user: {
+    id: '1', username: 'Constantin', avatar: StorybookAvatar, role: ['ADMIN'],
+  },
+  id: '1',
+};
 
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [
-  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+const baseParams = {
+  mockData: [
+    {
+      url: `${__API_URL__}/articles/1?_expand=user`,
+      method: 'GET',
+      status: 200,
+      response: article,
+    },
+    {
+      url: `${__API_URL__}/articles?_limit=3`,
+      method: 'GET',
+      status: 200,
+      response: [
+        { ...article, id: '1' },
+        { ...article, id: '2' },
+        { ...article, id: '3' },
+      ],
+    },
+    {
+      url: `${__API_URL__}/comments?articleId=1&_expand=user`,
+      method: 'GET',
+      status: 200,
+      response: [
+        { ...comment, id: '1' },
+        { ...comment, id: '2' },
+        { ...comment, id: '3' },
+      ],
+    },
+  ],
+};
+
+export const light = Template.bind({});
+light.args = {};
+light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+light.parameters = baseParams;
+
+export const dark = Template.bind({});
+dark.args = {};
+dark.decorators = [
   (StoryComp: Story) => StoreDecorator(StoryComp),
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
 ];
+dark.parameters = baseParams;

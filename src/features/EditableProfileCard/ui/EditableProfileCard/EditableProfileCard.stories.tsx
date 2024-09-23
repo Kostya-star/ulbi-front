@@ -12,8 +12,14 @@ export default {
 
 const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
 
-export const Normal = Template.bind({});
-Normal.args = {
-
+export const withHeader = Template.bind({});
+withHeader.args = {
+  withHeader: true,
 };
-Normal.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+withHeader.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
+
+export const withoutHeader = Template.bind({});
+withoutHeader.args = {
+  // withHeader: false,
+};
+withoutHeader.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];

@@ -25,19 +25,19 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   const { id: articleId } = useParams();
   const { t } = useTranslation('articles');
 
-  if (!articleId) {
-    return (
-      <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-        {t('not_found_article')}
-      </div>
-    );
-  }
+  // if (!articleId) {
+  //   return (
+  //     <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+  //       {t('not_found_article')}
+  //     </div>
+  //   );
+  // }
 
   return (
     <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
       <ArticleDetailsHeader />
-      <ArticleDetails id={articleId} />
-      <ArticleDetailsComments articleId={articleId} className={cls.detailsComments} />
+      <ArticleDetails articleId={articleId!} />
+      <ArticleDetailsComments articleId={articleId!} className={cls.detailsComments} />
       <ArticleRecommendationsList className={cls.recommendationsList} />
     </Page>
   );

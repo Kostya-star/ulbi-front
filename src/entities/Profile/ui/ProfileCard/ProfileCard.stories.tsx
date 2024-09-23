@@ -7,6 +7,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
 import { ProfileCard } from './ProfileCard';
+import { Profile } from '../../model/types/profile';
 
 export default {
   title: 'entities/ProfileCard',
@@ -19,7 +20,7 @@ export default {
 
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
 
-const profileData = {
+const profileData: Profile = {
   first: 'Constantin',
   lastname: "Danilov",
   age: 24,
@@ -33,6 +34,7 @@ const profileData = {
 export const Light = Template.bind({});
 Light.args = {
   data: profileData,
+  isReadonly: true,
 };
 Light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
 
@@ -51,6 +53,7 @@ LightLoading.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
 export const Dark = Template.bind({});
 Dark.args = {
   data: profileData,
+  isReadonly: true,
 };
 Dark.decorators = [
   (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),

@@ -1,6 +1,6 @@
 import { CommentList } from 'entities/Comment';
 import { AddCommentForm } from 'features/addCommentForm';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -18,6 +18,8 @@ interface ArticleDetailsCommentsProps {
   articleId: string;
 }
 
+const _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID = '1';
+
 export const ArticleDetailsComments = memo(({ className, articleId }: ArticleDetailsCommentsProps) => {
   const { t } = useTranslation('articles');
   const dispatch = useAppDispatch();
@@ -25,8 +27,12 @@ export const ArticleDetailsComments = memo(({ className, articleId }: ArticleDet
   const comments = useSelector(getArticleComments.selectAll);
   const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
 
-  useConditionalEffect(() => {
-    dispatch(fetchCommentsByArticleId(articleId));
+  // useConditionalEffect(() => {
+  //   dispatch(fetchCommentsByArticleId(articleId));
+  // }, [articleId, dispatch]);
+  useEffect(() => {
+    const id = __PROJECT__ === 'storybook' ? _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID : articleId;
+    dispatch(fetchCommentsByArticleId(id));
   }, [articleId, dispatch]);
 
   const sendComment = useCallback(async (newComment: string) => {

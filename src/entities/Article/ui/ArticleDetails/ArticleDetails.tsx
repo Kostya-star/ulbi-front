@@ -28,14 +28,16 @@ import { ArticleBlockImgComp } from '../ArticleBlockImgComp/ArticleBlockImgComp'
 
 interface ArticleDetailsProps {
   className?: string;
-  id: string
+  articleId: string
 }
 
 const reducers = {
   articleDetails: articleDetailsReducer,
 };
 
-export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
+const _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID = '1';
+
+export const ArticleDetails = memo(({ articleId, className }: ArticleDetailsProps) => {
   useReduxReducerManager(reducers, true);
   const dispatch = useAppDispatch();
   const { t } = useTranslation('articles');
@@ -45,10 +47,9 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
   const error = useSelector(getArticleDetailsError);
 
   useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticleById(id));
-    }
-  }, [id, dispatch]);
+    const id = __PROJECT__ === 'storybook' ? _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID : articleId;
+    dispatch(fetchArticleById(id));
+  }, [articleId, dispatch]);
 
   const renderArticleBlocks = useCallback((block: ArticleBlock) => {
     switch (block.type) {

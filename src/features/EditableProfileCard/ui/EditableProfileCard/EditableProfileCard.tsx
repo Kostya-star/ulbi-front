@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
-  memo, useCallback, useMemo, useState,
+  memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useConditionalEffect } from 'shared/hooks/useConditionalEffect/useConditionalEffect';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
@@ -29,7 +29,6 @@ interface EditableProfileCardProps {
 }
 
 const mockProfileData: Profile = {
-  id: '1',
   first: 'Constantin',
   lastname: "Danilov",
   age: 24,
@@ -68,9 +67,6 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
   ), [formErrors, t]);
 
   useConditionalEffect(() => {
-    // if (__PROJECT__ === 'storybook') {
-    //   setProfileEdits(mockProfileData);
-    // } else {
     if (!profileId) return;
 
     const fetchProfile = async () => {
@@ -79,8 +75,13 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
     };
 
     fetchProfile();
-    // }
   }, [profileId, dispatch]);
+
+  useEffect(() => {
+    if (__PROJECT__ === 'storybook') {
+      setProfileEdits(mockProfileData);
+    }
+  }, []);
 
   const canEdit = useMemo(() => {
     return authData?.id === profileData?.id;
@@ -162,7 +163,7 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
           : null
       }
       <ProfileCard
-        data={__PROJECT__ === 'storybook' ? mockProfileData : profileEdits}
+        data={profileEdits}
         isLoading={isProfileLoading}
         error={profileError}
         isReadonly={isProfileReadonly}
