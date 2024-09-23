@@ -11,11 +11,10 @@ import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import {
-  Article, ArticleBlockText, ArticleBlockType, ArticlesView,
-} from '../../model/type/article';
+import { Article, ArticleBlockText } from '../../model/type/article';
 import cls from './ArticlesListItem.module.scss';
 import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextComp';
+import { ArticleBlockType, ArticlesView } from '../../model/const/article';
 
 interface ArticlesListItemProps {
   className?: string;

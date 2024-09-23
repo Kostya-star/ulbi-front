@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ArticleRecommendationsListSchema } from '../types/ArticleRecommendationsListSchema';
 
-const initialState: ArticleRecommendationsListSchema = {};
+const initialState = {};
 
 export const articleRecommendationsListSlice = createSlice({
   name: 'articleRecommendationsList',

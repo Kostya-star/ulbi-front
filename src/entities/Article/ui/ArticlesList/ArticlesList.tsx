@@ -124,7 +124,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
-import { Article, ArticlesView } from '../../model/type/article';
+import { ArticlesView } from '../../model/const/article';
+import { Article } from '../../model/type/article';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
 import { ArticlesListItemSkeleton } from '../ArticlesListItem/ArticlesListItemSkeleton';
 import cls from './ArticlesList.module.scss';

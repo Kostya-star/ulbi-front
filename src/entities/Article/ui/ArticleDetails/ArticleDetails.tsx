@@ -14,7 +14,7 @@ import ScheduleIcon from 'shared/assets/icons/schedule.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import { ArticleBlock, ArticleBlockType } from '../../model/type/article';
+import { ArticleBlock } from '../../model/type/article';
 import {
   getArticleDetailsData,
   getArticleDetailsError,
@@ -25,6 +25,7 @@ import cls from './ArticleDetails.module.scss';
 import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextComp';
 import { ArticleBlockCodeComp } from '../ArticleBlockCodeComp/ArticleBlockCodeComp';
 import { ArticleBlockImgComp } from '../ArticleBlockImgComp/ArticleBlockImgComp';
+import { ArticleBlockType } from '../../model/const/article';
 
 interface ArticleDetailsProps {
   className?: string;

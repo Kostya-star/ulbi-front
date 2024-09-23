@@ -1216,21 +1216,27 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": ["ADMIN"],
+      "role": [
+        "ADMIN"
+      ],
       "avatar": "https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg"
     },
     {
       "id": "2",
       "username": "arina",
       "password": "123",
-      "role": ["USER"],
+      "role": [
+        "USER"
+      ],
       "avatar": "https://cdn-prod.medicalnewstoday.com/content/images/articles/326/326898/a-female-wondering-about-her-anatomy.jpg"
     },
     {
       "id": "3",
       "username": "manager",
       "password": "123",
-      "role": ["MANAGER"],
+      "role": [
+        "MANAGER"
+      ],
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR_B0sYx_rXPS4n_bvGPfAVftvWqR-f2CRjw&s"
     }
   ],
@@ -1240,7 +1246,7 @@
       "first": "Constantin!",
       "lastname": "Danilov",
       "age": 24,
-      "currency": "EUR",
+      "currency": "MD",
       "country": "Moldova",
       "city": "Bender",
       "username": "admin",

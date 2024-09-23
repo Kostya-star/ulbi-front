@@ -1,4 +1,4 @@
-import { ProfileFormErrors } from '../../types/profileFormErrors';
+import { ProfileFormErrors } from '../../const/profileFormErrors';
 import { validateProfileErrors } from './validateProfileErrors';
 
 describe('validateProfileErrors', () => {
@@ -13,10 +13,10 @@ describe('validateProfileErrors', () => {
   test('all errors', () => {
     const errors = validateProfileErrors({
       first: '',
-      lastname: "",
+      lastname: '',
       username: '',
       age: Number(''),
-      city: "",
+      city: '',
     });
 
     expect(errors).toBeInstanceOf(Array);

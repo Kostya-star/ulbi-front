@@ -4,7 +4,8 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import withMock from 'storybook-addon-mock';
-import { Article, ArticleBlockType, ArticleType } from '../../model/type/article';
+import { ArticleBlockType, ArticleType } from '../../model/const/article';
+import { Article } from '../../model/type/article';
 import { ArticleDetails } from './ArticleDetails';
 
 export default {

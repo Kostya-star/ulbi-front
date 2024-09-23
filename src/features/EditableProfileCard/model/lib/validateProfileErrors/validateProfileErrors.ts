@@ -1,6 +1,6 @@
 import { Profile } from 'entities/Profile';
 import { isNumber } from 'shared/util/isNumber/isNumber';
-import { ProfileFormErrors } from '../../types/profileFormErrors';
+import { ProfileFormErrors } from '../../const/profileFormErrors';
 
 export function validateProfileErrors(profileEdits: Profile | null) {
   const errors: ProfileFormErrors[] = [];
@@ -10,9 +10,7 @@ export function validateProfileErrors(profileEdits: Profile | null) {
     return errors;
   }
 
-  const {
-    first, lastname, username, age, city,
-  } = profileEdits;
+  const { first, lastname, username, age, city } = profileEdits;
 
   if (!first?.trim()) {
     errors.push(ProfileFormErrors.INCORRECT_FIRST_NAME);
@@ -26,7 +24,7 @@ export function validateProfileErrors(profileEdits: Profile | null) {
     errors.push(ProfileFormErrors.INCORRECT_USERNAME);
   }
 
-  if (!age || !(age?.toString())?.trim() || !isNumber(String(age))) {
+  if (!age || !age?.toString()?.trim() || !isNumber(String(age))) {
     errors.push(ProfileFormErrors.INCORRECT_AGE);
   }
 

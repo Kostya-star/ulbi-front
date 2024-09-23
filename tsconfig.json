@@ -12,6 +12,7 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
       "*": ["./src/*"]
