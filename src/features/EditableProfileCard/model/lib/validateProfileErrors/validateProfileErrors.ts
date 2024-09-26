@@ -10,7 +10,9 @@ export function validateProfileErrors(profileEdits: Profile | null) {
     return errors;
   }
 
-  const { first, lastname, username, age, city } = profileEdits;
+  const {
+    first, lastname, username, age, city,
+  } = profileEdits;
 
   if (!first?.trim()) {
     errors.push(ProfileFormErrors.INCORRECT_FIRST_NAME);

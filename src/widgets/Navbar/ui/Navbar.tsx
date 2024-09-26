@@ -3,6 +3,8 @@ import {
   getAuthUserData, isUserAdmin, isUserManager, logout,
 } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
+import { AvatarDropdown } from 'features/AvatarDropdown';
+import { NotificationButton } from 'features/NotificationButton';
 import {
   memo, useCallback, useMemo, useState,
 } from 'react';
@@ -27,25 +29,12 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
 
-  const navigate = useNavigate();
-
   const [isAuthModal, setAuthModal] = useState(false);
-
-  const dispatch = useAppDispatch();
 
   const authData = useSelector(getAuthUserData);
 
-  const isAdmin = useSelector(isUserAdmin);
-  const isManager = useSelector(isUserManager);
-
-  const isAdminPanelAvailable = useMemo(() => isAdmin || isManager, [isAdmin, isManager]);
-
   const onCloseAuthModal = useCallback(() => setAuthModal(false), []);
   const onOpenAuthModal = useCallback(() => setAuthModal(true), []);
-  const onLogout = useCallback(() => {
-    dispatch(logout());
-    navigate(RoutePath.main);
-  }, [dispatch, navigate]);
 
   if (authData) {
     return (
@@ -66,26 +55,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           <AppLink to={RoutePath.article_create}>
             {t('create_article')}
           </AppLink>
-          <Dropdown
-            trigger={<Avatar size={30} src={authData.avatar} />}
-            direction='bottom left'
-            items={[
-              ...(isAdminPanelAvailable
-                ? [{
-                  content: t('admin_panel'),
-                  href: RoutePath.admin_panel,
-                }]
-                : []),
-              {
-                content: t('profile'),
-                href: RoutePath.profile + authData.id,
-              },
-              {
-                content: t('sign_out'),
-                onClick: onLogout,
-              },
-            ]}
-          />
+          <HStack gap='16' alignItems='center'>
+            <NotificationButton />
+            <AvatarDropdown />
+          </HStack>
           {/* <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
             { t('sign_out') }
           </Button> */}

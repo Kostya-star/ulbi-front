@@ -58,6 +58,7 @@ module.exports = {
           'tag',
           'as',
           'direction',
+          'borderRadius',
         ],
       },
     ],
