@@ -1,3 +1,14 @@
 .NotificationItem {
   width: 100%;
+  position: relative;
+}
+
+.link {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.linkIcon {
+  width: 15px;
 }
