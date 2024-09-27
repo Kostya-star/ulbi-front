@@ -54,3 +54,9 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+// for react spring + use gesture animations
+.sheet {
+  z-index: var(--modal-z-index);
+  touch-action: none;
+}
