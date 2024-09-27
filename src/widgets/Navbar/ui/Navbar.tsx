@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useDevice } from 'shared/hooks/useDevice/useDevice';
+import { usePopupController } from 'shared/hooks/usePopupController/usePopupController';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
@@ -31,12 +32,13 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
 
-  const [isAuthModal, setAuthModal] = useState(false);
-
   const authData = useSelector(getAuthUserData);
 
-  const onCloseAuthModal = useCallback(() => setAuthModal(false), []);
-  const onOpenAuthModal = useCallback(() => setAuthModal(true), []);
+  const {
+    isOpen: isModalOpen,
+    onOpen: openModal,
+    onClose: closeModal,
+  } = usePopupController();
 
   if (authData) {
     return (
@@ -76,11 +78,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
       {/* <MakeErrorTestBtn /> */}
       <Text title={t('blog')} className={cls.logo} />
 
-      <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onOpenAuthModal}>
+      <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={openModal}>
         { t('sign_in') }
       </Button>
 
-      <LoginModal isOpen={isAuthModal} onClose={onCloseAuthModal} />
+      <LoginModal isOpen={isModalOpen} onClose={closeModal} />
     </HStack>
   );
 });

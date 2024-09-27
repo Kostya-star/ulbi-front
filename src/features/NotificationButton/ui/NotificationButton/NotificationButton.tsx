@@ -8,7 +8,7 @@ import NotificationIcon from 'shared/assets/icons/notification.svg';
 import { NotificationList } from 'entities/Notification';
 import { useDevice } from 'shared/hooks/useDevice/useDevice';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
-import { useDrawer } from 'shared/ui/Drawer/model/hooks/useDrawer/useDrawer';
+import { usePopupController } from 'shared/hooks/usePopupController/usePopupController';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
@@ -19,10 +19,10 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
   const isMobile = useDevice();
 
   const {
-    isDrawerOpen,
-    openDrawer,
-    closeDrawer,
-  } = useDrawer();
+    isOpen: isDrawerOpen,
+    onOpen: openDrawer,
+    onClose: closeDrawer,
+  } = usePopupController();
 
   const buttonTrigger = useMemo(() => (
     <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
