@@ -13,10 +13,12 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { useDevice } from 'shared/hooks/useDevice/useDevice';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
@@ -59,9 +61,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <NotificationButton />
             <AvatarDropdown />
           </HStack>
-          {/* <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
-            { t('sign_out') }
-          </Button> */}
         </HStack>
       </HStack>
     );

@@ -3,7 +3,9 @@ import {
   FC, MouseEvent, ReactNode, useCallback, useEffect,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
+import { HStack } from '../Stack';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -41,20 +43,18 @@ export const Modal: FC<ModalProps> = ({
 
   return (
     <Portal>
-      <div className={classNames(
-        cls.Modal,
-        {
-          [cls.opened]: isOpen,
-        },
-        [className, theme],
-      )}
+      <HStack
+        justifyContent='center'
+        alignItems='center'
+        className={classNames(cls.Modal, { [cls.opened]: isOpen }, [className, theme])}
       >
-        <div className={cls.overlay} onClick={handleClose}>
-          <div className={cls.content} onClick={onContentClick}>
-            {children}
-          </div>
+        {/* <div className={cls.overlay} onClick={handleClose}> */}
+        <Overlay onClick={handleClose} />
+        <div className={cls.content} onClick={onContentClick}>
+          {children}
         </div>
-      </div>
+      </HStack>
+      {/* </div> */}
     </Portal>
   );
 };

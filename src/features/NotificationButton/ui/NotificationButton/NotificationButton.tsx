@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Popover } from 'shared/ui/Popover/Popover';
 // import cls from './NotificationButton.module.scss';
@@ -6,24 +6,47 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
 import NotificationIcon from 'shared/assets/icons/notification.svg';
 import { NotificationList } from 'entities/Notification';
+import { useDevice } from 'shared/hooks/useDevice/useDevice';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { useDrawer } from 'shared/ui/Drawer/model/hooks/useDrawer/useDrawer';
+import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
   className?: string;
 }
 
 export const NotificationButton = memo(({ className }: NotificationButtonProps) => {
+  const isMobile = useDevice();
+
+  const {
+    isDrawerOpen,
+    openDrawer,
+    closeDrawer,
+  } = useDrawer();
+
+  const buttonTrigger = useMemo(() => (
+    <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
+      <Icon Svg={NotificationIcon} invertedColor />
+    </Button>
+  ), [openDrawer]);
+
   return (
-    <Popover
-      trigger={
-    (
-      <Button theme={ButtonTheme.CLEAR}>
-        <Icon Svg={NotificationIcon} invertedColor />
-      </Button>
-    )
-  }
-      direction='bottom left'
-    >
-      <NotificationList />
-    </Popover>
+    isMobile
+      ? (
+        <>
+          {buttonTrigger}
+          <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+            <NotificationList className={cls.mobileNotificationsList} />
+          </Drawer>
+        </>
+      )
+      : (
+        <Popover
+          trigger={buttonTrigger}
+          direction='bottom left'
+        >
+          <NotificationList className={cls.desktopNotificationsList} />
+        </Popover>
+      )
   );
 });
