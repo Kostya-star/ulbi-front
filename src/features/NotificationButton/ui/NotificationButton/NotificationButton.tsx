@@ -9,6 +9,7 @@ import { NotificationList } from 'entities/Notification';
 import { useDevice } from 'shared/hooks/useDevice/useDevice';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { usePopupController } from 'shared/hooks/usePopupController/usePopupController';
+import { AnimationProvider } from 'shared/lib/AnimationProvider/AnimationProvider';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
@@ -29,9 +30,24 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
       <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
         <Icon Svg={NotificationIcon} invertedColor />
       </Button>
-      <Drawer side='right' isOpen={isDrawerOpen} onClose={closeDrawer}>
-        <NotificationList className={cls.mobileNotificationsList} />
-      </Drawer>
+      {
+        isDrawerOpen && (
+          <AnimationProvider>
+            {
+                    (asyncLibs) => (
+                      <Drawer
+                        side='right'
+                        isOpen={isDrawerOpen}
+                        onClose={closeDrawer}
+                        {...asyncLibs}
+                      >
+                        <NotificationList className={cls.mobileNotificationsList} />
+                      </Drawer>
+                    )
+                  }
+          </AnimationProvider>
+        )
+      }
     </>
   );
   // return (
