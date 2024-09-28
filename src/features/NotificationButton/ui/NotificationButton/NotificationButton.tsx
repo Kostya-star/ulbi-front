@@ -16,7 +16,7 @@ interface NotificationButtonProps {
 }
 
 export const NotificationButton = memo(({ className }: NotificationButtonProps) => {
-  const isMobile = useDevice();
+  // const isMobile = useDevice();
 
   const {
     isOpen: isDrawerOpen,
@@ -24,29 +24,33 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
     onClose: closeDrawer,
   } = usePopupController();
 
-  const buttonTrigger = useMemo(() => (
-    <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
-      <Icon Svg={NotificationIcon} invertedColor />
-    </Button>
-  ), [openDrawer]);
-
   return (
-    isMobile
-      ? (
-        <>
-          {buttonTrigger}
-          <Drawer side='right' isOpen={isDrawerOpen} onClose={closeDrawer}>
-            <NotificationList className={cls.mobileNotificationsList} />
-          </Drawer>
-        </>
-      )
-      : (
-        <Popover
-          trigger={buttonTrigger}
-          direction='bottom left'
-        >
-          <NotificationList className={cls.desktopNotificationsList} />
-        </Popover>
-      )
+    <>
+      <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
+        <Icon Svg={NotificationIcon} invertedColor />
+      </Button>
+      <Drawer side='right' isOpen={isDrawerOpen} onClose={closeDrawer}>
+        <NotificationList className={cls.mobileNotificationsList} />
+      </Drawer>
+    </>
   );
+  // return (
+  //   isMobile
+  //     ? (
+  //       <>
+  //         {buttonTrigger}
+  //         <Drawer side='right' isOpen={isDrawerOpen} onClose={closeDrawer}>
+  //           <NotificationList className={cls.mobileNotificationsList} />
+  //         </Drawer>
+  //       </>
+  //     )
+  //     : (
+  //       <Popover
+  //         trigger={buttonTrigger}
+  //         direction='bottom left'
+  //       >
+  //         <NotificationList className={cls.desktopNotificationsList} />
+  //       </Popover>
+  //     )
+  // );
 });

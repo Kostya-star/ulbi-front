@@ -1,40 +1,43 @@
 import { useTheme } from 'app/providers/ThemeProvider';
 import {
-  memo, ReactNode, useCallback, useEffect, useMemo,
+  memo, ReactNode, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useDrag } from '@use-gesture/react';
-import { a, useSpring, config } from '@react-spring/web';
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import cls from './Drawer.module.scss';
 
+type UseGestureType = typeof import('@use-gesture/react')
+type ReactSpringType = typeof import('@react-spring/web')
+
 type Sides = 'left' | 'right' | 'bottom'
 
-interface DrawerProps {
+interface DrawerContentProps {
+  // animation libs
+  useGesture: UseGestureType;
+  reactSpring: ReactSpringType;
+
   className?: string;
   children: ReactNode;
   isOpen?: boolean;
-  onClose?: () => void;
   side?: Sides;
+  onClose?: () => void;
 }
 
-// const DRAWER_CONTENT_HEIGHT = window.innerHeight + 100;
-
-// const height = DRAWER_CONTENT_HEIGHT;
-
-export const Drawer = memo(({
+export const DrawerContent = memo(({
+  useGesture,
+  reactSpring,
   className,
   children,
   isOpen = false,
   side = 'bottom',
   onClose,
-}: DrawerProps) => {
+}: DrawerContentProps) => {
   const { theme } = useTheme();
 
   const height = useMemo(() => window.innerHeight + (side === 'bottom' ? 100 : 0), [side]);
 
-  const [{ y }, api] = useSpring(() => ({ y: height }));
+  const [{ y }, api] = reactSpring.useSpring(() => ({ y: height }));
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false });
@@ -50,12 +53,12 @@ export const Drawer = memo(({
     api.start({
       y: height,
       immediate: false,
-      config: { ...config.stiff, velocity },
+      config: { ...reactSpring.config.stiff, velocity },
       onResolve: onClose,
     });
   };
 
-  const bind = useDrag(
+  const bind = useGesture.useDrag(
     ({
       last,
       velocity: [, vy],
@@ -90,14 +93,59 @@ export const Drawer = memo(({
     <Portal>
       <div className={classNames(cls.Drawer, { [cls.opened]: isOpen }, [className, theme])}>
         <Overlay onClick={close} />
-        <a.div
+        <reactSpring.a.div
           className={classNames(cls.content, {}, [cls[side], cls.sheet])}
           style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
           {...bind()}
         >
           {children}
-        </a.div>
+        </reactSpring.a.div>
       </div>
     </Portal>
   );
 });
+
+// DRAWER WRAPPER
+interface DrawerProps {
+  className?: string;
+  children: ReactNode;
+  isOpen?: boolean;
+  onClose?: () => void;
+  side?: Sides;
+}
+
+export const Drawer = memo((props: DrawerProps) => {
+  const [useGesture, setUseGesture] = useState<UseGestureType | null>(null);
+  const [reactSpring, setReactSpring] = useState<ReactSpringType | null>(null);
+
+  useEffect(() => {
+    async function loadLibs() {
+      const { useGesture, reactSpring } = await loadLibsAsync();
+      setUseGesture(useGesture);
+      setReactSpring(reactSpring);
+    }
+
+    loadLibs();
+  }, []);
+
+  if (!useGesture || !reactSpring) return null;
+
+  return (
+    <DrawerContent
+      useGesture={useGesture}
+      reactSpring={reactSpring}
+      {...props}
+    />
+  );
+});
+
+async function loadLibsAsync() {
+  //   import { useDrag } from '@use-gesture/react';
+  // import { a, useSpring, config } from '@react-spring/web';
+
+  const useGesturePromise = import('@use-gesture/react');
+  const reactSpringPromise = import('@react-spring/web');
+  const [useGesture, reactSpring] = await Promise.all([useGesturePromise, reactSpringPromise]);
+
+  return { useGesture, reactSpring };
+}
