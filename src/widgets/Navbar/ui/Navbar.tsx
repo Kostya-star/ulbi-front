@@ -1,3 +1,9 @@
+import {
+  memo, useCallback, useMemo, useState,
+} from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { MakeErrorTestBtn } from '@/app/providers/ErrorBoundary';
 import {
   getAuthUserData, isUserAdmin, isUserManager, logout,
@@ -5,12 +11,6 @@ import {
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
-import {
-  memo, useCallback, useMemo, useState,
-} from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useDevice } from '@/shared/hooks/useDevice/useDevice';

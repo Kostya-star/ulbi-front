@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
+import withMock from 'storybook-addon-mock';
 import { Theme } from '@/app/providers/ThemeProvider';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { Comment } from '@/entities/Comment';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import withMock from 'storybook-addon-mock';
 import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 import ArticleDetailsPage from './ArticleDetailsPage';
 

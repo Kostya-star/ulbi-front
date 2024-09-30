@@ -1,10 +1,10 @@
-import { StateSchema } from '@/app/providers/StoreProvider';
-import { getScrollPositionByPath, setScroll } from '@/features/scrollSave';
 import {
   memo, MutableRefObject, ReactNode, UIEvent, useCallback, useEffect, useRef,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { getScrollPositionByPath, setScroll } from '@/features/scrollSave';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { PAGE_ID } from '@/shared/const/pageId';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';

@@ -1,4 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Popover } from '@/shared/ui/Popover/Popover';
 // import cls from './AvatarDropdown.module.scss';
@@ -9,13 +12,10 @@ import { NotificationList } from '@/entities/Notification';
 import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { useSelector } from 'react-redux';
 import {
   getAuthUserData, isUserAdmin, isUserManager, logout,
 } from '@/entities/User';
-import { useTranslation } from 'react-i18next';
 
 interface AvatarDropdownProps {
   className?: string;

@@ -1,9 +1,9 @@
-import {
-  ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher, ArticleType, ArticleTypeTabs,
-} from '@/entities/Article';
 import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import {
+  ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher, ArticleType, ArticleTypeTabs,
+} from '@/entities/Article';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types/SortOrder';

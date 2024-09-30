@@ -1,12 +1,12 @@
-import { CommentList } from '@/entities/Comment';
-import { AddCommentForm } from '@/features/addCommentForm';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { CommentList } from '@/entities/Comment';
+import { AddCommentForm } from '@/features/addCommentForm';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text/Text';
 import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
-import { useTranslation } from 'react-i18next';
 import { VStack } from '@/shared/ui/Stack';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';

@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import withMock from 'storybook-addon-mock';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import withMock from 'storybook-addon-mock';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
 export default {

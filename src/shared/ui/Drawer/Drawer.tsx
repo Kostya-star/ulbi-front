@@ -1,7 +1,7 @@
-import { useTheme } from '@/app/providers/ThemeProvider';
 import {
   memo, ReactNode, useCallback, useEffect, useMemo,
 } from 'react';
+import { useTheme } from '@/app/providers/ThemeProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ReactSpringType, UseGestureType } from '@/shared/types/asyncAnimationLibs';
 import { Overlay } from '../Overlay/Overlay';

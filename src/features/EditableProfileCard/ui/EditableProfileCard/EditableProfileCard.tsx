@@ -1,13 +1,13 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
   memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
+import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from '@/shared/ui/Text/Text';
 import { Profile, ProfileCard } from '@/entities/Profile';
-import { useSelector } from 'react-redux';
 import { Currency } from '@/entities/CurrencySelect';
 import { Country } from '@/entities/CountrySelect';
 import { isNumber } from '@/shared/util/isNumber/isNumber';

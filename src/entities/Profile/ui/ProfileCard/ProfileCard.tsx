@@ -1,7 +1,7 @@
-import { Country, CountrySelect } from '@/entities/CountrySelect';
-import { Currency, CurrencySelect } from '@/entities/CurrencySelect';
 import { FC, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Country, CountrySelect } from '@/entities/CountrySelect';
+import { Currency, CurrencySelect } from '@/entities/CurrencySelect';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Input } from '@/shared/ui/Input/Input';

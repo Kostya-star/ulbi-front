@@ -1,8 +1,8 @@
-import { getArticleDetailsData } from '@/entities/Article';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getArticleDetailsData } from '@/entities/Article';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
