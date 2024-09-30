@@ -32,20 +32,13 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
       </Button>
       {
         isDrawerOpen && (
-          <AnimationProvider>
-            {
-                    (asyncLibs) => (
-                      <Drawer
-                        side='right'
-                        isOpen={isDrawerOpen}
-                        onClose={closeDrawer}
-                        {...asyncLibs}
-                      >
-                        <NotificationList className={cls.mobileNotificationsList} />
-                      </Drawer>
-                    )
-                  }
-          </AnimationProvider>
+          <Drawer
+            side='right'
+            isOpen={isDrawerOpen}
+            onClose={closeDrawer}
+          >
+            <NotificationList className={cls.mobileNotificationsList} />
+          </Drawer>
         )
       }
     </>

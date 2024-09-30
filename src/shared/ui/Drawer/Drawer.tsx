@@ -7,6 +7,7 @@ import { ReactSpringType, UseGestureType } from '@/shared/types/asyncAnimationLi
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import cls from './Drawer.module.scss';
+import { AnimationProvider } from '@/shared/lib/AnimationProvider/AnimationProvider';
 
 type Sides = 'left' | 'right' | 'bottom'
 
@@ -16,13 +17,15 @@ interface DrawerProps {
   isOpen?: boolean;
   side?: Sides;
   onClose?: () => void;
+}
 
+interface DrawerAsyncProps extends DrawerProps {
   // async animation libs
   Gesture: UseGestureType;
   Spring: ReactSpringType;
 }
 
-export const Drawer = memo(({
+const DrawerAsync = memo(({
   className,
   children,
   isOpen = false,
@@ -30,7 +33,7 @@ export const Drawer = memo(({
   onClose,
   Gesture,
   Spring,
-}: DrawerProps) => {
+}: DrawerAsyncProps) => {
   const { theme } = useTheme();
 
   const height = useMemo(() => window.innerHeight + (side === 'bottom' ? 100 : 0), [side]);
@@ -100,5 +103,22 @@ export const Drawer = memo(({
         </Spring.a.div>
       </div>
     </Portal>
+  );
+});
+
+export const Drawer = memo(({ children, ...props }: DrawerProps) => {
+  return (
+    <AnimationProvider>
+      {
+            (asyncLibs) => (
+              <DrawerAsync
+                {...props}
+                {...asyncLibs}
+              >
+                {children}
+              </DrawerAsync>
+            )
+          }
+    </AnimationProvider>
   );
 });
