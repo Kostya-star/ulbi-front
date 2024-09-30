@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { Text } from 'shared/ui/Text/Text';
-import { Article, ArticlesList } from 'entities/Article';
-import { VStack } from 'shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
+import { Article, ArticlesList } from '@/entities/Article';
+import { VStack } from '@/shared/ui/Stack';
 import { useArticleRecommendationsList } from '../../model/api/recommendationsListApi';
 import cls from './ArticleRecommendationsList.module.scss';
 

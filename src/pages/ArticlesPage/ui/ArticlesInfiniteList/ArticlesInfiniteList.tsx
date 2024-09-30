@@ -1,4 +1,4 @@
-import { ArticlesList } from 'entities/Article';
+import { ArticlesList } from '@/entities/Article';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { getArticles } from '../../model/slices/articlesPageSlice';

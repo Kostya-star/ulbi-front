@@ -28,9 +28,9 @@
 // ];
 
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
-import { ArticleSortByOptions, ArticlesView, ArticleType } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { SortOrder } from 'shared/types/SortOrder';
+import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { SortOrder } from '@/shared/types/SortOrder';
 import { ArticlesPageSchema } from '../../model/types/ArticlesPageSchema';
 
 import ArticlesPage from './ArticlesPage';

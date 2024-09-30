@@ -1,5 +1,5 @@
-import { setAuthUserData, User } from 'entities/User';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { setAuthUserData, User } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUserName } from './loginByUserName';
 
 describe('loginByUserName.test', () => {

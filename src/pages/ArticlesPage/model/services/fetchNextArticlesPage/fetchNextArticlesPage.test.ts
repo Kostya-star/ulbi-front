@@ -1,5 +1,5 @@
-import { ArticlesView } from 'entities/Article';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { ArticlesView } from '@/entities/Article';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { fetchArticles } from '../fetchArticles/fetchArticles';
 import { fetchNextArticlesPage } from '../fetchNextArticlesPage/fetchNextArticlesPage';
 

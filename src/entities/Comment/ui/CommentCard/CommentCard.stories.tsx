@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-import { Theme } from 'app/providers/ThemeProvider';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import StorybookAvatar from 'shared/assets/tests/storybook/storybook-avatar.jpg';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 import { Comment } from '../../model/type/comment';
 import { CommentCard } from './CommentCard';
 

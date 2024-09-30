@@ -1,18 +1,18 @@
 import {
   ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher, ArticleType, ArticleTypeTabs,
-} from 'entities/Article';
+} from '@/entities/Article';
 import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { SortOrder } from 'shared/types/SortOrder';
-import { Card } from 'shared/ui/Card/Card';
-import { Input } from 'shared/ui/Input/Input';
-import { Select, SelectOption } from 'shared/ui/Select/Select';
-import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
-import { ARTICLES_VIEW_LOCAL_STORAGE } from 'shared/const/localStorage';
-import { HStack } from 'shared/ui/Stack';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { SortOrder } from '@/shared/types/SortOrder';
+import { Card } from '@/shared/ui/Card/Card';
+import { Input } from '@/shared/ui/Input/Input';
+import { Select, SelectOption } from '@/shared/ui/Select/Select';
+import { useDebounce } from '@/shared/hooks/useDebounce/useDebounce';
+import { ARTICLES_VIEW_LOCAL_STORAGE } from '@/shared/const/localStorage';
+import { HStack } from '@/shared/ui/Stack';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import {
   getOrder, getSearch, getSortBy, getType, getView,

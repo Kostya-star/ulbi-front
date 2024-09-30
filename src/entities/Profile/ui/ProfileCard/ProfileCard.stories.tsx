@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-import { Theme } from 'app/providers/ThemeProvider';
-import { Country } from 'entities/CountrySelect';
-import { Currency } from 'entities/CurrencySelect';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import AvatarImg from 'shared/assets/tests/storybook/storybook-avatar.jpg';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { Country } from '@/entities/CountrySelect';
+import { Currency } from '@/entities/CurrencySelect';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import AvatarImg from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 import { ProfileCard } from './ProfileCard';
 import { Profile } from '../../model/types/profile';
 

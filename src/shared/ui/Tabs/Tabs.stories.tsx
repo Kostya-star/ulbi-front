@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ArticleSortByOptions, ArticlesView, ArticleType } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { SortOrder } from 'shared/types/SortOrder';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { SortOrder } from '@/shared/types/SortOrder';
 
 import { Tabs } from './Tabs';
 

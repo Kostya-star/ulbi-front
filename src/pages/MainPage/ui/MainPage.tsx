@@ -1,8 +1,8 @@
-import { Counter } from 'entities/Counter';
+import { Counter } from '@/entities/Counter';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ListBox, ListBoxItem } from 'shared/ui/ListBox/ListBox';
-import { Page } from 'widgets/Page';
+import { ListBox, ListBoxItem } from '@/shared/ui/ListBox/ListBox';
+import { Page } from '@/widgets/Page';
 
 const options: ListBoxItem[] = [
   { content: 'Durward Reynolds', value: false },

@@ -1,11 +1,11 @@
-import { ArticleDetails } from 'entities/Article';
+import { ArticleDetails } from '@/entities/Article';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { useReduxReducerManager, ReducersList } from 'shared/hooks/useReduxReducerManager/useReduxReducerManager';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Page } from 'widgets/Page';
-import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
+import { useReduxReducerManager, ReducersList } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Page } from '@/widgets/Page';
+import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';

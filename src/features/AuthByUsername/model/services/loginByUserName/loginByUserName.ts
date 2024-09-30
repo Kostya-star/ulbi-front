@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { setAuthUserData } from 'entities/User';
-import { User } from 'entities/User/model/types/user';
-import { USER_DATA_LOCAL_STORAGE } from 'shared/const/localStorage';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { setAuthUserData } from '@/entities/User';
+import { User } from '@/entities/User/model/types/user';
+import { USER_DATA_LOCAL_STORAGE } from '@/shared/const/localStorage';
 import { LoginSchema } from '../../types/LoginSchema';
 
 type loginByUserNamePayload = Pick<LoginSchema, 'username' | 'password'>;

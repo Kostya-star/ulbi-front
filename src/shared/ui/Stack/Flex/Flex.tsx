@@ -1,5 +1,5 @@
 import { memo, ReactNode, useMemo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
 type JustifyContent = 'start' | 'center' | 'end' | 'between' | 'around';

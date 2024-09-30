@@ -1,28 +1,28 @@
-import { MakeErrorTestBtn } from 'app/providers/ErrorBoundary';
+import { MakeErrorTestBtn } from '@/app/providers/ErrorBoundary';
 import {
   getAuthUserData, isUserAdmin, isUserManager, logout,
-} from 'entities/User';
-import { LoginModal } from 'features/AuthByUsername';
-import { AvatarDropdown } from 'features/AvatarDropdown';
-import { NotificationButton } from 'features/NotificationButton';
+} from '@/entities/User';
+import { LoginModal } from '@/features/AuthByUsername';
+import { AvatarDropdown } from '@/features/AvatarDropdown';
+import { NotificationButton } from '@/features/NotificationButton';
 import {
   memo, useCallback, useMemo, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { useDevice } from 'shared/hooks/useDevice/useDevice';
-import { usePopupController } from 'shared/hooks/usePopupController/usePopupController';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
-import { HStack } from 'shared/ui/Stack';
-import { Text } from 'shared/ui/Text/Text';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useDevice } from '@/shared/hooks/useDevice/useDevice';
+import { usePopupController } from '@/shared/hooks/usePopupController/usePopupController';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
+import { HStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
