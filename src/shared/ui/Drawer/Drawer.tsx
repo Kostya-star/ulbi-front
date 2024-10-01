@@ -108,8 +108,8 @@ const DrawerAsync = memo(({
 });
 
 export const Drawer = memo(({ children, ...props }: DrawerProps) => {
-  if (!props.isOpen) return null;
   if (!props.isOpen && props.lazy) return null;
+  if (!props.isOpen) return null;
 
   return (
     <AnimationProvider>
@@ -126,3 +126,43 @@ export const Drawer = memo(({ children, ...props }: DrawerProps) => {
     </AnimationProvider>
   );
 });
+
+// import { memo, ReactNode } from 'react';
+// import { useTheme } from '@/app/providers/ThemeProvider';
+// import { classNames } from '@/shared/lib/classNames/classNames';
+// import { Overlay } from '../Overlay/Overlay';
+// import { Portal } from '../Portal/Portal';
+// import cls from './Drawer.module.scss';
+
+// type Sides = 'left' | 'right' | 'bottom'
+
+// interface DrawerProps {
+//   className?: string;
+//   children: ReactNode;
+//   isOpen?: boolean;
+//   onClose?: () => void;
+//   side?: Sides;
+// }
+
+// export const Drawer = memo(({
+//   className,
+//   children,
+//   isOpen = false,
+//   side = 'bottom',
+//   onClose,
+// }: DrawerProps) => {
+//   const { theme } = useTheme();
+
+//   if (!isOpen) return null;
+
+//   return (
+//     <Portal>
+//       <div className={classNames(cls.Drawer, { [cls.opened]: isOpen }, [className, theme])}>
+//         <Overlay onClick={onClose} />
+//         <div className={classNames(cls.content, {}, [cls[side]])}>
+//           {children}
+//         </div>
+//       </div>
+//     </Portal>
+//   );
+// });

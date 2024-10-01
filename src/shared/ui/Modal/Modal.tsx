@@ -1,5 +1,5 @@
 import {
-  FC, MouseEvent, ReactNode, useCallback, useEffect,
+  FC, memo, MouseEvent, ReactNode, useCallback, useEffect,
 } from 'react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -16,9 +16,9 @@ interface ModalProps {
   onClose?: () => void;
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Modal = memo(({
   children, className, isOpen, lazy, onClose,
-}) => {
+}: ModalProps) => {
   const { theme } = useTheme();
 
   if (lazy && !isOpen) return null;
@@ -37,4 +37,4 @@ export const Modal: FC<ModalProps> = ({
       </HStack>
     </Portal>
   );
-};
+});

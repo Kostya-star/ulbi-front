@@ -13,6 +13,7 @@ import { Input } from '@/shared/ui/Input/Input';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useDevice } from '@/shared/hooks/useDevice/useDevice';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { usePopupController } from '@/shared/hooks/usePopupController/usePopupController';
 
 interface RatingProps {
   className?: string;
@@ -34,7 +35,13 @@ export const Rating = memo(({
   const { t } = useTranslation();
   const isMobile = useDevice();
 
-  const [isModalOpen, setModalOpen] = useState(false);
+  const {
+    isOpen,
+    onOpen,
+    onClose,
+  } = usePopupController();
+
+  // const [isModalOpen, setModalOpen] = useState(false);
   const [selectedStars, setSelectedStars] = useState(0);
   const [feedbackText, setFeedbackText] = useState('');
 
@@ -45,25 +52,28 @@ export const Rating = memo(({
   const onClickStar = useCallback((stars: number) => {
     setSelectedStars(stars);
     if (withFeedbackText) {
-      setModalOpen(true);
+      // setModalOpen(true);
+      onOpen();
     } else {
       submit(stars);
     }
-  }, [submit, withFeedbackText]);
+  }, [onOpen, submit, withFeedbackText]);
 
   const onSubmit = useCallback(() => {
     if (!feedbackText.trim()) return;
 
     submit(selectedStars, feedbackText);
-    setModalOpen(false);
+    // setModalOpen(false);
+    onClose();
     setFeedbackText('');
-  }, [feedbackText, selectedStars, submit]);
+  }, [feedbackText, onClose, selectedStars, submit]);
 
   const onCanel = useCallback(() => {
     cancel(selectedStars);
-    setModalOpen(false);
+    // setModalOpen(false);
+    onClose();
     setFeedbackText('');
-  }, [selectedStars, cancel]);
+  }, [cancel, selectedStars, onClose]);
 
   const content = useMemo(() => (
     <VStack allWidth gap='16'>
@@ -100,18 +110,17 @@ export const Rating = memo(({
         isMobile
           ? (
             <Drawer
-              side='left'
+              isOpen={isOpen}
               lazy
-              isOpen={isModalOpen}
+              side='left'
               onClose={onCanel}
             >
               {content}
             </Drawer>
           )
-
           : (
             <Modal
-              isOpen={isModalOpen}
+              isOpen={isOpen}
               lazy
               onClose={onCanel}
             >

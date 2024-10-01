@@ -9,26 +9,26 @@ import { Rating } from '@/entities/Rating/ui/Rating/Rating';
 export default function MainPage() {
   const { t } = useTranslation('main');
 
-  // const cancel = useCallback((...args) => {
-  //   console.log('INSIDE CANCEL', ...args);
-  // }, []);
+  const cancel = useCallback((...args) => {
+    console.log('INSIDE CANCEL', ...args);
+  }, []);
 
-  // const submit = useCallback((...args) => {
-  //   console.log('INSIDE SUBMIT', ...args);
-  // }, []);
+  const submit = useCallback((...args) => {
+    console.log('INSIDE SUBMIT', ...args);
+  }, []);
 
   return (
     <Page>
       <Counter />
       {t('main_page')}
 
-      {/* <Rating
+      <Rating
         title='Rating'
         modalTitle='Write feedback'
         withFeedbackText
         cancel={cancel}
         submit={submit}
-      /> */}
+      />
     </Page>
   );
 }

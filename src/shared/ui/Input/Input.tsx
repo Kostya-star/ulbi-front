@@ -8,12 +8,12 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 
 interface InputProps extends HTMLInputProps {
   value?: string | number;
-  onChange?: (value: string) => void;
   className?: string;
   type?: string;
   placeholder?: string;
   autofocus?: boolean;
   readonly?: boolean
+  onChange?: (value: string) => void;
 }
 
 const SYMBOL_WIDTH = 9; // the width of the CONSOLAS font in px
@@ -24,8 +24,8 @@ export const Input: FC<InputProps> = memo(({
   className,
   placeholder,
   autofocus,
-  onChange,
   readonly,
+  onChange,
   ...restProps
 }: InputProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -33,10 +33,19 @@ export const Input: FC<InputProps> = memo(({
   const [underscoreElPosition, setUnderscoreElPosition] = useState(0);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
     if (autofocus) {
-      setInputFocused(true);
-      inputRef.current?.focus();
+      // use setTimeout for animations
+      timeout = setTimeout(() => {
+        setInputFocused(true);
+        inputRef.current?.focus();
+      }, 100);
     }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
   }, [autofocus]);
 
   const onSetUnderscorePositionHandle = (newPosition: number) => {

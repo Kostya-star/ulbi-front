@@ -11,6 +11,7 @@ import { Drawer } from '@/shared/ui/Drawer/Drawer';
 import { usePopupController } from '@/shared/hooks/usePopupController/usePopupController';
 import { AnimationProvider } from '@/shared/lib/AnimationProvider/AnimationProvider';
 import cls from './NotificationButton.module.scss';
+import { Input } from '@/shared/ui/Input/Input';
 
 interface NotificationButtonProps {
   className?: string;
