@@ -1,32 +1,34 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Counter } from '@/entities/Counter';
 import { ListBox, ListBoxItem } from '@/shared/ui/ListBox/ListBox';
 import { Page } from '@/widgets/Page';
-
-const options: ListBoxItem[] = [
-  { content: 'Durward Reynolds', value: false },
-  { content: 'Kenton Towne', value: false },
-  { content: 'Therese Wunsch', value: false },
-  { content: 'Benedict Kessler', value: true },
-  { content: 'Katelyn Rohan', value: false },
-];
+import { StarRating } from '@/shared/ui/StarRating/StarRating';
+import { Rating } from '@/entities/Rating/ui/Rating/Rating';
 
 export default function MainPage() {
   const { t } = useTranslation('main');
 
-  const [listBoxVal, setListBoxVal] = useState(options[1].content);
+  // const cancel = useCallback((...args) => {
+  //   console.log('INSIDE CANCEL', ...args);
+  // }, []);
+
+  // const submit = useCallback((...args) => {
+  //   console.log('INSIDE SUBMIT', ...args);
+  // }, []);
 
   return (
     <Page>
       <Counter />
       {t('main_page')}
 
-      <ListBox
-        items={options}
-        value={listBoxVal}
-        onChange={setListBoxVal}
-      />
+      {/* <Rating
+        title='Rating'
+        modalTitle='Write feedback'
+        withFeedbackText
+        cancel={cancel}
+        submit={submit}
+      /> */}
     </Page>
   );
 }

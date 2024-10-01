@@ -1,5 +1,5 @@
 {
-"notifications": [
+  "notifications": [
     {
       "id": "1",
       "title": "Уведомление 1",
@@ -12,7 +12,7 @@
       "description": "Произошло какое-то событие",
       "userId": "1",
       "href": "http://localhost:3000/admin"
-    },   
+    },
     {
       "id": "3",
       "title": "Уведомление 3",
@@ -1310,8 +1310,8 @@
       "first": "Constantin!",
       "lastname": "Danilov",
       "age": 24,
-      "currency": "MD",
-      "country": "Moldova",
+      "currency": "EUR",
+      "country": "Poland",
       "city": "Bender",
       "username": "admin",
       "avatar": "https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg"

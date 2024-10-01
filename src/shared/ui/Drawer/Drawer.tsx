@@ -16,6 +16,7 @@ interface DrawerProps {
   children: ReactNode;
   isOpen?: boolean;
   side?: Sides;
+  lazy?: boolean;
   onClose?: () => void;
 }
 
@@ -107,6 +108,9 @@ const DrawerAsync = memo(({
 });
 
 export const Drawer = memo(({ children, ...props }: DrawerProps) => {
+  if (!props.isOpen) return null;
+  if (!props.isOpen && props.lazy) return null;
+
   return (
     <AnimationProvider>
       {

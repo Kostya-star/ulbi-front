@@ -21,5 +21,8 @@
   "add_comment": "Добавить комментарий",
   "create_article": "Создать статью",
   "blog": "Блог",
-  "admin_panel": "Админ"
+  "admin_panel": "Админ",
+  "your_feedback": "Ваш отзыв",
+  "cancel": "Отмена",
+  "submit": "Отправить"
 }
