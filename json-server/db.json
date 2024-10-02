@@ -1327,5 +1327,34 @@
       "username": "admin",
       "avatar": "https://cdn-prod.medicalnewstoday.com/content/images/articles/326/326898/a-female-wondering-about-her-anatomy.jpg"
     }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 5,
+      "feedback": "Good article!",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 5,
+      "userId": "2",
+      "articleId": "2"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "rate": 1,
+      "id": "vv5oiWw",
+      "feedback": "the worst!"
+    },
+    {
+      "articleId": "4",
+      "userId": "1",
+      "rate": 2,
+      "feedback": "1111",
+      "id": "8XY5ow7"
+    }
   ]
 }

@@ -19,5 +19,8 @@
   "no_articles": "Нет статей...",
   "recommendations": "Рекомендации",
   "edit_article": "Редактировать статью",
-  "create_article": "Создать статью"
+  "create_article": "Создать статью",
+  "title_rate_exist": "Спасибо за оценку:)",
+  "title_rate_no_exist": "Оцените статью",
+  "rating_modal_title": "Напишите отзыв"
 }

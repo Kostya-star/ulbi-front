@@ -10,6 +10,7 @@ import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -23,21 +24,13 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   useReduxReducerManager(reducers, true);
 
   const { id: articleId } = useParams();
-  const { t } = useTranslation('articles');
-
-  // if (!articleId) {
-  //   return (
-  //     <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-  //       {t('not_found_article')}
-  //     </div>
-  //   );
-  // }
 
   return (
     <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
       <ArticleDetailsHeader />
       <ArticleDetails articleId={articleId!} />
       <ArticleDetailsComments articleId={articleId!} className={cls.detailsComments} />
+      <ArticleRating articleId={articleId!} />
       <ArticleRecommendationsList className={cls.recommendationsList} />
     </Page>
   );

@@ -14,4 +14,5 @@ export const rtkApi = createApi({
     },
   }),
   endpoints: () => ({}),
+  tagTypes: ['GetArticleRating'],
 });

@@ -20,6 +20,7 @@ interface RatingProps {
   title: string;
   modalTitle: string;
   withFeedbackText?: boolean;
+  rate?: number;
   submit: (stars: number, feedbackText?: string) => void;
   cancel: (stars: number) => void;
 }
@@ -29,20 +30,21 @@ export const Rating = memo(({
   title,
   modalTitle,
   withFeedbackText,
+  rate = 0,
   submit,
   cancel,
 }: RatingProps) => {
   const { t } = useTranslation();
   const isMobile = useDevice();
 
-  const {
-    isOpen,
-    onOpen,
-    onClose,
-  } = usePopupController();
+  // const {
+  //   isOpen,
+  //   onOpen,
+  //   onClose,
+  // } = usePopupController();
 
-  // const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedStars, setSelectedStars] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedStars, setSelectedStars] = useState(rate);
   const [feedbackText, setFeedbackText] = useState('');
 
   const onWriteFeedback = useCallback((f: string) => {
@@ -52,28 +54,27 @@ export const Rating = memo(({
   const onClickStar = useCallback((stars: number) => {
     setSelectedStars(stars);
     if (withFeedbackText) {
-      // setModalOpen(true);
-      onOpen();
+      setModalOpen(true);
+      // onOpen();
     } else {
       submit(stars);
     }
-  }, [onOpen, submit, withFeedbackText]);
+  }, [submit, withFeedbackText]);
 
   const onSubmit = useCallback(() => {
     if (!feedbackText.trim()) return;
 
     submit(selectedStars, feedbackText);
-    // setModalOpen(false);
-    onClose();
+    setModalOpen(false);
     setFeedbackText('');
-  }, [feedbackText, onClose, selectedStars, submit]);
+  }, [feedbackText, selectedStars, submit]);
 
   const onCanel = useCallback(() => {
     cancel(selectedStars);
-    // setModalOpen(false);
-    onClose();
+    setModalOpen(false);
+    // onClose();
     setFeedbackText('');
-  }, [cancel, selectedStars, onClose]);
+  }, [cancel, selectedStars]);
 
   const content = useMemo(() => (
     <VStack allWidth gap='16'>
@@ -97,7 +98,7 @@ export const Rating = memo(({
 
   return (
     <Card>
-      <VStack>
+      <VStack gap='16' alignItems='center'>
         <Text title={title} />
         <StarRating
           size={40}
@@ -110,7 +111,7 @@ export const Rating = memo(({
         isMobile
           ? (
             <Drawer
-              isOpen={isOpen}
+              isOpen={isModalOpen}
               lazy
               side='left'
               onClose={onCanel}
@@ -120,7 +121,7 @@ export const Rating = memo(({
           )
           : (
             <Modal
-              isOpen={isOpen}
+              isOpen={isModalOpen}
               lazy
               onClose={onCanel}
             >

@@ -19,5 +19,8 @@
   "no_articles": "No articles yet...",
   "recommendations": "Recommendations",
   "edit_article": "Edit article",
-  "create_article": "Create article"
+  "create_article": "Create article",
+  "title_rate_exist": "Thanks for the rate:)",
+  "title_rate_no_exist": "Rate the article",
+  "rating_modal_title": "Write feedback"
 }
