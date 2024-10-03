@@ -1,14 +1,26 @@
-import { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './StarRating.module.scss';
+import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import withMock from 'storybook-addon-mock';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
-interface StarRatingProps {
-  className?: string;
-}
+import { StarRating } from './StarRating';
 
-export const StarRating = memo(({ className }: StarRatingProps) => {
-  return (
-  <div className={classNames(cls.StarRating, {}, [className])}>
-  </div>
-);
-})
+export default {
+  title: 'shared/StarRating',
+  component: StarRating,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+  decorators: [withMock],
+} as ComponentMeta<typeof StarRating>;
+
+const Template: ComponentStory<typeof StarRating> = (args) => <StarRating {...args} />;
+
+export const rated = Template.bind({});
+rated.args = {
+  selectedStars: 5,
+};
+
+export const notRated = Template.bind({});
+notRated.args = {
+  selectedStars: 0,
+};

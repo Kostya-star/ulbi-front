@@ -13,11 +13,11 @@ interface NotificationListProps {
 const POLLING_INTERVAL = 5000;
 
 export const NotificationList = memo(({ className }: NotificationListProps) => {
-  const { data: notifications, isLoading } = useGetNotificationsList(null, {
+  const { data: notifications, isFetching } = useGetNotificationsList(null, {
     pollingInterval: POLLING_INTERVAL,
   });
 
-  if (isLoading) {
+  if (isFetching) {
     return (
       <VStack gap='8' allWidth className={className}>
         <Skeleton height='80px' borderRadius='8px' />
