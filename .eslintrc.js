@@ -79,7 +79,10 @@ module.exports = {
     "react/no-array-index-key": "off",
     // custom written eslint plugin to check for paths
     "front-fresh/path-checker": ["error", { alias: '@' }],
-    "front-fresh/public-api-imports": ["error", { alias: '@' }],
+    "front-fresh/public-api-imports": ["error", {
+      alias: '@',
+      testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
+    }],
   },
   globals: {
     __IS_DEV__: true,
