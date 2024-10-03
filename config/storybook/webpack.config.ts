@@ -25,12 +25,20 @@ export default ({ config }: { config: Configuration }) => {
 
   handleSvg(config);
 
+  if (config.resolve) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': srcPath,
+    };
+  }
+
   return config;
 };
 
 function handleSvg(config: Configuration) {
-  const imageRule = config.module?.rules?.find((rule) =>
-    (rule as { test: RegExp }).test?.test('.svg')) as { [key: string]: any };
+  const imageRule = config.module?.rules?.find((rule) => {
+    return (rule as { test: RegExp }).test?.test('.svg');
+  }) as { [key: string]: any };
 
   imageRule.exclude = /\.svg$/;
 
