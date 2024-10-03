@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ReducersList, useReduxReducerManager } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
-import { EditableProfileCard } from '@/features/EditableProfileCard';
-import { profileReducer } from '@/features/EditableProfileCard/model/slices/profileSlice';
+import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 
 const reducers: ReducersList = {
   profile: profileReducer,

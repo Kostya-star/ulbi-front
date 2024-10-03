@@ -1355,6 +1355,13 @@
       "rate": 2,
       "feedback": "1111",
       "id": "8XY5ow7"
+    },
+    {
+      "articleId": "14",
+      "userId": "1",
+      "rate": 3,
+      "feedback": "aa",
+      "id": "AUkF-ik"
     }
   ]
 }

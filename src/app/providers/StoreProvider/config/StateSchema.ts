@@ -6,7 +6,7 @@ import { ArticleDetailsSchema } from '@/entities/Article';
 import { CounterSchema } from '@/entities/Counter';
 import { UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/AuthByUsername';
-import { ProfileSchema } from '@/features/EditableProfileCard/model/types/profile';
+import { ProfileSchema } from '@/features/EditableProfileCard';
 import { ScrollSaveSchema } from '@/features/scrollSave';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';

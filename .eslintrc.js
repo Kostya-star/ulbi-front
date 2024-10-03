@@ -77,8 +77,9 @@ module.exports = {
     "no-param-reassign": "off",
     "no-undef": "off",
     "react/no-array-index-key": "off",
-    // my custom written eslint plugin to check for paths
+    // custom written eslint plugin to check for paths
     "front-fresh/path-checker": ["error", { alias: '@' }],
+    "front-fresh/public-api-imports": ["error", { alias: '@' }],
   },
   globals: {
     __IS_DEV__: true,
