@@ -78,7 +78,7 @@ module.exports = {
     "no-undef": "off",
     "react/no-array-index-key": "off",
     // my custom written eslint plugin to check for paths
-    "front-fresh/path-checker": "error",
+    "front-fresh/path-checker": ["error", { alias: '@' }],
   },
   globals: {
     __IS_DEV__: true,
