@@ -1,12 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { getAuthUserData } from '@/entities/User';
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 
 import MainSvg from '@/shared/assets/icons/main.svg';
 import AboutSvg from '@/shared/assets/icons/about.svg';
 import ProfileSvg from '@/shared/assets/icons/profile_link.svg';
 import ArticlesSvg from '@/shared/assets/icons/articles.svg';
 import { SidebarLinkItem } from '../types/SidebarLink';
+import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 
 export const getSidebarItems = createSelector(getAuthUserData, (userData) => {
   const sidebarLinksList: SidebarLinkItem[] = [
@@ -35,7 +35,7 @@ export const getSidebarItems = createSelector(getAuthUserData, (userData) => {
         text: 'articles',
         Icon: ArticlesSvg,
         authOnly: true,
-      }
+      },
     );
   }
 

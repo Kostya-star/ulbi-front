@@ -4,7 +4,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MakeErrorTestBtn } from '@/app/providers/ErrorBoundary';
 import {
   getAuthUserData, isUserAdmin, isUserManager, logout,
 } from '@/entities/User';

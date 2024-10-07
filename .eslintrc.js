@@ -83,6 +83,14 @@ module.exports = {
       alias: '@',
       testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'],
     }],
+    "front-fresh/layers-imports": ["error", {
+      alias: '@',
+      ignoreImportPatterns: [
+        '**/StoreProvider',
+        '**/routeConfig',
+        '**/ThemeProvider',
+      ],
+    }],
   },
   globals: {
     __IS_DEV__: true,

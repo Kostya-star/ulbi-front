@@ -1,3 +1,4 @@
+/* eslint-disable front-fresh/layers-imports */
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { render } from '@testing-library/react';
 import { ReactNode } from 'react';

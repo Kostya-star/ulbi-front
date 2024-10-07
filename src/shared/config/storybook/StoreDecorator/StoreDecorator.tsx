@@ -1,3 +1,4 @@
+/* eslint-disable front-fresh/layers-imports */
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { RootReducersType } from '@/app/providers/StoreProvider/config/StateSchema';
