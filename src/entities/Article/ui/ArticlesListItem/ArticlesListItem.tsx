@@ -9,7 +9,7 @@ import ArticleViewsIcon from '@/shared/assets/icons/eye.svg';
 import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button } from '@/shared/ui/Button/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Article, ArticleBlockText } from '../../model/type/article';
 import cls from './ArticlesListItem.module.scss';

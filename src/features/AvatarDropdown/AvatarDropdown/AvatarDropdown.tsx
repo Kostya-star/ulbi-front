@@ -11,7 +11,7 @@ import NotificationIcon from '@/shared/assets/icons/notification.svg';
 import { NotificationList } from '@/entities/Notification';
 import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import {
   getAuthUserData, isUserAdmin, isUserManager, logout,

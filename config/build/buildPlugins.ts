@@ -9,8 +9,8 @@ import {
 } from 'webpack';
 
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 import { BuildOptions } from './types/config';
-// import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 export function buildPlugins({
   paths, isDev, apiUrl, project,
@@ -52,10 +52,10 @@ export function buildPlugins({
         mode: 'write-references',
       },
     }));
-    // plugins.push(new CircularDependencyPlugin({
-    //   exclude: /node_modules/,
-    //   failOnError: true,
-    // }));
+    plugins.push(new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true,
+    }));
   }
 
   return plugins;
