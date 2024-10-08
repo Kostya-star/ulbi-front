@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { AppLink } from '@/shared/ui/AppLink';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Card, CardTheme } from '@/shared/ui/Card';
 import { HStack } from '@/shared/ui/Stack';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { Text, TextSize } from '@/shared/ui/Text';
 import UpRightFromSquareIcon from '@/shared/assets/icons/up-right-from-square-solid.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Icon } from '@/shared/ui/Icon';
 import type { NotificationItem as INotificationItem } from '../../model/types/notification';
 import cls from './NotificationItem.module.scss';
 

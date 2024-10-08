@@ -1273,6 +1273,12 @@
       "articleId": "14",
       "userId": "1",
       "id": "lWy4KGl"
+    },
+    {
+      "text": "ывывыыв",
+      "articleId": "2",
+      "userId": "1",
+      "id": "v17egDn"
     }
   ],
   "users": [
@@ -1362,6 +1368,12 @@
       "rate": 3,
       "feedback": "aa",
       "id": "AUkF-ik"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "rate": 1,
+      "id": "L175rcM"
     }
   ]
 }

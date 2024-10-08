@@ -5,7 +5,7 @@ import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useCon
 import { ReducersList, useReduxReducerManager } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { getError, getView } from '../../model/selectors/articlesPageSelectors';

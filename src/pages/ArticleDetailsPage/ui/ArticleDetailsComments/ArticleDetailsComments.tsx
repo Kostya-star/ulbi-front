@@ -5,7 +5,7 @@ import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/addCommentForm';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
 import { VStack } from '@/shared/ui/Stack';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';

@@ -123,7 +123,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextAlign } from '@/shared/ui/Text/Text';
+import { Text, TextAlign } from '@/shared/ui/Text';
 import { ArticlesView } from '../../model/const/article';
 import { Article } from '../../model/type/article';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';

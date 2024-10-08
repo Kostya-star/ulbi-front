@@ -8,7 +8,7 @@ import { useGetArticleRating } from '../../model/api/getArticleRating';
 import { getAuthUserData, User } from '@/entities/User';
 import { usePostArticleRating } from '../../model/api/postArticleRating';
 import { usePatchArticleRating } from '../../model/api/patchArticleRating';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface ArticleRatingProps {
   className?: string;

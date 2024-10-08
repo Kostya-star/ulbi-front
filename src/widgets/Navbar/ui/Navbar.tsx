@@ -15,13 +15,13 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useDevice } from '@/shared/hooks/useDevice/useDevice';
 import { usePopupController } from '@/shared/hooks/usePopupController/usePopupController';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
-import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
+import { AppLink } from '@/shared/ui/AppLink';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Drawer } from '@/shared/ui/Drawer';
+import { Dropdown } from '@/shared/ui/Dropdown';
 import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {

@@ -4,15 +4,15 @@ import {
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Rating.module.scss';
-import { Card } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text/Text';
-import { StarRating } from '@/shared/ui/StarRating/StarRating';
-import { Modal } from '@/shared/ui/Modal/Modal';
-import { Input } from '@/shared/ui/Input/Input';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Text } from '@/shared/ui/Text';
+import { StarRating } from '@/shared/ui/StarRating';
+import { Modal } from '@/shared/ui/Modal';
+import { Input } from '@/shared/ui/Input';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useDevice } from '@/shared/hooks/useDevice/useDevice';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Drawer } from '@/shared/ui/Drawer';
 import { usePopupController } from '@/shared/hooks/usePopupController/usePopupController';
 
 interface RatingProps {
