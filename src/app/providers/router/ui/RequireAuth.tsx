@@ -3,8 +3,9 @@ import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 import { getAuthUserData } from '@/entities/User';
+
+import { getRouteForbidden } from '../model/config/routeConfig';
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -16,7 +17,7 @@ export const RequireAuth = memo(({ children, authOnly }: RequireAuthProps) => {
   const location = useLocation();
 
   if (authOnly && !isAuth) {
-    return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
+    return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
   }
 
   return children;

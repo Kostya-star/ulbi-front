@@ -113,7 +113,7 @@ module.exports = {
       alias: '@',
       ignoreImportPatterns: [
         '**/StoreProvider',
-        '**/routeConfig',
+        '**/router',
         '**/ThemeProvider',
       ],
     }],

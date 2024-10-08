@@ -5,7 +5,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // import cls from './AvatarDropdown.module.scss';
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
+import {
+  getRouteAdminPanel, getRouteMain, getRouteProfile,
+} from '@/app/providers/router';
 import {
   getAuthUserData, isUserAdmin, isUserManager, logout,
 } from '@/entities/User';
@@ -31,7 +33,7 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
 
   const onLogout = useCallback(() => {
     dispatch(logout());
-    navigate(RoutePath.main);
+    navigate(getRouteMain());
   }, [dispatch, navigate]);
 
   if (!authData) return null;
@@ -44,12 +46,12 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
         ...(isAdminPanelAvailable
           ? [{
             content: t('admin_panel'),
-            href: RoutePath.admin_panel,
+            href: getRouteAdminPanel(),
           }]
           : []),
         {
           content: t('profile'),
-          href: RoutePath.profile + authData.id,
+          href: getRouteProfile(authData.id),
         },
         {
           content: t('sign_out'),

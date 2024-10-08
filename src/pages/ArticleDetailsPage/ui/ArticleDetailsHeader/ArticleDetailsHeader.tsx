@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
+import { getRouteArticleEdit, getRouteArticles } from '@/app/providers/router';
 import { getArticleDetailsData } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
@@ -24,12 +24,14 @@ export const ArticleDetailsHeader = memo(({ className }: ArticleDetailsHeaderPro
   const article = useSelector(getArticleDetailsData);
 
   const navigateToAllArticles = useCallback(() => {
-    navigate(RoutePath.articles);
+    navigate(getRouteArticles());
   }, [navigate]);
 
   const navigateToEditArticle = useCallback(() => {
-    navigate(`${RoutePath.article_details}${article?.id}/edit`);
-  }, [article?.id, navigate]);
+    if (article) {
+      navigate(getRouteArticleEdit(article.id));
+    }
+  }, [article, navigate]);
 
   return (
     <HStack

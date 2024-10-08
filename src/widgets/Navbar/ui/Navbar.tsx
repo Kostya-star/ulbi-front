@@ -5,7 +5,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
+import { getRouteArticleCreate } from '@/app/providers/router';
 import {
   getAuthUserData,
 } from '@/entities/User';
@@ -52,7 +52,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           alignItems='center'
           allWidth
         >
-          <AppLink to={RoutePath.article_create}>
+          <AppLink to={getRouteArticleCreate()}>
             {t('create_article')}
           </AppLink>
           <HStack gap='16' alignItems='center'>

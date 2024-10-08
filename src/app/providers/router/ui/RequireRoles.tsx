@@ -3,8 +3,9 @@ import { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 import { getUserRoles, UserRole } from '@/entities/User';
+
+import { getRouteForbidden } from '../model/config/routeConfig';
 
 interface RequireRolesProps {
   children: JSX.Element;
@@ -22,7 +23,7 @@ export const RequireRoles = memo(({ children, roles }: RequireRolesProps) => {
   }, [roles, userRoles]);
 
   if (!hasAccessByRoles) {
-    return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
+    return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
   }
 
   return children;
