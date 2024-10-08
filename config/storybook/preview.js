@@ -13,6 +13,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  layout: 'fullscreen'
 };
 
 // global decorator for all stories. by default, all stories would have the light theme

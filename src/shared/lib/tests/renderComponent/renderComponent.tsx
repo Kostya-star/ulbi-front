@@ -17,19 +17,20 @@ export interface RenderOptions {
 }
 
 export function renderComponent(component: ReactNode, options: RenderOptions = {}) {
-  const { route = '/', initialState } = options;
+  const { route = '/', initialState, asyncReducers } = options;
 
   return render(
-    <StoreProvider
-      asyncReducers={options.asyncReducers as RootReducersType}
-      initialState={initialState as StateSchema}
-    >
-      <MemoryRouter initialEntries={[route]}>
+    <MemoryRouter initialEntries={[route]}>
+      <StoreProvider
+        asyncReducers={asyncReducers as RootReducersType}
+        initialState={initialState as StateSchema}
+      >
         <I18nextProvider i18n={i18nForTests}>
           {component}
         </I18nextProvider>
-      </MemoryRouter>
+        ,
+      </StoreProvider>
       ,
-    </StoreProvider>,
+    </MemoryRouter>,
   );
 }
