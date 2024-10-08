@@ -10,11 +10,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ windows-2019, ubuntu-latest ]
+        os: [ windows-2019 ]
         node-version: [ 17.x ]
 
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
