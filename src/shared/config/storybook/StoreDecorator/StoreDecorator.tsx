@@ -8,8 +8,9 @@ import { loginReducer } from '@/features/AuthByUsername';
 import { profileReducer } from '@/features/EditableProfileCard';
 import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage';
 import { articlesPageReducer } from '@/pages/ArticlesPage';
+import { ReducersList } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 
-const defaultAsyncReducers: DeepPartial<RootReducersType> = {
+const defaultAsyncReducers: ReducersList = {
   login: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
