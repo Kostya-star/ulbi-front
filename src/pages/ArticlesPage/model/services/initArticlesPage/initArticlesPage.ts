@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
 import { ARTICLES_VIEW_LOCAL_STORAGE } from '@/shared/const/localStorage';
 import { parseQueryParams } from '@/shared/lib/url/handleQueryParams/handleQueryParams';
 import { SortOrder } from '@/shared/types/SortOrder';
+
 import { BIG_VIEW_LIMIT, SMALL_VIEW_LIMIT } from '../../const/articlesLimit/articlesLimit';
 import {
   setLimit, setOrder, setPage, setSearch, setSortBy, setType, setView,

@@ -1,11 +1,14 @@
 import {
   Fragment, ReactNode, useCallback, useMemo,
 } from 'react';
+
 import { Listbox as HListBox } from '@headlessui/react';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
-import { HStack } from '../Stack';
+
 import { Button } from '../Button/Button';
+import { HStack } from '../Stack';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {

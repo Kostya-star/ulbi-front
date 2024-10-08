@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import { EditableProfileCard } from './EditableProfileCard';
 
 export default {

@@ -1,4 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
+
 import { ArticleRating } from '../type/ArticleRating';
 
 interface GetArticleRatingArgs {

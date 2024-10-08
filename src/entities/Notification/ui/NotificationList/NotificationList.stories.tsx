@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
+
+import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 import { NotificationList } from './NotificationList';
 import { NotificationItem } from '../../model/types/notification';
-import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 
 export default {
   title: 'entities/notification/NotificationList',

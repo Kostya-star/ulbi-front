@@ -1,8 +1,10 @@
 import { memo } from 'react';
+
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Code } from '@/shared/ui/Code';
-import { ArticleBlockCode } from '../../model/type/article';
+
 import cls from './ArticleBlockCodeComp.module.scss';
+import { ArticleBlockCode } from '../../model/type/article';
 
 interface ArticleBlockCodeCompProps {
   className?: string;

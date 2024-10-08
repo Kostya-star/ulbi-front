@@ -1,10 +1,12 @@
 import { Suspense, useEffect, useState } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
+
 import { useTheme } from '@/app/providers/ThemeProvider';
+import { initAuthUserData } from '@/entities/User';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { initAuthUserData } from '@/entities/User';
+
 import { AppRouter } from './providers/router';
 
 export function App() {

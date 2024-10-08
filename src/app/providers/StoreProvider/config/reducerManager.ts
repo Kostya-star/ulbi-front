@@ -1,4 +1,5 @@
 import { AnyAction, combineReducers, Reducer } from '@reduxjs/toolkit';
+
 import {
   ReducerManager, RootReducersType, StateSchema, StateSchemaKey,
 } from './StateSchema';

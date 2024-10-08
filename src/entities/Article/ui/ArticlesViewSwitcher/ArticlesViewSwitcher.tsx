@@ -1,9 +1,11 @@
 import { memo, useCallback } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import ViewSmallIcon from '@/shared/assets/icons/view_tile.svg';
+
 import ViewBigIcon from '@/shared/assets/icons/view_list.svg';
+import ViewSmallIcon from '@/shared/assets/icons/view_tile.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
+
 import cls from './ArticlesViewSwitcher.module.scss';
 import { ArticlesView } from '../../model/const/article';
 

@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const getUserRoles = (state: StateSchema) => state.user.authData?.role; // a user can have multiple roles

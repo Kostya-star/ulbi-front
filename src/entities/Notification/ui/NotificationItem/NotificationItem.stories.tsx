@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
+import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 
 import { NotificationItem } from './NotificationItem';
-import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 import type { NotificationItem as INotificationItem } from '../../model/types/notification';
 
 export default {

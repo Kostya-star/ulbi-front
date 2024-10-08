@@ -1,31 +1,34 @@
 import { memo, useCallback, useEffect } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import ScheduleIcon from '@/shared/assets/icons/schedule.svg';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useReduxReducerManager } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar';
+import { Icon } from '@/shared/ui/Icon';
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import {
   Text, TextAlign, TextSize, TextTheme,
 } from '@/shared/ui/Text';
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import ScheduleIcon from '@/shared/assets/icons/schedule.svg';
-import { Icon } from '@/shared/ui/Icon';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import { ArticleBlock } from '../../model/type/article';
+
+import cls from './ArticleDetails.module.scss';
+import { ArticleBlockType } from '../../model/const/article';
 import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsLoading,
 } from '../../model/selectors/getArticleDetails/getArticleDetails';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import cls from './ArticleDetails.module.scss';
-import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextComp';
+import { ArticleBlock } from '../../model/type/article';
 import { ArticleBlockCodeComp } from '../ArticleBlockCodeComp/ArticleBlockCodeComp';
 import { ArticleBlockImgComp } from '../ArticleBlockImgComp/ArticleBlockImgComp';
-import { ArticleBlockType } from '../../model/const/article';
+import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextComp';
 
 interface ArticleDetailsProps {
   className?: string;

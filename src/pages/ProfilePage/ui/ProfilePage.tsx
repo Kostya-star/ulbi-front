@@ -1,9 +1,11 @@
 import { FC, memo } from 'react';
+
 import { useParams } from 'react-router-dom';
+
+import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 import { ReducersList, useReduxReducerManager } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
-import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 
 const reducers: ReducersList = {
   profile: profileReducer,

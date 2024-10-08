@@ -1,17 +1,19 @@
 import { memo, useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/addCommentForm';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
-import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
 import { VStack } from '@/shared/ui/Stack';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
+import { Text } from '@/shared/ui/Text';
+
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 
 interface ArticleDetailsCommentsProps {
   className?: string;

@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Comment } from '@/entities/Comment';
 import { getAuthUserData } from '@/entities/User';
+
 import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 interface PayloadThunk {

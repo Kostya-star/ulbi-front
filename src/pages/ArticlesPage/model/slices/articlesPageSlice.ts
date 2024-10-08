@@ -1,11 +1,13 @@
 import {
   createEntityAdapter, createSlice, EntityAdapter, EntityState, PayloadAction,
 } from '@reduxjs/toolkit';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
 import {
   Article, ArticleSortByOptions, ArticlesView, ArticleType,
 } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/SortOrder';
+
 import { BIG_VIEW_LIMIT } from '../const/articlesLimit/articlesLimit';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';

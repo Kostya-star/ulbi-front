@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from "react";
+
 import { ErrorPage } from '@/widgets/ErrorPage';
 
 interface ErrorBoundaryProps {

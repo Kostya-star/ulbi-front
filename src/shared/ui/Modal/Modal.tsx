@@ -1,8 +1,8 @@
-import {
-  FC, memo, MouseEvent, ReactNode, useCallback, useEffect,
-} from 'react';
+import { memo, ReactNode } from 'react';
+
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
+
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import { HStack } from '../Stack';

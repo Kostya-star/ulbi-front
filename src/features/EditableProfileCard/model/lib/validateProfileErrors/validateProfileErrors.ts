@@ -1,5 +1,6 @@
 import { Profile } from '@/entities/Profile';
 import { isNumber } from '@/shared/util/isNumber/isNumber';
+
 import { ProfileFormErrors } from '../../const/profileFormErrors';
 
 export function validateProfileErrors(profileEdits: Profile | null) {

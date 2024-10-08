@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+
 import ForbiddenPage from './ForbiddenPage';
 
 export default {

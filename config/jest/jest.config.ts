@@ -3,8 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from '@jest/types';
 import path from 'path';
+
+import type { Config } from '@jest/types';
 
 const jestConfig: Config.InitialOptions = {
   globals: {

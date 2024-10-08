@@ -1,8 +1,11 @@
 import { memo } from 'react';
+
 import { useSelector } from 'react-redux';
+
 import { ArticlesList } from '@/entities/Article';
-import { getArticles } from '../../model/slices/articlesPageSlice';
+
 import { getIsLoading, getView } from '../../model/selectors/articlesPageSelectors';
+import { getArticles } from '../../model/slices/articlesPageSlice';
 
 export const ArticlesInfiniteList = memo(() => {
   const articles = useSelector(getArticles.selectAll);

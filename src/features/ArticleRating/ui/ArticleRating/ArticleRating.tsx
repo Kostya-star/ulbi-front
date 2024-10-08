@@ -1,14 +1,16 @@
 import { memo, useCallback } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ArticleRating.module.scss';
+
 import { Rating } from '@/entities/Rating';
-import { useGetArticleRating } from '../../model/api/getArticleRating';
 import { getAuthUserData, User } from '@/entities/User';
-import { usePostArticleRating } from '../../model/api/postArticleRating';
-import { usePatchArticleRating } from '../../model/api/patchArticleRating';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Skeleton } from '@/shared/ui/Skeleton';
+
+import { useGetArticleRating } from '../../model/api/getArticleRating';
+import { usePatchArticleRating } from '../../model/api/patchArticleRating';
+import { usePostArticleRating } from '../../model/api/postArticleRating';
 
 export interface ArticleRatingProps {
   className?: string;

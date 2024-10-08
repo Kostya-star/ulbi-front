@@ -1,5 +1,7 @@
 import { FC, useMemo } from 'react';
+
 import { useTranslation } from 'react-i18next';
+
 import { Country, CountrySelect } from '@/entities/CountrySelect';
 import { Currency, CurrencySelect } from '@/entities/CurrencySelect';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -8,8 +10,9 @@ import { Input } from '@/shared/ui/Input';
 import { Loader } from '@/shared/ui/Loader';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
-import { Profile } from '../../model/types/profile';
+
 import cls from './ProfileCard.module.scss';
+import { Profile } from '../../model/types/profile';
 
 interface ProfileCardProps {
   className?: string;

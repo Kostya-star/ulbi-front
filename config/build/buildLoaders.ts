@@ -1,4 +1,5 @@
 import { RuleSetRule } from 'webpack';
+
 import { buildBabelLoader } from './loaders/buildBabelLoader';
 import { buildCssLoaders } from './loaders/buildCssLoaders';
 import { BuildOptions } from './types/config';

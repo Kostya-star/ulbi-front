@@ -1,9 +1,10 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
+import { Theme } from '@/app/providers/ThemeProvider';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+
 import { Sidebar } from './Sidebar';
-import { Theme } from '@/app/providers/ThemeProvider';
 
 export default {
   title: 'widgets/Sidebar',

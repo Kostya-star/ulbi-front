@@ -1,8 +1,6 @@
 import { action } from '@storybook/addon-actions';
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Theme } from '@/app/providers/ThemeProvider';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ListBox, ListBoxItem } from './ListBox';
 
 export default {

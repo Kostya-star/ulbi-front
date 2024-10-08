@@ -24,6 +24,7 @@ module.exports = {
     'react-hooks',
     // my custom written eslint plugin to check for paths
     'front-fresh',
+    'unused-imports',
   ],
   rules: {
     // 'react/jsx-indent': [2, 4],
@@ -77,6 +78,31 @@ module.exports = {
     "no-param-reassign": "off",
     "no-undef": "off",
     "react/no-array-index-key": "off",
+    "unused-imports/no-unused-imports": "error",
+    'import/order': [
+      'warn',
+      {
+        groups: ['builtin', 'external', 'internal'],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
     // custom written eslint plugin to check for paths
     "front-fresh/path-checker": ["error", { alias: '@' }],
     "front-fresh/public-api-imports": ["error", {

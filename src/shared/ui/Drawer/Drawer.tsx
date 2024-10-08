@@ -1,13 +1,15 @@
 import {
   memo, ReactNode, useCallback, useEffect, useMemo,
 } from 'react';
+
 import { useTheme } from '@/app/providers/ThemeProvider';
+import { AnimationProvider } from '@/shared/lib/AnimationProvider/AnimationProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ReactSpringType, UseGestureType } from '@/shared/types/asyncAnimationLibs';
+
+import cls from './Drawer.module.scss';
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
-import cls from './Drawer.module.scss';
-import { AnimationProvider } from '@/shared/lib/AnimationProvider/AnimationProvider';
 
 type Sides = 'left' | 'right' | 'bottom'
 

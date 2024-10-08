@@ -1,5 +1,5 @@
-import { ProfileFormErrors } from '../../const/profileFormErrors';
 import { validateProfileErrors } from './validateProfileErrors';
+import { ProfileFormErrors } from '../../const/profileFormErrors';
 
 describe('validateProfileErrors', () => {
   test('no data', () => {

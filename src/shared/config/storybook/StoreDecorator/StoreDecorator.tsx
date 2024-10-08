@@ -1,12 +1,13 @@
 /* eslint-disable front-fresh/layers-imports */
 import { Story } from '@storybook/react';
+
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { RootReducersType } from '@/app/providers/StoreProvider/config/StateSchema';
-import { loginReducer } from '@/features/AuthByUsername';
 import { articleDetailsReducer } from '@/entities/Article';
-import { articlesPageReducer } from '@/pages/ArticlesPage';
-import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage';
+import { loginReducer } from '@/features/AuthByUsername';
 import { profileReducer } from '@/features/EditableProfileCard';
+import { articleDetailsPageReducer } from '@/pages/ArticleDetailsPage';
+import { articlesPageReducer } from '@/pages/ArticlesPage';
 
 const defaultAsyncReducers: DeepPartial<RootReducersType> = {
   login: loginReducer,

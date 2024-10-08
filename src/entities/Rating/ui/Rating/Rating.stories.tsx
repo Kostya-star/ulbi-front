@@ -1,9 +1,7 @@
-import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 import { Rating } from './Rating';
-import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 
 export default {
   title: 'entities/Rating',

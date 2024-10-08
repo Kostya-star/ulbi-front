@@ -1,27 +1,24 @@
 import {
-  memo, useCallback, useMemo, useState,
+  memo,
 } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
+import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 import {
-  getAuthUserData, isUserAdmin, isUserManager, logout,
+  getAuthUserData,
 } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { useDevice } from '@/shared/hooks/useDevice/useDevice';
 import { usePopupController } from '@/shared/hooks/usePopupController/usePopupController';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
-import { Avatar } from '@/shared/ui/Avatar';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Drawer } from '@/shared/ui/Drawer';
-import { Dropdown } from '@/shared/ui/Dropdown';
 import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
+
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {

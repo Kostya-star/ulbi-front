@@ -1,6 +1,7 @@
 import {
   ReactElement, useEffect, useRef, useState,
 } from 'react';
+
 import { ReactSpringType, UseGestureType } from '@/shared/types/asyncAnimationLibs';
 
 interface AsyncLibs {

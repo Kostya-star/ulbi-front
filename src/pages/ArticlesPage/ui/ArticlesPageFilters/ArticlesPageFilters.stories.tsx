@@ -1,12 +1,11 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
-import { Theme } from '@/app/providers/ThemeProvider';
+
 import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { SortOrder } from '@/shared/types/SortOrder';
-import { ArticlesPageSchema } from '../../model/types/ArticlesPageSchema';
 
 import { ArticlesPageFilters } from './ArticlesPageFilters';
+import { ArticlesPageSchema } from '../../model/types/ArticlesPageSchema';
 
 export default {
   title: 'pages/Article/ArticlesPageFilters',

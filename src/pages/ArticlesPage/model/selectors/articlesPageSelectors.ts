@@ -1,6 +1,7 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/SortOrder';
+
 import { SMALL_VIEW_LIMIT } from '../const/articlesLimit/articlesLimit';
 
 export const getIsLoading = (state: StateSchema) => state.articlesPage?.isLoading || false;

@@ -1,26 +1,29 @@
 import { memo, useCallback, useMemo } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
 import {
   ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher, ArticleType, ArticleTypeTabs,
 } from '@/entities/Article';
+import { ARTICLES_VIEW_LOCAL_STORAGE } from '@/shared/const/localStorage';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useDebounce } from '@/shared/hooks/useDebounce/useDebounce';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types/SortOrder';
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 import { Select, SelectOption } from '@/shared/ui/Select';
-import { useDebounce } from '@/shared/hooks/useDebounce/useDebounce';
-import { ARTICLES_VIEW_LOCAL_STORAGE } from '@/shared/const/localStorage';
 import { HStack } from '@/shared/ui/Stack';
-import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
+
+import cls from './ArticlesPageFilters.module.scss';
 import {
   getOrder, getSearch, getSortBy, getType, getView,
 } from '../../model/selectors/articlesPageSelectors';
+import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import {
   setOrder, setPage, setSearch, setSortBy, setType, setView,
 } from '../../model/slices/articlesPageSlice';
-import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
   className?: string;

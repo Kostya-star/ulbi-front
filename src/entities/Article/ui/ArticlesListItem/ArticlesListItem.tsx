@@ -1,20 +1,23 @@
 import {
   HTMLAttributeAnchorTarget, memo, useMemo,
 } from 'react';
+
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/Icon';
-import { Text } from '@/shared/ui/Text';
+
+import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
 import ArticleViewsIcon from '@/shared/assets/icons/eye.svg';
-import { Card } from '@/shared/ui/Card';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
-import { RoutePath } from '@/app/providers/router/model/config/routeConfig';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Article, ArticleBlockText } from '../../model/type/article';
+import { Card } from '@/shared/ui/Card';
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
+
 import cls from './ArticlesListItem.module.scss';
-import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextComp';
 import { ArticleBlockType, ArticlesView } from '../../model/const/article';
+import { Article, ArticleBlockText } from '../../model/type/article';
+import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextComp';
 
 interface ArticlesListItemProps {
   className?: string;

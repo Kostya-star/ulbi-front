@@ -9,6 +9,7 @@
 // });
 
 import axios from 'axios';
+
 import { USER_DATA_LOCAL_STORAGE } from '@/shared/const/localStorage';
 
 export const $api = axios.create({

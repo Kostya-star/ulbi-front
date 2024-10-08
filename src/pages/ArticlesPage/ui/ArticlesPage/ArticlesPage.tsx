@@ -1,18 +1,21 @@
 import { memo, useCallback } from 'react';
+
 import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
 import { ReducersList, useReduxReducerManager } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Page } from '@/widgets/Page';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
-import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { getError, getView } from '../../model/selectors/articlesPageSelectors';
-import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
+import { Page } from '@/widgets/Page';
+
 import cls from './ArticlesPage.module.scss';
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import { getError, getView } from '../../model/selectors/articlesPageSelectors';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticlesPageProps {
   className?: string;

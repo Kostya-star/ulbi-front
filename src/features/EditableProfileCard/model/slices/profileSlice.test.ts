@@ -1,8 +1,9 @@
 import { Country } from '@/entities/CountrySelect';
 import { Currency } from '@/entities/CurrencySelect';
+
+import { profileReducer } from './profileSlice';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/profile';
-import { profileReducer } from './profileSlice';
 
 const data = {
   first: 'Constantin!',

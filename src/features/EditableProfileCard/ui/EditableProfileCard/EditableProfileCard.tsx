@@ -1,26 +1,27 @@
-import { useTranslation } from 'react-i18next';
 import {
   memo, useCallback, useEffect, useMemo, useState,
 } from 'react';
+
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextTheme } from '@/shared/ui/Text';
-import { Profile, ProfileCard } from '@/entities/Profile';
-import { Currency } from '@/entities/CurrencySelect';
+
 import { Country } from '@/entities/CountrySelect';
-import { isNumber } from '@/shared/util/isNumber/isNumber';
+import { Currency } from '@/entities/CurrencySelect';
+import { Profile, ProfileCard } from '@/entities/Profile';
 import { getAuthUserData } from '@/entities/User';
 import AvatarImg from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { isNumber } from '@/shared/util/isNumber/isNumber';
+
 import { validateProfileErrors } from '../../model/lib/validateProfileErrors/validateProfileErrors';
-import cls from './EditableProfileCard.module.scss';
-import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
-import { ProfileCardHeader } from '../ProfileCardHeader/ProfileCardHeader';
+import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
+import { ProfileCardHeader } from '../ProfileCardHeader/ProfileCardHeader';
 
 interface EditableProfileCardProps {
   className?: string;
