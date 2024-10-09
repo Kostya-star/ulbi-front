@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
-  ArticleSortByOptions, ArticlesView, ArticlesViewSwitcher, ArticleType, ArticleTypeTabs,
+  ArticleSortByOptions, ArticlesView, ArticleType,
 } from '@/entities/Article';
+import { ArticlesViewSwitcher } from '@/features/ArticlesViewSwitcher';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 import { ARTICLES_VIEW_LOCAL_STORAGE } from '@/shared/const/localStorage';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from '@/shared/hooks/useDebounce/useDebounce';

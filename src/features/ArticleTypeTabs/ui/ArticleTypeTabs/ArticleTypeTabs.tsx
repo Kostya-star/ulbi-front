@@ -2,11 +2,11 @@ import { memo, useCallback, useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import { ArticleType } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Tabs } from '@/shared/ui/Tabs';
 
 import cls from './ArticleTypeTabs.module.scss';
-import { ArticleType } from '../../model/const/article';
 
 interface ArticleTypeTabsProps {
   className?: string;
