@@ -7,11 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { getRouteArticleDetails } from '@/app/providers/router';
 import ArticleViewsIcon from '@/shared/assets/icons/eye.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Icon } from '@/shared/ui/Icon';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text } from '@/shared/ui/Text';
 
 import cls from './ArticlesListItem.module.scss';
@@ -59,7 +61,12 @@ export const ArticlesListItem = memo(({
           <Text text={article.title} className={cls.title} />
           <Text text={article.type.join(', ')} className={cls.type} />
 
-          <img src={article.img} alt={article.title} className={cls.img} />
+          <AppImage
+            className={cls.img}
+            src={article.img}
+            alt={article.title}
+            fallbackLoading={<Skeleton width='100%' height='250px' />}
+          />
 
           {
             textBlock && (
@@ -89,7 +96,14 @@ export const ArticlesListItem = memo(({
     >
       <Card>
         <div className={cls.imgWrapper}>
-          <img src={article.img} alt={article.title} className={cls.img} />
+
+          <AppImage
+            className={cls.img}
+            src={article.img}
+            alt={article.title}
+            fallbackLoading={<Skeleton width='200px' height='200px' />}
+          />
+
           <Text text={article.createdAt} className={cls.date} />
         </div>
         <div>
