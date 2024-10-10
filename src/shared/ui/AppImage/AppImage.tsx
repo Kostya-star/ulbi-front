@@ -43,7 +43,7 @@ export const AppImage = memo(({
     return fallbackLoading;
   }
 
-  if (!isError && fallbackError) {
+  if (isError && fallbackError) {
     return fallbackError;
   }
 
