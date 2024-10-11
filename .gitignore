@@ -2,6 +2,7 @@ node_modules
 
 # ignore only the root build folder
 /build/
+
 /storybook-static
 .loki/report.json
 .loki/report.html
