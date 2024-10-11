@@ -2,13 +2,13 @@ import { memo, Suspense, useMemo } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { routeConfig } from '@/app/providers/router/model/config/routeConfig';
 import { PageLoader } from '@/widgets/PageLoader';
 
 import { RequireAuth } from './RequireAuth';
 import { RequireRoles } from './RequireRoles';
+import { routeConfig } from '../model/config/routeConfig';
 
-function AppRouter() {
+export const AppRouter = memo(() => {
   const routesList = useMemo(() => {
     return Object.values(routeConfig).map((route) => {
       const element = (
@@ -38,6 +38,4 @@ function AppRouter() {
       {routesList}
     </Routes>
   );
-}
-
-export default memo(AppRouter);
+});

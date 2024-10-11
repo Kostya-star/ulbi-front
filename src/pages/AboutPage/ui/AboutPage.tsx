@@ -7,7 +7,7 @@ export default function AboutPage() {
   const { t } = useTranslation('about');
 
   return (
-    <Page>
+    <Page data-testid='AboutPage'>
       <Counter />
       {t('about_page')}
     </Page>

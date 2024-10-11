@@ -21,7 +21,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   const { id: profileId } = useParams<{ id: string }>();
 
   return (
-    <Page className={classNames('', {}, [className])}>
+    <Page data-testid='ProfilePage' className={classNames('', {}, [className])}>
       <EditableProfileCard
         profileId={profileId}
         withHeader

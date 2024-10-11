@@ -13,18 +13,19 @@ import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useCon
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { TestProps } from '@/shared/types/tests';
 
 import cls from './Page.module.scss';
 
-interface PageProps {
+interface PageProps extends TestProps {
   className?: string;
   children: ReactNode
   onScrollEnd?: () => void;
 }
 
-export const Page = memo(({
-  className, children, onScrollEnd,
-}: PageProps) => {
+export const Page = memo((props: PageProps) => {
+  const { className, children, onScrollEnd } = props;
+
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
@@ -54,6 +55,7 @@ export const Page = memo(({
 
   return (
     <main
+      data-testid={props['data-testid'] ?? 'Page'}
       ref={wrapperRef}
       className={classNames(cls.Page, {}, [className])}
       onScroll={onScrollPage}
