@@ -29,8 +29,7 @@
     "make:slice": "node .\\scripts\\createFsdSlice\\index.js"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": "eslint",
-    "**/*.scss": "stylelint"
+    "**/*.{ts,tsx}": "eslint"
   },
   "keywords": [],
   "author": "",
