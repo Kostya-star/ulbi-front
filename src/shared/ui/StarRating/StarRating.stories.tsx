@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 
 import { StarRating } from './StarRating';
 
@@ -9,7 +8,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [withMock],
 } as ComponentMeta<typeof StarRating>;
 
 const Template: ComponentStory<typeof StarRating> = (args) => <StarRating {...args} />;

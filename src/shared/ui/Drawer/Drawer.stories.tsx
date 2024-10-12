@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 
 import { Drawer } from './Drawer';
 
@@ -9,7 +8,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [withMock],
 } as ComponentMeta<typeof Drawer>;
 
 const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;

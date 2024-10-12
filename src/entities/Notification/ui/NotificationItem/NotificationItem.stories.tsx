@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 
 import StorybookAvatar from '@/shared/assets/tests/storybook/storybook-avatar.jpg';
 
@@ -12,7 +11,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [withMock],
 } as ComponentMeta<typeof NotificationItem>;
 
 const Template: ComponentStory<typeof NotificationItem> = (args) => <NotificationItem {...args} />;
