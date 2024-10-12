@@ -1308,6 +1308,15 @@
         "MANAGER"
       ],
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR_B0sYx_rXPS4n_bvGPfAVftvWqR-f2CRjw&s"
+    },
+    {
+      "id": "4",
+      "username": "test",
+      "password": "test",
+      "role": [
+        "ADMIN"
+      ],
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt5hlguGVkKpBcz3R7vXCH8M2WtsCtQOWWxQ&s"
     }
   ],
   "profile": [

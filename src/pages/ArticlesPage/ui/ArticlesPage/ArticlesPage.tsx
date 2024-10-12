@@ -52,6 +52,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 
   return (
     <Page
+      data-testid='ArticlesPage'
       className={classNames(cls.ArticlesPage, {}, [className])}
       onScrollEnd={onFetchNextArticlesPage}
     >
