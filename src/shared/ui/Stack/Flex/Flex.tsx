@@ -48,16 +48,18 @@ const flexGapConst: Record<FlexGap, string> = {
   32: cls.gap32,
 };
 
-export const Flex = memo(({
-  className,
-  children,
-  justifyContent = 'start',
-  alignItems = 'start',
-  flexDirection = 'row',
-  gap,
-  allWidth,
-  tag = 'div',
-}: FlexProps) => {
+export const Flex = memo((props: FlexProps) => {
+  const {
+    className,
+    children,
+    justifyContent = 'start',
+    alignItems = 'start',
+    flexDirection = 'row',
+    gap,
+    allWidth,
+    tag = 'div',
+  } = props;
+
   const classNamesArr = useMemo(() => [
     className,
     justifyContentConst[justifyContent],

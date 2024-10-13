@@ -179,7 +179,7 @@ export const ArticlesList = memo(({
   }
 
   return (
-    <div className={classNames('', {}, [className, cls[view]])}>
+    <div data-testid='ArticlesList' className={classNames('', {}, [className, cls[view]])}>
       {articlesList}
       {isLoading && getSkeletons(view)}
     </div>

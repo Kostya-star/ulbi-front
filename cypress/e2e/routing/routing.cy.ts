@@ -1,21 +1,16 @@
-import { selectByDataTestId } from '../helpers/selectByDataTestId';
-
-const LOGIN = 'admin';
-const PASSWORD = '123';
-
 describe('Routing', () => {
   describe('User is not authenticated', () => {
     it('Main page should be rendered', () => {
       cy.visit('/');
-      cy.get(`[${selectByDataTestId('MainPage')}]`).should('exist');
+      cy.getByTestId('MainPage').should('exist');
     });
     it('Forbidden page should be rendered', () => {
       cy.visit('/profile/1');
-      cy.get(`[${selectByDataTestId('ForbiddenPage')}]`).should('exist');
+      cy.getByTestId('ForbiddenPage').should('exist');
     });
     it('NotFoundPage page should be rendered', () => {
       cy.visit('/asdfghjykjhgfwefghtyhgfdwerkjhgfsdvsv');
-      cy.get(`[${selectByDataTestId('NotFoundPage')}]`).should('exist');
+      cy.getByTestId('NotFoundPage').should('exist');
     });
   });
   describe('User authenticated', () => {
@@ -25,11 +20,11 @@ describe('Routing', () => {
 
     it('Profile page should be rendered', () => {
       cy.visit('/profile/1');
-      cy.get(`[${selectByDataTestId('ProfilePage')}]`).should('exist');
+      cy.getByTestId('ProfilePage').should('exist');
     });
     it('Articles page should be rendered', () => {
       cy.visit('/articles');
-      cy.get(`[${selectByDataTestId('ArticlesPage')}]`).should('exist');
+      cy.getByTestId('ArticlesPage').should('exist');
     });
   });
 });

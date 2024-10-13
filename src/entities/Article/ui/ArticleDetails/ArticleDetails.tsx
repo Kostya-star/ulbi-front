@@ -142,7 +142,7 @@ export const ArticleDetails = memo(({ articleId, className }: ArticleDetailsProp
 
   return (
     // eslint-disable-next-line i18next/no-literal-string
-    <div className={classNames(cls.ArticleDetails, {}, [className])}>
+    <div data-testid='ArticleDetails' className={classNames(cls.ArticleDetails, {}, [className])}>
       {content}
     </div>
   );
