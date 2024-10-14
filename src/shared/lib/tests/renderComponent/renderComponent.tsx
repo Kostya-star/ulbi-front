@@ -8,29 +8,45 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { RootReducersType } from '@/app/providers/StoreProvider/config/StateSchema';
+import { Theme, ThemeProvider } from '@/app/providers/ThemeProvider';
 import i18nForTests from '@/shared/config/i18n/i18nForTests';
+import '@/app/styles/index.scss';
 
 export interface RenderOptions {
   route?: string;
   initialState?: DeepPartial<StateSchema>;
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
+  theme?: Theme;
 }
 
-export function renderComponent(component: ReactNode, options: RenderOptions = {}) {
-  const { route = '/', initialState, asyncReducers } = options;
+interface TestProviderProps {
+  children: ReactNode;
+  options?: RenderOptions;
+}
 
-  return render(
+export const TestProvider = ({ children, options = {} }: TestProviderProps) => {
+  const {
+    route = '/', initialState, asyncReducers, theme = Theme.DUSK_SERENITY,
+  } = options;
+
+  return (
     <MemoryRouter initialEntries={[route]}>
       <StoreProvider
         asyncReducers={asyncReducers as RootReducersType}
         initialState={initialState as StateSchema}
       >
         <I18nextProvider i18n={i18nForTests}>
-          {component}
+          <ThemeProvider initialTheme={theme}>
+            <div className={`app ${theme}`}>
+              {children}
+            </div>
+          </ThemeProvider>
         </I18nextProvider>
-        ,
       </StoreProvider>
-      ,
-    </MemoryRouter>,
+    </MemoryRouter>
   );
+};
+
+export function renderComponent(component: ReactNode, options: RenderOptions = {}) {
+  return render(<TestProvider options={options}>{component}</TestProvider>);
 }

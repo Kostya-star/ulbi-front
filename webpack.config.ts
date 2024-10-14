@@ -15,12 +15,12 @@ const paths: BuildPaths = {
 };
 
 export default (env: BuildEnv): Configuration => {
-  const MODE: BuildMode = env.mode || 'development';
-  const PORT = env.port || 3000;
+  const MODE: BuildMode = env?.mode || 'development';
+  const PORT = env?.port || 3000;
 
   const isDev = MODE === 'development';
 
-  const apiUrl = env.apiUrl || 'http://localhost:8000';
+  const apiUrl = env?.apiUrl || 'http://localhost:8000';
 
   return buildWebpackConfig({
     mode: MODE,

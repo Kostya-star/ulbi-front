@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {
   ProgressPlugin, WebpackPluginInstance, DefinePlugin, HotModuleReplacementPlugin,
 } from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { BuildOptions } from './types/config';
 
@@ -31,10 +31,10 @@ export function buildPlugins({
   if (isDev) {
     plugins.push(new HotModuleReplacementPlugin());
     plugins.push(...[isDev && new ReactRefreshWebpackPlugin()].filter(Boolean));
-    plugins.push(new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      analyzerPort: 9999,
-    }));
+    // plugins.push(new BundleAnalyzerPlugin({
+    //   openAnalyzer: false,
+    //   analyzerPort: 9999,
+    // }));
     plugins.push(new ForkTsCheckerWebpackPlugin({
       typescript: {
         diagnosticOptions: {
