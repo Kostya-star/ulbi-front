@@ -16,7 +16,7 @@ export const useInfiniteScroll = ({ cb, wrapperRef, triggerRef }: UseInfiniteScr
     if (cb) {
       const options = {
         root: wrapperRef.current,
-        rootMargin: "0px",
+        rootMargin: '0px',
         threshold: 1.0,
       };
 

@@ -9,7 +9,7 @@ import { getRouteForbidden } from '../model/config/routeConfig';
 
 interface RequireRolesProps {
   children: JSX.Element;
-  roles?: UserRole[]
+  roles?: UserRole[];
 }
 
 export const RequireRoles = memo(({ children, roles }: RequireRolesProps) => {

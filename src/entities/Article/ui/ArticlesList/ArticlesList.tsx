@@ -118,9 +118,7 @@
 //   );
 // });
 
-import {
-  HTMLAttributeAnchorTarget, memo, useMemo,
-} from 'react';
+import { HTMLAttributeAnchorTarget, memo, useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -137,51 +135,41 @@ interface ArticlesListProps {
   className?: string;
   articles?: Article[];
   isLoading?: boolean;
-  view?: ArticlesView
+  view?: ArticlesView;
   target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticlesView) => {
-  return new Array(view === ArticlesView.SMALL ? 9 : 3).fill(0).map((_, ind) => (
-    <ArticlesListItemSkeleton view={view} key={ind} />
-  ));
+  return new Array(view === ArticlesView.SMALL ? 9 : 3)
+    .fill(0)
+    .map((_, ind) => <ArticlesListItemSkeleton view={view} key={ind} />);
 };
 
 // WITHOUT VIZUALIZATION
 
-export const ArticlesList = memo(({
-  className, articles, isLoading, view = ArticlesView.SMALL, target,
-}: ArticlesListProps) => {
-  const { t } = useTranslation('articles');
+export const ArticlesList = memo(
+  ({ className, articles, isLoading, view = ArticlesView.SMALL, target }: ArticlesListProps) => {
+    const { t } = useTranslation('articles');
 
-  const articlesList = useMemo(() => {
-    return articles?.length
-      ? articles.map((article) => (
-        <ArticlesListItem
-          key={article.id}
-          target={target}
-          article={article}
-          view={view}
-        />
-      ))
-      : null;
-  }, [articles, view, target]);
+    const articlesList = useMemo(() => {
+      return articles?.length
+        ? articles.map((article) => <ArticlesListItem key={article.id} target={target} article={article} view={view} />)
+        : null;
+    }, [articles, view, target]);
 
-  if (!isLoading && !articles?.length) {
+    if (!isLoading && !articles?.length) {
+      return (
+        <div className={classNames('', {}, [className, cls[view]])}>
+          <Text align={TextAlign.CENTER} title={t('no_articles')} />
+        </div>
+      );
+    }
+
     return (
-      <div className={classNames('', {}, [className, cls[view]])}>
-        <Text
-          align={TextAlign.CENTER}
-          title={t('no_articles')}
-        />
+      <div data-testid="ArticlesList" className={classNames('', {}, [className, cls[view]])}>
+        {articlesList}
+        {isLoading && getSkeletons(view)}
       </div>
     );
-  }
-
-  return (
-    <div data-testid='ArticlesList' className={classNames('', {}, [className, cls[view]])}>
-      {articlesList}
-      {isLoading && getSkeletons(view)}
-    </div>
-  );
-});
+  },
+);

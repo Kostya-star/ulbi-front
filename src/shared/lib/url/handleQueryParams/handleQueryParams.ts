@@ -3,7 +3,7 @@
  * @param params
  */
 
-type Params = Record<string, string | undefined>
+type Params = Record<string, string | undefined>;
 
 export function setQueryParams(params: Params) {
   window.history.pushState(null, '', stringifyQueryParams(params));

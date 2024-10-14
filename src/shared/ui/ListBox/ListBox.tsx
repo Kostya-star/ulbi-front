@@ -1,6 +1,4 @@
-import {
-  Fragment, ReactNode, useCallback, useMemo,
-} from 'react';
+import { Fragment, ReactNode, useCallback, useMemo } from 'react';
 
 import { Listbox as HListBox } from '@headlessui/react';
 
@@ -12,20 +10,20 @@ import { HStack } from '../Stack';
 import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {
-    content: string;
-    value: ReactNode;
-    disabled?: boolean;
+  content: string;
+  value: ReactNode;
+  disabled?: boolean;
 }
 
 interface ListBoxProps {
-    items?: ListBoxItem[];
-    className?: string;
-    value?: string;
-    defaultValue?: string;
-    onChange?: (value: string) => void;
-    readonly?: boolean;
-    direction?: DropdownDirection;
-    label?: string;
+  items?: ListBoxItem[];
+  className?: string;
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  readonly?: boolean;
+  direction?: DropdownDirection;
+  label?: string;
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
@@ -36,37 +34,28 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
 };
 
 export const ListBox = (props: ListBoxProps) => {
-  const {
-    className,
-    items,
-    value,
-    defaultValue,
-    onChange,
-    readonly = false,
-    direction = 'bottom right',
-    label,
-  } = props;
+  const { className, items, value, defaultValue, onChange, readonly = false, direction = 'bottom right', label } = props;
 
   const optionsClasses = useMemo(() => [mapDirectionClass[direction]], [direction]);
 
-  const onChangeValue = useCallback((newVal: string) => {
-    onChange?.(newVal);
-  }, [onChange]);
+  const onChangeValue = useCallback(
+    (newVal: string) => {
+      onChange?.(newVal);
+    },
+    [onChange],
+  );
 
-  const listItems = useMemo(() => items?.map((item) => (
-    <HListBox.Option
-      key={item.content}
-      value={item.content}
-      disabled={item.disabled}
-      as={Fragment}
-    >
-      {({ active: isHovered, selected }) => (
-        <li className={classNames(cls.item, getListItemMods(isHovered, selected, item.disabled))}>
-          {item.content}
-        </li>
-      )}
-    </HListBox.Option>
-  )), [items]);
+  const listItems = useMemo(
+    () =>
+      items?.map((item) => (
+        <HListBox.Option key={item.content} value={item.content} disabled={item.disabled} as={Fragment}>
+          {({ active: isHovered, selected }) => (
+            <li className={classNames(cls.item, getListItemMods(isHovered, selected, item.disabled))}>{item.content}</li>
+          )}
+        </HListBox.Option>
+      )),
+    [items],
+  );
 
   return (
     <HStack gap="4">
@@ -79,13 +68,9 @@ export const ListBox = (props: ListBoxProps) => {
         onChange={onChangeValue}
       >
         <HListBox.Button as="div">
-          <Button disabled={readonly}>
-            {value ?? defaultValue}
-          </Button>
+          <Button disabled={readonly}>{value ?? defaultValue}</Button>
         </HListBox.Button>
-        <HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>
-          {listItems}
-        </HListBox.Options>
+        <HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>{listItems}</HListBox.Options>
       </HListBox>
     </HStack>
   );

@@ -34,11 +34,7 @@ export const ArticleDetailsHeader = memo(({ className }: ArticleDetailsHeaderPro
   }, [article, navigate]);
 
   return (
-    <HStack
-      justifyContent='between'
-      alignItems='center'
-      className={classNames('', {}, [className])}
-    >
+    <HStack justifyContent="between" alignItems="center" className={classNames('', {}, [className])}>
       <Button onClick={navigateToAllArticles}>{t('back_to_articles')}</Button>
       {canEdit && <Button onClick={navigateToEditArticle}>{t('edit_article')}</Button>}
     </HStack>

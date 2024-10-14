@@ -25,21 +25,14 @@ interface TestProviderProps {
 }
 
 export const TestProvider = ({ children, options = {} }: TestProviderProps) => {
-  const {
-    route = '/', initialState, asyncReducers, theme = Theme.DUSK_SERENITY,
-  } = options;
+  const { route = '/', initialState, asyncReducers, theme = Theme.DUSK_SERENITY } = options;
 
   return (
     <MemoryRouter initialEntries={[route]}>
-      <StoreProvider
-        asyncReducers={asyncReducers as RootReducersType}
-        initialState={initialState as StateSchema}
-      >
+      <StoreProvider asyncReducers={asyncReducers as RootReducersType} initialState={initialState as StateSchema}>
         <I18nextProvider i18n={i18nForTests}>
           <ThemeProvider initialTheme={theme}>
-            <div className={`app ${theme}`}>
-              {children}
-            </div>
+            <div className={`app ${theme}`}>{children}</div>
           </ThemeProvider>
         </I18nextProvider>
       </StoreProvider>

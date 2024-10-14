@@ -36,18 +36,24 @@ export const lightWithError = Template.bind({});
 lightWithError.args = {
   isOpen: true,
 };
-lightWithError.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  login: {
-    error: 'error',
-  },
-})];
+lightWithError.decorators = [
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      login: {
+        error: 'error',
+      },
+    }),
+];
 
 export const lightWithLoading = Template.bind({});
 lightWithLoading.args = {
   isOpen: true,
 };
-lightWithLoading.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  login: {
-    isLoading: true,
-  },
-})];
+lightWithLoading.decorators = [
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      login: {
+        isLoading: true,
+      },
+    }),
+];

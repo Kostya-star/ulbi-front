@@ -47,17 +47,16 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 }) => {
   const { t } = useTranslation('profile');
 
-  const mods = useMemo(() => ({
-    [cls.editing]: !isReadonly,
-  }), [isReadonly]);
+  const mods = useMemo(
+    () => ({
+      [cls.editing]: !isReadonly,
+    }),
+    [isReadonly],
+  );
 
   if (isLoading) {
     return (
-      <HStack
-        justifyContent='center'
-        alignItems='center'
-        className={classNames(cls.ProfileCard, mods, [className])}
-      >
+      <HStack justifyContent="center" alignItems="center" className={classNames(cls.ProfileCard, mods, [className])}>
         <Loader />
       </HStack>
     );
@@ -65,11 +64,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   if (error) {
     return (
-      <HStack
-        justifyContent='center'
-        alignItems='center'
-        className={classNames(cls.ProfileCard, mods, [className])}
-      >
+      <HStack justifyContent="center" alignItems="center" className={classNames(cls.ProfileCard, mods, [className])}>
         <Text
           title={t('profile_loading_error')}
           text={t('profile_refresh_page')}
@@ -81,40 +76,27 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   }
 
   return (
-    <VStack
-      gap='8'
-      className={classNames(cls.ProfileCard, mods, [className])}
-    >
-      <HStack justifyContent='center' allWidth>
+    <VStack gap="8" className={classNames(cls.ProfileCard, mods, [className])}>
+      <HStack justifyContent="center" allWidth>
         <Avatar src={data?.avatar} />
       </HStack>
 
       <Input
-        data-testid='ProfileCard.firstname'
+        data-testid="ProfileCard.firstname"
         value={data?.first || ''}
         placeholder={t('profile_name')}
         readonly={isReadonly}
         onChange={onChangeFirstname}
       />
       <Input
-        data-testid='ProfileCard.lastname'
+        data-testid="ProfileCard.lastname"
         value={data?.lastname || ''}
         placeholder={t('profile_last_name')}
         readonly={isReadonly}
         onChange={onChangeLastname}
       />
-      <Input
-        value={data?.age || ''}
-        placeholder={t('profile_age')}
-        readonly={isReadonly}
-        onChange={onChangeAge}
-      />
-      <Input
-        value={data?.city || ''}
-        placeholder={t('profile_city')}
-        readonly={isReadonly}
-        onChange={onChangeCity}
-      />
+      <Input value={data?.age || ''} placeholder={t('profile_age')} readonly={isReadonly} onChange={onChangeAge} />
+      <Input value={data?.city || ''} placeholder={t('profile_city')} readonly={isReadonly} onChange={onChangeCity} />
       {/* <Input
         value={data?.username || ''}
         placeholder={t('profile_username')}
@@ -128,17 +110,9 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         onChange={onChangeAvatarUrl}
       />
 
-      <CurrencySelect
-        value={data?.currency}
-        readonly={isReadonly}
-        onChange={onChangeCurrency}
-      />
+      <CurrencySelect value={data?.currency} readonly={isReadonly} onChange={onChangeCurrency} />
 
-      <CountrySelect
-        value={data?.country}
-        readonly={isReadonly}
-        onChange={onChangeCountry}
-      />
+      <CountrySelect value={data?.country} readonly={isReadonly} onChange={onChangeCountry} />
     </VStack>
   );
 };

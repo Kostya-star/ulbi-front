@@ -8,13 +8,14 @@ describe('EditableProfileCard.cy.ts', () => {
     cy.intercept('GET', '**/profile/*', { fixture: 'profile.json' });
 
     cy.mount(
-      <TestProvider options={{
-        initialState: {
-          user: {
-            authData: { id: USER_ID },
+      <TestProvider
+        options={{
+          initialState: {
+            user: {
+              authData: { id: USER_ID },
+            },
           },
-        },
-      }}
+        }}
       >
         <EditableProfileCard profileId={USER_ID} />
       </TestProvider>,

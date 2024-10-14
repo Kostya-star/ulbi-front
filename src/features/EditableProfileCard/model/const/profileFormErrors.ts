@@ -4,5 +4,5 @@ export enum ProfileFormErrors {
   INCORRECT_USERNAME = 'username_err',
   INCORRECT_AGE = 'age_err',
   INCORRECT_CITY = 'city_err',
-  NO_DATA = 'no_data'
+  NO_DATA = 'no_data',
 }

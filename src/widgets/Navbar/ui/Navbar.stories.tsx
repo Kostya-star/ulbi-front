@@ -22,11 +22,14 @@ NavbarLight.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];
 
 export const userSignedIn = Template.bind({});
 userSignedIn.args = {};
-userSignedIn.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  user: {
-    authData: {},
-  },
-})];
+userSignedIn.decorators = [
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      user: {
+        authData: {},
+      },
+    }),
+];
 
 export const NavbarDark = Template.bind({});
 NavbarDark.args = {};

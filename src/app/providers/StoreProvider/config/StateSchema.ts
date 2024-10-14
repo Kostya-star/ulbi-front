@@ -1,6 +1,4 @@
-import {
-  AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 
 import { ArticleDetailsSchema } from '@/entities/Article';
@@ -29,9 +27,9 @@ export interface StateSchema {
   articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
-export type RootReducersType = ReducersMapObject<StateSchema>
+export type RootReducersType = ReducersMapObject<StateSchema>;
 
-export type StateSchemaKey = keyof StateSchema
+export type StateSchemaKey = keyof StateSchema;
 
 export interface ReducerManager {
   getReducerMap: () => RootReducersType;
@@ -45,7 +43,7 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 }
 
 export interface ThunkExtraArgs {
-  api: AxiosInstance
+  api: AxiosInstance;
 }
 
 export interface ThunkConfig<T> {

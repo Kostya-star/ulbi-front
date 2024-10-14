@@ -8,6 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'plugin:i18next/recommended',
+    'prettier',
     // "plugin:react-hooks/recommended",
   ],
   parser: '@typescript-eslint/parser',
@@ -79,6 +80,7 @@ module.exports = {
     "no-undef": "off",
     "react/no-array-index-key": "off",
     "unused-imports/no-unused-imports": "error",
+    'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
     'import/order': [
       'warn',
       {

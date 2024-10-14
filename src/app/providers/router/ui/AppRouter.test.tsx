@@ -3,9 +3,7 @@ import { screen } from '@testing-library/react';
 import { renderComponent } from '@/shared/lib/tests/renderComponent/renderComponent';
 
 import { AppRouter } from './AppRouter';
-import {
-  getRouteAbout, getRouteAdminPanel, getRouteMain, getRouteProfile,
-} from '../model/config/routeConfig';
+import { getRouteAbout, getRouteAdminPanel, getRouteMain, getRouteProfile } from '../model/config/routeConfig';
 
 describe('app/providers/router/ui/AppRouter', () => {
   test('AboutPage should be rendered(no auth)', async () => {

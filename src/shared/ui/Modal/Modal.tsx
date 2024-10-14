@@ -16,9 +16,7 @@ interface ModalProps {
   onClose?: () => void;
 }
 
-export const Modal = memo(({
-  children, className, isOpen, lazy, onClose,
-}: ModalProps) => {
+export const Modal = memo(({ children, className, isOpen, lazy, onClose }: ModalProps) => {
   const { theme } = useTheme();
 
   if (lazy && !isOpen) return null;
@@ -26,14 +24,12 @@ export const Modal = memo(({
   return (
     <Portal>
       <HStack
-        justifyContent='center'
-        alignItems='center'
+        justifyContent="center"
+        alignItems="center"
         className={classNames(cls.Modal, { [cls.opened]: isOpen }, [className, theme])}
       >
         <Overlay onClick={onClose} />
-        <div className={cls.content}>
-          {children}
-        </div>
+        <div className={cls.content}>{children}</div>
       </HStack>
     </Portal>
   );

@@ -23,9 +23,9 @@ const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...
 
 const profileData: Profile = {
   first: 'Constantin',
-  lastname: "Danilov",
+  lastname: 'Danilov',
   age: 24,
-  city: "Bender",
+  city: 'Bender',
   country: Country.Moldova,
   currency: Currency.MD,
   username: 'admin',

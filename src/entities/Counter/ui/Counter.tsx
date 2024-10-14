@@ -20,20 +20,14 @@ export const Counter: FC<CounterProps> = () => {
 
   return (
     <div>
-      value =
-      <h1 data-testid='counter-value'>
-        {counterVal}
-      </h1>
-
-      <Button data-testid='button-increment' onClick={onIncrement}>
+      value =<h1 data-testid="counter-value">{counterVal}</h1>
+      <Button data-testid="button-increment" onClick={onIncrement}>
         increment
       </Button>
-      <Button data-testid='button-decrement' onClick={onDecrement}>
+      <Button data-testid="button-decrement" onClick={onDecrement}>
         decrement
       </Button>
-      <Button onClick={onIncrementBy}>
-        increment by 5
-      </Button>
+      <Button onClick={onIncrementBy}>increment by 5</Button>
     </div>
   );
 };

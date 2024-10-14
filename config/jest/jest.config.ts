@@ -18,7 +18,7 @@ const jestConfig: Config.InitialOptions = {
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: ['node_modules'],
-  modulePaths: ["<rootDir>src"],
+  modulePaths: ['<rootDir>src'],
 
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
@@ -34,19 +34,22 @@ const jestConfig: Config.InitialOptions = {
     '\\.s?css$': 'identity-obj-proxy',
 
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-    '<rootDir>config/jest/JestEmptyComponent.tsx',
+      '<rootDir>config/jest/JestEmptyComponent.tsx',
     '\\.svg$': path.resolve(__dirname, 'JestEmptyComponent.tsx'),
-    "^@/(.*)$": "<rootDir>/src/$1",
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   rootDir: '../../',
   reporters: [
-    "default",
-    ["jest-html-reporters", {
-      publicPath: "<rootDir>/reports/unit",
-      filename: "report.html",
-      // openReport: true,
-      inlineSource: true,
-    }],
+    'default',
+    [
+      'jest-html-reporters',
+      {
+        publicPath: '<rootDir>/reports/unit',
+        filename: 'report.html',
+        // openReport: true,
+        inlineSource: true,
+      },
+    ],
   ],
 
   // Indicates whether the coverage information should be collected while executing the test

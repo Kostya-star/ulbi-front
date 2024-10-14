@@ -5,12 +5,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // import cls from './AvatarDropdown.module.scss';
-import {
-  getRouteAdminPanel, getRouteMain, getRouteProfile,
-} from '@/app/providers/router';
-import {
-  getAuthUserData, isUserAdmin, isUserManager, logout,
-} from '@/entities/User';
+import { getRouteAdminPanel, getRouteMain, getRouteProfile } from '@/app/providers/router';
+import { getAuthUserData, isUserAdmin, isUserManager, logout } from '@/entities/User';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Dropdown } from '@/shared/ui/Dropdown';
@@ -41,13 +37,15 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
   return (
     <Dropdown
       trigger={<Avatar fallbackInverted size={30} src={authData.avatar} />}
-      direction='bottom left'
+      direction="bottom left"
       items={[
         ...(isAdminPanelAvailable
-          ? [{
-            content: t('admin_panel'),
-            href: getRouteAdminPanel(),
-          }]
+          ? [
+              {
+                content: t('admin_panel'),
+                href: getRouteAdminPanel(),
+              },
+            ]
           : []),
         {
           content: t('profile'),

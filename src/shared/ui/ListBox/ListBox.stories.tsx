@@ -9,11 +9,8 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-  },
-  decorators: [
-    (Story) => <div style={{ padding: '200px' }}>{Story()}</div>,
-  ],
+  args: {},
+  decorators: [(Story) => <div style={{ padding: '200px' }}>{Story()}</div>],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;

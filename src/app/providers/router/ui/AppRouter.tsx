@@ -11,31 +11,21 @@ import { routeConfig } from '../model/config/routeConfig';
 export const AppRouter = memo(() => {
   const routesList = useMemo(() => {
     return Object.values(routeConfig).map((route) => {
-      const element = (
-        <Suspense fallback={<PageLoader />}>
-          {route.element}
-        </Suspense>
-      );
+      const element = <Suspense fallback={<PageLoader />}>{route.element}</Suspense>;
 
       return (
         <Route
           key={route.path}
           path={route.path}
-          element={(
+          element={
             <RequireAuth authOnly={route.authOnly}>
-              <RequireRoles roles={route.role}>
-                {element}
-              </RequireRoles>
+              <RequireRoles roles={route.role}>{element}</RequireRoles>
             </RequireAuth>
-        )}
+          }
         />
       );
     });
   }, []);
 
-  return (
-    <Routes>
-      {routesList}
-    </Routes>
-  );
+  return <Routes>{routesList}</Routes>;
 });

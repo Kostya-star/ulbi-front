@@ -9,28 +9,21 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-  },
-  decorators: [
-    (Story) => <div style={{ padding: '200px' }}>{Story()}</div>,
-  ],
+  args: {},
+  decorators: [(Story) => <div style={{ padding: '200px' }}>{Story()}</div>],
 } as ComponentMeta<typeof Popover>;
 
 const Template: ComponentStory<typeof Popover> = (args) => <Popover {...args} />;
 
 const popoverContent = (
-  <div className='popoverContentWrpper'>
+  <div className="popoverContentWrpper">
     <div>opt1</div>
     <div>opt2</div>
     <div>opt3</div>
   </div>
 );
 
-const trigger = (
-  <Button className='triggerButton'>
-    trigger
-  </Button>
-);
+const trigger = <Button className="triggerButton">trigger</Button>;
 
 export const topLeft = Template.bind({});
 topLeft.args = {

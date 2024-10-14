@@ -7,9 +7,9 @@ import { updateProfileData } from '../../services/updateProfileData/updateProfil
 const defaultProfileData = {
   id: '1',
   first: 'Constantin!',
-  lastname: "Danilov!",
+  lastname: 'Danilov!',
   age: 25,
-  city: "Bender!",
+  city: 'Bender!',
   country: Country.Holland,
   currency: Currency.RUB,
   username: 'admin!',

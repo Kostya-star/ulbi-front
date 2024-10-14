@@ -2,27 +2,27 @@
 import { Article } from '../../../src/entities/Article';
 
 const defaultArticle = {
-  title: "Javascript news",
+  title: 'Javascript news',
   subtitle: "What's new in JS for 2022?",
-  img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+  img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
-  createdAt: "02/26/2022",
-  userId: "1",
-  type: [
-    "IT",
-  ],
+  createdAt: '02/26/2022',
+  userId: '1',
+  type: ['IT'],
   blocks: [],
 };
 
 export const createArticle = (article?: Article) => {
-  return cy.request({
-    method: 'POST',
-    url: `http://localhost:8000/articles`,
-    headers: { Authorization: 'asdfg' },
-    body: article ?? defaultArticle,
-  }).then((resp) => {
-    return resp.body;
-  });
+  return cy
+    .request({
+      method: 'POST',
+      url: `http://localhost:8000/articles`,
+      headers: { Authorization: 'asdfg' },
+      body: article ?? defaultArticle,
+    })
+    .then((resp) => {
+      return resp.body;
+    });
 };
 
 export const deleteArticle = (articleId: string) => {

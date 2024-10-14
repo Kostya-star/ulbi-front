@@ -28,38 +28,45 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
   const oldRate = data?.[0]?.rate;
   const isRatingExist = !!oldRate;
 
-  const handlePostArticleRating = useCallback((rate: number, feedback?: string) => {
-    if (isRatingExist) {
-      patchArticleRating({
-        id: data![0].id,
-        rate,
-        feedback,
-      });
-    } else {
-      postArticleRating({
-        articleId,
-        userId: authData.id,
-        rate,
-        feedback,
-      });
-    }
-  }, [articleId, authData.id, data, isRatingExist, patchArticleRating, postArticleRating]);
+  const handlePostArticleRating = useCallback(
+    (rate: number, feedback?: string) => {
+      if (isRatingExist) {
+        patchArticleRating({
+          id: data![0].id,
+          rate,
+          feedback,
+        });
+      } else {
+        postArticleRating({
+          articleId,
+          userId: authData.id,
+          rate,
+          feedback,
+        });
+      }
+    },
+    [articleId, authData.id, data, isRatingExist, patchArticleRating, postArticleRating],
+  );
 
-  const cancel = useCallback((rate: number) => {
-    handlePostArticleRating(rate);
-  }, [handlePostArticleRating]);
+  const cancel = useCallback(
+    (rate: number) => {
+      handlePostArticleRating(rate);
+    },
+    [handlePostArticleRating],
+  );
 
-  const submit = useCallback((rate: number, feedbackText?: string) => {
-    handlePostArticleRating(rate, feedbackText);
-  }, [handlePostArticleRating]);
+  const submit = useCallback(
+    (rate: number, feedbackText?: string) => {
+      handlePostArticleRating(rate, feedbackText);
+    },
+    [handlePostArticleRating],
+  );
 
   if (isGetLoading || isPostLoading || isPatchLoading) {
-    return <Skeleton width='100%' height='110px' borderRadius='12px' />;
+    return <Skeleton width="100%" height="110px" borderRadius="12px" />;
   }
 
-  const ratingTitle = isRatingExist
-    ? t('title_rate_exist')
-    : t('title_rate_no_exist');
+  const ratingTitle = isRatingExist ? t('title_rate_exist') : t('title_rate_no_exist');
 
   return (
     <div className={classNames('', {}, [className])}>

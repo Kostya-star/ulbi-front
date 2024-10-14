@@ -11,7 +11,7 @@ interface PopoverProps {
   className?: string;
   trigger: ReactNode;
   children: ReactNode;
-  direction?: DropdownDirection
+  direction?: DropdownDirection;
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
@@ -21,23 +21,16 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
   'top left': cls.optionsTopLeft,
 };
 
-export const Popover = memo(({
-  className,
-  trigger,
-  children,
-  direction = 'bottom right',
-}: PopoverProps) => {
+export const Popover = memo(({ className, trigger, children, direction = 'bottom right' }: PopoverProps) => {
   const directionClasses = useMemo(() => [mapDirectionClass[direction]], [direction]);
 
   return (
     <HPopover className={classNames(cls.Popover, {}, [className])}>
-      <HPopover.Button as='div' className={cls.trigger}>
+      <HPopover.Button as="div" className={cls.trigger}>
         {trigger}
       </HPopover.Button>
 
-      <HPopover.Panel className={classNames(cls.panel, {}, directionClasses)}>
-        {children}
-      </HPopover.Panel>
+      <HPopover.Panel className={classNames(cls.panel, {}, directionClasses)}>{children}</HPopover.Panel>
     </HPopover>
   );
 });

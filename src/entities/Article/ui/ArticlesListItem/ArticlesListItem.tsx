@@ -1,6 +1,4 @@
-import {
-  HTMLAttributeAnchorTarget, memo, useMemo,
-} from 'react';
+import { HTMLAttributeAnchorTarget, memo, useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -28,9 +26,7 @@ interface ArticlesListItemProps {
   target?: HTMLAttributeAnchorTarget;
 }
 
-export const ArticlesListItem = memo(({
-  className, article, view, target,
-}: ArticlesListItemProps) => {
+export const ArticlesListItem = memo(({ className, article, view, target }: ArticlesListItemProps) => {
   const { t } = useTranslation('articles');
 
   const textBlock = useMemo(() => {
@@ -48,10 +44,7 @@ export const ArticlesListItem = memo(({
 
   if (view === ArticlesView.BIG) {
     return (
-      <div
-        data-testid='ArticlesListItem'
-        className={classNames('', {}, [className, cls[view]])}
-      >
+      <div data-testid="ArticlesListItem" className={classNames('', {}, [className, cls[view]])}>
         <Card>
           <div className={cls.header}>
             <div className={cls.userData}>
@@ -68,20 +61,13 @@ export const ArticlesListItem = memo(({
             className={cls.img}
             src={article.img}
             alt={article.title}
-            fallbackLoading={<Skeleton width='100%' height='250px' />}
+            fallbackLoading={<Skeleton width="100%" height="250px" />}
           />
 
-          {
-            textBlock && (
-              <ArticleBlockTextComp block={textBlock} className={cls.textBlock} />
-            )
-          }
+          {textBlock && <ArticleBlockTextComp block={textBlock} className={cls.textBlock} />}
 
           <div className={cls.footer}>
-            <AppLink
-              target={target}
-              to={getRouteArticleDetails(article.id)}
-            >
+            <AppLink target={target} to={getRouteArticleDetails(article.id)}>
               <Button>{t('read_more')}</Button>
             </AppLink>
             {viewsSection}
@@ -93,19 +79,18 @@ export const ArticlesListItem = memo(({
 
   return (
     <AppLink
-      data-testid='ArticlesListItem'
+      data-testid="ArticlesListItem"
       target={target}
       to={getRouteArticleDetails(article.id)}
       className={classNames('', {}, [className, cls[view]])}
     >
       <Card>
         <div className={cls.imgWrapper}>
-
           <AppImage
             className={cls.img}
             src={article.img}
             alt={article.title}
-            fallbackLoading={<Skeleton width='200px' height='200px' />}
+            fallbackLoading={<Skeleton width="200px" height="200px" />}
           />
 
           <Text text={article.createdAt} className={cls.date} />

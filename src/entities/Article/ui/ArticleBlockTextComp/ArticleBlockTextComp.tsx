@@ -8,14 +8,16 @@ import { ArticleBlockText } from '../../model/type/article';
 
 interface ArticleBlockTextCompProps {
   className?: string;
-  block: ArticleBlockText
+  block: ArticleBlockText;
 }
 
 export const ArticleBlockTextComp = memo(({ className, block }: ArticleBlockTextCompProps) => {
   return (
     <div className={classNames(cls.ArticleBlockTextComp, {}, [className])}>
       {block.title && <Text title={block.title} />}
-      {block.paragraphs.map((p) => <Text key={p} text={p} />)}
+      {block.paragraphs.map((p) => (
+        <Text key={p} text={p} />
+      ))}
     </div>
   );
 });

@@ -61,26 +61,29 @@ export const Flex = memo((props: FlexProps) => {
     tag = 'div',
   } = props;
 
-  const classNamesArr = useMemo(() => [
-    className,
-    justifyContentConst[justifyContent],
-    alignItemsConst[alignItems],
-    flexDirectionConst[flexDirection],
-    gap && flexGapConst[gap],
-  ], [alignItems, className, flexDirection, justifyContent, gap]);
+  const classNamesArr = useMemo(
+    () => [
+      className,
+      justifyContentConst[justifyContent],
+      alignItemsConst[alignItems],
+      flexDirectionConst[flexDirection],
+      gap && flexGapConst[gap],
+    ],
+    [alignItems, className, flexDirection, justifyContent, gap],
+  );
 
-  const mods = useMemo(() => ({
-    [cls.allWidth]: allWidth,
-  }), [allWidth]);
+  const mods = useMemo(
+    () => ({
+      [cls.allWidth]: allWidth,
+    }),
+    [allWidth],
+  );
 
   const Tag = useMemo(() => tag, [tag]);
 
   return (
     // @ts-ignore
-    <Tag
-      data-testid={props['data-testid']}
-      className={classNames(cls.Flex, mods, classNamesArr)}
-    >
+    <Tag data-testid={props['data-testid']} className={classNames(cls.Flex, mods, classNamesArr)}>
       {children}
     </Tag>
   );

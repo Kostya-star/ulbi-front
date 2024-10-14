@@ -18,11 +18,7 @@ export const LangSwitcher = memo(({ className, isShort }: LangSwitcherProps) => 
     i18n.changeLanguage(currentLanguage === 'en' ? 'ru' : 'en');
   };
   return (
-    <Button
-      theme={ButtonTheme.CLEAR}
-      className={classNames('', {}, [className])}
-      onClick={switchLanguage}
-    >
+    <Button theme={ButtonTheme.CLEAR} className={classNames('', {}, [className])} onClick={switchLanguage}>
       {isShort ? t('language_short') : t('language')}
     </Button>
   );

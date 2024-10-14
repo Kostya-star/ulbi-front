@@ -27,9 +27,10 @@ export const SidebarUserAuthenticated = Template.bind({});
 SidebarUserAuthenticated.args = {};
 SidebarUserAuthenticated.decorators = [
   (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
-  (StoryComp: Story) => StoreDecorator(StoryComp, {
-    user: { authData: {} },
-  }),
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      user: { authData: {} },
+    }),
 ];
 
 export const SidebarDark = Template.bind({});

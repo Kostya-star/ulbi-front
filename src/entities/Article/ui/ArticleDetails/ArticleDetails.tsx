@@ -12,9 +12,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Icon } from '@/shared/ui/Icon';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import {
-  Text, TextAlign, TextSize, TextTheme,
-} from '@/shared/ui/Text';
+import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
 
 import cls from './ArticleDetails.module.scss';
 import { ArticleBlockType } from '../../model/const/article';
@@ -32,7 +30,7 @@ import { ArticleBlockTextComp } from '../ArticleBlockTextComp/ArticleBlockTextCo
 
 interface ArticleDetailsProps {
   className?: string;
-  articleId: string
+  articleId: string;
 }
 
 const reducers = {
@@ -58,31 +56,13 @@ export const ArticleDetails = memo(({ articleId, className }: ArticleDetailsProp
   const renderArticleBlocks = useCallback((block: ArticleBlock) => {
     switch (block.type) {
       case ArticleBlockType.TEXT:
-        return (
-          <ArticleBlockTextComp
-            key={block.id}
-            block={block}
-            className={cls.block}
-          />
-        );
+        return <ArticleBlockTextComp key={block.id} block={block} className={cls.block} />;
 
       case ArticleBlockType.CODE:
-        return (
-          <ArticleBlockCodeComp
-            key={block.id}
-            block={block}
-            className={cls.block}
-          />
-        );
+        return <ArticleBlockCodeComp key={block.id} block={block} className={cls.block} />;
 
       case ArticleBlockType.IMAGE:
-        return (
-          <ArticleBlockImgComp
-            key={block.id}
-            block={block}
-            className={cls.block}
-          />
-        );
+        return <ArticleBlockImgComp key={block.id} block={block} className={cls.block} />;
 
       default:
         return null;
@@ -94,7 +74,7 @@ export const ArticleDetails = memo(({ articleId, className }: ArticleDetailsProp
   if (isLoading) {
     content = (
       <>
-        <HStack justifyContent='center'>
+        <HStack justifyContent="center">
           <Skeleton width={200} height={200} borderRadius="50%" />
         </HStack>
         <Skeleton className={cls.title} width={300} height={32} />
@@ -104,45 +84,37 @@ export const ArticleDetails = memo(({ articleId, className }: ArticleDetailsProp
       </>
     );
   } else if (error) {
-    content = (
-      <Text
-        align={TextAlign.CENTER}
-        title={t('article_loading_err')}
-        theme={TextTheme.ERROR}
-      />
-    );
+    content = <Text align={TextAlign.CENTER} title={t('article_loading_err')} theme={TextTheme.ERROR} />;
   } else {
     content = (
       <>
-        <HStack justifyContent='center'>
+        <HStack justifyContent="center">
           <Avatar size={200} src={article?.img} />
         </HStack>
-        <VStack gap='8'>
+        <VStack gap="8">
           <Text className={cls.title} title={article?.title} size={TextSize.L} />
           <Text text={article?.subtitle} />
 
-          <VStack gap='8'>
-            <HStack alignItems='center' gap='8'>
+          <VStack gap="8">
+            <HStack alignItems="center" gap="8">
               <Icon Svg={EyeIcon} />
               <Text text={String(article?.views)} />
             </HStack>
-            <HStack alignItems='center' gap='8'>
+            <HStack alignItems="center" gap="8">
               <Icon Svg={ScheduleIcon} />
               <Text text={article?.createdAt} />
             </HStack>
           </VStack>
         </VStack>
 
-        {
-          article?.blocks.map(renderArticleBlocks)
-        }
+        {article?.blocks.map(renderArticleBlocks)}
       </>
     );
   }
 
   return (
     // eslint-disable-next-line i18next/no-literal-string
-    <div data-testid='ArticleDetails' className={classNames(cls.ArticleDetails, {}, [className])}>
+    <div data-testid="ArticleDetails" className={classNames(cls.ArticleDetails, {}, [className])}>
       {content}
     </div>
   );

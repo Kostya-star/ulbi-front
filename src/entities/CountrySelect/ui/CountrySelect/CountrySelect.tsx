@@ -22,17 +22,15 @@ const options = [
   { value: Country.USA, content: Country.USA },
 ];
 
-export const CountrySelect = memo(({
-  className,
-  value,
-  readonly,
-  onChange,
-}: CountrySelectProps) => {
+export const CountrySelect = memo(({ className, value, readonly, onChange }: CountrySelectProps) => {
   const { t } = useTranslation();
 
-  const onChangeCountry = useCallback((country: string) => {
-    onChange?.(country as Country);
-  }, [onChange]);
+  const onChangeCountry = useCallback(
+    (country: string) => {
+      onChange?.(country as Country);
+    },
+    [onChange],
+  );
 
   return (
     <ListBox

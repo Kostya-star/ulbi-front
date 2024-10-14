@@ -8,6 +8,4 @@ interface LoaderProps {
   className?: string;
 }
 
-export const Loader: FC<LoaderProps> = ({ className }) => (
-  <div className={classNames(cls.Loader, {}, [className])} />
-);
+export const Loader: FC<LoaderProps> = ({ className }) => <div className={classNames(cls.Loader, {}, [className])} />;

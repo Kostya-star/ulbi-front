@@ -13,10 +13,9 @@ export interface AddCommentFormProps {
   className?: string;
   sendComment: (newComm: string) => void;
 }
-
+// edkofejio ejig jreguhr ehr uwehgdsf [sdi fjds jodsiof dsjio fsoj f jioasofjas[ifads[p fij[as j[ads o]]]]] hewr hh rehro hoerh hu hu huer er hu ir u h aeuas hu asiusdijfndfuisd udssd sdf bds bifdsh fd  ds
 const AddCommentForm = memo(({ className, sendComment }: AddCommentFormProps) => {
   const { t } = useTranslation();
-
   const [newComment, setNewComment] = useState('');
 
   const writeComment = useCallback((comm: string) => {
@@ -30,22 +29,18 @@ const AddCommentForm = memo(({ className, sendComment }: AddCommentFormProps) =>
 
   return (
     <HStack
-      data-testid='AddCommentForm'
-      justifyContent='between'
-      alignItems='center'
+      data-testid="AddCommentForm"
+      justifyContent="between"
+      alignItems="center"
       className={classNames(cls.AddCommentForm, {}, [className])}
     >
       <Input
-        data-testid='AddCommentForm.Input'
+        data-testid="AddCommentForm.Input"
         placeholder={t('write_comment')}
         value={newComment}
         onChange={writeComment}
       />
-      <Button
-        data-testid='AddCommentForm.Button'
-        disabled={!newComment.trim()}
-        onClick={onSendComment}
-      >
+      <Button data-testid="AddCommentForm.Button" disabled={!newComment.trim()} onClick={onSendComment}>
         {t('add_comment')}
       </Button>
     </HStack>

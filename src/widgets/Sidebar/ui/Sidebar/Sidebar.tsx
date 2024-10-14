@@ -32,40 +32,23 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
       .filter((link) => {
         if (link.authOnly && !isAuth) return false;
         return true;
-      }).map((item) => (
-        <SidebarLink
-          key={item.path}
-          item={item}
-          isCollapsed={isCollapsed}
-        />
-      ));
+      })
+      .map((item) => <SidebarLink key={item.path} item={item} isCollapsed={isCollapsed} />);
   }, [sidebarLinksList, isAuth, isCollapsed]);
 
   return (
-    <section
-      data-testid='sidebar'
-      className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}
-    >
-      <VStack
-        gap='8'
-        className={cls.links}
-      >
-        { linksList }
+    <section data-testid="sidebar" className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
+      <VStack gap="8" className={cls.links}>
+        {linksList}
       </VStack>
 
-      <HStack
-        justifyContent='center'
-        gap='8'
-        alignItems='center'
-        allWidth
-        className={cls.switchers}
-      >
+      <HStack justifyContent="center" gap="8" alignItems="center" allWidth className={cls.switchers}>
         <ThemeSwitcher />
         <LangSwitcher isShort={isCollapsed} className={cls.lang} />
       </HStack>
       <Button
-        data-testid='toggle-sidebar-width-btn'
-        type='button'
+        data-testid="toggle-sidebar-width-btn"
+        type="button"
         className={cls.collapseBtn}
         theme={ButtonTheme.BACKGROUND_INVERTED}
         square

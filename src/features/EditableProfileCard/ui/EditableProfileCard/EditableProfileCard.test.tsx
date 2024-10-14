@@ -37,7 +37,7 @@ const options = {
 
 describe('EditableProfileCard.test', () => {
   test('readonly mode is expected to turn into non-readonly', async () => {
-    renderComponent(<EditableProfileCard withHeader profileId='1' />, options);
+    renderComponent(<EditableProfileCard withHeader profileId="1" />, options);
 
     const editBtn = screen.getByTestId('ProfileCardHeader.EditButton');
     await userEvent.click(editBtn);
@@ -47,7 +47,7 @@ describe('EditableProfileCard.test', () => {
   });
 
   test('change input credentials', async () => {
-    renderComponent(<EditableProfileCard withHeader profileId='1' />, options);
+    renderComponent(<EditableProfileCard withHeader profileId="1" />, options);
 
     const editBtn = screen.getByTestId('ProfileCardHeader.EditButton');
     await userEvent.click(editBtn);
@@ -72,7 +72,7 @@ describe('EditableProfileCard.test', () => {
   });
 
   test('error should appear', async () => {
-    renderComponent(<EditableProfileCard withHeader profileId='1' />, options);
+    renderComponent(<EditableProfileCard withHeader profileId="1" />, options);
 
     const editBtn = screen.getByTestId('ProfileCardHeader.EditButton');
     await userEvent.click(editBtn);

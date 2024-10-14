@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { Project } from "ts-morph";
+import { Project } from 'ts-morph';
 
 // Initialize the project
 const project = new Project({});

@@ -65,9 +65,10 @@ const articlesPageInitialState: ArticlesPageSchema = {
 export const Normal = Template.bind({});
 Normal.args = {};
 Normal.decorators = [
-  (StoryComp: Story) => StoreDecorator(StoryComp, {
-    articlesPage: articlesPageInitialState,
-  }),
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      articlesPage: articlesPageInitialState,
+    }),
 ];
 
 export const isLoading = Template.bind({});

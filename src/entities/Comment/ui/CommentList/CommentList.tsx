@@ -12,7 +12,7 @@ import { CommentCard } from '../CommentCard/CommentCard';
 
 interface CommentListProps {
   className?: string;
-  comments?: Comment[]
+  comments?: Comment[];
   isLoading?: boolean;
 }
 
@@ -21,33 +21,24 @@ export const CommentList = memo(({ className, comments, isLoading }: CommentList
 
   if (isLoading) {
     return (
-      <VStack gap='16' className={classNames('', {}, [className])}>
-        <VStack allWidth gap='8'>
-          <HStack
-            alignItems='center'
-            gap='8'
-          >
-            <Skeleton width={30} height={30} borderRadius='50%' />
+      <VStack gap="16" className={classNames('', {}, [className])}>
+        <VStack allWidth gap="8">
+          <HStack alignItems="center" gap="8">
+            <Skeleton width={30} height={30} borderRadius="50%" />
             <Skeleton width={100} height={20} />
           </HStack>
           <Skeleton />
         </VStack>
-        <VStack allWidth gap='8'>
-          <HStack
-            alignItems='center'
-            gap='8'
-          >
-            <Skeleton width={30} height={30} borderRadius='50%' />
+        <VStack allWidth gap="8">
+          <HStack alignItems="center" gap="8">
+            <Skeleton width={30} height={30} borderRadius="50%" />
             <Skeleton width={100} height={20} />
           </HStack>
           <Skeleton />
         </VStack>
-        <VStack allWidth gap='8'>
-          <HStack
-            alignItems='center'
-            gap='8'
-          >
-            <Skeleton width={30} height={30} borderRadius='50%' />
+        <VStack allWidth gap="8">
+          <HStack alignItems="center" gap="8">
+            <Skeleton width={30} height={30} borderRadius="50%" />
             <Skeleton width={100} height={20} />
           </HStack>
           <Skeleton />
@@ -57,17 +48,8 @@ export const CommentList = memo(({ className, comments, isLoading }: CommentList
   }
 
   return (
-    <VStack
-      gap='16'
-      className={classNames('', {}, [className])}
-    >
-      {
-        comments?.length
-          ? comments.map((c) => (
-            <CommentCard key={c.id} comment={c} />
-          ))
-          : <Text text={t('no_comments')} />
-      }
+    <VStack gap="16" className={classNames('', {}, [className])}>
+      {comments?.length ? comments.map((c) => <CommentCard key={c.id} comment={c} />) : <Text text={t('no_comments')} />}
     </VStack>
   );
 });

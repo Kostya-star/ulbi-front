@@ -37,25 +37,20 @@ export const ArticleDetailsComments = memo(({ className, articleId }: ArticleDet
     dispatch(fetchCommentsByArticleId(id));
   }, [articleId, dispatch]);
 
-  const sendComment = useCallback(async (newComment: string) => {
-    if (articleId) {
-      dispatch(addCommentForArticle({ newComment, articleId }));
-    }
-  }, [articleId, dispatch]);
+  const sendComment = useCallback(
+    async (newComment: string) => {
+      if (articleId) {
+        dispatch(addCommentForArticle({ newComment, articleId }));
+      }
+    },
+    [articleId, dispatch],
+  );
 
   return (
-    <VStack
-      gap='16'
-      allWidth
-      alignItems='normal'
-      className={classNames('', {}, [className])}
-    >
+    <VStack gap="16" allWidth alignItems="normal" className={classNames('', {}, [className])}>
       <Text title={t('comments_title')} />
       <AddCommentForm sendComment={sendComment} />
-      <CommentList
-        isLoading={isCommentsLoading}
-        comments={comments}
-      />
+      <CommentList isLoading={isCommentsLoading} comments={comments} />
     </VStack>
   );
 });

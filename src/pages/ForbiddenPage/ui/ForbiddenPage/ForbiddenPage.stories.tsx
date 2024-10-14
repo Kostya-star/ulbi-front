@@ -17,7 +17,5 @@ export default {
 const Template: ComponentStory<typeof ForbiddenPage> = (args) => <ForbiddenPage />;
 
 export const Normal = Template.bind({});
-Normal.args = {
-
-};
+Normal.args = {};
 Normal.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp)];

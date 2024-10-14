@@ -19,31 +19,20 @@ interface NotificationItemProps {
 
 export const NotificationItem = memo(({ className, notification }: NotificationItemProps) => {
   return (
-    <Card
-      className={classNames(cls.NotificationItem, {}, [className])}
-      theme={CardTheme.OUTLINE}
-    >
+    <Card className={classNames(cls.NotificationItem, {}, [className])} theme={CardTheme.OUTLINE}>
       <Text text={notification.title} size={TextSize.M} />
-      <HStack justifyContent='between' alignItems='center'>
+      <HStack justifyContent="between" alignItems="center">
         <Text text={notification.description} size={TextSize.S} />
-        <HStack alignItems='center' gap='8'>
+        <HStack alignItems="center" gap="8">
           <Text text={notification.user.username} size={TextSize.S} />
           <Avatar src={notification.user.avatar} size={25} />
         </HStack>
       </HStack>
-      {
-        notification.href
-          ? (
-            <AppLink
-              target='_blank'
-              to={notification.href}
-              className={cls.link}
-            >
-              <Icon Svg={UpRightFromSquareIcon} className={cls.linkIcon} />
-            </AppLink>
-          )
-          : null
-      }
+      {notification.href ? (
+        <AppLink target="_blank" to={notification.href} className={cls.link}>
+          <Icon Svg={UpRightFromSquareIcon} className={cls.linkIcon} />
+        </AppLink>
+      ) : null}
     </Card>
   );
 });

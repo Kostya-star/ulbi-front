@@ -7,9 +7,7 @@ import { parseQueryParams } from '@/shared/lib/url/handleQueryParams/handleQuery
 import { SortOrder } from '@/shared/types/SortOrder';
 
 import { BIG_VIEW_LIMIT, SMALL_VIEW_LIMIT } from '../../const/articlesLimit/articlesLimit';
-import {
-  setLimit, setOrder, setPage, setSearch, setSortBy, setType, setView,
-} from '../../slices/articlesPageSlice';
+import { setLimit, setOrder, setPage, setSearch, setSortBy, setType, setView } from '../../slices/articlesPageSlice';
 import { fetchArticles } from '../fetchArticles/fetchArticles';
 
 export const initArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(

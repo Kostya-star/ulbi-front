@@ -12,11 +12,5 @@ export const ArticlesInfiniteList = memo(() => {
   const isLoading = useSelector(getIsLoading);
   const view = useSelector(getView);
 
-  return (
-    <ArticlesList
-      articles={articles}
-      isLoading={isLoading}
-      view={view}
-    />
-  );
+  return <ArticlesList articles={articles} isLoading={isLoading} view={view} />;
 });

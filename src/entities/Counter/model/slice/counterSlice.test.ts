@@ -18,13 +18,11 @@ describe('counterSlice.test', () => {
 
   test('with state undefined increment action', () => {
     // const { increment } = useCounterActions();
-
     // expect(counterReducer(undefined, increment())).toEqual({ value: 1 });
   });
 
   test('with state undefined decrement action', () => {
     // const { decrement } = useCounterActions();
-
     // expect(counterReducer(undefined, decrement())).toEqual({ value: -1 });
   });
 });

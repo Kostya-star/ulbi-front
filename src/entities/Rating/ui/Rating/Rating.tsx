@@ -1,6 +1,4 @@
-import {
-  memo, useCallback, useMemo, useState,
-} from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -24,15 +22,7 @@ interface RatingProps {
   cancel: (stars: number) => void;
 }
 
-export const Rating = memo(({
-  className,
-  title,
-  modalTitle,
-  withFeedbackText,
-  rate = 0,
-  submit,
-  cancel,
-}: RatingProps) => {
+export const Rating = memo(({ className, title, modalTitle, withFeedbackText, rate = 0, submit, cancel }: RatingProps) => {
   const { t } = useTranslation();
   const isMobile = useDevice();
 
@@ -50,15 +40,18 @@ export const Rating = memo(({
     setFeedbackText(f);
   }, []);
 
-  const onClickStar = useCallback((stars: number) => {
-    setSelectedStars(stars);
-    if (withFeedbackText) {
-      setModalOpen(true);
-      // onOpen();
-    } else {
-      submit(stars);
-    }
-  }, [submit, withFeedbackText]);
+  const onClickStar = useCallback(
+    (stars: number) => {
+      setSelectedStars(stars);
+      if (withFeedbackText) {
+        setModalOpen(true);
+        // onOpen();
+      } else {
+        submit(stars);
+      }
+    },
+    [submit, withFeedbackText],
+  );
 
   const onSubmit = useCallback(() => {
     if (!feedbackText.trim()) return;
@@ -75,61 +68,40 @@ export const Rating = memo(({
     setFeedbackText('');
   }, [cancel, selectedStars]);
 
-  const content = useMemo(() => (
-    <VStack allWidth gap='16'>
-      <Text title={modalTitle} />
-      <Input
-        placeholder={t('your_feedback')}
-        autofocus
-        value={feedbackText}
-        onChange={onWriteFeedback}
-      />
-      <HStack allWidth gap='8' justifyContent='end'>
-        <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCanel}>
-          {t('cancel')}
-        </Button>
-        <Button disabled={!feedbackText.trim()} onClick={onSubmit}>
-          {t('submit')}
-        </Button>
-      </HStack>
-    </VStack>
-  ), [feedbackText, modalTitle, onCanel, onSubmit, onWriteFeedback, t]);
+  const content = useMemo(
+    () => (
+      <VStack allWidth gap="16">
+        <Text title={modalTitle} />
+        <Input placeholder={t('your_feedback')} autofocus value={feedbackText} onChange={onWriteFeedback} />
+        <HStack allWidth gap="8" justifyContent="end">
+          <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCanel}>
+            {t('cancel')}
+          </Button>
+          <Button disabled={!feedbackText.trim()} onClick={onSubmit}>
+            {t('submit')}
+          </Button>
+        </HStack>
+      </VStack>
+    ),
+    [feedbackText, modalTitle, onCanel, onSubmit, onWriteFeedback, t],
+  );
 
   return (
     <Card>
-      <VStack gap='16' alignItems='center'>
+      <VStack gap="16" alignItems="center">
         <Text title={title} />
-        <StarRating
-          size={40}
-          selectedStars={selectedStars}
-          onClickStar={onClickStar}
-        />
+        <StarRating size={40} selectedStars={selectedStars} onClickStar={onClickStar} />
       </VStack>
 
-      {
-        isMobile
-          ? (
-            <Drawer
-              isOpen={isModalOpen}
-              lazy
-              side='left'
-              onClose={onCanel}
-            >
-              {content}
-            </Drawer>
-          )
-          : (
-            <Modal
-              isOpen={isModalOpen}
-              lazy
-              onClose={onCanel}
-            >
-              {content}
-            </Modal>
-          )
-
-      }
-
+      {isMobile ? (
+        <Drawer isOpen={isModalOpen} lazy side="left" onClose={onCanel}>
+          {content}
+        </Drawer>
+      ) : (
+        <Modal isOpen={isModalOpen} lazy onClose={onCanel}>
+          {content}
+        </Modal>
+      )}
     </Card>
   );
 });

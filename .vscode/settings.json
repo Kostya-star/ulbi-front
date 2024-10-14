@@ -2,45 +2,42 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"],
   "i18n-ally.keystyle": "nested",
-  "cSpell.words": [
-    "occured",
-    "svgr"
-  ],
-    "module-templates.engine": "handlebars",
-    "module-templates.templates": {
-      "react-component": {
-        "displayName": "React component",
-        "defaultPath": "source/components",
-        "folder": "{{pascal name}}",
-        "questions": {
-          "name": "Component name",
-          // "className": "HTML class name"
+  "cSpell.words": ["occured", "svgr"],
+  "module-templates.engine": "handlebars",
+  "module-templates.templates": {
+    "react-component": {
+      "displayName": "React component",
+      "defaultPath": "source/components",
+      "folder": "{{pascal name}}",
+      "questions": {
+        "name": "Component name"
+        // "className": "HTML class name"
+      },
+      "files": [
+        {
+          "name": "{{pascal name}}.tsx",
+          "content": [
+            "import { memo } from 'react';",
+            "import { classNames } from 'shared/lib/classNames/classNames';",
+            "import cls from './{{name}}.module.scss';",
+            "",
+            "interface {{name}}Props {",
+            "  className?: string;",
+            "}",
+            "",
+            "export const {{name}} = memo(({ className }: {{name}}Props) => {",
+            "  return (",
+            "  <div className={classNames(cls.{{name}}, {}, [className])}>",
+            "  </div>",
+            ");",
+            "})"
+          ]
         },
-        "files": [
-          {
-            "name": "{{pascal name}}.tsx",
-            "content": [
-              "import { memo } from 'react';",
-              "import { classNames } from 'shared/lib/classNames/classNames';",
-              "import cls from './{{name}}.module.scss';",
-              "",
-              "interface {{name}}Props {",
-              "  className?: string;",
-              "}",
-              "",
-              "export const {{name}} = memo(({ className }: {{name}}Props) => {",
-              "  return (",
-              "  <div className={classNames(cls.{{name}}, {}, [className])}>",
-              "  </div>",
-              ");",
-              "})",
-                  ]
-          },
-          {
-            "name": "{{pascal name}}.module.scss",
-            "content": [".{{name}} {}"]
-          }
-        ]
-      }
+        {
+          "name": "{{pascal name}}.module.scss",
+          "content": [".{{name}} {}"]
+        }
+      ]
     }
+  }
 }

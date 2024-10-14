@@ -19,22 +19,19 @@ export const NotificationList = memo(({ className }: NotificationListProps) => {
 
   if (isFetching) {
     return (
-      <VStack gap='8' allWidth className={className}>
-        <Skeleton height='80px' borderRadius='8px' />
-        <Skeleton height='80px' borderRadius='8px' />
-        <Skeleton height='80px' borderRadius='8px' />
+      <VStack gap="8" allWidth className={className}>
+        <Skeleton height="80px" borderRadius="8px" />
+        <Skeleton height="80px" borderRadius="8px" />
+        <Skeleton height="80px" borderRadius="8px" />
       </VStack>
-
     );
   }
 
   return (
-    <VStack gap='8' allWidth className={className}>
-      {
-        notifications?.map((n) => (
-          <NotificationItem key={n.id} notification={n} />
-        ))
-      }
+    <VStack gap="8" allWidth className={className}>
+      {notifications?.map((n) => (
+        <NotificationItem key={n.id} notification={n} />
+      ))}
     </VStack>
   );
 });

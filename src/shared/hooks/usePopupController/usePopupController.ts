@@ -13,7 +13,7 @@ export function usePopupController() {
 
   useEffect(() => {
     const onExitKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
 
     if (isOpen) {

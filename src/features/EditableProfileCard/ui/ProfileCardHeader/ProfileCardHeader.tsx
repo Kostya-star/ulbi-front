@@ -14,9 +14,9 @@ interface ProfileCardHeaderProps {
   isReadonly?: boolean;
   isSaveAllowed: boolean;
   canEdit: boolean;
-  onEdit?: () => void
-  onCancel?: () => void
-  onSave?: () => void
+  onEdit?: () => void;
+  onCancel?: () => void;
+  onSave?: () => void;
 }
 
 export const ProfileCardHeader: FC<ProfileCardHeaderProps> = ({
@@ -31,46 +31,31 @@ export const ProfileCardHeader: FC<ProfileCardHeaderProps> = ({
   const { t } = useTranslation('profile');
 
   return (
-    <HStack
-      justifyContent='between'
-      alignItems='center'
-      className={classNames(cls.ProfilePageHeader, {}, [className])}
-    >
+    <HStack justifyContent="between" alignItems="center" className={classNames(cls.ProfilePageHeader, {}, [className])}>
       <Text title={t('profile')} />
       {
         // eslint-disable-next-line no-nested-ternary
-        canEdit
-          ? (
-            isReadonly
-              ? (
-                <Button
-                  data-testid='ProfileCardHeader.EditButton'
-                  theme={ButtonTheme.OUTLINE}
-                  onClick={onEdit}
-                >
-                  {t('edit_profile')}
-                </Button>
-              )
-              : (
-                <HStack gap='8'>
-                  <Button
-                    data-testid='ProfileCardHeader.CancelButton'
-                    theme={ButtonTheme.OUTLINE_RED}
-                    onClick={onCancel}
-                  >
-                    {t('cancel_edit_profile')}
-                  </Button>
-                  <Button
-                    data-testid='ProfileCardHeader.SaveButton'
-                    theme={ButtonTheme.OUTLINE}
-                    disabled={!isSaveAllowed}
-                    onClick={onSave}
-                  >
-                    {t('save_edits_profile')}
-                  </Button>
-                </HStack>
-              ))
-          : null
+        canEdit ? (
+          isReadonly ? (
+            <Button data-testid="ProfileCardHeader.EditButton" theme={ButtonTheme.OUTLINE} onClick={onEdit}>
+              {t('edit_profile')}
+            </Button>
+          ) : (
+            <HStack gap="8">
+              <Button data-testid="ProfileCardHeader.CancelButton" theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>
+                {t('cancel_edit_profile')}
+              </Button>
+              <Button
+                data-testid="ProfileCardHeader.SaveButton"
+                theme={ButtonTheme.OUTLINE}
+                disabled={!isSaveAllowed}
+                onClick={onSave}
+              >
+                {t('save_edits_profile')}
+              </Button>
+            </HStack>
+          )
+        ) : null
       }
     </HStack>
   );

@@ -5,9 +5,7 @@ import { Configuration, DefinePlugin } from 'webpack';
 import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
 
 export default {
-  stories: [
-    '../../src/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  stories: ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     {
@@ -32,11 +30,13 @@ export default {
     config.resolve?.extensions?.push('.ts', '.tsx');
     config.module?.rules?.push(buildCssLoaders(true));
 
-    config.plugins?.push(new DefinePlugin({
-      __IS_DEV__: true,
-      __API_URL__: JSON.stringify('https://testapi.ru'),
-      __PROJECT__: JSON.stringify('storybook'),
-    }));
+    config.plugins?.push(
+      new DefinePlugin({
+        __IS_DEV__: true,
+        __API_URL__: JSON.stringify('https://testapi.ru'),
+        __PROJECT__: JSON.stringify('storybook'),
+      }),
+    );
 
     handleSvg(config);
 

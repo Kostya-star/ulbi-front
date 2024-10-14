@@ -24,9 +24,9 @@ const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
 const profileData: Profile = {
   id: '1',
   first: 'Constantin',
-  lastname: "Danilov",
+  lastname: 'Danilov',
   age: 24,
-  city: "Bender",
+  city: 'Bender',
   country: Country.Moldova,
   currency: Currency.MD,
   username: 'admin',
@@ -35,19 +35,23 @@ const profileData: Profile = {
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [(StoryComp: Story) => StoreDecorator(StoryComp, {
-  profile: {
-    data: profileData,
-  },
-})];
+Light.decorators = [
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      profile: {
+        data: profileData,
+      },
+    }),
+];
 
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [
   (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
-  (StoryComp: Story) => StoreDecorator(StoryComp, {
-    profile: {
-      data: profileData,
-    },
-  }),
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      profile: {
+        data: profileData,
+      },
+    }),
 ];

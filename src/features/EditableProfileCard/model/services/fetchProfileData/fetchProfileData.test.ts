@@ -6,9 +6,9 @@ import { fetchProfileData } from '../../services/fetchProfileData/fetchProfileDa
 
 const defaultProfileData = {
   first: 'Constantin',
-  lastname: "Danilov",
+  lastname: 'Danilov',
   age: 24,
-  city: "Bender",
+  city: 'Bender',
   country: Country.Moldova,
   currency: Currency.MD,
   username: 'admin',

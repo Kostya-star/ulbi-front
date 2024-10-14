@@ -20,16 +20,9 @@ export const ArticleRecommendationsList = memo(({ className }: ArticleRecommenda
   const { isLoading, data: articles } = useArticleRecommendationsList(3);
 
   return (
-    <VStack gap='8' className={classNames('', {}, [className])}>
-      <Text
-        title={t('recommendations')}
-      />
-      <ArticlesList
-        target='_blank'
-        articles={articles}
-        isLoading={isLoading}
-        className={cls.recommendations}
-      />
+    <VStack gap="8" className={classNames('', {}, [className])}>
+      <Text title={t('recommendations')} />
+      <ArticlesList target="_blank" articles={articles} isLoading={isLoading} className={cls.recommendations} />
     </VStack>
   );
 });

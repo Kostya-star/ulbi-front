@@ -4,9 +4,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Article, ArticleType } from '@/entities/Article';
 import { setQueryParams } from '@/shared/lib/url/handleQueryParams/handleQueryParams';
 
-import {
-  getLimit, getOrder, getPage, getSearch, getSortBy, getType,
-} from '../../selectors/articlesPageSelectors';
+import { getLimit, getOrder, getPage, getSearch, getSortBy, getType } from '../../selectors/articlesPageSelectors';
 
 interface FetchArticlesArgs {
   replace?: boolean;

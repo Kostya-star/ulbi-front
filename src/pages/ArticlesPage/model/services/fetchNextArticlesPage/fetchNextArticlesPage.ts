@@ -2,9 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 
-import {
-  getHasMore, getIsLoading, getPage,
-} from '../../selectors/articlesPageSelectors';
+import { getHasMore, getIsLoading, getPage } from '../../selectors/articlesPageSelectors';
 import { setPage } from '../../slices/articlesPageSlice';
 import { fetchArticles } from '../fetchArticles/fetchArticles';
 

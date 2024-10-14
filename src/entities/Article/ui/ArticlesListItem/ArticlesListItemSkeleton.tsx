@@ -8,7 +8,7 @@ import cls from './ArticlesListItem.module.scss';
 import { ArticlesView } from '../../model/const/article';
 
 interface ArticlesListItemSkeletonProps {
-  view: ArticlesView
+  view: ArticlesView;
 }
 
 export const ArticlesListItemSkeleton = memo(({ view }: ArticlesListItemSkeletonProps) => {
@@ -25,7 +25,7 @@ export const ArticlesListItemSkeleton = memo(({ view }: ArticlesListItemSkeleton
         <Card>
           <div className={cls.header}>
             <div className={cls.userData}>
-              <Skeleton width={30} height={30} borderRadius='50%' />
+              <Skeleton width={30} height={30} borderRadius="50%" />
               <Skeleton width={60} height={16} />
             </div>
             <Skeleton width={60} height={16} />

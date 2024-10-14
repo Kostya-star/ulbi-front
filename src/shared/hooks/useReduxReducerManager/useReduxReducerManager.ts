@@ -9,10 +9,7 @@ export type ReducersList = {
   [reducerKey in StateSchemaKey]?: Reducer<NonNullable<StateSchema[reducerKey]>>;
 };
 
-export const useReduxReducerManager = (
-  reducers: ReducersList,
-  removeAfterUnmount: boolean = true,
-) => {
+export const useReduxReducerManager = (reducers: ReducersList, removeAfterUnmount: boolean = true) => {
   const store = useStore() as ReduxStoreWithManager;
   const dispatch = useDispatch();
 
@@ -38,6 +35,6 @@ export const useReduxReducerManager = (
       }
     };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

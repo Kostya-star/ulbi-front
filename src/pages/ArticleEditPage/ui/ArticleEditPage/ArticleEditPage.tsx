@@ -19,11 +19,7 @@ const ArticleEditPage = memo(({ className }: ArticleEditPageProps) => {
 
   return (
     <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-      {
-        isEditMode
-          ? t('edit_article')
-          : t('create_article')
-      }
+      {isEditMode ? t('edit_article') : t('create_article')}
     </Page>
   );
 });

@@ -11,11 +11,11 @@ const patchRatingApi = rtkApi.injectEndpoints({
     patchArticleRating: build.mutation<void, PatchArticleRatingArgs>({
       query: (body) => {
         const { id, ...rest } = body;
-        return ({
+        return {
           url: `/article-ratings/${id}`,
           method: 'PATCH',
           body: rest,
-        });
+        };
       },
       invalidatesTags: ['GetArticleRating'],
     }),

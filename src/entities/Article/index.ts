@@ -1,8 +1,6 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 
-export {
-  ArticleBlockType, ArticleType, ArticlesView, ArticleSortByOptions,
-} from './model/const/article';
+export { ArticleBlockType, ArticleType, ArticlesView, ArticleSortByOptions } from './model/const/article';
 
 export type { Article } from './model/type/article';
 

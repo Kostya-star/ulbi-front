@@ -1,8 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import {
-  getRouteAbout, getRouteArticles, getRouteMain, getRouteProfile,
-} from '@/app/providers/router';
+import { getRouteAbout, getRouteArticles, getRouteMain, getRouteProfile } from '@/app/providers/router';
 import { getAuthUserData } from '@/entities/User';
 import AboutSvg from '@/shared/assets/icons/about.svg';
 import ArticlesSvg from '@/shared/assets/icons/articles.svg';

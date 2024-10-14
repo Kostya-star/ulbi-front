@@ -9,7 +9,7 @@ import { getRouteForbidden } from '../model/config/routeConfig';
 
 interface RequireAuthProps {
   children: JSX.Element;
-  authOnly?: boolean
+  authOnly?: boolean;
 }
 
 export const RequireAuth = memo(({ children, authOnly }: RequireAuthProps) => {

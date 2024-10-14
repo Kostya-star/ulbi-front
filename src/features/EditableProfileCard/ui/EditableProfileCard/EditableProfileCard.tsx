@@ -1,6 +1,4 @@
-import {
-  memo, useCallback, useEffect, useMemo, useState,
-} from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -31,9 +29,9 @@ interface EditableProfileCardProps {
 
 const mockProfileData: Profile = {
   first: 'Constantin',
-  lastname: "Danilov",
+  lastname: 'Danilov',
   age: 24,
-  city: "Bender",
+  city: 'Bender',
   country: Country.Moldova,
   currency: Currency.MD,
   username: 'admin',
@@ -56,16 +54,13 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
 
   const formErrors = useMemo(() => validateProfileErrors(profileEdits), [profileEdits]);
 
-  const formErrorsList = useMemo(() => (
-    formErrors.map((err) => (
-      <Text
-        key={err}
-        text={t(err)}
-        theme={TextTheme.ERROR}
-        data-testid='EditableProfileCard.Error'
-      />
-    ))
-  ), [formErrors, t]);
+  const formErrorsList = useMemo(
+    () =>
+      formErrors.map((err) => (
+        <Text key={err} text={t(err)} theme={TextTheme.ERROR} data-testid="EditableProfileCard.Error" />
+      )),
+    [formErrors, t],
+  );
 
   useConditionalEffect(() => {
     if (!profileId) return;
@@ -142,27 +137,17 @@ export const EditableProfileCard = memo(({ className, profileId, withHeader }: E
 
   return (
     <>
-      {
-        withHeader && (
-          <ProfileCardHeader
-            isReadonly={isProfileReadonly}
-            isSaveAllowed={!formErrors.length}
-            canEdit={canEdit}
-            onEdit={onEditProfile}
-            onCancel={onCancelEditProfile}
-            onSave={onSaveEditsProfile}
-          />
-        )
-      }
-      {
-        formErrors.length
-          ? (
-            <div>
-              {formErrorsList}
-            </div>
-          )
-          : null
-      }
+      {withHeader && (
+        <ProfileCardHeader
+          isReadonly={isProfileReadonly}
+          isSaveAllowed={!formErrors.length}
+          canEdit={canEdit}
+          onEdit={onEditProfile}
+          onCancel={onCancelEditProfile}
+          onSave={onSaveEditsProfile}
+        />
+      )}
+      {formErrors.length ? <div>{formErrorsList}</div> : null}
       <ProfileCard
         data={profileEdits}
         isLoading={isProfileLoading}

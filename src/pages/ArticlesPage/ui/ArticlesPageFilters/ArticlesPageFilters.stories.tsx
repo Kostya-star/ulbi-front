@@ -36,8 +36,9 @@ const initialState: ArticlesPageSchema = {
 export const Normal = Template.bind({});
 Normal.args = {};
 Normal.decorators = [
-  (StoryComp: Story) => StoreDecorator(StoryComp, {
-    articlesPage: initialState,
-  }),
+  (StoryComp: Story) =>
+    StoreDecorator(StoryComp, {
+      articlesPage: initialState,
+    }),
   // (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
 ];

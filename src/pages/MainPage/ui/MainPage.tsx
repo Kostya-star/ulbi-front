@@ -7,7 +7,7 @@ export default function MainPage() {
   const { t } = useTranslation('main');
 
   return (
-    <Page data-testid='MainPage'>
+    <Page data-testid="MainPage">
       <Counter />
       {t('main_page')}
     </Page>

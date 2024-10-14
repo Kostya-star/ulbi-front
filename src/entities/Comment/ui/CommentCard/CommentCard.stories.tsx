@@ -22,7 +22,10 @@ const commentItem: Comment = {
   id: '1',
   text: 'some comment text 1',
   user: {
-    id: '1', username: 'Constantin', avatar: StorybookAvatar, role: ['ADMIN'],
+    id: '1',
+    username: 'Constantin',
+    avatar: StorybookAvatar,
+    role: ['ADMIN'],
   },
 };
 
@@ -45,6 +48,4 @@ export const duskSerenity = Template.bind({});
 duskSerenity.args = {
   comment: commentItem,
 };
-duskSerenity.decorators = [
-  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY),
-];
+duskSerenity.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY)];

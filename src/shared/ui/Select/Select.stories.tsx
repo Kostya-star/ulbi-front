@@ -11,8 +11,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-  },
+  args: {},
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;

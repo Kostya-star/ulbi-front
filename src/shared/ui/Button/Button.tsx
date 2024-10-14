@@ -16,7 +16,7 @@ export enum ButtonTheme {
 export enum ButtonSize {
   M = 'size_m',
   L = 'size_l',
-  XL = 'size_xl'
+  XL = 'size_xl',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,29 +28,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
 }
 
-export const Button = memo(({
-  className,
-  children,
-  theme = ButtonTheme.OUTLINE,
-  square,
-  size = ButtonSize.M,
-  disabled,
-  ...rest
-}: ButtonProps) => {
-  const mods = {
-    [cls.square]: square,
-    [cls.disabled]: disabled,
-  };
+export const Button = memo(
+  ({ className, children, theme = ButtonTheme.OUTLINE, square, size = ButtonSize.M, disabled, ...rest }: ButtonProps) => {
+    const mods = {
+      [cls.square]: square,
+      [cls.disabled]: disabled,
+    };
 
-  const additionalCls = [className, cls[theme], cls[size]];
+    const additionalCls = [className, cls[theme], cls[size]];
 
-  return (
-    <button
-      type='button'
-      className={classNames(cls.Button, mods, additionalCls)}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-});
+    return (
+      <button type="button" className={classNames(cls.Button, mods, additionalCls)} {...rest}>
+        {children}
+      </button>
+    );
+  },
+);

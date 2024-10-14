@@ -5,7 +5,7 @@ import { UserRole } from '@/entities/User';
 export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
   role?: UserRole[];
-}
+};
 
 export enum AppRoutes {
   MAIN = 'main',
@@ -19,5 +19,5 @@ export enum AppRoutes {
   FORBIDDEN_CONTENT = 'forbidden',
 
   // last
-  NOT_FOUND = 'not_found'
+  NOT_FOUND = 'not_found',
 }
