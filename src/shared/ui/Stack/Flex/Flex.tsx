@@ -1,6 +1,7 @@
 import { memo, ReactNode, useMemo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { TestProps } from '@/shared/types/tests';
 
 import cls from './Flex.module.scss';
 
@@ -9,7 +10,7 @@ type AlignItems = 'start' | 'center' | 'end' | 'normal';
 type FlexDirection = 'row' | 'column';
 type FlexGap = '2' | '4' | '8' | '16' | '32';
 
-export interface FlexProps {
+export interface FlexProps extends TestProps {
   className?: string;
   children?: ReactNode;
   justifyContent?: JustifyContent;
@@ -75,7 +76,11 @@ export const Flex = memo((props: FlexProps) => {
   const Tag = useMemo(() => tag, [tag]);
 
   return (
-    <Tag className={classNames(cls.Flex, mods, classNamesArr)}>
+    // @ts-ignore
+    <Tag
+      data-testid={props['data-testid']}
+      className={classNames(cls.Flex, mods, classNamesArr)}
+    >
       {children}
     </Tag>
   );

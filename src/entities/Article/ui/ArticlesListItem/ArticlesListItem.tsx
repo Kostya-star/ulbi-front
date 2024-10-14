@@ -48,7 +48,10 @@ export const ArticlesListItem = memo(({
 
   if (view === ArticlesView.BIG) {
     return (
-      <div className={classNames('', {}, [className, cls[view]])}>
+      <div
+        data-testid='ArticlesListItem'
+        className={classNames('', {}, [className, cls[view]])}
+      >
         <Card>
           <div className={cls.header}>
             <div className={cls.userData}>
@@ -90,6 +93,7 @@ export const ArticlesListItem = memo(({
 
   return (
     <AppLink
+      data-testid='ArticlesListItem'
       target={target}
       to={getRouteArticleDetails(article.id)}
       className={classNames('', {}, [className, cls[view]])}

@@ -30,16 +30,19 @@ const AddCommentForm = memo(({ className, sendComment }: AddCommentFormProps) =>
 
   return (
     <HStack
+      data-testid='AddCommentForm'
       justifyContent='between'
       alignItems='center'
       className={classNames(cls.AddCommentForm, {}, [className])}
     >
       <Input
+        data-testid='AddCommentForm.Input'
         placeholder={t('write_comment')}
         value={newComment}
         onChange={writeComment}
       />
       <Button
+        data-testid='AddCommentForm.Button'
         disabled={!newComment.trim()}
         onClick={onSendComment}
       >
