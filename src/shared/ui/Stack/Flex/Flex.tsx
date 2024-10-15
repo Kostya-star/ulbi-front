@@ -83,7 +83,10 @@ export const Flex = memo((props: FlexProps) => {
 
   return (
     // @ts-ignore
-    <Tag data-testid={props['data-testid']} className={classNames(cls.Flex, mods, classNamesArr)}>
+    <Tag
+      data-testid={props['data-testid']}
+      className={classNames(cls.Flex, mods, classNamesArr)}
+    >
       {children}
     </Tag>
   );

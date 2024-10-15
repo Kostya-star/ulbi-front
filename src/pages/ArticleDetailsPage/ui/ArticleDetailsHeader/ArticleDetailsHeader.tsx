@@ -16,27 +16,35 @@ interface ArticleDetailsHeaderProps {
   className?: string;
 }
 
-export const ArticleDetailsHeader = memo(({ className }: ArticleDetailsHeaderProps) => {
-  const { t } = useTranslation('articles');
-  const navigate = useNavigate();
+export const ArticleDetailsHeader = memo(
+  ({ className }: ArticleDetailsHeaderProps) => {
+    const { t } = useTranslation('articles');
+    const navigate = useNavigate();
 
-  const canEdit = useSelector(getUserCanEditArticle);
-  const article = useSelector(getArticleDetailsData);
+    const canEdit = useSelector(getUserCanEditArticle);
+    const article = useSelector(getArticleDetailsData);
 
-  const navigateToAllArticles = useCallback(() => {
-    navigate(getRouteArticles());
-  }, [navigate]);
+    const navigateToAllArticles = useCallback(() => {
+      navigate(getRouteArticles());
+    }, [navigate]);
 
-  const navigateToEditArticle = useCallback(() => {
-    if (article) {
-      navigate(getRouteArticleEdit(article.id));
-    }
-  }, [article, navigate]);
+    const navigateToEditArticle = useCallback(() => {
+      if (article) {
+        navigate(getRouteArticleEdit(article.id));
+      }
+    }, [article, navigate]);
 
-  return (
-    <HStack justifyContent="between" alignItems="center" className={classNames('', {}, [className])}>
-      <Button onClick={navigateToAllArticles}>{t('back_to_articles')}</Button>
-      {canEdit && <Button onClick={navigateToEditArticle}>{t('edit_article')}</Button>}
-    </HStack>
-  );
-});
+    return (
+      <HStack
+        justifyContent="between"
+        alignItems="center"
+        className={classNames('', {}, [className])}
+      >
+        <Button onClick={navigateToAllArticles}>{t('back_to_articles')}</Button>
+        {canEdit && (
+          <Button onClick={navigateToEditArticle}>{t('edit_article')}</Button>
+        )}
+      </HStack>
+    );
+  },
+);

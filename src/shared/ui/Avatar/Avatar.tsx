@@ -16,28 +16,40 @@ interface AvatarProps {
   fallbackInverted?: boolean;
 }
 
-export const Avatar = memo(({ src, alt, size = 100, fallbackInverted, className }: AvatarProps) => {
-  const styles = useMemo<CSSProperties>(
-    () => ({
-      width: size,
-      height: size,
-    }),
-    [size],
-  );
+export const Avatar = memo(
+  ({ src, alt, size = 100, fallbackInverted, className }: AvatarProps) => {
+    const styles = useMemo<CSSProperties>(
+      () => ({
+        width: size,
+        height: size,
+      }),
+      [size],
+    );
 
-  const loadingFallback = useMemo(() => <Skeleton width={size} height={size} borderRadius="50%" />, [size]);
-  const errorFallback = useMemo(() => {
-    return <Icon invertedColor={fallbackInverted} width={size} height={size} Svg={UserAvatarEmpty} />;
-  }, [fallbackInverted, size]);
+    const loadingFallback = useMemo(
+      () => <Skeleton width={size} height={size} borderRadius="50%" />,
+      [size],
+    );
+    const errorFallback = useMemo(() => {
+      return (
+        <Icon
+          invertedColor={fallbackInverted}
+          width={size}
+          height={size}
+          Svg={UserAvatarEmpty}
+        />
+      );
+    }, [fallbackInverted, size]);
 
-  return (
-    <AppImage
-      src={src}
-      alt={alt}
-      style={styles}
-      fallbackLoading={loadingFallback}
-      fallbackError={errorFallback}
-      className={classNames(cls.Avatar, {}, [className])}
-    />
-  );
-});
+    return (
+      <AppImage
+        src={src}
+        alt={alt}
+        style={styles}
+        fallbackLoading={loadingFallback}
+        fallbackError={errorFallback}
+        className={classNames(cls.Avatar, {}, [className])}
+      />
+    );
+  },
+);

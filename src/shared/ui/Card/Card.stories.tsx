@@ -31,4 +31,6 @@ export const duskSerenity = Template.bind({});
 duskSerenity.args = {
   children: <Text title="card title" text="card text" />,
 };
-duskSerenity.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY)];
+duskSerenity.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY),
+];

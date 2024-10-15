@@ -148,12 +148,27 @@ const getSkeletons = (view: ArticlesView) => {
 // WITHOUT VIZUALIZATION
 
 export const ArticlesList = memo(
-  ({ className, articles, isLoading, view = ArticlesView.SMALL, target }: ArticlesListProps) => {
+  ({
+    className,
+    articles,
+    isLoading,
+    view = ArticlesView.SMALL,
+    target,
+  }: ArticlesListProps) => {
     const { t } = useTranslation('articles');
 
     const articlesList = useMemo(() => {
       return articles?.length
-        ? articles.map((article) => <ArticlesListItem key={article.id} target={target} article={article} view={view} />)
+        ? articles.map((article) => {
+            return (
+              <ArticlesListItem
+                key={article.id}
+                target={target}
+                article={article}
+                view={view}
+              />
+            );
+          })
         : null;
     }, [articles, view, target]);
 
@@ -166,7 +181,10 @@ export const ArticlesList = memo(
     }
 
     return (
-      <div data-testid="ArticlesList" className={classNames('', {}, [className, cls[view]])}>
+      <div
+        data-testid="ArticlesList"
+        className={classNames('', {}, [className, cls[view]])}
+      >
         {articlesList}
         {isLoading && getSkeletons(view)}
       </div>

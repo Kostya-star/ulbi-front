@@ -15,7 +15,9 @@ describe('Sidebar', () => {
     const sidebarEl = screen.getByTestId('sidebar');
     expect(sidebarEl).not.toHaveClass('collapsed');
 
-    const toggleSidebarWidthBtn = screen.getByTestId('toggle-sidebar-width-btn');
+    const toggleSidebarWidthBtn = screen.getByTestId(
+      'toggle-sidebar-width-btn',
+    );
     fireEvent.click(toggleSidebarWidthBtn);
     expect(sidebarEl).toHaveClass('collapsed');
   });

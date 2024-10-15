@@ -5,7 +5,10 @@ import { useParams } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
-import { useReduxReducerManager, ReducersList } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
+import {
+  useReduxReducerManager,
+  ReducersList,
+} from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 
@@ -31,7 +34,10 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
     <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
       <ArticleDetailsHeader />
       <ArticleDetails articleId={articleId!} />
-      <ArticleDetailsComments articleId={articleId!} className={cls.detailsComments} />
+      <ArticleDetailsComments
+        articleId={articleId!}
+        className={cls.detailsComments}
+      />
       <ArticleRating articleId={articleId!} />
       <ArticleRecommendationsList className={cls.recommendationsList} />
     </Page>

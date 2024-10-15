@@ -14,40 +14,46 @@ interface NotificationButtonProps {
   className?: string;
 }
 
-export const NotificationButton = memo(({ className }: NotificationButtonProps) => {
-  // const isMobile = useDevice();
+export const NotificationButton = memo(
+  ({ className }: NotificationButtonProps) => {
+    // const isMobile = useDevice();
 
-  const { isOpen: isDrawerOpen, onOpen: openDrawer, onClose: closeDrawer } = usePopupController();
+    const {
+      isOpen: isDrawerOpen,
+      onOpen: openDrawer,
+      onClose: closeDrawer,
+    } = usePopupController();
 
-  return (
-    <>
-      <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
-        <Icon Svg={NotificationIcon} invertedColor />
-      </Button>
-      {isDrawerOpen && (
-        <Drawer side="right" isOpen={isDrawerOpen} onClose={closeDrawer}>
-          <NotificationList className={cls.mobileNotificationsList} />
-        </Drawer>
-      )}
-    </>
-  );
-  // return (
-  //   isMobile
-  //     ? (
-  //       <>
-  //         {buttonTrigger}
-  //         <Drawer side='right' isOpen={isDrawerOpen} onClose={closeDrawer}>
-  //           <NotificationList className={cls.mobileNotificationsList} />
-  //         </Drawer>
-  //       </>
-  //     )
-  //     : (
-  //       <Popover
-  //         trigger={buttonTrigger}
-  //         direction='bottom left'
-  //       >
-  //         <NotificationList className={cls.desktopNotificationsList} />
-  //       </Popover>
-  //     )
-  // );
-});
+    return (
+      <>
+        <Button theme={ButtonTheme.CLEAR} onClick={openDrawer}>
+          <Icon Svg={NotificationIcon} invertedColor />
+        </Button>
+        {isDrawerOpen && (
+          <Drawer side="right" isOpen={isDrawerOpen} onClose={closeDrawer}>
+            <NotificationList className={cls.mobileNotificationsList} />
+          </Drawer>
+        )}
+      </>
+    );
+    // return (
+    //   isMobile
+    //     ? (
+    //       <>
+    //         {buttonTrigger}
+    //         <Drawer side='right' isOpen={isDrawerOpen} onClose={closeDrawer}>
+    //           <NotificationList className={cls.mobileNotificationsList} />
+    //         </Drawer>
+    //       </>
+    //     )
+    //     : (
+    //       <Popover
+    //         trigger={buttonTrigger}
+    //         direction='bottom left'
+    //       >
+    //         <NotificationList className={cls.desktopNotificationsList} />
+    //       </Popover>
+    //     )
+    // );
+  },
+);

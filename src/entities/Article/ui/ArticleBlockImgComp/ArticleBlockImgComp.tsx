@@ -11,11 +11,13 @@ interface ArticleBlockImgCompProps {
   block: ArticleBlockImg;
 }
 
-export const ArticleBlockImgComp = memo(({ block, className }: ArticleBlockImgCompProps) => {
-  return (
-    <div className={classNames(cls.ArticleBlockImgComp, {}, [className])}>
-      <img className={cls.img} src={block.src} alt={block.title} />
-      {block.title && <Text text={block.title} align={TextAlign.CENTER} />}
-    </div>
-  );
-});
+export const ArticleBlockImgComp = memo(
+  ({ block, className }: ArticleBlockImgCompProps) => {
+    return (
+      <div className={classNames(cls.ArticleBlockImgComp, {}, [className])}>
+        <img className={cls.img} src={block.src} alt={block.title} />
+        {block.title && <Text text={block.title} align={TextAlign.CENTER} />}
+      </div>
+    );
+  },
+);

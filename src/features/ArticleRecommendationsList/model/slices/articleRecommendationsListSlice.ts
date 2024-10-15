@@ -26,4 +26,5 @@ export const articleRecommendationsListSlice = createSlice({
 
 export const { someAction } = articleRecommendationsListSlice.actions;
 
-export const { reducer: articleRecommendationsListReducer } = articleRecommendationsListSlice;
+export const { reducer: articleRecommendationsListReducer } =
+  articleRecommendationsListSlice;

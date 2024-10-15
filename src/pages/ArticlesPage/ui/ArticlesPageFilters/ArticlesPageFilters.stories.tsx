@@ -1,6 +1,10 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
+import {
+  ArticleSortByOptions,
+  ArticlesView,
+  ArticleType,
+} from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { SortOrder } from '@/shared/types/SortOrder';
 
@@ -15,7 +19,9 @@ export default {
   },
 } as ComponentMeta<typeof ArticlesPageFilters>;
 
-const Template: ComponentStory<typeof ArticlesPageFilters> = (args) => <ArticlesPageFilters {...args} />;
+const Template: ComponentStory<typeof ArticlesPageFilters> = (args) => (
+  <ArticlesPageFilters {...args} />
+);
 
 const initialState: ArticlesPageSchema = {
   error: null,

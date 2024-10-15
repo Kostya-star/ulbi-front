@@ -19,7 +19,9 @@ export default {
   // decorators: [StoreDecorator],
 } as ComponentMeta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: ComponentStory<typeof ProfileCard> = (args) => (
+  <ProfileCard {...args} />
+);
 
 const profileData: Profile = {
   first: 'Constantin',

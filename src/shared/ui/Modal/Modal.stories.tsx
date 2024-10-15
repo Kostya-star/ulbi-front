@@ -27,4 +27,6 @@ ModalLight.args = modalOptions;
 
 export const ModalDark = Template.bind({});
 ModalDark.args = modalOptions;
-ModalDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+ModalDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];

@@ -1,6 +1,9 @@
 import { ReactElement, useEffect, useRef, useState } from 'react';
 
-import { ReactSpringType, UseGestureType } from '@/shared/types/asyncAnimationLibs';
+import {
+  ReactSpringType,
+  UseGestureType,
+} from '@/shared/types/asyncAnimationLibs';
 
 interface AsyncLibs {
   Gesture: UseGestureType;
@@ -41,7 +44,10 @@ async function loadLibsAsync() {
 
   const gesturePromise = import('@use-gesture/react');
   const springPromise = import('@react-spring/web');
-  const [useGesture, reactSpring] = await Promise.all([gesturePromise, springPromise]);
+  const [useGesture, reactSpring] = await Promise.all([
+    gesturePromise,
+    springPromise,
+  ]);
 
   return { useGesture, reactSpring };
 }

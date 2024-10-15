@@ -13,7 +13,9 @@ export default {
   decorators: [(Story) => <div style={{ padding: '200px' }}>{Story()}</div>],
 } as ComponentMeta<typeof ListBox>;
 
-const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
+const Template: ComponentStory<typeof ListBox> = (args) => (
+  <ListBox {...args} />
+);
 
 const options: ListBoxItem[] = [
   { content: 'Durward Reynolds', value: false },

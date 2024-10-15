@@ -9,7 +9,10 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { createReducerManager } from './reducerManager';
 import { RootReducersType, StateSchema } from './StateSchema';
 
-export function createReduxStore(initialState?: StateSchema, asyncReducers?: RootReducersType) {
+export function createReduxStore(
+  initialState?: StateSchema,
+  asyncReducers?: RootReducersType,
+) {
   const rootReducers: RootReducersType = {
     ...asyncReducers,
     counter: counterReducer,

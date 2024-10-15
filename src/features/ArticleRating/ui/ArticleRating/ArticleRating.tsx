@@ -21,9 +21,14 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
   const { t } = useTranslation('articles');
   const authData = useSelector(getAuthUserData) as User;
 
-  const { data, isFetching: isGetLoading } = useGetArticleRating({ userId: authData.id, articleId });
-  const [postArticleRating, { isLoading: isPostLoading }] = usePostArticleRating();
-  const [patchArticleRating, { isLoading: isPatchLoading }] = usePatchArticleRating();
+  const { data, isFetching: isGetLoading } = useGetArticleRating({
+    userId: authData.id,
+    articleId,
+  });
+  const [postArticleRating, { isLoading: isPostLoading }] =
+    usePostArticleRating();
+  const [patchArticleRating, { isLoading: isPatchLoading }] =
+    usePatchArticleRating();
 
   const oldRate = data?.[0]?.rate;
   const isRatingExist = !!oldRate;
@@ -45,7 +50,14 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
         });
       }
     },
-    [articleId, authData.id, data, isRatingExist, patchArticleRating, postArticleRating],
+    [
+      articleId,
+      authData.id,
+      data,
+      isRatingExist,
+      patchArticleRating,
+      postArticleRating,
+    ],
   );
 
   const cancel = useCallback(
@@ -66,7 +78,9 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
     return <Skeleton width="100%" height="110px" borderRadius="12px" />;
   }
 
-  const ratingTitle = isRatingExist ? t('title_rate_exist') : t('title_rate_no_exist');
+  const ratingTitle = isRatingExist
+    ? t('title_rate_exist')
+    : t('title_rate_no_exist');
 
   return (
     <div className={classNames('', {}, [className])}>

@@ -56,7 +56,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   if (isLoading) {
     return (
-      <HStack justifyContent="center" alignItems="center" className={classNames(cls.ProfileCard, mods, [className])}>
+      <HStack
+        justifyContent="center"
+        alignItems="center"
+        className={classNames(cls.ProfileCard, mods, [className])}
+      >
         <Loader />
       </HStack>
     );
@@ -64,7 +68,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   if (error) {
     return (
-      <HStack justifyContent="center" alignItems="center" className={classNames(cls.ProfileCard, mods, [className])}>
+      <HStack
+        justifyContent="center"
+        alignItems="center"
+        className={classNames(cls.ProfileCard, mods, [className])}
+      >
         <Text
           title={t('profile_loading_error')}
           text={t('profile_refresh_page')}
@@ -95,8 +103,18 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         readonly={isReadonly}
         onChange={onChangeLastname}
       />
-      <Input value={data?.age || ''} placeholder={t('profile_age')} readonly={isReadonly} onChange={onChangeAge} />
-      <Input value={data?.city || ''} placeholder={t('profile_city')} readonly={isReadonly} onChange={onChangeCity} />
+      <Input
+        value={data?.age || ''}
+        placeholder={t('profile_age')}
+        readonly={isReadonly}
+        onChange={onChangeAge}
+      />
+      <Input
+        value={data?.city || ''}
+        placeholder={t('profile_city')}
+        readonly={isReadonly}
+        onChange={onChangeCity}
+      />
       {/* <Input
         value={data?.username || ''}
         placeholder={t('profile_username')}
@@ -110,9 +128,17 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         onChange={onChangeAvatarUrl}
       />
 
-      <CurrencySelect value={data?.currency} readonly={isReadonly} onChange={onChangeCurrency} />
+      <CurrencySelect
+        value={data?.currency}
+        readonly={isReadonly}
+        onChange={onChangeCurrency}
+      />
 
-      <CountrySelect value={data?.country} readonly={isReadonly} onChange={onChangeCountry} />
+      <CountrySelect
+        value={data?.country}
+        readonly={isReadonly}
+        onChange={onChangeCountry}
+      />
     </VStack>
   );
 };

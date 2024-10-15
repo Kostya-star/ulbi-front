@@ -36,4 +36,6 @@ size150Dark.args = {
   src: AvatarImg,
   size: 150,
 };
-size150Dark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+size150Dark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];

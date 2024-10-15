@@ -4,7 +4,10 @@ import { useSelector } from 'react-redux';
 
 import { ArticlesList } from '@/entities/Article';
 
-import { getIsLoading, getView } from '../../model/selectors/articlesPageSelectors';
+import {
+  getIsLoading,
+  getView,
+} from '../../model/selectors/articlesPageSelectors';
 import { getArticles } from '../../model/slices/articlesPageSlice';
 
 export const ArticlesInfiniteList = memo(() => {

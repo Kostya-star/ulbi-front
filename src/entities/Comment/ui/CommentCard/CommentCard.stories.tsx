@@ -16,7 +16,9 @@ export default {
   // decorators: [StoreDecorator],
 } as ComponentMeta<typeof CommentCard>;
 
-const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
+const Template: ComponentStory<typeof CommentCard> = (args) => (
+  <CommentCard {...args} />
+);
 
 const commentItem: Comment = {
   id: '1',
@@ -48,4 +50,6 @@ export const duskSerenity = Template.bind({});
 duskSerenity.args = {
   comment: commentItem,
 };
-duskSerenity.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY)];
+duskSerenity.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY),
+];

@@ -9,7 +9,11 @@ import { LoginSchema } from '../../types/LoginSchema';
 
 type loginByUserNamePayload = Pick<LoginSchema, 'username' | 'password'>;
 
-export const loginByUserName = createAsyncThunk<User, loginByUserNamePayload, ThunkConfig<string>>(
+export const loginByUserName = createAsyncThunk<
+  User,
+  loginByUserNamePayload,
+  ThunkConfig<string>
+>(
   'login/loginByUserName',
   async (loginUserData, { extra, dispatch, rejectWithValue }) => {
     try {
@@ -18,7 +22,10 @@ export const loginByUserName = createAsyncThunk<User, loginByUserNamePayload, Th
       if (!dbUser.data) throw new Error();
 
       dispatch(setAuthUserData(dbUser.data));
-      localStorage.setItem(USER_DATA_LOCAL_STORAGE, JSON.stringify(dbUser.data));
+      localStorage.setItem(
+        USER_DATA_LOCAL_STORAGE,
+        JSON.stringify(dbUser.data),
+      );
 
       return dbUser.data;
     } catch (err) {

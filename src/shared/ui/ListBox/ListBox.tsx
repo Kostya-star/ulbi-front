@@ -34,9 +34,21 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
 };
 
 export const ListBox = (props: ListBoxProps) => {
-  const { className, items, value, defaultValue, onChange, readonly = false, direction = 'bottom right', label } = props;
+  const {
+    className,
+    items,
+    value,
+    defaultValue,
+    onChange,
+    readonly = false,
+    direction = 'bottom right',
+    label,
+  } = props;
 
-  const optionsClasses = useMemo(() => [mapDirectionClass[direction]], [direction]);
+  const optionsClasses = useMemo(
+    () => [mapDirectionClass[direction]],
+    [direction],
+  );
 
   const onChangeValue = useCallback(
     (newVal: string) => {
@@ -48,9 +60,21 @@ export const ListBox = (props: ListBoxProps) => {
   const listItems = useMemo(
     () =>
       items?.map((item) => (
-        <HListBox.Option key={item.content} value={item.content} disabled={item.disabled} as={Fragment}>
+        <HListBox.Option
+          key={item.content}
+          value={item.content}
+          disabled={item.disabled}
+          as={Fragment}
+        >
           {({ active: isHovered, selected }) => (
-            <li className={classNames(cls.item, getListItemMods(isHovered, selected, item.disabled))}>{item.content}</li>
+            <li
+              className={classNames(
+                cls.item,
+                getListItemMods(isHovered, selected, item.disabled),
+              )}
+            >
+              {item.content}
+            </li>
           )}
         </HListBox.Option>
       )),
@@ -70,13 +94,21 @@ export const ListBox = (props: ListBoxProps) => {
         <HListBox.Button as="div">
           <Button disabled={readonly}>{value ?? defaultValue}</Button>
         </HListBox.Button>
-        <HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>{listItems}</HListBox.Options>
+        <HListBox.Options
+          className={classNames(cls.options, {}, optionsClasses)}
+        >
+          {listItems}
+        </HListBox.Options>
       </HListBox>
     </HStack>
   );
 };
 
-function getListItemMods(isHovered: boolean, selected: boolean, disabled?: boolean) {
+function getListItemMods(
+  isHovered: boolean,
+  selected: boolean,
+  disabled?: boolean,
+) {
   return {
     [cls.isHovered]: isHovered,
     [cls.selected]: selected,

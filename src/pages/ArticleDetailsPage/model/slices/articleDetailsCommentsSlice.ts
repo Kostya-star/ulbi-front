@@ -1,4 +1,9 @@
-import { createEntityAdapter, createSlice, EntityAdapter, EntityState } from '@reduxjs/toolkit';
+import {
+  createEntityAdapter,
+  createSlice,
+  EntityAdapter,
+  EntityState,
+} from '@reduxjs/toolkit';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Comment } from '@/entities/Comment';
@@ -12,12 +17,13 @@ const commentsAdapter: EntityAdapter<Comment> = createEntityAdapter<Comment>({
   selectId: (comment) => comment.id,
 });
 
-const initialState: InitialState = commentsAdapter.getInitialState<ArticleDetailsCommentSchema>({
-  error: null,
-  isLoading: false,
-  entities: {},
-  ids: [],
-});
+const initialState: InitialState =
+  commentsAdapter.getInitialState<ArticleDetailsCommentSchema>({
+    error: null,
+    isLoading: false,
+    entities: {},
+    ids: [],
+  });
 
 const articleDetailsCommentsSlice = createSlice({
   name: 'articleDetailsComments',
@@ -40,10 +46,15 @@ const articleDetailsCommentsSlice = createSlice({
   },
 });
 
-export const articleDetailsCommentsReducer = articleDetailsCommentsSlice.reducer;
+export const articleDetailsCommentsReducer =
+  articleDetailsCommentsSlice.reducer;
 // export const {} = articleDetailsCommentsSlice.actions;
 
 // selectors
-export const getArticleComments = commentsAdapter.getSelectors<StateSchema>((state) => {
-  return state.articleDetailsPage?.comments || commentsAdapter.getInitialState();
-});
+export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
+  (state) => {
+    return (
+      state.articleDetailsPage?.comments || commentsAdapter.getInitialState()
+    );
+  },
+);

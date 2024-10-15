@@ -16,7 +16,9 @@ export default {
   // decorators: [StoreDecorator],
 } as ComponentMeta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
+const Template: ComponentStory<typeof CommentList> = (args) => (
+  <CommentList {...args} />
+);
 
 const comments: Comment[] = [
   {
@@ -56,4 +58,6 @@ dark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
 
 export const duskSerenity = Template.bind({});
 duskSerenity.args = { comments };
-duskSerenity.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY)];
+duskSerenity.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY),
+];

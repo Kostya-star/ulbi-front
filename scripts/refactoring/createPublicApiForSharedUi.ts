@@ -21,7 +21,11 @@ sharedUiComponentsDir?.forEach((compUiDir) => {
   if (!indexFile) {
     const indexContents = `export * from './${compUiDir.getBaseName()}';
 `;
-    const newIndexFile = compUiDir.createSourceFile(indexFilePath, indexContents, { overwrite: true });
+    const newIndexFile = compUiDir.createSourceFile(
+      indexFilePath,
+      indexContents,
+      { overwrite: true },
+    );
     newIndexFile.save();
   }
 });

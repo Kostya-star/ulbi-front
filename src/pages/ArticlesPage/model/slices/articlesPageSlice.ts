@@ -1,7 +1,18 @@
-import { createEntityAdapter, createSlice, EntityAdapter, EntityState, PayloadAction } from '@reduxjs/toolkit';
+import {
+  createEntityAdapter,
+  createSlice,
+  EntityAdapter,
+  EntityState,
+  PayloadAction,
+} from '@reduxjs/toolkit';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { Article, ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
+import {
+  Article,
+  ArticleSortByOptions,
+  ArticlesView,
+  ArticleType,
+} from '@/entities/Article';
 import { SortOrder } from '@/shared/types/SortOrder';
 
 import { BIG_VIEW_LIMIT } from '../const/articlesLimit/articlesLimit';
@@ -14,21 +25,22 @@ const articlesAdapter: EntityAdapter<Article> = createEntityAdapter<Article>({
   selectId: (article) => article.id,
 });
 
-const initialState: InitialState = articlesAdapter.getInitialState<ArticlesPageSchema>({
-  error: null,
-  isLoading: false,
-  entities: {},
-  ids: [],
-  page: 1,
-  limit: null,
-  hasMore: true,
+const initialState: InitialState =
+  articlesAdapter.getInitialState<ArticlesPageSchema>({
+    error: null,
+    isLoading: false,
+    entities: {},
+    ids: [],
+    page: 1,
+    limit: null,
+    hasMore: true,
 
-  view: ArticlesView.SMALL,
-  order: SortOrder.ASC,
-  sortBy: ArticleSortByOptions.VIEWS,
-  search: '',
-  type: ArticleType.ALL,
-});
+    view: ArticlesView.SMALL,
+    order: SortOrder.ASC,
+    sortBy: ArticleSortByOptions.VIEWS,
+    search: '',
+    type: ArticleType.ALL,
+  });
 
 const articlesPageSlice = createSlice({
   name: 'articlesPage',
@@ -83,9 +95,19 @@ const articlesPageSlice = createSlice({
 
 export const articlesPageReducer = articlesPageSlice.reducer;
 
-export const { setView, setPage, setLimit, setOrder, setSortBy, setSearch, setType } = articlesPageSlice.actions;
+export const {
+  setView,
+  setPage,
+  setLimit,
+  setOrder,
+  setSortBy,
+  setSearch,
+  setType,
+} = articlesPageSlice.actions;
 
 // selectors
-export const getArticles = articlesAdapter.getSelectors<StateSchema>((state) => {
-  return state.articlesPage || articlesAdapter.getInitialState();
-});
+export const getArticles = articlesAdapter.getSelectors<StateSchema>(
+  (state) => {
+    return state.articlesPage || articlesAdapter.getInitialState();
+  },
+);

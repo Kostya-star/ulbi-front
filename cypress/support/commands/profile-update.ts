@@ -19,7 +19,8 @@ export const resetProfile = (profileId: string) => {
       country: 'USA',
       city: 'Washington',
       username: 'test',
-      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt5hlguGVkKpBcz3R7vXCH8M2WtsCtQOWWxQ&s',
+      avatar:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt5hlguGVkKpBcz3R7vXCH8M2WtsCtQOWWxQ&s',
     },
   });
 };

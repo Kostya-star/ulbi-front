@@ -26,4 +26,6 @@ InputLight.args = inputProps;
 
 export const InputDark = Template.bind({});
 InputDark.args = inputProps;
-InputDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+InputDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];

@@ -9,4 +9,5 @@ const defaultLoginState: LoginSchema = {
   username: '',
 };
 
-export const getLoginState = (state: StateSchema) => state.login ?? defaultLoginState;
+export const getLoginState = (state: StateSchema) =>
+  state.login ?? defaultLoginState;

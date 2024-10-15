@@ -23,7 +23,9 @@ describe('updateProfileData.test', () => {
       error: 'error',
     };
 
-    expect(profileReducer(state as ProfileSchema, updateProfileData.pending)).toEqual({ isLoading: true, error: null });
+    expect(
+      profileReducer(state as ProfileSchema, updateProfileData.pending),
+    ).toEqual({ isLoading: true, error: null });
   });
 
   test('extraReducers: updateProfileData.fulfilled', async () => {
@@ -33,7 +35,12 @@ describe('updateProfileData.test', () => {
       data: null,
     };
 
-    expect(profileReducer(state as ProfileSchema, updateProfileData.fulfilled(data, '', data))).toEqual({
+    expect(
+      profileReducer(
+        state as ProfileSchema,
+        updateProfileData.fulfilled(data, '', data),
+      ),
+    ).toEqual({
       isLoading: false,
       error: null,
       data,

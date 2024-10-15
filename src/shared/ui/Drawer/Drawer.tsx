@@ -3,7 +3,10 @@ import { memo, ReactNode, useCallback, useEffect, useMemo } from 'react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { AnimationProvider } from '@/shared/lib/AnimationProvider/AnimationProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ReactSpringType, UseGestureType } from '@/shared/types/asyncAnimationLibs';
+import {
+  ReactSpringType,
+  UseGestureType,
+} from '@/shared/types/asyncAnimationLibs';
 
 import cls from './Drawer.module.scss';
 import { Overlay } from '../Overlay/Overlay';
@@ -27,10 +30,21 @@ interface DrawerAsyncProps extends DrawerProps {
 }
 
 const DrawerAsync = memo(
-  ({ className, children, isOpen = false, side = 'bottom', onClose, Gesture, Spring }: DrawerAsyncProps) => {
+  ({
+    className,
+    children,
+    isOpen = false,
+    side = 'bottom',
+    onClose,
+    Gesture,
+    Spring,
+  }: DrawerAsyncProps) => {
     const { theme } = useTheme();
 
-    const height = useMemo(() => window.innerHeight + (side === 'bottom' ? 100 : 0), [side]);
+    const height = useMemo(
+      () => window.innerHeight + (side === 'bottom' ? 100 : 0),
+      [side],
+    );
 
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
@@ -54,7 +68,13 @@ const DrawerAsync = memo(
     };
 
     const bind = Gesture.useDrag(
-      ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
+      ({
+        last,
+        velocity: [, vy],
+        direction: [, dy],
+        movement: [, my],
+        cancel,
+      }) => {
         if (my < -70) cancel();
 
         if (last) {
@@ -83,7 +103,12 @@ const DrawerAsync = memo(
 
     return (
       <Portal>
-        <div className={classNames(cls.Drawer, { [cls.opened]: isOpen }, [className, theme])}>
+        <div
+          className={classNames(cls.Drawer, { [cls.opened]: isOpen }, [
+            className,
+            theme,
+          ])}
+        >
           <Overlay onClick={close} />
           <Spring.a.div
             className={classNames(cls.content, {}, [cls[side], cls.sheet])}

@@ -9,6 +9,7 @@
     "start:front:back": "cross-env NODE_OPTIONS=--max-old-space-size=8192 concurrently \"npm run start:front\" \"npm run start:back\"",
     "start:front:vite": "vite",
     "start:front:back:vite": "concurrently \"npm run start:front:vite\" \"npm run start:back\"",
+    "ngrok-start": "ngrok start --all",
     "build:prod": "webpack --env mode=production apiUrl=https://ulbi-backend-server.vercel.app",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
@@ -140,7 +141,8 @@
     "react-i18next": "^11.18.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.2.1",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "wait-on": "^8.0.1"
   },
   "loki": {
     "configurations": {

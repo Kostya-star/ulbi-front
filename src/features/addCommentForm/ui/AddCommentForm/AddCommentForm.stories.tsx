@@ -15,7 +15,9 @@ export default {
   // decorators: [StoreDecorator],
 } as ComponentMeta<typeof AddCommentForm>;
 
-const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
+const Template: ComponentStory<typeof AddCommentForm> = (args) => (
+  <AddCommentForm {...args} />
+);
 
 export const light = Template.bind({});
 light.args = {

@@ -11,7 +11,9 @@ import { routeConfig } from '../model/config/routeConfig';
 export const AppRouter = memo(() => {
   const routesList = useMemo(() => {
     return Object.values(routeConfig).map((route) => {
-      const element = <Suspense fallback={<PageLoader />}>{route.element}</Suspense>;
+      const element = (
+        <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
+      );
 
       return (
         <Route

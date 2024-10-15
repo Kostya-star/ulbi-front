@@ -17,7 +17,9 @@ export const RequireAuth = memo(({ children, authOnly }: RequireAuthProps) => {
   const location = useLocation();
 
   if (authOnly && !isAuth) {
-    return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
+    return (
+      <Navigate to={getRouteForbidden()} state={{ from: location }} replace />
+    );
   }
 
   return children;

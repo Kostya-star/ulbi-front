@@ -29,7 +29,11 @@
 
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-import { ArticleSortByOptions, ArticlesView, ArticleType } from '@/entities/Article';
+import {
+  ArticleSortByOptions,
+  ArticlesView,
+  ArticleType,
+} from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { SortOrder } from '@/shared/types/SortOrder';
 
@@ -44,7 +48,9 @@ export default {
   },
 } as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
+const Template: ComponentStory<typeof ArticlesPage> = (args) => (
+  <ArticlesPage {...args} />
+);
 
 const articlesPageInitialState: ArticlesPageSchema = {
   error: null,
@@ -75,7 +81,9 @@ export const isLoading = Template.bind({});
 isLoading.args = {};
 isLoading.decorators = [
   (StoryComp: Story) => {
-    const copyState: ArticlesPageSchema = JSON.parse(JSON.stringify(articlesPageInitialState));
+    const copyState: ArticlesPageSchema = JSON.parse(
+      JSON.stringify(articlesPageInitialState),
+    );
     copyState.isLoading = true;
 
     return StoreDecorator(StoryComp, {
@@ -89,7 +97,9 @@ export const viewBig = Template.bind({});
 viewBig.args = {};
 viewBig.decorators = [
   (StoryComp: Story) => {
-    const copyState: ArticlesPageSchema = JSON.parse(JSON.stringify(articlesPageInitialState));
+    const copyState: ArticlesPageSchema = JSON.parse(
+      JSON.stringify(articlesPageInitialState),
+    );
     copyState.view = ArticlesView.BIG;
     copyState.isLoading = true;
 

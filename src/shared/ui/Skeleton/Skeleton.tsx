@@ -11,15 +11,22 @@ interface SkeletonProps {
   borderRadius?: string;
 }
 
-export const Skeleton = memo(({ className, height, width, borderRadius }: SkeletonProps) => {
-  const styles: CSSProperties = useMemo(
-    () => ({
-      height,
-      width,
-      borderRadius,
-    }),
-    [borderRadius, height, width],
-  );
+export const Skeleton = memo(
+  ({ className, height, width, borderRadius }: SkeletonProps) => {
+    const styles: CSSProperties = useMemo(
+      () => ({
+        height,
+        width,
+        borderRadius,
+      }),
+      [borderRadius, height, width],
+    );
 
-  return <div style={styles} className={classNames(cls.Skeleton, {}, [className])} />;
-});
+    return (
+      <div
+        style={styles}
+        className={classNames(cls.Skeleton, {}, [className])}
+      />
+    );
+  },
+);

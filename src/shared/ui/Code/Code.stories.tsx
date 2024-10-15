@@ -37,4 +37,6 @@ Dark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
 
 export const daskSerenity = Template.bind({});
 daskSerenity.args = { textCode };
-daskSerenity.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY)];
+daskSerenity.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DUSK_SERENITY),
+];

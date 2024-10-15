@@ -4,7 +4,10 @@ import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useConditionalEffect } from '@/shared/hooks/useConditionalEffect/useConditionalEffect';
-import { ReducersList, useReduxReducerManager } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
+import {
+  ReducersList,
+  useReduxReducerManager,
+} from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
 import { Page } from '@/widgets/Page';

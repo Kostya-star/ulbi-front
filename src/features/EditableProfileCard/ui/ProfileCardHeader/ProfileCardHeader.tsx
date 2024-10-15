@@ -31,18 +31,30 @@ export const ProfileCardHeader: FC<ProfileCardHeaderProps> = ({
   const { t } = useTranslation('profile');
 
   return (
-    <HStack justifyContent="between" alignItems="center" className={classNames(cls.ProfilePageHeader, {}, [className])}>
+    <HStack
+      justifyContent="between"
+      alignItems="center"
+      className={classNames(cls.ProfilePageHeader, {}, [className])}
+    >
       <Text title={t('profile')} />
       {
         // eslint-disable-next-line no-nested-ternary
         canEdit ? (
           isReadonly ? (
-            <Button data-testid="ProfileCardHeader.EditButton" theme={ButtonTheme.OUTLINE} onClick={onEdit}>
+            <Button
+              data-testid="ProfileCardHeader.EditButton"
+              theme={ButtonTheme.OUTLINE}
+              onClick={onEdit}
+            >
               {t('edit_profile')}
             </Button>
           ) : (
             <HStack gap="8">
-              <Button data-testid="ProfileCardHeader.CancelButton" theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>
+              <Button
+                data-testid="ProfileCardHeader.CancelButton"
+                theme={ButtonTheme.OUTLINE_RED}
+                onClick={onCancel}
+              >
                 {t('cancel_edit_profile')}
               </Button>
               <Button

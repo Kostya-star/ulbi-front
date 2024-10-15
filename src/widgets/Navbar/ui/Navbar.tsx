@@ -26,7 +26,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   const authData = useSelector(getAuthUserData);
 
-  const { isOpen: isModalOpen, onOpen: openModal, onClose: closeModal } = usePopupController();
+  const {
+    isOpen: isModalOpen,
+    onOpen: openModal,
+    onClose: closeModal,
+  } = usePopupController();
 
   if (authData) {
     return (
@@ -51,7 +55,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   }
 
   return (
-    <HStack justifyContent="between" alignItems="center" allWidth className={classNames(cls.Navbar, {}, [className])}>
+    <HStack
+      justifyContent="between"
+      alignItems="center"
+      allWidth
+      className={classNames(cls.Navbar, {}, [className])}
+    >
       {/* <MakeErrorTestBtn /> */}
       <Text title={t('blog')} className={cls.logo} />
 

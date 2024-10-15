@@ -15,4 +15,5 @@ const notificationApi = rtkApi.injectEndpoints({
   }),
 });
 
-export const useGetNotificationsList = notificationApi.useGetNotificationListQuery;
+export const useGetNotificationsList =
+  notificationApi.useGetNotificationListQuery;

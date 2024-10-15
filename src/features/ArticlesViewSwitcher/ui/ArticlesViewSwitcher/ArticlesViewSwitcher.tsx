@@ -26,24 +26,37 @@ const viewTypes = [
   },
 ];
 
-export const ArticlesViewSwitcher = memo(({ className, view, onViewClick }: ArticlesViewSwitcherProps) => {
-  const onIconClick = useCallback(
-    (view: ArticlesView) => () => {
-      onViewClick?.(view);
-    },
-    [onViewClick],
-  );
+export const ArticlesViewSwitcher = memo(
+  ({ className, view, onViewClick }: ArticlesViewSwitcherProps) => {
+    const onIconClick = useCallback(
+      (view: ArticlesView) => () => {
+        onViewClick?.(view);
+      },
+      [onViewClick],
+    );
 
-  // const onIconClick = (view: ArticlesView) => () => {
-  //   onViewClick?.(view);
-  // };
-  return (
-    <div className={classNames('', {}, [className])}>
-      {viewTypes.map((viewType) => (
-        <Button key={viewType.view} theme={ButtonTheme.CLEAR} onClick={onIconClick(viewType.view)}>
-          <Icon Svg={viewType.icon} className={classNames('', { [cls.notSelected]: view !== viewType.view }, [className])} />
-        </Button>
-      ))}
-    </div>
-  );
-});
+    // const onIconClick = (view: ArticlesView) => () => {
+    //   onViewClick?.(view);
+    // };
+    return (
+      <div className={classNames('', {}, [className])}>
+        {viewTypes.map((viewType) => (
+          <Button
+            key={viewType.view}
+            theme={ButtonTheme.CLEAR}
+            onClick={onIconClick(viewType.view)}
+          >
+            <Icon
+              Svg={viewType.icon}
+              className={classNames(
+                '',
+                { [cls.notSelected]: view !== viewType.view },
+                [className],
+              )}
+            />
+          </Button>
+        ))}
+      </div>
+    );
+  },
+);

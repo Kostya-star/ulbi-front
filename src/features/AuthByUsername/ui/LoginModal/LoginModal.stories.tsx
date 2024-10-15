@@ -15,7 +15,9 @@ export default {
   // decorators: [StoreDecorator],
 } as ComponentMeta<typeof LoginModal>;
 
-const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />;
+const Template: ComponentStory<typeof LoginModal> = (args) => (
+  <LoginModal {...args} />
+);
 
 export const light = Template.bind({});
 light.args = {

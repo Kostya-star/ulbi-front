@@ -17,26 +17,28 @@ interface TabsProps {
   onTabClick: (tabVal: string) => void;
 }
 
-export const Tabs = memo(({ className, tabs, value, onTabClick }: TabsProps) => {
-  const onClick = useCallback(
-    (newTab: TabItem) => () => {
-      onTabClick(newTab.value);
-    },
-    [onTabClick],
-  );
+export const Tabs = memo(
+  ({ className, tabs, value, onTabClick }: TabsProps) => {
+    const onClick = useCallback(
+      (newTab: TabItem) => () => {
+        onTabClick(newTab.value);
+      },
+      [onTabClick],
+    );
 
-  return (
-    <div className={classNames(cls.Tabs, {}, [className])}>
-      {tabs.map((tab) => (
-        <Card
-          theme={tab.value === value ? CardTheme.OUTLINE : CardTheme.NORMAL}
-          key={tab.value}
-          disabled={tab.value === value}
-          onClick={onClick(tab)}
-        >
-          {tab.text}
-        </Card>
-      ))}
-    </div>
-  );
-});
+    return (
+      <div className={classNames(cls.Tabs, {}, [className])}>
+        {tabs.map((tab) => (
+          <Card
+            theme={tab.value === value ? CardTheme.OUTLINE : CardTheme.NORMAL}
+            key={tab.value}
+            disabled={tab.value === value}
+            onClick={onClick(tab)}
+          >
+            {tab.text}
+          </Card>
+        ))}
+      </div>
+    );
+  },
+);

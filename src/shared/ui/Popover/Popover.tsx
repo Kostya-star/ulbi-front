@@ -21,16 +21,28 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
   'top left': cls.optionsTopLeft,
 };
 
-export const Popover = memo(({ className, trigger, children, direction = 'bottom right' }: PopoverProps) => {
-  const directionClasses = useMemo(() => [mapDirectionClass[direction]], [direction]);
+export const Popover = memo(
+  ({
+    className,
+    trigger,
+    children,
+    direction = 'bottom right',
+  }: PopoverProps) => {
+    const directionClasses = useMemo(
+      () => [mapDirectionClass[direction]],
+      [direction],
+    );
 
-  return (
-    <HPopover className={classNames(cls.Popover, {}, [className])}>
-      <HPopover.Button as="div" className={cls.trigger}>
-        {trigger}
-      </HPopover.Button>
+    return (
+      <HPopover className={classNames(cls.Popover, {}, [className])}>
+        <HPopover.Button as="div" className={cls.trigger}>
+          {trigger}
+        </HPopover.Button>
 
-      <HPopover.Panel className={classNames(cls.panel, {}, directionClasses)}>{children}</HPopover.Panel>
-    </HPopover>
-  );
-});
+        <HPopover.Panel className={classNames(cls.panel, {}, directionClasses)}>
+          {children}
+        </HPopover.Panel>
+      </HPopover>
+    );
+  },
+);

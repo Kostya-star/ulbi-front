@@ -16,10 +16,24 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
-export const Card = memo(({ className, children, disabled, theme = CardTheme.NORMAL, ...otherProps }: CardProps) => {
-  return (
-    <div className={classNames(cls.Card, { [cls.disabled]: disabled }, [className, cls[theme]])} {...otherProps}>
-      {children}
-    </div>
-  );
-});
+export const Card = memo(
+  ({
+    className,
+    children,
+    disabled,
+    theme = CardTheme.NORMAL,
+    ...otherProps
+  }: CardProps) => {
+    return (
+      <div
+        className={classNames(cls.Card, { [cls.disabled]: disabled }, [
+          className,
+          cls[theme],
+        ])}
+        {...otherProps}
+      >
+        {children}
+      </div>
+    );
+  },
+);

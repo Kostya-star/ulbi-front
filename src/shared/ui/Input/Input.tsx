@@ -1,10 +1,22 @@
-import { ChangeEvent, FC, InputHTMLAttributes, memo, SyntheticEvent, useEffect, useRef, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  InputHTMLAttributes,
+  memo,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
+type HTMLInputProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'onChange'
+>;
 
 interface InputProps extends HTMLInputProps {
   value?: string | number;
@@ -19,7 +31,16 @@ interface InputProps extends HTMLInputProps {
 const SYMBOL_WIDTH = 9; // the width of the CONSOLAS font in px
 
 export const Input: FC<InputProps> = memo(
-  ({ value, type = 'text', className, placeholder, autofocus, readonly, onChange, ...restProps }: InputProps) => {
+  ({
+    value,
+    type = 'text',
+    className,
+    placeholder,
+    autofocus,
+    readonly,
+    onChange,
+    ...restProps
+  }: InputProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [isInputFocused, setInputFocused] = useState(false);
     const [underscoreElPosition, setUnderscoreElPosition] = useState(0);
@@ -65,7 +86,8 @@ export const Input: FC<InputProps> = memo(
 
     const onInputSelect = (e: SyntheticEvent<HTMLInputElement>) => {
       const target = e.target as HTMLInputElement;
-      const newUnderscoreElPosition = (target.selectionStart || 0) * SYMBOL_WIDTH;
+      const newUnderscoreElPosition =
+        (target.selectionStart || 0) * SYMBOL_WIDTH;
       onSetUnderscorePositionHandle(newUnderscoreElPosition);
     };
 
@@ -73,7 +95,9 @@ export const Input: FC<InputProps> = memo(
 
     return (
       <div className={classNames(cls.InputWrapper, {}, [className])}>
-        {placeholder?.trim() && <span className={cls.placeholder}>{`${placeholder.trim()}>`}</span>}
+        {placeholder?.trim() && (
+          <span className={cls.placeholder}>{`${placeholder.trim()}>`}</span>
+        )}
         <div className={cls.inputBlock}>
           <input
             ref={inputRef}
@@ -87,7 +111,12 @@ export const Input: FC<InputProps> = memo(
             onSelect={onInputSelect}
             {...restProps}
           />
-          {isUnderscoreVisible && <span style={{ left: `${underscoreElPosition}px` }} className={cls.underscoreEl} />}
+          {isUnderscoreVisible && (
+            <span
+              style={{ left: `${underscoreElPosition}px` }}
+              className={cls.underscoreEl}
+            />
+          )}
         </div>
       </div>
     );

@@ -22,4 +22,5 @@ const patchRatingApi = rtkApi.injectEndpoints({
   }),
 });
 
-export const usePatchArticleRating = patchRatingApi.usePatchArticleRatingMutation;
+export const usePatchArticleRating =
+  patchRatingApi.usePatchArticleRatingMutation;

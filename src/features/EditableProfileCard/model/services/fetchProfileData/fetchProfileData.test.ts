@@ -18,7 +18,9 @@ const defaultProfileData = {
 describe('fetchProfileData.test', () => {
   test('success', async () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: defaultProfileData }));
+    thunk.api.get.mockReturnValue(
+      Promise.resolve({ data: defaultProfileData }),
+    );
     const result = await thunk.callThunk('1');
 
     expect(thunk.api.get).toHaveBeenCalled();

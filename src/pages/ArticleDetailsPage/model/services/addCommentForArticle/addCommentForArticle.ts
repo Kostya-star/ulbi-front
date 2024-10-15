@@ -11,7 +11,11 @@ interface PayloadThunk {
   articleId: string;
 }
 
-export const addCommentForArticle = createAsyncThunk<Comment, PayloadThunk, ThunkConfig<string>>(
+export const addCommentForArticle = createAsyncThunk<
+  Comment,
+  PayloadThunk,
+  ThunkConfig<string>
+>(
   'articleDetails/addCommentForArticle',
   async ({ newComment, articleId }, thunkApi) => {
     const { extra, dispatch, rejectWithValue, getState } = thunkApi;

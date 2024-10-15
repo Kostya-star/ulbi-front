@@ -23,7 +23,9 @@ export const RequireRoles = memo(({ children, roles }: RequireRolesProps) => {
   }, [roles, userRoles]);
 
   if (!hasAccessByRoles) {
-    return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
+    return (
+      <Navigate to={getRouteForbidden()} state={{ from: location }} replace />
+    );
   }
 
   return children;

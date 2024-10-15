@@ -13,7 +13,9 @@ export default {
   },
 } as ComponentMeta<typeof Skeleton>;
 
-const Template: ComponentStory<typeof Skeleton> = (args) => <Skeleton {...args} />;
+const Template: ComponentStory<typeof Skeleton> = (args) => (
+  <Skeleton {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {
@@ -33,7 +35,9 @@ NormalDark.args = {
   width: '100%',
   height: 200,
 };
-NormalDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+NormalDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
 
 export const CircleDark = Template.bind({});
 CircleDark.args = {
@@ -41,4 +45,6 @@ CircleDark.args = {
   width: 100,
   height: 100,
 };
-CircleDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+CircleDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];

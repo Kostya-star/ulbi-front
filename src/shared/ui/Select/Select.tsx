@@ -20,31 +20,45 @@ interface SelectProps<T extends string> {
 
 const Memo: <T>(c: T) => T = memo;
 
-export const Select = Memo(<T extends string>({ className, label, options, value, readonly, onChange }: SelectProps<T>) => {
-  const selectOptions = useMemo(
-    () =>
-      options?.map((opt) => (
-        <option key={opt.value} value={opt.value} className={cls.option}>
-          {opt.text}
-        </option>
-      )),
-    [options],
-  );
+export const Select = Memo(
+  <T extends string>({
+    className,
+    label,
+    options,
+    value,
+    readonly,
+    onChange,
+  }: SelectProps<T>) => {
+    const selectOptions = useMemo(
+      () =>
+        options?.map((opt) => (
+          <option key={opt.value} value={opt.value} className={cls.option}>
+            {opt.text}
+          </option>
+        )),
+      [options],
+    );
 
-  const onChangeHandler = useCallback(
-    (e: ChangeEvent<HTMLSelectElement>) => {
-      onChange?.(e.target.value as T);
-    },
-    [onChange],
-  );
+    const onChangeHandler = useCallback(
+      (e: ChangeEvent<HTMLSelectElement>) => {
+        onChange?.(e.target.value as T);
+      },
+      [onChange],
+    );
 
-  return (
-    <div className={classNames(cls.SelectWrapper, {}, [className])}>
-      {label && <span>{`${label}>`}</span>}
+    return (
+      <div className={classNames(cls.SelectWrapper, {}, [className])}>
+        {label && <span>{`${label}>`}</span>}
 
-      <select value={value} className={cls.select} disabled={readonly} onChange={onChangeHandler}>
-        {selectOptions}
-      </select>
-    </div>
-  );
-});
+        <select
+          value={value}
+          className={cls.select}
+          disabled={readonly}
+          onChange={onChangeHandler}
+        >
+          {selectOptions}
+        </select>
+      </div>
+    );
+  },
+);

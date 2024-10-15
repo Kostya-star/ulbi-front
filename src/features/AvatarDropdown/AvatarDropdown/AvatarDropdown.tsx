@@ -5,8 +5,17 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // import cls from './AvatarDropdown.module.scss';
-import { getRouteAdminPanel, getRouteMain, getRouteProfile } from '@/app/providers/router';
-import { getAuthUserData, isUserAdmin, isUserManager, logout } from '@/entities/User';
+import {
+  getRouteAdminPanel,
+  getRouteMain,
+  getRouteProfile,
+} from '@/app/providers/router';
+import {
+  getAuthUserData,
+  isUserAdmin,
+  isUserManager,
+  logout,
+} from '@/entities/User';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Dropdown } from '@/shared/ui/Dropdown';
@@ -25,7 +34,10 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
 
-  const isAdminPanelAvailable = useMemo(() => isAdmin || isManager, [isAdmin, isManager]);
+  const isAdminPanelAvailable = useMemo(
+    () => isAdmin || isManager,
+    [isAdmin, isManager],
+  );
 
   const onLogout = useCallback(() => {
     dispatch(logout());

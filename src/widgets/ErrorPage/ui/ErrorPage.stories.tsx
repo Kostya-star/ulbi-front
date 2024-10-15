@@ -13,11 +13,15 @@ export default {
   },
 } as ComponentMeta<typeof ErrorPage>;
 
-const Template: ComponentStory<typeof ErrorPage> = (args) => <ErrorPage {...args} />;
+const Template: ComponentStory<typeof ErrorPage> = (args) => (
+  <ErrorPage {...args} />
+);
 
 export const ErrorPageLight = Template.bind({});
 ErrorPageLight.args = {};
 
 export const ErrorPageDark = Template.bind({});
 ErrorPageDark.args = {};
-ErrorPageDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+ErrorPageDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];

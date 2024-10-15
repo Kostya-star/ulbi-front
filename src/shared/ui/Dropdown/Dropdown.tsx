@@ -29,8 +29,16 @@ const mapDirectionClass: Record<DropdownDirection, string> = {
   'top left': cls.optionsTopLeft,
 };
 
-export const Dropdown = ({ className, trigger, items, direction = 'bottom right' }: DropdownProps) => {
-  const optionsClasses = useMemo(() => [mapDirectionClass[direction]], [direction]);
+export const Dropdown = ({
+  className,
+  trigger,
+  items,
+  direction = 'bottom right',
+}: DropdownProps) => {
+  const optionsClasses = useMemo(
+    () => [mapDirectionClass[direction]],
+    [direction],
+  );
 
   return (
     <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
@@ -40,7 +48,9 @@ export const Dropdown = ({ className, trigger, items, direction = 'bottom right'
           const getContent = ({ active: isHovered }: { active: boolean }) => (
             <button
               type="button"
-              className={classNames(cls.list_item, { [cls.isHovered]: isHovered })}
+              className={classNames(cls.list_item, {
+                [cls.isHovered]: isHovered,
+              })}
               onClick={item.onClick}
             >
               {item.content}
@@ -49,7 +59,12 @@ export const Dropdown = ({ className, trigger, items, direction = 'bottom right'
 
           if (item.href) {
             return (
-              <Menu.Item key={index} as={AppLink} to={item.href} disabled={item.disabled}>
+              <Menu.Item
+                key={index}
+                as={AppLink}
+                to={item.href}
+                disabled={item.disabled}
+              >
                 {getContent}
               </Menu.Item>
             );

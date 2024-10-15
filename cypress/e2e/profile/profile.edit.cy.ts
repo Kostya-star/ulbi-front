@@ -24,7 +24,13 @@ describe('Profile edit', () => {
     const newLastNameTest = 'newLastNameTest';
 
     cy.updateProfile(newFirstNameTest, newLastNameTest);
-    cy.getByTestId('ProfileCard.firstname').should('have.value', newFirstNameTest);
-    cy.getByTestId('ProfileCard.lastname').should('have.value', newLastNameTest);
+    cy.getByTestId('ProfileCard.firstname').should(
+      'have.value',
+      newFirstNameTest,
+    );
+    cy.getByTestId('ProfileCard.lastname').should(
+      'have.value',
+      newLastNameTest,
+    );
   });
 });

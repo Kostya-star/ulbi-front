@@ -11,10 +11,12 @@ interface ArticleBlockCodeCompProps {
   block: ArticleBlockCode;
 }
 
-export const ArticleBlockCodeComp = memo(({ className, block }: ArticleBlockCodeCompProps) => {
-  return (
-    <div className={classNames(cls.ArticleBlockCodeComp, {}, [className])}>
-      <Code textCode={block.code} />
-    </div>
-  );
-});
+export const ArticleBlockCodeComp = memo(
+  ({ className, block }: ArticleBlockCodeCompProps) => {
+    return (
+      <div className={classNames(cls.ArticleBlockCodeComp, {}, [className])}>
+        <Code textCode={block.code} />
+      </div>
+    );
+  },
+);

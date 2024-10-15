@@ -10,16 +10,22 @@ interface LangSwitcherProps {
   isShort?: boolean;
 }
 
-export const LangSwitcher = memo(({ className, isShort }: LangSwitcherProps) => {
-  const { t, i18n } = useTranslation();
+export const LangSwitcher = memo(
+  ({ className, isShort }: LangSwitcherProps) => {
+    const { t, i18n } = useTranslation();
 
-  const switchLanguage = () => {
-    const currentLanguage = i18n.language;
-    i18n.changeLanguage(currentLanguage === 'en' ? 'ru' : 'en');
-  };
-  return (
-    <Button theme={ButtonTheme.CLEAR} className={classNames('', {}, [className])} onClick={switchLanguage}>
-      {isShort ? t('language_short') : t('language')}
-    </Button>
-  );
-});
+    const switchLanguage = () => {
+      const currentLanguage = i18n.language;
+      i18n.changeLanguage(currentLanguage === 'en' ? 'ru' : 'en');
+    };
+    return (
+      <Button
+        theme={ButtonTheme.CLEAR}
+        className={classNames('', {}, [className])}
+        onClick={switchLanguage}
+      >
+        {isShort ? t('language_short') : t('language')}
+      </Button>
+    );
+  },
+);

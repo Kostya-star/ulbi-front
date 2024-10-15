@@ -65,7 +65,9 @@ OutlinedDark.args = {
   theme: ButtonTheme.OUTLINE,
 };
 
-OutlinedDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+OutlinedDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
 
 export const Background = Template.bind({});
 Background.args = {

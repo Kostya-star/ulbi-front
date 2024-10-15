@@ -16,40 +16,46 @@ interface CommentListProps {
   isLoading?: boolean;
 }
 
-export const CommentList = memo(({ className, comments, isLoading }: CommentListProps) => {
-  const { t } = useTranslation();
+export const CommentList = memo(
+  ({ className, comments, isLoading }: CommentListProps) => {
+    const { t } = useTranslation();
 
-  if (isLoading) {
+    if (isLoading) {
+      return (
+        <VStack gap="16" className={classNames('', {}, [className])}>
+          <VStack allWidth gap="8">
+            <HStack alignItems="center" gap="8">
+              <Skeleton width={30} height={30} borderRadius="50%" />
+              <Skeleton width={100} height={20} />
+            </HStack>
+            <Skeleton />
+          </VStack>
+          <VStack allWidth gap="8">
+            <HStack alignItems="center" gap="8">
+              <Skeleton width={30} height={30} borderRadius="50%" />
+              <Skeleton width={100} height={20} />
+            </HStack>
+            <Skeleton />
+          </VStack>
+          <VStack allWidth gap="8">
+            <HStack alignItems="center" gap="8">
+              <Skeleton width={30} height={30} borderRadius="50%" />
+              <Skeleton width={100} height={20} />
+            </HStack>
+            <Skeleton />
+          </VStack>
+        </VStack>
+      );
+    }
+
     return (
       <VStack gap="16" className={classNames('', {}, [className])}>
-        <VStack allWidth gap="8">
-          <HStack alignItems="center" gap="8">
-            <Skeleton width={30} height={30} borderRadius="50%" />
-            <Skeleton width={100} height={20} />
-          </HStack>
-          <Skeleton />
-        </VStack>
-        <VStack allWidth gap="8">
-          <HStack alignItems="center" gap="8">
-            <Skeleton width={30} height={30} borderRadius="50%" />
-            <Skeleton width={100} height={20} />
-          </HStack>
-          <Skeleton />
-        </VStack>
-        <VStack allWidth gap="8">
-          <HStack alignItems="center" gap="8">
-            <Skeleton width={30} height={30} borderRadius="50%" />
-            <Skeleton width={100} height={20} />
-          </HStack>
-          <Skeleton />
-        </VStack>
+        {comments?.length ? (
+          comments.map((c) => <CommentCard key={c.id} comment={c} />)
+        ) : (
+          <Text text={t('no_comments')} />
+        )}
       </VStack>
     );
-  }
-
-  return (
-    <VStack gap="16" className={classNames('', {}, [className])}>
-      {comments?.length ? comments.map((c) => <CommentCard key={c.id} comment={c} />) : <Text text={t('no_comments')} />}
-    </VStack>
-  );
-});
+  },
+);

@@ -20,4 +20,6 @@ LoaderLight.args = {};
 
 export const LoaderDark = Template.bind({});
 LoaderDark.args = {};
-LoaderDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+LoaderDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];

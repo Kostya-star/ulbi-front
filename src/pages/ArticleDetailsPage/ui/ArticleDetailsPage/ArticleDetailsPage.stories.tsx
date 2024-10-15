@@ -17,7 +17,9 @@ export default {
   },
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = () => (
+  <ArticleDetailsPage />
+);
 
 const article: Article = {
   id: '1',

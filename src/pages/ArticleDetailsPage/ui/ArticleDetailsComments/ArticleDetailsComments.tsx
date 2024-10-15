@@ -22,35 +22,45 @@ interface ArticleDetailsCommentsProps {
 
 const _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID = '1';
 
-export const ArticleDetailsComments = memo(({ className, articleId }: ArticleDetailsCommentsProps) => {
-  const { t } = useTranslation('articles');
-  const dispatch = useAppDispatch();
+export const ArticleDetailsComments = memo(
+  ({ className, articleId }: ArticleDetailsCommentsProps) => {
+    const { t } = useTranslation('articles');
+    const dispatch = useAppDispatch();
 
-  const comments = useSelector(getArticleComments.selectAll);
-  const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
+    const comments = useSelector(getArticleComments.selectAll);
+    const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
 
-  // useConditionalEffect(() => {
-  //   dispatch(fetchCommentsByArticleId(articleId));
-  // }, [articleId, dispatch]);
-  useEffect(() => {
-    const id = __PROJECT__ === 'storybook' ? _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID : articleId;
-    dispatch(fetchCommentsByArticleId(id));
-  }, [articleId, dispatch]);
+    // useConditionalEffect(() => {
+    //   dispatch(fetchCommentsByArticleId(articleId));
+    // }, [articleId, dispatch]);
+    useEffect(() => {
+      const id =
+        __PROJECT__ === 'storybook'
+          ? _HARDCORDED_STORYBOOK_MOCK_ARTICLE_ID
+          : articleId;
+      dispatch(fetchCommentsByArticleId(id));
+    }, [articleId, dispatch]);
 
-  const sendComment = useCallback(
-    async (newComment: string) => {
-      if (articleId) {
-        dispatch(addCommentForArticle({ newComment, articleId }));
-      }
-    },
-    [articleId, dispatch],
-  );
+    const sendComment = useCallback(
+      async (newComment: string) => {
+        if (articleId) {
+          dispatch(addCommentForArticle({ newComment, articleId }));
+        }
+      },
+      [articleId, dispatch],
+    );
 
-  return (
-    <VStack gap="16" allWidth alignItems="normal" className={classNames('', {}, [className])}>
-      <Text title={t('comments_title')} />
-      <AddCommentForm sendComment={sendComment} />
-      <CommentList isLoading={isCommentsLoading} comments={comments} />
-    </VStack>
-  );
-});
+    return (
+      <VStack
+        gap="16"
+        allWidth
+        alignItems="normal"
+        className={classNames('', {}, [className])}
+      >
+        <Text title={t('comments_title')} />
+        <AddCommentForm sendComment={sendComment} />
+        <CommentList isLoading={isCommentsLoading} comments={comments} />
+      </VStack>
+    );
+  },
+);

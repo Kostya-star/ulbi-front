@@ -27,7 +27,9 @@ WithTitleAndTextDark.args = {
   text: 'Error Error Error Error Error',
 };
 
-WithTitleAndTextDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+WithTitleAndTextDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
 
 export const OnlyTitle = Template.bind({});
 OnlyTitle.args = {
@@ -39,7 +41,9 @@ OnlyTitleDark.args = {
   title: 'Error Error Error Error Error',
 };
 
-OnlyTitleDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+OnlyTitleDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
 
 export const OnlyText = Template.bind({});
 OnlyText.args = {
@@ -51,7 +55,9 @@ OnlyTextDark.args = {
   text: 'Error Error Error Error Error',
 };
 
-OnlyTextDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+OnlyTextDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
 
 export const WithTitleAndTextError = Template.bind({});
 WithTitleAndTextError.args = {
@@ -67,7 +73,9 @@ WithTitleAndTextErrorDark.args = {
   theme: TextTheme.ERROR,
 };
 
-WithTitleAndTextErrorDark.decorators = [(StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK)];
+WithTitleAndTextErrorDark.decorators = [
+  (StoryComp: Story) => ThemeDecorator(StoryComp, Theme.DARK),
+];
 
 export const WithTitleAndTextSizeS = Template.bind({});
 WithTitleAndTextSizeS.args = {

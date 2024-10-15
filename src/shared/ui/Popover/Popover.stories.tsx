@@ -13,7 +13,9 @@ export default {
   decorators: [(Story) => <div style={{ padding: '200px' }}>{Story()}</div>],
 } as ComponentMeta<typeof Popover>;
 
-const Template: ComponentStory<typeof Popover> = (args) => <Popover {...args} />;
+const Template: ComponentStory<typeof Popover> = (args) => (
+  <Popover {...args} />
+);
 
 const popoverContent = (
   <div className="popoverContentWrpper">

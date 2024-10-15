@@ -10,6 +10,15 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   invertedColor?: boolean;
 }
 
-export const Icon = memo(({ className, Svg, invertedColor, ...props }: IconProps) => {
-  return <Svg className={classNames(invertedColor ? cls.Iconinverted : cls.Icon, {}, [className])} {...props} />;
-});
+export const Icon = memo(
+  ({ className, Svg, invertedColor, ...props }: IconProps) => {
+    return (
+      <Svg
+        className={classNames(invertedColor ? cls.Iconinverted : cls.Icon, {}, [
+          className,
+        ])}
+        {...props}
+      />
+    );
+  },
+);

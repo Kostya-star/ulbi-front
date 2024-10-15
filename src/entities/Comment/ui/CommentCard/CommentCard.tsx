@@ -19,10 +19,15 @@ export const CommentCard = memo(({ className, comment }: CommentCardProps) => {
   if (!comment) return null;
 
   return (
-    <div data-testid="CommentCard.Content" className={classNames(cls.CommentCard, {}, [className])}>
+    <div
+      data-testid="CommentCard.Content"
+      className={classNames(cls.CommentCard, {}, [className])}
+    >
       <AppLink to={getRouteProfile(comment.user.id)}>
         <HStack alignItems="center" gap="8" className={cls.header}>
-          {comment.user.avatar ? <Avatar src={comment.user.avatar} size={30} /> : null}
+          {comment.user.avatar ? (
+            <Avatar src={comment.user.avatar} size={30} />
+          ) : null}
           <Text text={comment.user.username} />
         </HStack>
       </AppLink>

@@ -1,4 +1,9 @@
-import { createEntityAdapter, createSlice, EntityAdapter, EntityState } from '@reduxjs/toolkit';
+import {
+  createEntityAdapter,
+  createSlice,
+  EntityAdapter,
+  EntityState,
+} from '@reduxjs/toolkit';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Article } from '@/entities/Article';
@@ -8,16 +13,18 @@ import { ArticleDetailsRecommendationsSchema } from '../types/ArticleDetailsReco
 
 type InitialState = EntityState<Article> & ArticleDetailsRecommendationsSchema;
 
-const recommendationsAdapter: EntityAdapter<Article> = createEntityAdapter<Article>({
-  selectId: (article) => article.id,
-});
+const recommendationsAdapter: EntityAdapter<Article> =
+  createEntityAdapter<Article>({
+    selectId: (article) => article.id,
+  });
 
-const initialState: InitialState = recommendationsAdapter.getInitialState<ArticleDetailsRecommendationsSchema>({
-  error: null,
-  isLoading: false,
-  entities: {},
-  ids: [],
-});
+const initialState: InitialState =
+  recommendationsAdapter.getInitialState<ArticleDetailsRecommendationsSchema>({
+    error: null,
+    isLoading: false,
+    entities: {},
+    ids: [],
+  });
 
 const articleDetailsRecommendationsSlice = createSlice({
   name: 'articleDetailsRecommendations',
@@ -40,10 +47,15 @@ const articleDetailsRecommendationsSlice = createSlice({
   },
 });
 
-export const articleDetailsRecommendationsReducer = articleDetailsRecommendationsSlice.reducer;
+export const articleDetailsRecommendationsReducer =
+  articleDetailsRecommendationsSlice.reducer;
 // export const {} = articleDetailsRecommendationsSlice.actions;
 
 // selectors
-export const getArticleRecommendations = recommendationsAdapter.getSelectors<StateSchema>((state) => {
-  return state.articleDetailsPage?.recommendations || recommendationsAdapter.getInitialState();
-});
+export const getArticleRecommendations =
+  recommendationsAdapter.getSelectors<StateSchema>((state) => {
+    return (
+      state.articleDetailsPage?.recommendations ||
+      recommendationsAdapter.getInitialState()
+    );
+  });
