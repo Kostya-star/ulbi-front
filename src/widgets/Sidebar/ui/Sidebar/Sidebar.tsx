@@ -33,16 +33,29 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         if (link.authOnly && !isAuth) return false;
         return true;
       })
-      .map((item) => <SidebarLink key={item.path} item={item} isCollapsed={isCollapsed} />);
+      .map((item) => (
+        <SidebarLink key={item.path} item={item} isCollapsed={isCollapsed} />
+      ));
   }, [sidebarLinksList, isAuth, isCollapsed]);
 
   return (
-    <section data-testid="sidebar" className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [className])}>
+    <section
+      data-testid="sidebar"
+      className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [
+        className,
+      ])}
+    >
       <VStack gap="8" className={cls.links}>
         {linksList}
       </VStack>
 
-      <HStack justifyContent="center" gap="8" alignItems="center" allWidth className={cls.switchers}>
+      <HStack
+        justifyContent="center"
+        gap="8"
+        alignItems="center"
+        allWidth
+        className={cls.switchers}
+      >
         <ThemeSwitcher />
         <LangSwitcher isShort={isCollapsed} className={cls.lang} />
       </HStack>

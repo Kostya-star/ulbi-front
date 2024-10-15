@@ -44,10 +44,26 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
       <Text title={t('auth')} />
       {error && <Text text={t('wrong_auth_data')} theme={TextTheme.ERROR} />}
 
-      <Input value={username} className={cls.input} placeholder={t('insert_name')} autofocus onChange={setUsername} />
-      <Input value={password} className={cls.input} placeholder={t('insert_password')} onChange={setPassword} />
+      <Input
+        value={username}
+        className={cls.input}
+        placeholder={t('insert_name')}
+        autofocus
+        onChange={setUsername}
+      />
+      <Input
+        value={password}
+        className={cls.input}
+        placeholder={t('insert_password')}
+        onChange={setPassword}
+      />
 
-      <Button className={cls.signInBtn} disabled={isLoading} theme={ButtonTheme.OUTLINE} onClick={submitUserData}>
+      <Button
+        className={cls.signInBtn}
+        disabled={isLoading}
+        theme={ButtonTheme.OUTLINE}
+        onClick={submitUserData}
+      >
         {t('sign_in')}
       </Button>
     </div>
