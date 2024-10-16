@@ -14,7 +14,6 @@ import { USER_DATA_LOCAL_STORAGE } from '@/shared/const/localStorage';
 
 export const $api = axios.create({
   baseURL: __API_URL__,
-  // baseURL: 'https://cbd1-2a03-f680-fe03-e4b-ec57-bcce-7d7-88d2.ngrok-free.app',
 });
 
 // Add a request interceptor
