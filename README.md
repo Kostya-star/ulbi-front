@@ -1,4 +1,4 @@
-## Запуск проекта
+## Start project
 
 ```
 npm install - install dependencies
@@ -7,7 +7,7 @@ npm run start:front:back - launch the server + frontend in dev mode WITH WEBPACK
 
 ```
 
-## Скрипты
+## Scripts
 
 - `npm run start:front` - Starts the frontend using Webpack on port 3000.
 - `npm run start:back` - Starts the backend server using json-server.
@@ -226,6 +226,22 @@ Data interaction is handled using Redux Toolkit. Whenever possible, reusable ent
 Requests to the server are made using [RTK query](/src/shared/api/rtkApi.ts).
 
 For asynchronous reducer loading (to avoid pulling them into the main bundle), useReduxReducerManager HOC wrapper is used.
+
+### Working with Feature Flags
+The use of feature flags is only allowed through the toggleFeatures helper.
+
+It takes an object with the following options:
+
+{
+   name: the name of the feature flag, 
+   on: the function that will execute when the feature is **enabled**, 
+   off: the function that will execute when the feature is **disabled** 
+}
+
+To automatically remove a feature, use the remove-feature.ts script, which takes 2 arguments:
+
+1. The name of the feature flag to be removed
+2. The state (on/off)
 
 ## Entities
 

@@ -81,6 +81,7 @@ module.exports = {
     "react/no-array-index-key": "off",
     "unused-imports/no-unused-imports": "error",
     'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
+    "react/no-unstable-nested-components": "warn",
     'import/order': [
       'warn',
       {

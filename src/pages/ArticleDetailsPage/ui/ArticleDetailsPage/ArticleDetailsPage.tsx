@@ -3,7 +3,6 @@ import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ArticleDetails } from '@/entities/Article';
-import { Counter } from '@/entities/Counter';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import {
@@ -11,7 +10,7 @@ import {
   ReducersList,
 } from '@/shared/hooks/useReduxReducerManager/useReduxReducerManager';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { getFeatureFlag } from '@/shared/lib/features';
+import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
 import { Page } from '@/widgets/Page';
 
 import cls from './ArticleDetailsPage.module.scss';
@@ -35,6 +34,17 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
   const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
   const isCounterEnabled = getFeatureFlag('isCounterEnabled');
 
+  // eslint-disable-next-line i18next/no-literal-string
+  const Counter = () => <div>old counter</div>;
+  // eslint-disable-next-line i18next/no-literal-string
+  const CounterRedisigned = () => <div>Redisigned counter!</div>;
+
+  const counter = toggleFeatures({
+    name: 'isCounterEnabled',
+    on: () => <CounterRedisigned />,
+    off: () => <Counter />,
+  });
+
   return (
     <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
       <ArticleDetailsHeader />
@@ -43,7 +53,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
         articleId={articleId!}
         className={cls.detailsComments}
       />
-      {isCounterEnabled && <Counter />}
+      {counter}
       {isArticleRatingEnabled && <ArticleRating articleId={articleId!} />}
       <ArticleRecommendationsList className={cls.recommendationsList} />
     </Page>
