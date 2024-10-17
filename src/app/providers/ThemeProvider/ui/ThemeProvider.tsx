@@ -14,16 +14,18 @@ interface ThemeProviderProps {
 //   Theme.DUSK_SERENITY;
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
-  const { theme: defaultTheme = Theme.DUSK_SERENITY } = useJsonSettings();
-  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
+  const { theme: defaultTheme } = useJsonSettings();
+  const [theme, setTheme] = useState<Theme>(
+    initialTheme || defaultTheme || Theme.DUSK_SERENITY,
+  );
 
   const [isThemeInited, setThemeInited] = useState(false);
 
   useEffect(() => {
-    if (isThemeInited) return;
-
-    setTheme(defaultTheme);
-    setThemeInited(true);
+    if (!isThemeInited && defaultTheme) {
+      setTheme(defaultTheme);
+      setThemeInited(true);
+    }
   }, [defaultTheme, isThemeInited]);
 
   const defaultProps = useMemo(

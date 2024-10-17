@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { USER_DATA_LOCAL_STORAGE } from '@/shared/const/localStorage';
 import { setFeatureFlags } from '@/shared/lib/features';
 
+import { getUserDataById } from '../services/getUserDataById';
 import { setJsonSettings } from '../services/setJsonSettings';
 import { User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
   authData: null,
+  isInited: false,
 };
 
 export const userSlice = createSlice({
@@ -17,15 +19,10 @@ export const userSlice = createSlice({
     setAuthUserData: (state, action: PayloadAction<User>) => {
       state.authData = action.payload;
       setFeatureFlags(action.payload.features);
-    },
-    initAuthUserData: (state) => {
-      const userData = localStorage.getItem(USER_DATA_LOCAL_STORAGE);
-
-      if (userData) {
-        const user = JSON.parse(userData) as User;
-        state.authData = user;
-        setFeatureFlags(user.features);
-      }
+      localStorage.setItem(
+        USER_DATA_LOCAL_STORAGE,
+        JSON.stringify(action.payload.id),
+      );
     },
     logout: (state) => {
       state.authData = null;
@@ -33,10 +30,6 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // builder.addCase(setJsonSettings.pending, (state) => {
-    // state.isLoading = true;
-    // state.error = null;
-    // });
     builder.addCase(
       setJsonSettings.fulfilled,
       (state, action: PayloadAction<User>) => {
@@ -45,13 +38,20 @@ export const userSlice = createSlice({
         }
       },
     );
-    // builder.addCase(setJsonSettings.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload as string;
-    // });
+    builder.addCase(
+      getUserDataById.fulfilled,
+      (state, action: PayloadAction<User>) => {
+        state.authData = action.payload;
+        state.isInited = true;
+        setFeatureFlags(action.payload.features);
+      },
+    );
+    builder.addCase(getUserDataById.rejected, (state) => {
+      state.isInited = true;
+    });
   },
 });
 
-export const { setAuthUserData, initAuthUserData, logout } = userSlice.actions;
+export const { setAuthUserData, logout } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;

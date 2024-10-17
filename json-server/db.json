@@ -1270,7 +1270,7 @@
       "password": "123",
       "role": ["ADMIN"],
       "jsonSettings": {
-        "theme": "app_light_theme",
+        "theme": "app_dusk_serenity_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false
       },

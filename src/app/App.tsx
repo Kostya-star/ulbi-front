@@ -1,10 +1,16 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
 
 import { useTheme } from '@/app/providers/ThemeProvider';
-import { initAuthUserData } from '@/entities/User';
+import {
+  getAuthIsInited,
+  getUserDataById as initAuthData,
+} from '@/entities/User';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Navbar } from '@/widgets/Navbar';
+import { PageLoader } from '@/widgets/PageLoader';
 import { Sidebar } from '@/widgets/Sidebar';
 
 import { AppRouter } from './providers/router';
@@ -12,13 +18,14 @@ import { AppRouter } from './providers/router';
 export function App() {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
-
-  const [isInited, setInited] = useState(false);
+  const isAuthInited = useSelector(getAuthIsInited);
 
   useEffect(() => {
-    dispatch(initAuthUserData());
-    setInited(true);
-  }, [dispatch]);
+    if (isAuthInited) return;
+    dispatch(initAuthData());
+  }, [isAuthInited, dispatch]);
+
+  if (!isAuthInited) return <PageLoader />;
 
   return (
     <div className={classNames('app', {}, [theme])}>
@@ -26,7 +33,7 @@ export function App() {
         <Navbar />
         <div className="content-page">
           <Sidebar />
-          {isInited && <AppRouter />}
+          {isAuthInited && <AppRouter />}
         </div>
       </Suspense>
     </div>

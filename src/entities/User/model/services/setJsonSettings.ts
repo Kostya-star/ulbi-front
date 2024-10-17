@@ -12,7 +12,7 @@ export const setJsonSettings = createAsyncThunk<
   JsonSettings,
   ThunkConfig<string>
 >(
-  'profile/setJsonSettings',
+  'user/setJsonSettings',
   async (newJsonSettings, { extra, getState, rejectWithValue }) => {
     const userData = getAuthUserData(getState());
     const oldJsonSettings = getJsonSettings(getState());

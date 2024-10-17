@@ -15,4 +15,5 @@ export interface User {
 
 export interface UserSchema {
   authData: User | null;
+  isInited: boolean;
 }
