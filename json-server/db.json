@@ -1269,6 +1269,11 @@
       "username": "admin",
       "password": "123",
       "role": ["ADMIN"],
+      "jsonSettings": {
+        "theme": "app_light_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      },
       "avatar": "https://flomaster.top/o/uploads/posts/2024-02/1708339350_flomaster-top-p-multyashnii-kachok-pinterest-risunok-3.jpg"
     },
     {
@@ -1276,6 +1281,11 @@
       "username": "arina",
       "password": "123",
       "role": ["USER"],
+      "jsonSettings": {
+        "theme": "app_dusk_serenity_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      },
       "avatar": "https://cdn-prod.medicalnewstoday.com/content/images/articles/326/326898/a-female-wondering-about-her-anatomy.jpg"
     },
     {
@@ -1283,6 +1293,11 @@
       "username": "manager",
       "password": "123",
       "role": ["MANAGER"],
+      "jsonSettings": {
+        "theme": "app_dusk_serenity_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      },
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR_B0sYx_rXPS4n_bvGPfAVftvWqR-f2CRjw&s"
     },
     {
@@ -1290,6 +1305,11 @@
       "username": "test",
       "password": "test",
       "role": ["ADMIN"],
+      "jsonSettings": {
+        "theme": "app_dusk_serenity_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      },
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt5hlguGVkKpBcz3R7vXCH8M2WtsCtQOWWxQ&s"
     }
   ],
