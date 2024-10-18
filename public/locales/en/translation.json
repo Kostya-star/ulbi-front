@@ -24,5 +24,6 @@
   "admin_panel": "Admin",
   "your_feedback": "Your feedback",
   "cancel": "Cancel",
-  "submit": "Submit"
+  "submit": "Submit",
+  "greeting_message": "Welcome to the application:)"
 }

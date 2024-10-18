@@ -24,13 +24,15 @@ export const AppLink = memo(
     to,
     theme = AppLinkTheme.PRIMARY,
     ...otherProps
-  }: AppLinkProps) => (
-    <Link
-      className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-      to={to}
-      {...otherProps}
-    >
-      {children}
-    </Link>
-  ),
+  }: AppLinkProps) => {
+    return (
+      <Link
+        className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+        to={to}
+        {...otherProps}
+      >
+        {children}
+      </Link>
+    );
+  },
 );

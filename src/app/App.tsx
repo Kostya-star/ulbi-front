@@ -7,6 +7,7 @@ import {
   getAuthIsInited,
   getUserDataById as initAuthData,
 } from '@/entities/User';
+import { GreetingModal } from '@/features/GreetingModal';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Navbar } from '@/widgets/Navbar';
@@ -35,6 +36,7 @@ export function App() {
           <Sidebar />
           {isAuthInited && <AppRouter />}
         </div>
+        <GreetingModal />
       </Suspense>
     </div>
   );

@@ -61,11 +61,15 @@ export const Dropdown = ({
             return (
               <Menu.Item
                 key={index}
-                as={AppLink}
-                to={item.href}
+                // as={AppLink}
+                // to={item.href}
                 disabled={item.disabled}
               >
-                {getContent}
+                {({ active }) => (
+                  <span>
+                    <AppLink to={item.href!}>{getContent({ active })}</AppLink>
+                  </span>
+                )}
               </Menu.Item>
             );
           }

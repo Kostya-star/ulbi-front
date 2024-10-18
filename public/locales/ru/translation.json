@@ -24,5 +24,6 @@
   "admin_panel": "Админ",
   "your_feedback": "Ваш отзыв",
   "cancel": "Отмена",
-  "submit": "Отправить"
+  "submit": "Отправить",
+  "greeting_message": "Добро пожаловать:)"
 }
